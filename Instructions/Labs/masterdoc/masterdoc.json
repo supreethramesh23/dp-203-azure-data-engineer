@@ -1,0 +1,13 @@
+[ 
+  {
+  "Name": "Challenge 1: Securing the M365 Digital Workspace",
+  "Language": "English",
+  "BaseURL": "https://github.com/CloudLabs-MOC/Challenge-Labs-SC-200",
+  "Files": [
+     {
+       "RawFilePath": "https://docs-api.cloudlabs.ai/repos/raw.githubusercontent.com/CloudLabs-MOC/Challenge-Labs-SC-200/main/Challenge-Labs/Challenge-01.md",
+       "Order": 1
+     }
+  ]
+ } 
+]
