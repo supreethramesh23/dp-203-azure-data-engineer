@@ -1,13 +1,17 @@
-[ 
+[
   {
-  "Name": "Challenge 1: Securing the M365 Digital Workspace",
-  "Language": "English",
-  "BaseURL": "https://github.com/CloudLabs-MOC/Challenge-Labs-SC-200",
-  "Files": [
-     {
-       "RawFilePath": "https://docs-api.cloudlabs.ai/repos/raw.githubusercontent.com/CloudLabs-MOC/Challenge-Labs-SC-200/main/Challenge-Labs/Challenge-01.md",
-       "Order": 1
-     }
-  ]
- } 
+    "Name": "DP-300: Administering Microsoft Azure SQL Solutions",
+    "Language": "English",
+    "Files": [
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/dp-300-database-administrator/Prod/Instructions/Labs/LabIntro.md",
+        "Order": 1
+      },
+
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/dp-300-database-administrator/Prod/Instructions/Labs/01-provision-sql-vm.md",
+        "Order": 2
+      }
+    ]
+  }
 ]
