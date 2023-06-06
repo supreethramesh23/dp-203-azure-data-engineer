@@ -1,9 +1,3 @@
----
-lab:
-    title: 'Load Data into a Relational Data Warehouse'
-    ilt-use: 'Lab'
----
-
 # Load Data into a Relational Data Warehouse
 
 In this exercise, you're going to load data into a dedicated SQL Pool.
