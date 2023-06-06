@@ -24,29 +24,29 @@ In this lab, the data warehouse is hosted in a dedicated SQL pool in Azure Synap
 
 1. Select the **Resource groups** under **Navigate**.
 
-   ![](../images1/mod3-ex1-task1-step2.png)
+   ![](../Labs/images/mod3-ex1-task1-step2.png)
    
 1. Under the Resource groups, select the **lab03-rg** name.
 
-   ![](../images1/mod3-ex1-task1-step3.png)
+   ![](../Labs/images/mod3-ex1-task1-step3.png)
    
 1. Now, serach for **synapse** and select the synapse workspace named **workspace<inject key="Deployment ID" enableCopy="false" />**.
 
-   ![](../images1/mod3-ex1-task1-step4.png)
+   ![](../Labs/images/mod3-ex1-task1-step4.png)
 
 1. In the **Overview** page for your Synapse workspace, in the **Open Synapse Studio** card, select **Open** to open Synapse Studio in a new browser tab. 
 
    >**Note**: Signin in if prompted.
 
-    ![](../images1/mod3-ex1-task1-step5.png)
+    ![](../Labs/images/mod3-ex1-task1-step5.png)
 
 1. On the left side of Synapse Studio, use the **&rsaquo;&rsaquo;** icon to expand the menu - this reveals the different pages within Synapse Studio that you'll use to manage resources and perform data analytics tasks.
 
-   ![](../images1/mod3-ex1-task1-step6.png)
+   ![](../Labs/images/mod3-ex1-task1-step6.png)
 
 1. On the **Manage** page, ensure the **SQL pools** tab is selected and then select the **sqldb<inject key="Deployment ID" enableCopy="false" />** dedicated SQL pool and use its **&#9655;** icon to start it, if not started already; confirming that you want to resume it when prompted.
 
-   ![](../images1/mod3-ex1-task1-step7.png)
+   ![](../Labs/images/mod3-ex1-task1-step7.png)
 
 1. Wait for the SQL pool to resume. This can take a few minutes. Use the **&#8635; Refresh** button to check its status periodically. The status will show as **Online** when it is ready.
 
@@ -54,11 +54,11 @@ In this lab, the data warehouse is hosted in a dedicated SQL pool in Azure Synap
 
 1. In Synapse Studio, select the **Data (1)** page and ensure that the **Workspace (2)** tab is selected and contains a **SQL database (3)** category.
 
-    ![](../images1/mod3-ex1-task2-step1.png)
+    ![](../Labs/images/mod3-ex1-task2-step1.png)
 
 1. Expand **SQL database**, the **sqldb<inject key="Deployment ID" enableCopy="false" />** pool, and its **Tables** folder to see the tables in the database.
 
-![](../images1/mod3-ex1-task2-step2.png)
+![](../Labs/images/mod3-ex1-task2-step2.png)
 
    A relational data warehouse is typically based on a schema that consists of *fact* and *dimension* tables. The tables are optimized for analytical queries in which    numeric metrics in the fact tables are aggregated by attributes of the entities represented by the dimension tables - for example, enabling you to aggregate          Internet sales revenue by product, customer, date, and so on.
     
@@ -88,11 +88,11 @@ Numeric values in a relational data warehouse are stored in fact tables with rel
 
 1. On the **Data (1)** page, select the **sqldb<inject key="Deployment ID" enableCopy="false" />**  SQL pool and in its **...** menu, select **New SQL script > **Empty script (3)**.
 
-    ![](../images1/mod3-ex2-task1-step1.png)
+    ![](../Labs/images/mod3-ex2-task1-step1.png)
 
 1. When a new **SQL Script 1** tab opens, in its **Properties** pane, change the name of the script to **Analyze Internet Sales** and change the **Result settings per query** to return all rows. Then use the **Publish** button on the toolbar to save the script, and use the **Properties** button (which looks similar to **&#128463;.**) on the right end of the toolbar to close the **Properties** pane so you can see the script pane.
 
-   ![](../images1/dp500_03-propertiespane.png)
+   ![](../Labs/images/dp500_03-propertiespane.png)
 
 1. In the empty script, add the following code:
 
@@ -105,11 +105,11 @@ Numeric values in a relational data warehouse are stored in fact tables with rel
     ORDER BY Year;
     ```
 
-    ![](../images1/mod3-ex1-task2-step3.png)
+    ![](../Labs/images/mod3-ex1-task2-step3.png)
 
 1. Use the **&#9655; Run** button to run the script, and review the results, which should show the Internet sales totals for each year. This query joins the fact table for Internet sales to a time dimension table based on the order date, and aggregates the sales amount measure in the fact table by the calendar month attribute of the dimension table.
 
-    ![](../images1/mod3-ex1-task2-step4.png)
+    ![](../Labs/images/mod3-ex1-task2-step4.png)
 
 1. Modify the query as follows to add the month attribute from the time dimension, and then run the modified query.
 
