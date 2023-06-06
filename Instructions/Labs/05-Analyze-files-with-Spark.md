@@ -20,45 +20,45 @@ The script provisions an Azure Synapse Analytics workspace and an Azure Storage 
 
 1. Select the **Resource groups** under **Navigate**.
 
-   ![](../images/mod2-rg.png)
+   ![](../Labs/images/mod2-rg.png)
    
 1. Under the Resource groups, select the **lab02-rg** name.
 
-   ![](../images/mod2-lab02rg.png)
+   ![](../Labs/images/mod2-lab02rg.png)
    
 1. Now, serach for **synapse** and select the synapse workspace named **workspace<inject key="Deployment ID" enableCopy="false" />**.
 
-   ![](../images/mod2-synapse.png)
+   ![](../Labs/images/mod2-synapse.png)
 
 1. In the **Overview** page for your Synapse workspace, in the **Open Synapse Studio** card, select **Open** to open Synapse Studio in a new browser tab. 
 
    >**Note**: Signin in if prompted.
 
-    ![](../images/mod2-open.png)
+    ![](../Labs/images/mod2-open.png)
 
 1. On the left side of Synapse Studio, use the **&rsaquo;&rsaquo;** icon to expand the menu - this reveals the different pages within Synapse Studio that you'll use to manage resources and perform data analytics tasks.
 
-   ![](../images/mod2-icon.png)
+   ![](../Labs/images/mod2-icon.png)
 
 1. On the **Manage (1)** page, select the **Apache Spark pools (2)** tab and note that a Spark pool with a name similar to **sparkpool<inject key="Deployment ID" enableCopy="false" /> (3)** has been provisioned in the workspace. Later you will use this Spark pool to load and analyze data from files in the data lake storage for the workspace.
 
-   ![](../images1/Mod2-Ex1-Task1-Step7.png)
+   ![](../Labs/images/Mod2-Ex1-Task1-Step7.png)
 
 1. On the **Data (1)** page, view the **Linked (2)** tab and verify that your workspace includes a link to your **Azure Data Lake Storage Gen2 (3)** storage account, which should have a name similar to **workspace<inject key="Deployment ID" enableCopy="false" /> (Primary - datalake<inject key="DeploymentID" enableCopy="false"/>) (4)**.
 
-   ![](../images1/Mod2-Ex1-Task1-Step8.png)
+   ![](../Labs/images/Mod2-Ex1-Task1-Step8.png)
 
 1. Expand your storage account and verify that it contains a file system container named **files**.
 
-   ![](../images1/Mod2-Ex1-Task1-Step9.png)
+   ![](../Labs/images/Mod2-Ex1-Task1-Step9.png)
 
 1. Select the **files (1)** container, and note that it contains folders named **sales** and **synapse** (2). The **synapse** folder is used by Azure Synapse, and the **sales** folder contains the data files you are going to query.
 
-   ![](../images1/Mod2-Ex1-Task1-Step10.png)
+   ![](../Labs/images/Mod2-Ex1-Task1-Step10.png)
 
 1. Double click on the **sales** folder to open and the **orders** folder it contains, and observe that the **orders** folder contains **.csv** files for three years of sales data.
 
-   ![](../images1/Mod2-Ex1-Task1-Step11.png)
+   ![](../Labs/images/Mod2-Ex1-Task1-Step11.png)
 
 1. Right-click any of the files and select **Preview** to see the data it contains. Note that the files do not contain a header row, so you can unselect the option to display column headers.
 
@@ -66,11 +66,11 @@ The script provisions an Azure Synapse Analytics workspace and an Azure Storage 
 
 1. Select any of the files in the **orders** folder, and then in the **New notebook** list on the toolbar, select **Load to DataFrame**. A dataframe is a structure in Spark that represents a tabular dataset.
 
-   ![](../images1/Mod2-Ex2-Task2-Step1.png)
+   ![](../Labs/images/Mod2-Ex2-Task2-Step1.png)
 
 1. In the new **Notebook 1 (1)** tab that opens, Select the **... (2)** icon to open the **Attach to** list, select your Spark pool  **sparkpool<inject key="Deployment ID" enableCopy="false" /> (3)**. Then use the **&#9655; Run all (4)** button to run all of the cells in the notebook (there's currently only one!).
  
-   ![](../images1/Mod2-Ex2-Task2-Step2a.png)
+   ![](../Labs/images/Mod2-Ex2-Task2-Step2a.png)
 
     >**Note**: Since this is the first time you've run any Spark code in this session, the Spark pool must be started. This means that the first run in the session can take a few minutes. Subsequent runs will be quicker.
   
@@ -127,7 +127,7 @@ The script provisions an Azure Synapse Analytics workspace and an Azure Storage 
 
 1. Under the results, use the **+ Code** button to add a new code cell to the notebook. Then in the new cell, add the following code to display the dataframe's schema:
 
-   ![](../images1/Mod2-Ex2-Task2-Step8.png)
+   ![](../Labs/images/Mod2-Ex2-Task2-Step8.png)
    
     ```Python
     df.printSchema()
@@ -156,7 +156,7 @@ The **dataframe** object in Spark is similar to a Pandas dataframe in Python, an
     print(customers.distinct().count())
     display(customers.distinct())
     ```
-   ![](../images/mod2-code1.png)
+   ![](../Labs/images/mod2-code1.png)
 
 1. Run the new code cell, and review the results. Observe the following details:
     - When you perform an operation on a dataframe, the result is a new dataframe (in this case, a new **customers** dataframe is created by selecting a specific subset of columns from the **df** dataframe)
@@ -255,7 +255,7 @@ A picture is proverbially worth a thousand words, and a chart is often better th
 
 1. In the results section beneath the cell, change the **View** option from **Table** to **Chart**.
 
-   ![](../images/mod2-chart.png)
+   ![](../Labs/images/mod2-chart.png)
 
 1. Use the **View options** button at the top right of the chart to display the options pane for the chart. Then set the options as follows and select **Apply**:
     - **Chart type**: Bar chart
@@ -267,7 +267,7 @@ A picture is proverbially worth a thousand words, and a chart is often better th
 
 1. Verify that the chart looks similar to this:
 
-    ![A bar chart of products by total order quantiies](../images1/notebook-chart-(1).png)
+    ![A bar chart of products by total order quantiies](../Labs/images/notebook-chart-(1).png)
 
 ### Task 2: Get started with **matplotlib**
 
