@@ -1,9 +1,3 @@
----
-lab:
-    title: 'Ingest realtime data with Azure Stream Analytics and Azure Synapse Analytics'
-    ilt-use: 'Lab'
----
-
 # Ingest realtime data with Azure Stream Analytics and Azure Synapse Analytics
 
 Data analytics solutions often include a requirement to ingest and process *streams* of data. Stream processing differs from batch processing in that streams are generally *boundless* - in other words they are continuous sources of data that must be processed perpetually rather than at fixed intervals.
