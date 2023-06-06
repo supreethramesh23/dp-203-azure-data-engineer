@@ -1,9 +1,3 @@
----
-lab:
-    title: 'Use an Apache Spark notebook in a pipeline'
-    ilt-use: 'Lab'
----
-
 # Use an Apache Spark notebook in a pipeline
 
 In this exercise, we're going to create an Azure Synapse Analytics pipeline that includes an activity to run an Apache Spark notebook..
