@@ -1,9 +1,3 @@
----
-lab:
-    title: 'Build a data pipeline in Azure Synapse Analytics'
-    ilt-use: 'Lab'
----
-
 # Build a data pipeline in Azure Synapse Analytics
 
 In this exercise, you'll load data into a dedicated SQL Pool using a pipeline in Azure Synapse Analytics Explorer. The pipeline will encapsulate a data flow that loads product data into a table in a data warehouse.
