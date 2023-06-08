@@ -4,10 +4,6 @@ In this exercise, we're going to create an Azure Synapse Analytics pipeline that
 
 This exercise should take approximately **30** minutes to complete.
 
-## Before you start
-
-You'll need an [Azure subscription](https://azure.microsoft.com/free) in which you have administrative-level access.
-
 ## Provision an Azure Synapse Analytics workspace
 
 You'll need an Azure Synapse Analytics workspace with access to data lake storage and a Spark pool.
