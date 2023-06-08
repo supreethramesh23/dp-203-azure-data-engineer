@@ -4,10 +4,6 @@ Azure Synapse Analytics is built on a scalable set capabilities to support enter
 
 This lab will take approximately **45** minutes to complete.
 
-## Before you start
-
-You'll need an [Azure subscription](https://azure.microsoft.com/free) in which you have administrative-level access.
-
 ## Provision an Azure Synapse Analytics workspace
 
 An Azure Synapse Analytics *workspace* provides a central point for managing data and data processing runtimes. You can provision a workspace using the interactive interface in the Azure portal, or you can deploy a workspace and resources within it by using a script or template. In most production scenarios, it's best to automate provisioning with scripts and templates so that you can incorporate resource deployment into a repeatable development and operations (*DevOps*) process.
