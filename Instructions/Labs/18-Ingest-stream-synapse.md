@@ -8,10 +8,6 @@ In this exercise, you'll use Azure Stream Analytics to process a  stream of sale
 
 This exercise should take approximately **45** minutes to complete.
 
-## Before you start
-
-You'll need an [Azure subscription](https://azure.microsoft.com/free) in which you have administrative-level access.
-
 ## Provision Azure resources
 
 In this exercise, you'll need an Azure Synapse Analytics workspace with access to data lake storage and a dedicated SQL pool. You'll also need an Azure Event Hubs namespace to which the streaming order data can be sent.
