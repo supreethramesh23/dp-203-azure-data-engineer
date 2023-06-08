@@ -4,10 +4,6 @@ Azure Synapse Link for Azure Cosmos DB is a cloud-native *hybrid transactional a
 
 This exercise should take approximately **35** minutes to complete.
 
-## Before you start
-
-You'll need an [Azure subscription](https://azure.microsoft.com/free) in which you have administrative-level access.
-
 ## Provision Azure resources
 
 To explore Azure Synapse Link for Azure Cosmos DB, you'll need an Azure Synapse Analytics workspace and an Azure Cosmos DB account. In this exercise, you'll use a combination of a PowerShell script and an ARM template to provision these resources in your Azure subscription.
