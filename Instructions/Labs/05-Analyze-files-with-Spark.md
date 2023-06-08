@@ -4,10 +4,6 @@ Apache Spark is an open source engine for distributed data processing, and is wi
 
 This lab will take approximately **45** minutes to complete.
 
-## Before you start
-
-You'll need an [Azure subscription](https://azure.microsoft.com/free) in which you have administrative-level access.
-
 ## Provision an Azure Synapse Analytics workspace
 
 You'll need an Azure Synapse Analytics workspace with access to data lake storage and an Apache Spark pool that you can use to query and process files in the data lake.
