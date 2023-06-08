@@ -4,10 +4,6 @@ Azure Synapse Link for SQL enables you to automatically synchronize a transactio
 
 This exercise should take approximately **35** minutes to complete.
 
-## Before you start
-
-You'll need an [Azure subscription](https://azure.microsoft.com/free) in which you have administrative-level access.
-
 ## Provision Azure resources
 
 In this exercise, you'll synchronize data from an Azure SQL Database resource to an Azure Synapse Analytics workspace. You'll start by using a script to provision these resources in your Azure subscription.
