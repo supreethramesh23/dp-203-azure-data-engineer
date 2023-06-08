@@ -4,10 +4,6 @@ In this exercise, you'll load data into a dedicated SQL Pool using a pipeline in
 
 This exercise should take approximately **45** minutes to complete.
 
-## Before you start
-
-You'll need an [Azure subscription](https://azure.microsoft.com/free) in which you have administrative-level access.
-
 ## Provision an Azure Synapse Analytics workspace
 
 You'll need an Azure Synapse Analytics workspace with access to data lake storage and a dedicated SQL pool hosting a relational data warehouse.
