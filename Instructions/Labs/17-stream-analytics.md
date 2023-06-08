@@ -4,10 +4,6 @@ In this exercise you'll provision an Azure Stream Analytics job in your Azure su
 
 This exercise should take approximately **15** minutes to complete.
 
-## Before you start
-
-You'll need an [Azure subscription](https://azure.microsoft.com/free) in which you have administrative-level access.
-
 ## Provision Azure resources
 
 In this exercise, you'll capture a stream of simulated sales transaction data, process it, and store the results in a blob container in Azure Storage. You'll need an Azure Event Hubs namespace to which streaming data can be sent, and an Azure Storage account in which the results of stream processing will be stored.
