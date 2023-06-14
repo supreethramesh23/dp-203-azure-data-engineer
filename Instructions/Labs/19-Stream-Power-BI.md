@@ -1,4 +1,4 @@
-# Create a realtime report with Azure Stream Analytics and Microsoft Power BI
+# Lab 19: Create a realtime report with Azure Stream Analytics and Microsoft Power BI
 
 Data analytics solutions often include a requirement to ingest and process *streams* of data. Stream processing differs from batch processing in that streams are generally *boundless* - in other words they are continuous sources of data that must be processed perpetually rather than at fixed intervals.
 
