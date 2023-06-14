@@ -1,4 +1,4 @@
-# Transform data using Spark in Synapse Analytics
+# Lab 06: Transform data using Spark in Synapse Analytics
 
 Data *engineers* often use Spark notebooks as one of their preferred tools to perform *extract, transform, and load (ETL)* or *extract, load, and transform (ELT)* activities that transform data from one format or structure to another.
 
