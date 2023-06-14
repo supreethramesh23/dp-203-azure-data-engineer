@@ -1,4 +1,4 @@
-# Explore Azure Databricks
+# Lab 23: Explore Azure Databricks
 
 Azure Databricks is a Microsoft Azure-based version of the popular open-source Databricks platform.
 
