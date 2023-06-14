@@ -1,4 +1,4 @@
-# Automate an Azure Databricks Notebook with Azure Data Factory
+# Lab 27: Automate an Azure Databricks Notebook with Azure Data Factory
 
 You can use notebooks in Azure Databricks to perform data engineering tasks, such as processing data files and loading data into tables. When you need to orchestrate these tasks as part of a data engineering pipeline, you can use Azure Data Factory.
 
