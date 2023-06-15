@@ -8,35 +8,34 @@ This exercise should take approximately **35** minutes to complete.
 
 In this exercise, you'll synchronize data from an Azure SQL Database resource to an Azure Synapse Analytics workspace. You'll start by using a script to provision these resources in your Azure subscription.
 
-1. Sign into the [Azure portal](https://portal.azure.com) at `https://portal.azure.com`.
-2. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a ***PowerShell*** environment and creating storage if prompted. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
+1. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a ***PowerShell*** environment and creating storage if prompted. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
 
     ![Azure portal with a cloud shell pane](./images/cloud-shell.png)
 
     > **Note**: If you have previously created a cloud shell that uses a *Bash* environment, use the the drop-down menu at the top left of the cloud shell pane to change it to ***PowerShell***.
 
-3. Note that you can resize the cloud shell by dragging the separator bar at the top of the pane, or by using the **&#8212;**, **&#9723;**, and **X** icons at the top right of the pane to minimize, maximize, and close the pane. For more information about using the Azure Cloud Shell, see the [Azure Cloud Shell documentation](https://docs.microsoft.com/azure/cloud-shell/overview).
+2. Note that you can resize the cloud shell by dragging the separator bar at the top of the pane, or by using the **&#8212;**, **&#9723;**, and **X** icons at the top right of the pane to minimize, maximize, and close the pane. For more information about using the Azure Cloud Shell, see the [Azure Cloud Shell documentation](https://docs.microsoft.com/azure/cloud-shell/overview).
 
-4. In the PowerShell pane, enter the following commands to clone this repo:
+3. In the PowerShell pane, enter the following commands to clone this repo:
 
     ```
     rm -r dp-203 -f
     git clone https://github.com/MicrosoftLearning/dp-203-azure-data-engineer dp-203
     ```
 
-5. After the repo has been cloned, enter the following commands to change to the folder for this exercise and run the **setup.ps1** script it contains:
+4. After the repo has been cloned, enter the following commands to change to the folder for this exercise and run the **setup.ps1** script it contains:
 
     ```
     cd dp-203/Allfiles/labs/15
     ./setup.ps1
     ```
 
-6. If prompted, choose which subscription you want to use (this will only happen if you have access to multiple Azure subscriptions).
-7. When prompted, enter a suitable password for your Azure SQL Database.
+5. If prompted, choose which subscription you want to use (this will only happen if you have access to multiple Azure subscriptions).
+6. When prompted, enter a suitable password for your Azure SQL Database.
 
     > **Note**: Be sure to remember this password!
 
-8. Wait for the script to complete - this typically takes around 15 minutes, but in some cases may take longer. While you are waiting, review the [What is Azure Synapse Link for SQL?](https://docs.microsoft.com/azure/synapse-analytics/synapse-link/sql-synapse-link-overview) article in the Azure Synapse Analytics documentation.
+7. Wait for the script to complete - this typically takes around 15 minutes, but in some cases may take longer. While you are waiting, review the [What is Azure Synapse Link for SQL?](https://docs.microsoft.com/azure/synapse-analytics/synapse-link/sql-synapse-link-overview) article in the Azure Synapse Analytics documentation.
 
 ## Configure Azure SQL Database
 
@@ -139,12 +138,12 @@ Now you're ready to configure Azure Synapse Link for SQL in your Synapse Analyti
 
 3. Modify thes structure types in the table mappings as follows:
 
-    | Source table | Target table | Distribution type | Distribution column | Structure type |
+    |Source table|Target table|Distribution type|Distribution column|Structure type|
     |--|--|--|--|--|
-    | SalesLT.Customer **&#8594;** | \[SalesLT] . \[Customer] | Round robin | - | Clustered columnstore index |
-    | SalesLT.Product **&#8594;** | \[SalesLT] . \[Product] | Round robin | - | Heap |
-    | SalesLT.SalesOrderDetail **&#8594;** | \[SalesLT] . \[SalesOrderDetail] | Round robin | - | Clustered columnstore index |
-    | SalesLT.SalesOrderHeader **&#8594;** | \[SalesLT] . \[SalesOrderHeader] | Round robin | - | Heap |
+    |SalesLT.Customer **&#8594;**|\[SalesLT].\[Customer]|Round robin|-|Clustered columnstore index|
+    |SalesLT.Product **&#8594;**|\[SalesLT].\[Product]|Round robin| - |Heap|
+    |SalesLT.SalesOrderDetail **&#8594;**|\[SalesLT].\[SalesOrderDetail]|Round robin|-|Clustered columnstore index|
+    |SalesLT.SalesOrderHeader **&#8594;**|\[SalesLT].\[SalesOrderHeader]|Round robin|-|Heap|
 
 4. At the top of the **sql-adventureworkslt-conn** page that is created, use the **&#9655; Start** button to start synchronization. When prompted, select **OK** to publish and start the link connection.
 5. After starting the connection, on the **Monitor** page, view the **Link connections** tab and select the **sql-adventureworkslt-conn** connection. You can use the **&#8635; Refresh** button to update the status periodically. It may take several minutes to complete the initial snapshot copy process and start replicating - after that, all changes in the source database tables will be automatically replayed in the synchronized tables.
@@ -173,14 +172,4 @@ Now you're ready to configure Azure Synapse Link for SQL in your Synapse Analyti
 4. Use the **&#9655; Run** button to run the script and view the results. The query is run against the replicated tables in the dedicated SQL pool and not the source database, enabling you to run analytical queries without impacting business applications.
 5. When you're done, on the **Manage** page, pause the **sql*xxxxxxx*** dedicated SQL pool.
 
-## Delete Azure resources
-
-If you've finished exploring Azure Synapse Analytics, you should delete the resources you've created to avoid unnecessary Azure costs.
-
-1. Close the Synapse Studio browser tab and return to the Azure portal.
-2. On the Azure portal, on the **Home** page, select **Resource groups**.
-3. Select the **dp203-*xxxxxxx*** resource group that was created by the setup script at the beginning of this exercise.
-4. At the top of the **Overview** page for your resource group, select **Delete resource group**.
-5. Enter the **dp203-*xxxxxxx*** resource group name to confirm you want to delete it, and select **Delete**.
-
-    After a few minutes, your resource group and the resources it contained will be deleted.
+### You have successfully completed the lab.
