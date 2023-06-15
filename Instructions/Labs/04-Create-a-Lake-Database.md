@@ -10,11 +10,9 @@ To support a lake database, you need an Azure Synapse Analytics workspace with a
 
 In this exercise, you'll use a combination of a PowerShell script and an ARM template to provision an Azure Synapse Analytics workspace.
 
-2. In Azure Portal, use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell, selecting a ***PowerShell*** environment and select **create a storage** if prompted. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
+2. In Azure Portal, use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell, selecting a ***PowerShell*** environment and select **create storage** if prompted. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
 
     ![Azure portal with a cloud shell pane](./images/cloud-shell.png)
-
-    > **Note**: If you have previously created a cloud shell that uses a *Bash* environment, use the the drop-down menu at the top left of the cloud shell pane to change it to ***PowerShell***.
 
 3. Note that you can resize the cloud shell by dragging the separator bar at the top of the pane, or by using the **&#8212;**, **&#9723;**, and **X** icons at the top right of the pane to minimize, maximize, and close the pane. For more information about using the Azure Cloud Shell, see the [Azure Cloud Shell documentation](https://docs.microsoft.com/azure/cloud-shell/overview).
 
