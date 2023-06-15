@@ -8,16 +8,16 @@ This exercise should take approximately **40** minutes to complete.
 
 You'll need an [Azure subscription](https://azure.microsoft.com/free) in which you have administrative-level access.
 
-## Provision an Azure Databricks workspace
+## Exercise 1:  Provision an Azure Databricks workspace
 
 In this exercise, you'll use a script to provision a new Azure Databricks workspace.
 
 1. In a web browser, sign into the [Azure portal](https://portal.azure.com) at `https://portal.azure.com`.
-2. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal.
+1. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal.
 
     ![Azure portal with a cloud shell pane](./images/25-1.png)
 
-4.  selecting a ***PowerShell*** environment and creating storage if prompted. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
+1.  selecting a ***PowerShell*** environment and creating storage if prompted. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
 
     ![Azure portal with a cloud shell pane](./images/25-2.png)
 
@@ -26,39 +26,39 @@ In this exercise, you'll use a script to provision a new Azure Databricks worksp
     ![Azure portal with a cloud shell pane](./images/25-4.png)
 
 
-7. if You dont have precreated storage account then select advanced setting.
+1. if You dont have precreated storage account then select advanced setting.
 
     ![Azure portal with a cloud shell pane](./images/25-2a.png)
 
-5. Keep all settings default and give unique storage account name and in file share section write **None**.
+1. Keep all settings default and give unique storage account name and in file share section write **None**.
 
     ![Azure portal with a cloud shell pane](./images/25-3.png)
 
-9. Note that you can resize the cloud shell by dragging the separator bar at the top of the pane, or by using the **&#8212;**, **&#9723;**, and **X** icons at the top right of the pane to minimize, maximize, and close the pane. For more information about using the Azure Cloud Shell, see the [Azure Cloud Shell documentation](https://docs.microsoft.com/azure/cloud-shell/overview)
+1. Note that you can resize the cloud shell by dragging the separator bar at the top of the pane, or by using the **&#8212;**, **&#9723;**, and **X** icons at the top right of the pane to minimize, maximize, and close the pane. For more information about using the Azure Cloud Shell, see the [Azure Cloud Shell documentation](https://docs.microsoft.com/azure/cloud-shell/overview)
 
     ![Azure portal with a cloud shell pane](./images/25-5.png)
 
-10. In the PowerShell pane, enter the following commands to clone this repo:
+1. In the PowerShell pane, enter the following commands to clone this repo:
 
     ```
     rm -r dp-203 -f
     git clone https://github.com/MicrosoftLearning/dp-203-azure-data-engineer dp-203
     ```
 
-11. After the repo has been cloned, enter the following commands to change to the folder for this lab and run the **setup.ps1** script it contains:
+1. After the repo has been cloned, enter the following commands to change to the folder for this lab and run the **setup.ps1** script it contains:
 
     ```
     cd dp-203/Allfiles/labs/25
     ./setup.ps1
     ```
 
-12. If prompted, choose which subscription you want to use (this will only happen if you have access to multiple Azure subscriptions).
+1. If prompted, choose which subscription you want to use (this will only happen if you have access to multiple Azure subscriptions).
 
-13. Wait for the script to complete - this typically takes around 5 minutes, but in some cases may take longer. While you are waiting, review the [Introduction to Delta Lake](https://docs.microsoft.com/azure/databricks/delta/delta-intro) article in the Azure Databricks documentation.
+1. Wait for the script to complete - this typically takes around 5 minutes, but in some cases may take longer. While you are waiting, review the [Introduction to Delta Lake](https://docs.microsoft.com/azure/databricks/delta/delta-intro) article in the Azure Databricks documentation.
 
     ![Azure portal with a cloud shell pane](./images/25-6.png)
 
-## Create a cluster
+## Exercise 2: Create a cluster
 
 Azure Databricks is a distributed processing platform that uses Apache Spark *clusters* to process data in parallel on multiple nodes. Each cluster consists of a driver node to coordinate the work, and worker nodes to perform processing tasks.
 
@@ -71,25 +71,25 @@ Azure Databricks is a distributed processing platform that uses Apache Spark *cl
     ![Azure portal with a cloud shell pane](./images/25-8.png)
 
 
-3. Select the **databricks*xxxxxxx*** Azure Databricks Service resource.
+1. Select the **databricks*xxxxxxx*** Azure Databricks Service resource.
 
     ![Azure portal with a cloud shell pane](./images/25-9.png)
 
-5. In the **Overview** page for **databricks*xxxxxxx***, use the **Launch Workspace** button to open your Azure Databricks workspace in a new browser tab; signing in if prompted.
+1. In the **Overview** page for **databricks*xxxxxxx***, use the **Launch Workspace** button to open your Azure Databricks workspace in a new browser tab; signing in if prompted.
 
     ![Azure portal with a cloud shell pane](./images/25-10.png)
 
-7. If a **What's your current data project?** message is displayed, select **Finish** to close it. Then view the Azure Databricks workspace portal and note that the sidebar on the left side contains icons for the various tasks you can perform. The sidebar expands to show the names of the task categories.
+1. If a **What's your current data project?** message is displayed, select **Finish** to close it. Then view the Azure Databricks workspace portal and note that the sidebar on the left side contains icons for the various tasks you can perform. The sidebar expands to show the names of the task categories.
 
     ![Azure portal with a cloud shell pane](./images/25-11.png)
 
-9. Select the **(+) New** task, and then select **Cluster**.
+1. Select the **(+) New** task, and then select **Cluster**.
 
     ![Azure portal with a cloud shell pane](./images/25-12.png)
 
     **Note**: If a tip is displayed, use the **Got it** button to close it. This applies to any future tips that may be displayed as you navigate the workspace interface for the first time.
 
-11. In the **New Cluster** page, create a new cluster with the following settings:
+1. In the **New Cluster** page, create a new cluster with the following settings:
     - **Cluster name**: *User Name's* cluster (the default cluster name)
     - **Cluster mode**: Single Node
     - **Access mode** (*if prompted*): Single user
@@ -101,13 +101,13 @@ Azure Databricks is a distributed processing platform that uses Apache Spark *cl
     ![Azure portal with a cloud shell pane](./images/25-13.png)
 
 
-12. Wait for the cluster to be created. It may take a minute or two.
+1. Wait for the cluster to be created. It may take a minute or two.
 
     ![Azure portal with a cloud shell pane](./images/25-14.png)
 
 > **Note**: If your cluster fails to start, your subscription may have insufficient quota in the region where your Azure Databricks workspace is provisioned. See [CPU core limit prevents cluster creation](https://docs.microsoft.com/azure/databricks/kb/clusters/azure-core-limit) for details. If this happens, you can try deleting your workspace and creating a new one in a different region. You can specify a region as a parameter for the setup script like this: `./setup.ps1 eastus`
 
-## Explore data using a notebook
+## Exercise 3: Explore data using a notebook
 
 As in many Spark environments, Databricks supports the use of notebooks to combine notes and interactive code cells that you can use to explore data.
 
@@ -115,43 +115,46 @@ As in many Spark environments, Databricks supports the use of notebooks to combi
 
     ![Azure portal with a cloud shell pane](./images/25-15.png)
 
-3. In the **Import Notebooks** dialog box.
+1. In the **Import Notebooks** dialog box.
 
     ![Azure portal with a cloud shell pane](./images/25-16.png)
    
-5.  select **URL** and import the notebook from `https://github.com/MicrosoftLearning/dp-203-azure-data-engineer/raw/master/Allfiles/labs/25/Delta-Lake.ipynb`.
+1.  select **URL** and import the notebook from `https://github.com/MicrosoftLearning/dp-203-azure-data-engineer/raw/master/Allfiles/labs/25/Delta-Lake.ipynb`.
 
      ![Azure portal with a cloud shell pane](./images/25-17.png)
 
 
-7. Select **&#8962; Home** and then open the **Delta-Lake** notebook you just imported.
+1. Select **&#8962; Home** and then open the **Delta-Lake** notebook you just imported.
 
     ![Azure portal with a cloud shell pane](./images/25-18.png)
 
-9. Ensure that the notebook is attached to ***User Name's* cluster**, and follow the instructions it contains; running the cells it contains to work with Delta Lake.
+1. Ensure that the notebook is attached to ***User Name's* cluster**, and follow the instructions it contains; running the cells it contains to work with Delta Lake.
 
-## Delete Azure Databricks resources
+## Exercise 4: Delete Azure Databricks resources
 
 Now you've finished exploring Delta Lake in Azure Databricks, you must delete the resources you've created to avoid unnecessary Azure costs and free up capacity in your subscription.
 
 1. Close the Azure Databricks workspace browser tab and return to the Azure portal.
-2. On the Azure portal, on the **Home** page, select **Resource groups**.
+1. On the Azure portal, on the **Home** page, select **Resource groups**.
 
     ![Azure portal with a cloud shell pane](./images/25-7.png)
    
-4. Select the **dp203-*xxxxxxx*** resource group (not the managed resource group), and verify that it contains your Azure Databricks workspace.
+1. Select the **dp203-*xxxxxxx*** resource group (not the managed resource group), and verify that it contains your Azure Databricks workspace.
 
     ![Azure portal with a cloud shell pane](./images/25-19.png)
 
 
-6. At the top of the **Overview** page for your resource group, select **Delete resource group**.
+1. At the top of the **Overview** page for your resource group, select **Delete resource group**.
 
     ![Azure portal with a cloud shell pane](./images/25-20.png)
 
 
-8. Enter the **dp203-*xxxxxxx*** resource group name to confirm you want to delete it, and select **Delete**.
+1. Enter the **dp203-*xxxxxxx*** resource group name to confirm you want to delete it, and select **Delete**.
 
     ![Azure portal with a cloud shell pane](./images/25-21.png)
 
 
     After a few minutes, your resource group and the managed workspace resource groups associated with it will be deleted.
+
+
+  > **Congratulations** You have Successfully completed all Task!
