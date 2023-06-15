@@ -130,31 +130,5 @@ As in many Spark environments, Databricks supports the use of notebooks to combi
 
 1. Ensure that the notebook is attached to ***User Name's* cluster**, and follow the instructions it contains; running the cells it contains to work with Delta Lake.
 
-## Exercise 4: Delete Azure Databricks resources
-
-Now you've finished exploring Delta Lake in Azure Databricks, you must delete the resources you've created to avoid unnecessary Azure costs and free up capacity in your subscription.
-
-1. Close the Azure Databricks workspace browser tab and return to the Azure portal.
-1. On the Azure portal, on the **Home** page, select **Resource groups**.
-
-    ![Azure portal with a cloud shell pane](./images/25-7.png)
-   
-1. Select the **dp203-*xxxxxxx*** resource group (not the managed resource group), and verify that it contains your Azure Databricks workspace.
-
-    ![Azure portal with a cloud shell pane](./images/25-19.png)
-
-
-1. At the top of the **Overview** page for your resource group, select **Delete resource group**.
-
-    ![Azure portal with a cloud shell pane](./images/25-20.png)
-
-
-1. Enter the **dp203-*xxxxxxx*** resource group name to confirm you want to delete it, and select **Delete**.
-
-    ![Azure portal with a cloud shell pane](./images/25-21.png)
-
-
-    After a few minutes, your resource group and the managed workspace resource groups associated with it will be deleted.
-
 
   > **Congratulations** You have Successfully completed all Task!
