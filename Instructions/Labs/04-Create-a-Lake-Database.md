@@ -269,14 +269,3 @@ Now that you have some tables in your database, you can use them to work with th
 7. Use the **&#9655;** button on the left of the cell to run it and verify that a row for sales order 99999 was inserted into the **SalesOrder** table.
 8. Close the **Notebook 1** pane, stopping the Spark session and discarding your changes.
 
-## Delete Azure resources
-
-If you've finished exploring Azure Synapse Analytics, you should delete the resources you've created to avoid unnecessary Azure costs.
-
-1. Close the Synapse Studio browser tab and return to the Azure portal.
-2. On the Azure portal, on the **Home** page, select **Resource groups**.
-3. Select the **dp203-*xxxxxxx*** resource group for your Synapse Analytics workspace (not the managed resource group), and verify that it contains the Synapse workspace, storage account, and Spark pool for your workspace.
-4. At the top of the **Overview** page for your resource group, select **Delete resource group**.
-5. Enter the **dp203-*xxxxxxx*** resource group name to confirm you want to delete it, and select **Delete**.
-
-    After a few minutes, your Azure Synapse workspace resource group and the managed workspace resource group associated with it will be deleted.
