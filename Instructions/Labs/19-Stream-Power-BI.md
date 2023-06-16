@@ -6,40 +6,37 @@ Azure Stream Analytics provides a cloud service that you can use to define a *qu
 
 In this exercise, you'll use Azure Stream Analytics to process a  stream of sales order data, such as might be generated from an online retail application. The order data will be sent to Azure Event Hubs, from where your Azure Stream Analytics job will read and summarize the data before sending it to Power BI, where you will visualize the data in a report.
 
-This exercise should take approximately **45** minutes to complete.
-
 ### Task-1 :Provision Azure resources
 
 In this exercise, you'll need an Azure Synapse Analytics workspace with access to data lake storage and a dedicated SQL pool. You'll also need an Azure Event Hubs namespace to which the streaming order data can be sent.
 
 You'll use a combination of a PowerShell script and an ARM template to provision these resources.
 
-1. Sign into the [Azure portal](https://portal.azure.com) at `https://portal.azure.com`.
-2. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a ***PowerShell*** environment and click on ***create storage*** if prompted. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
+1. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a ***PowerShell*** environment and click on ***create storage*** if prompted. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
 
     ![A screenshot of the Azure portal with a cloud shell pane.](./images/cloud-shell.png)
 
     > **Note**: If you have previously created a cloud shell that uses a *Bash* environment, use the the drop-down menu at the top left of the cloud shell pane to change it to ***PowerShell***.
 
-3. Note that you can resize the cloud shell by dragging the separator bar at the top of the pane, or by using the **&#8212;**, **&#9723;**, and **X** icons at the top right of the pane to minimize, maximize, and close the pane. For more information about using the Azure Cloud Shell, see the [Azure Cloud Shell documentation](https://docs.microsoft.com/azure/cloud-shell/overview).
+1. Note that you can resize the cloud shell by dragging the separator bar at the top of the pane, or by using the **&#8212;**, **&#9723;**, and **X** icons at the top right of the pane to minimize, maximize, and close the pane. For more information about using the Azure Cloud Shell, see the [Azure Cloud Shell documentation](https://docs.microsoft.com/azure/cloud-shell/overview).
 
-4. In the PowerShell pane, enter the following commands to clone the repo containing this exercise:
+1. In the PowerShell pane, enter the following commands to clone the repo containing this exercise:
 
     ```
     rm -r dp-203 -f
     git clone https://github.com/MicrosoftLearning/dp-203-azure-data-engineer dp-203
     ```
 
-5. After the repo has been cloned, enter the following commands to change to the folder for this exercise and run the **setup.ps1** script it contains:
+1. After the repo has been cloned, enter the following commands to change to the folder for this exercise and run the **setup.ps1** script it contains:
 
     ```
     cd dp-203/Allfiles/labs/19
     ./setup.ps1
     ```
 
-6. If prompted, choose which subscription you want to use (this will only happen if you have access to multiple Azure subscriptions).
+1. If prompted, choose which subscription you want to use (this will only happen if you have access to multiple Azure subscriptions).
 
-7. While you are waiting for the script to complete, continue with the next task.
+1. While you are waiting for the script to complete, continue with the next task.
 
 ### Task-2: Create a Power BI workspace
 
@@ -51,11 +48,13 @@ In the Power BI service, you organize datasets, reports, and other resources in 
 
 1. Now select the profile icon and select **Start trail**.
 
+1. Click on **Start trail** and **Got it** for subsequent pop-ups respectively.
+
 1. On the **Workspaces** page, select **+ New workspace**:
 
     ![A screenshot of the Create workspace tab in Power BI.](./images/workspace1.png) 
 
-1. Create a new workspace with a meaningful name (for example, *mslearn-streaming*) and click on **Apply**.
+1. Create a new workspace with name **mslearn-streaming** and click on **Apply**.
 
     ![A screenshot of the Create workspace tab in Power BI.](./images/workspace2.png)
    
@@ -71,9 +70,9 @@ An Azure Stream Analytics job defines a perpetual query that operates on streami
 
 2. On the **Home** page of the Azure portal, select **+ Create a resource** and search for `Stream Analytics job`. Then create a **Stream Analytics job** with the following properties and click on **Review+Create**.
     - **Subscription**: Retain the existing subscription
-    - **Resource group**: Select the existing **dp203-*xxxxxxx*** resouce group.
+    - **Resource group**: Select the existing **dp203-xxxxxxx** resouce group.
     - **Name**: `stream-orders`
-    - **Region**: Select the region where your Synapse Analytics workspace is provisioned.
+    - **Region**: Select the region where your **dp203-xxxxxxx** resource group was provisioned.
     - **Hosting environment**: Cloud
     - **Streaming units**: 1
    
@@ -102,7 +101,7 @@ An Azure Stream Analytics job defines a perpetual query that operates on streami
 
 1. View the **Outputs** page for the **stream-orders** Stream Analytics job. Then use the **Add** menu to add an **Power BI** output with the following properties:
     - **Output alias**: `powerbi-dataset`
-    - **Select Power BI settings manually**: Selected
+    - **Provide Power BI settings manually**: Selected
     - **Group workspace**: *The GUID for your workspace*
     - **Authentication mode**: *Select* **User token** *and then use the* **Authorize** *button at the bottom to sign into your Power BI account*
     - **Dataset name**: `realtime-data`
@@ -136,7 +135,7 @@ An Azure Stream Analytics job defines a perpetual query that operates on streami
 ### Task-7: Run the streaming job to process order data
 
 1. View the **Overview** page for the **stream-orders** Stream Analytics job, and on the **Properties** tab review the **Inputs**, **Query**, **Outputs**, and **Functions** for the job. If the number of **Inputs** and **Outputs** is 0, use the **&#8635; Refresh** button on the **Overview** page to display the **orders** input and **powerbi-dataset** output.
-2. Select the **&#9655; Start** button, and start the streaming job now. Wait until you are notified that the streaming job started successfully.
+2. Select the **&#9655; Start** button, and start the streaming job now. Wait until the status changed to **Running** in the overview page.
 3. Re-open the cloud shell pane and run the following command to submit 100 orders.
 
     ```
@@ -171,6 +170,8 @@ Now that you have a dataset for the streaming order data, you can create a Power
     ```
 
 7. While the order submission script is running, switch back to the browser tab containing the **Order Tracking** Power BI dashboard and observe that the visualization updates to reflect the new order data as it is processed by the Stream Analytics job (which should still be running).
+
+   >**Note**: You can enlarge the graph for better view of visualization updates.
 
     ![A screenshot of a Power BI report showing a realtime stream of order data.](./images/powerbi-line-chart.png)
 
