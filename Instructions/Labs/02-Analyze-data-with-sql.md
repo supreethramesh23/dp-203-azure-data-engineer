@@ -2,47 +2,46 @@
 
 SQL is probably the most used language for working with data in the world. Most data analysts are proficient in using SQL queries to retrieve, filter, and aggregate data - most commonly in relational databases. As organizations increasingly take advantage of scalable file storage to create data lakes, SQL is often still the preferred choice for querying the data. Azure Synapse Analytics provides serverless SQL pools that enable you to decouple the SQL query engine from the data storage and run queries against data files in common file formats such as delimited text and Parquet.
 
-This lab will take approximately **60** minutes to complete.
-
-## Provision an Azure Synapse Analytics workspace
+## Task-01: Provision an Azure Synapse Analytics workspace
 
 You'll need an Azure Synapse Analytics workspace with access to data lake storage. You can use the built-in serverless SQL pool to query files in the data lake.
 
 In this exercise, you'll use a combination of a PowerShell script and an ARM template to provision an Azure Synapse Analytics workspace.
 
-2. In Azure Portal, use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell, selecting a ***PowerShell*** environment and select **Create a storage**. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
+1. In Azure Portal, use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell, selecting a ***PowerShell*** environment and select **Create a storage**. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
 
     ![Azure portal with a cloud shell pane](./images/cloud-shell.png)
 
 
-3. Note that you can resize the cloud shell by dragging the separator bar at the top of the pane, or by using the **&#8212;**, **&#9723;**, and **X** icons at the top right of the pane to minimize, maximize, and close the pane. For more information about using the Azure Cloud Shell, see the [Azure Cloud Shell documentation](https://docs.microsoft.com/azure/cloud-shell/overview).
+2. Note that you can resize the cloud shell by dragging the separator bar at the top of the pane, or by using the **&#8212;**, **&#9723;**, and **X** icons at the top right of the pane to minimize, maximize, and close the pane. For more information about using the Azure Cloud Shell, see the [Azure Cloud Shell documentation](https://docs.microsoft.com/azure/cloud-shell/overview).
 
-4. In the PowerShell pane, manually enter the following commands to clone this repo:
+3. In the PowerShell pane, manually enter the following commands to clone this repo:
 
     ```
     rm -r dp500 -f
     git clone https://github.com/MicrosoftLearning/DP-500-Azure-Data-Analyst dp500
     ```
 
-5. After the repo has been cloned, enter the following commands to change to the folder for this lab and run the **setup.ps1** script it contains:
+4. After the repo has been cloned, enter the following commands to change to the folder for this lab and run the **setup.ps1** script it contains:
 
     ```
     cd dp500/Allfiles/01
     ./setup.ps1
     ```
 
-6. If prompted, choose which subscription you want to use (this will only happen if you have access to multiple Azure subscriptions).
-7. When prompted, enter a suitable password to be set for your Azure Synapse SQL pool.
+5. If prompted, choose which subscription you want to use (this will only happen if you have access to multiple Azure subscriptions).
+
+6. When prompted, enter a suitable password to be set for your Azure Synapse SQL pool.
 
     > **Note**: Be sure to remember this password!
 
-8. Wait for the script to complete - this typically takes around 10 minutes, but in some cases may take longer. While you are waiting, review the [Serverless SQL pool in Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) article in the Azure Synapse Analytics documentation.
+7. Wait for the script to complete - this typically takes around 10 minutes, but in some cases may take longer. While you are waiting, review the [Serverless SQL pool in Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) article in the Azure Synapse Analytics documentation.
 
-## Query data in files
+## Task-02: Query data in files
 
 The script provisions an Azure Synapse Analytics workspace and an Azure Storage account to host the data lake, then uploads some data files to the data lake.
 
-### View files in the data lake
+### Task-02.1: View files in the data lake
 
 1. After the script has completed, in the Azure portal, go to the **dp500-*xxxxxxx*** resource group that it created, and select your Synapse workspace.
 
@@ -70,7 +69,7 @@ The script provisions an Azure Synapse Analytics workspace and an Azure Storage 
 
 13. Return to the **sales** folder so you can see the **csv**, **json**, and **parquet** folders.
 
-### Use SQL to query CSV files
+### Task-02.2: Use SQL to query CSV files
 
 1. Select the **csv** folder, and then in the **New SQL script** list on the toolbar, select **Select TOP 100 rows**.
 
@@ -130,7 +129,7 @@ The script provisions an Azure Synapse Analytics workspace and an Azure Storage 
 
 8. Publish the changes to your script, and then close the script pane.
 
-### Use SQL to query parquet files
+### Task-02.3: Use SQL to query parquet files
 
 While CSV is an easy format to use, it's common in big data processing scenarios to use file formats that are optimized for compression, indexing, and partitioning. One of the most common of these formats is *parquet*.
 
@@ -190,7 +189,7 @@ While CSV is an easy format to use, it's common in big data processing scenarios
 
 7. Name your script **Sales Parquet query**, and publish it. Then close the script pane.
 
-### Use SQL to query JSON files
+### Task-02.4: Use SQL to query JSON files
 
 JSON is another popular data format, so it;s useful to be able to query .json files in a serverless SQL pool.
 
@@ -252,11 +251,11 @@ JSON is another popular data format, so it;s useful to be able to query .json fi
 
 7. Name your script **Sales JSON query**, and publish it. Then close the script pane.
 
-## Access external data in a database
+## Task-03: Access external data in a database
 
 So far, you've used the OPENROWSET function in a SELECT query to retrieve data from files in a data lake. The queries have been run in the context of the **master** database in your serverless SQL pool. This approach is fine for an initial exploration of the data, but if you plan to create more complex queries it may be more effective to use the *PolyBase* capability of Synapse SQL to create objects in a database that reference the external data location.
 
-### Create an external data source
+### Task-03.1: Create an external data source
 
 By defining an external data source in a database, you can use it to reference the data lake location where the files are stored.
 
@@ -314,7 +313,7 @@ By defining an external data source in a database, you can use it to reference t
     WHERE orders.filepath(1) = '2019'
     ```
 
-### Create an external table
+### Task-03.2: Create an external table
 
 The external data source makes it easier to access the files in the data lake, but most data analysts using SQL are used to working with tables in a database. Fortunately, you can also define external file formats and external tables that encapsulate rowsets from files in database tables.
 
@@ -358,7 +357,7 @@ The external data source makes it easier to access the files in the data lake, b
 
 4. Run the SELECT script that has been generated, and verify that it retrieves the first 100 rows of data from the table, which in turn references the files in the data lake.
 
-## Visualize query results
+## Task-04: Visualize query results
 
 Now that you've explored various ways to query files in the data lake by using SQL queries, you can analyze the results of these queries to gain insights into the data. Often, insights are easier to uncover by visualizing the query results in a chart; which you can easily do by using the integrated charting functionality in the Synapse Studio query editor.
 
