@@ -2,9 +2,7 @@
 
 In this exercise, you'll load data into a dedicated SQL Pool using a pipeline in Azure Synapse Analytics Explorer. The pipeline will encapsulate a data flow that loads product data into a table in a data warehouse.
 
-This exercise should take approximately **45** minutes to complete.
-
-## Provision an Azure Synapse Analytics workspace
+## Task 1: Provision an Azure Synapse Analytics workspace
 
 You'll need an Azure Synapse Analytics workspace with access to data lake storage and a dedicated SQL pool hosting a relational data warehouse.
 
@@ -39,7 +37,7 @@ In this exercise, you'll use a combination of a PowerShell script and an ARM tem
 
 7. Wait for the script to complete - this typically takes around 10 minutes, but in some cases may take longer. While you're waiting, review the [Data flows in Azure Synapse Analytics](https://learn.microsoft.com/azure/synapse-analytics/concepts-data-flow-overview) article in the Azure Synapse Analytics documentation.
 
-## View source and destination data stores
+## Task 2: View source and destination data stores
 
 The source data for this exercise is a text file containing product data. The destination is a table in a dedicated SQL pool. Your goal is to create a pipeline that encapsulates a data flow in which the product data in the file is loaded into the table; inserting new products and updating existing ones.
 
@@ -59,11 +57,11 @@ The source data for this exercise is a text file containing product data. The de
 11. In the **Data** page, on the **Workspace** tab, expand **SQL database**, your **sql*xxxxxxx* (SQL)** database, and its **Tables**.
 12. Select the **dbo.DimProduct** table. Then in its **...** menu, select **New SQL script** > **Select TOP 100 rows**; which will run a query that returns the product data from the table - there should be a single row.
 
-## Implement a pipeline
+## Task 3: Implement a pipeline
 
 To load the data in the text file into the database table, you will implement an Azure Synapse Analytics pipeline that contains a dataflow encapsulating the logic to ingest the data from the text file, lookup the surrogate **ProductKey** column for products that already exist in the database, and then insert or update rows in the table accordingly.
 
-### Create a pipeline with a data flow activity
+### Task 3.1: Create a pipeline with a data flow activity
 
 1. In Synapse Studio, select the **Integrate** page. Then in the **+** menu select **Pipeline** to create a new pipeline.
 2. In the **Properties** pane for your new pipeline, change its name from **Pipeline1** to **Load Product Data**. Then use the **Properties** button above the **Properties** pane to hide it.
@@ -76,14 +74,14 @@ To load the data in the text file into the database table, you will implement an
     - **Staging linked service**: Select the **synapse*xxxxxxx*-WorkspaceDefaultStorage** linked service.
     - **Staging storage folder**: Set **container** to **files** and **Directory** to **stage_products**.
 
-### Configure the data flow
+### Task 3.2: Configure the data flow
 
 1. At the top of the **Settings** tab for the **LoadProducts** data flow, for the **Data flow** property, select **+ New**.
 2. In the **Properties** pane for the new data flow design surface that opens, set the **Name** to **LoadProductsData** and then hide the **Properties** pane. The data flow designer should look like this:
 
     ![Screenshot of an empty data flow activity.](./images/empty-dataflow.png)
 
-### Add sources
+### Task 3.3: Add sources
 
 1. In the data flow design surface, in the **Add Source** drop-down list, select **Add Source**. Then configure the source settings as follows:
     - **Output stream name**: ProductsText
@@ -137,7 +135,7 @@ To load the data in the text file into the database table, you will implement an
 
     ![Screenshot of a data flow with two sources.](./images/dataflow_sources.png)
 
-### Add a Lookup
+### Task 3.4: Add a Lookup
 
 1. Select the **+** icon at the bottom right of the **ProductsText** source and select **Lookup**.
 2. Configure the Lookup settings as follows:
@@ -155,7 +153,7 @@ To load the data in the text file into the database table, you will implement an
 
     The lookup returns a set of columns from *both* sources, essentially forming an outer join that matches the **ProductID** column in the text file to the **ProductAltKey** column in the data warehouse table. When a product with the alternate key already exists in the table, the dataset will include the values from both sources. When the product dos not already exist in the data warehouse, the dataset will contain NULL values for the table columns.
 
-### Add an Alter Row
+### Task 3.5: Add an Alter Row
 
 1. Select the **+** icon at the bottom right of the **MatchedProducts** Lookup and select **Alter Row**.
 2. Configure the alter row settings as follows:
@@ -171,7 +169,7 @@ To load the data in the text file into the database table, you will implement an
 
     The alter row step configures the kind of load action to perform for each row. Where there's no existing row in the table (the **ProductKey** is NULL), the row from the text file will be inserted. Where there's already a row for the product, an *upsert* will be performed to update the existing row. This configuration essentially applies a *type 1 slowly changing dimension update*.
 
-### Add a sink
+### Task 3.6: Add a sink
 
 1. Select the **+** icon at the bottom right of the **SetLoadAction** alter row step and select **Sink**.
 2. Configure the **Sink** properties as follows:
@@ -195,7 +193,7 @@ To load the data in the text file into the database table, you will implement an
 
     ![Screenshot of a data flow with two sources, a lookup, an alter row, and a sink.](./images/dataflow-sink.png)
 
-## Debug the Data Flow
+## Task 4: Debug the Data Flow
 
 Now that you've built a data flow in a pipeline, you can debug it before publishing.
 
@@ -204,7 +202,7 @@ Now that you've built a data flow in a pipeline, you can debug it before publish
 3. Use the **&#8635; Refresh** button to refresh the preview, which has the effect of running data through the data flow to debug it.
 4. Review the preview data, noting that it indicates one upserted row (for the existing *AR5381* product), indicated by a **<sub>*</sub><sup>+</sup>** icon; and ten inserted rows, indicated by a **+** icon.
 
-## Publish and run the pipeline
+## Task 5: Publish and run the pipeline
 
 Now you're ready to publish and run the pipeline.
 
@@ -220,14 +218,4 @@ Now you're ready to publish and run the pipeline.
 
 5. When the pipeline run has succeeded, on the **Data** page, use the **...** menu for the **dbo.DimProduct** table in your SQL database to run a query that selects the top 100 rows. The table should contain the data loaded by the pipeline.
    
-## Delete Azure resources
 
-If you've finished exploring Azure Synapse Analytics, you should delete the resources you've created to avoid unnecessary Azure costs.
-
-1. Close the Synapse Studio browser tab and return to the Azure portal.
-2. On the Azure portal, on the **Home** page, select **Resource groups**.
-3. Select the **dp203-*xxxxxxx*** resource group for your Synapse Analytics workspace (not the managed resource group), and verify that it contains the Synapse workspace, storage account, and dedicated SQL pool for your workspace.
-4. At the top of the **Overview** page for your resource group, select **Delete resource group**.
-5. Enter the **dp203-*xxxxxxx*** resource group name to confirm you want to delete it, and select **Delete**.
-
-    After a few minutes, your Azure Synapse workspace resource group and the managed workspace resource group associated with it will be deleted.
