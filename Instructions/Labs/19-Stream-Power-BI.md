@@ -54,7 +54,7 @@ In the Power BI service, you organize datasets, reports, and other resources in 
 
     ![A screenshot of the Create workspace tab in Power BI.](./images/workspace1.png) 
 
-1. Create a new workspace with a meaningful name (for example, *mslearn-streaming*) and click on **Apply**.
+1. Create a new workspace with name **mslearn-streaming** and click on **Apply**.
 
     ![A screenshot of the Create workspace tab in Power BI.](./images/workspace2.png)
    
