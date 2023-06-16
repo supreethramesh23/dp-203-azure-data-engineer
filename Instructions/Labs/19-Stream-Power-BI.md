@@ -48,6 +48,8 @@ In the Power BI service, you organize datasets, reports, and other resources in 
 
 1. Now select the profile icon and select **Start trail**.
 
+1. Click on **Start trail** and **Got it** for subsequent pop-ups respectively.
+
 1. On the **Workspaces** page, select **+ New workspace**:
 
     ![A screenshot of the Create workspace tab in Power BI.](./images/workspace1.png) 
