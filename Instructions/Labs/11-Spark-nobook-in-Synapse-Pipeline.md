@@ -84,7 +84,7 @@ Now that you understand the transformation process, you're ready to automate it 
 2. In the **Properties** pane for your new pipeline, change its name from **Pipeline1** to **Transform Sales Data**. Then use the **Properties** button above the **Properties** pane to hide it.
 3. In the **Activities** pane, expand **Synapse**; and then drag a **Notebook** activity to the pipeline design surface as shown here:
 
-    ![Screenshot of a pipeline containing a Notebook activity.](images/notebook-pipeline.png)
+    ![Screenshot of a pipeline containing a Notebook activity.](images/dp203notebook-pipeline.png)
 
 4. In the **General** tab for the Notebook activity, change its name to **Run Spark Transform**.
 5. In the **Settings** tab for the Notebook activity, set the following properties:
