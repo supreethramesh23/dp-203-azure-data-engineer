@@ -1,10 +1,8 @@
-# Use Delta Lake with Spark in Azure Synapse Analytics
+# Lab 07: Use Delta Lake with Spark in Azure Synapse Analytics
 
 Delta Lake is an open source project to build a transactional data storage layer on top of a data lake. Delta Lake adds support for relational semantics for both batch and streaming data operations, and enables the creation of a *Lakehouse* architecture in which Apache Spark can be used to process and query data in tables that are based on underlying files in the data lake.
 
-This exercise should take approximately **40** minutes to complete.
-
-## Provision an Azure Synapse Analytics workspace
+## Task 1: Provision an Azure Synapse Analytics workspace
 
 You'll need an Azure Synapse Analytics workspace with access to data lake storage and an Apache Spark pool that you can use to query and process files in the data lake.
 
@@ -39,11 +37,11 @@ In this exercise, you'll use a combination of a PowerShell script and an ARM tem
 
 7. Wait for the script to complete - this typically takes around 10 minutes, but in some cases may take longer. While you are waiting, review the [What is Delta Lake](https://docs.microsoft.com/azure/synapse-analytics/spark/apache-spark-what-is-delta-lake) article in the Azure Synapse Analytics documentation.
 
-## Create delta tables
+## Task 2: Create delta tables
 
 The script provisions an Azure Synapse Analytics workspace and an Azure Storage account to host the data lake, then uploads a data file to the data lake.
 
-### Explore the data in the data lake
+### Task 2.1: Explore the data in the data lake
 
 1. After the script has completed, in the Azure portal, go to the **dp203-*xxxxxxx*** resource group that it created, and select your Synapse workspace.
 2. In the **Overview** page for your Synapse workspace, in the **Open Synapse Studio** card, select **Open** to open Synapse Studio in a new browser tab; signing in if prompted.
@@ -84,7 +82,7 @@ The script provisions an Azure Synapse Analytics workspace and an Azure Storage 
     | 772 | Mountain-100 Silver, 42 | Mountain Bikes | 3399.9900 |
     | ... | ... | ... | ... |
 
-### Load the file data into a delta table
+### Task 2.2: Load the file data into a delta table
 
 1. Under the results returned by the first code cell, use the **+ Code** button to add a new code cell. Then enter the following code in the new cell and run it:
 
@@ -141,14 +139,14 @@ The script provisions an Azure Synapse Analytics workspace and an Azure Storage 
 
     The history of the last 20 changes to the table is shown - there should be two (the original creation, and the update you made.)
 
-## Create catalog tables
+## Task 3: Create catalog tables
 
 So far you've worked with delta tables by loading data from the folder containing the parquet files on which the table is based. You can define *catalog tables* that encapsulate the data and provide a named table entity that you can reference in SQL code. Spark supports two kinds of catalog tables for delta lake:
 
 - *External* tables that are defined by the path to the parquet files containing the table data.
 - *Managed* tables, that are defined in the Hive metastore for the Spark pool.
 
-### Create an external table
+### Task 3.1: Create an external table
 
 1. In a new code cell, add and run the following code:
 
@@ -172,7 +170,7 @@ So far you've worked with delta tables by loading data from the folder containin
 
     The code uses SQL to switch context to the **AdventureWorks** database (which returns no data) and then query the **ProductsExternal** table (which returns a resultset containing the products data in the Delta Lake table).
 
-### Create a managed table
+### Task 3.2: Create a managed table
 
 1. In a new code cell, add and run the following code:
 
@@ -195,7 +193,7 @@ So far you've worked with delta tables by loading data from the folder containin
 
     The code uses SQL to query the **ProductsManaged** table.
 
-### Compare external and managed tables
+### Task 3.3: Compare external and managed tables
 
 1. In a new code cell, add and run the following code:
 
@@ -225,7 +223,7 @@ So far you've worked with delta tables by loading data from the folder containin
 3. Return to the **files** tab and view the **files/delta/products-delta** folder. Note that the data files still exist in this location. Dropping the external table has removed the table from the metastore, but left the data files intact.
 4. View the **files/synapse/workspaces/synapsexxxxxxx/warehouse** folder, and note that there is no folder for the **ProductsManaged** table data. Dropping a managed table removes the table from the metastore and also deletes the table's data files.
 
-### Create a table using SQL
+### Task 3.4: Create a table using SQL
 
 1. Add a new code cell, and then enter and run the following code:
 
@@ -251,7 +249,7 @@ So far you've worked with delta tables by loading data from the folder containin
 
     Observe that the new catalog table was created for the existing Delta Lake table folder, which reflects the changes that were made previously.
 
-## Use delta tables for streaming data
+## Task 4: Use delta tables for streaming data
 
 Delta lake supports streaming data. Delta tables can be a *sink* or a *source* for data streams created using the Spark Structured Streaming API. In this example, you'll use a delta table as a sink for some streaming data in a simulated internet of things (IoT) scenario.
 
@@ -365,7 +363,7 @@ Delta lake supports streaming data. Delta tables can be a *sink* or a *source* f
 
     This code stops the stream.
 
-## Query a delta table from a serverless SQL pool
+## Task 5: Query a delta table from a serverless SQL pool
 
 In addition to Spark pools, Azure Synapse Analytics includes a built-in serverless SQL pool. You can use the relational database engine in this pool to query delta tables using SQL.
 
