@@ -2,45 +2,42 @@
 
 In this exercise, we're going to create an Azure Synapse Analytics pipeline that includes an activity to run an Apache Spark notebook..
 
-This exercise should take approximately **30** minutes to complete.
-
-## Provision an Azure Synapse Analytics workspace
+## Task 1: Provision an Azure Synapse Analytics workspace
 
 You'll need an Azure Synapse Analytics workspace with access to data lake storage and a Spark pool.
 
 In this exercise, you'll use a combination of a PowerShell script and an ARM template to provision an Azure Synapse Analytics workspace.
 
-1. Sign into the [Azure portal](https://portal.azure.com) at `https://portal.azure.com`.
-2. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a ***PowerShell*** environment and creating storage if prompted. The Cloud Shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
+1. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a ***PowerShell*** environment and creating storage if prompted. The Cloud Shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
 
     ![Azure portal with a cloud shell pane](./images/cloud-shell.png)
 
     > **Note**: If you have previously created a cloud shell that uses a *Bash* environment, use the the drop-down menu at the top left of the cloud shell pane to change it to ***PowerShell***.
 
-3. Note that Cloud Shell can be resized by dragging the separator bar at the top of the pane, or by using the—, **&#9723;**, and **X** icons at the top right of the pane to minimize, maximize, and close the pane. For more information about using the Azure Cloud Shell, see the [Azure Cloud Shell documentation](https://docs.microsoft.com/azure/cloud-shell/overview).
+2. Note that Cloud Shell can be resized by dragging the separator bar at the top of the pane, or by using the—, **&#9723;**, and **X** icons at the top right of the pane to minimize, maximize, and close the pane. For more information about using the Azure Cloud Shell, see the [Azure Cloud Shell documentation](https://docs.microsoft.com/azure/cloud-shell/overview).
 
-4. In the PowerShell pane, enter the following commands to clone this repository:
+3. In the PowerShell pane, enter the following commands to clone this repository:
 
     ```powershell
     rm -r dp-203 -f
     git clone https://github.com/MicrosoftLearning/dp-203-azure-data-engineer dp-203
     ```
 
-5. After the repository has been cloned, enter the following commands to change to the folder for this exercise, and run the **setup.ps1** script it contains:
+4. After the repository has been cloned, enter the following commands to change to the folder for this exercise, and run the **setup.ps1** script it contains:
 
     ```powershell
     cd dp-203/Allfiles/labs/11
     ./setup.ps1
     ```
     
-6. If prompted, choose which subscription you want to use (this will only happen if you have access to multiple Azure subscriptions).
-7. When prompted, enter a suitable password to be set for your Azure Synapse SQL pool.
+5. If prompted, choose which subscription you want to use (this will only happen if you have access to multiple Azure subscriptions).
+6. When prompted, enter a suitable password to be set for your Azure Synapse SQL pool.
 
     > **Note**: Be sure to remember this password!
 
-8. Wait for the script to complete - this typically takes around 10 minutes, but in some cases may take longer. While you're waiting, review the [Azure Synapse Pipelines](https://learn.microsoft.com/en-us/azure/data-factory/concepts-data-flow-performance-pipelines) article in the Azure Synapse Analytics documentation.
+7. Wait for the script to complete - this typically takes around 10 minutes, but in some cases may take longer. While you're waiting, review the [Azure Synapse Pipelines](https://learn.microsoft.com/en-us/azure/data-factory/concepts-data-flow-performance-pipelines) article in the Azure Synapse Analytics documentation.
 
-## Run a Spark notebook interactively
+## Task 2: Run a Spark notebook interactively
 
 Before automating a data transformation process with a notebook, it can be useful to run the notebook interactively in order to better understand the process you will later automate.
 
@@ -67,24 +64,24 @@ Before automating a data transformation process with a notebook, it can be usefu
 14. In the **Select TOP 100 rows** pane, set the file type to **Parquet format** and apply the change.
 15. In the new SQL Script pane that opens, use the **&#9655; Run** button to run the SQL code and verify that it returns the transformed sales order data.
 
-## Run the notebook in a pipeline
+## Task 3: Run the notebook in a pipeline
 
 Now that you understand the transformation process, you're ready to automate it by encapsulating the notebook in a pipeline.
 
-### Create a parameters cell
+### Task 3.1: Create a parameters cell
 
 1. In Synapse Studio, return to the **Spark Transform** tab that contains the notebook, and in the toolbar, in the **...** menu at the right end, select **Clear output**.
 2. Select the first code cell (which contains the code to set the **folderName** variable).
 3. In the pop-up toolbar at the top right of the code cell, in the **...** menu, select **\[@] Toggle parameter cell**. Verify that the word **parameters** appears at the bottom right of the cell.
 4. In the toolbar, use the **Publish** button to save the changes.
 
-### Create a pipeline
+### Task 3.2: Create a pipeline
 
 1. In Synapse Studio, select the **Integrate** page. Then in the **+** menu select **Pipeline** to create a new pipeline.
 2. In the **Properties** pane for your new pipeline, change its name from **Pipeline1** to **Transform Sales Data**. Then use the **Properties** button above the **Properties** pane to hide it.
 3. In the **Activities** pane, expand **Synapse**; and then drag a **Notebook** activity to the pipeline design surface as shown here:
 
-    ![Screenshot of a pipeline containing a Notebook activity.](images/notebook-pipeline.png)
+    ![Screenshot of a pipeline containing a Notebook activity.](images/dp203notebook-pipeline.png)
 
 4. In the **General** tab for the Notebook activity, change its name to **Run Spark Transform**.
 5. In the **Settings** tab for the Notebook activity, set the following properties:
@@ -98,9 +95,9 @@ Now that you understand the transformation process, you're ready to automate it 
 
     Your pipeline pane should look similar to this:
 
-    ![Screenshot of a pipeline containing a Notebook activity with settings.](images/notebook-pipeline-settings.png)
+    ![Screenshot of a pipeline containing a Notebook activity with settings.](images/dp203run.png)
 
-### Publish and run the pipeline
+### Task 3.3: Publish and run the pipeline
 
 1. Use the **Publish all** button to publish the pipeline (and any other unsaved assets).
 2. At the top of the pipeline designer pane, in the **Add trigger** menu, select **Trigger now**. Then select **OK** to confirm you want to run the pipeline.
@@ -114,14 +111,4 @@ Now that you understand the transformation process, you're ready to automate it 
 
 5. When the pipeline run has succeeded, on the **Data** page, browse to the **files** storage container and verify that a new folder named for the pipeline run ID has been created, and that it contains Parquet files for the transformed sales data.
    
-## Delete Azure resources
 
-If you've finished exploring Azure Synapse Analytics, you should delete the resources you've created to avoid unnecessary Azure costs.
-
-1. Close the Synapse Studio browser tab and return to the Azure portal.
-2. On the Azure portal, on the **Home** page, select **Resource groups**.
-3. Select the **dp203-*xxxxxxx*** resource group for your Synapse Analytics workspace (not the managed resource group), and verify that it contains the Synapse workspace, storage account, and Spark pool for your workspace.
-4. At the top of the **Overview** page for your resource group, select **Delete resource group**.
-5. Enter the **dp203-*xxxxxxx*** resource group name to confirm you want to delete it, and select **Delete**.
-
-    After a few minutes, your Azure Synapse workspace resource group and the managed workspace resource group associated with it will be deleted.
