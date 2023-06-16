@@ -98,7 +98,7 @@ Now that you understand the transformation process, you're ready to automate it 
 
     Your pipeline pane should look similar to this:
 
-    ![Screenshot of a pipeline containing a Notebook activity with settings.](images/notebook-pipeline-settings.png)
+    ![Screenshot of a pipeline containing a Notebook activity with settings.](images/dp203run.png)
 
 ### Publish and run the pipeline
 
