@@ -171,6 +171,8 @@ Now that you have a dataset for the streaming order data, you can create a Power
 
 7. While the order submission script is running, switch back to the browser tab containing the **Order Tracking** Power BI dashboard and observe that the visualization updates to reflect the new order data as it is processed by the Stream Analytics job (which should still be running).
 
+   >**Note**: You can enlarge the graph for better view of visualization updates.
+
     ![A screenshot of a Power BI report showing a realtime stream of order data.](./images/powerbi-line-chart.png)
 
     You can re-run the **orderclient** script and observe the data being captured in the real-time dashboard.
