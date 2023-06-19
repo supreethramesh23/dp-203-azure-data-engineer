@@ -4,11 +4,7 @@ Azure Databricks is a Microsoft Azure-based version of the popular open-source D
 
 Similarly to Azure Synapse Analytics, an Azure Databricks *workspace* provides a central point for managing Databricks clusters, data, and resources on Azure.
 
-## Task 1: Task Before you start
-
-You'll need an [Azure subscription](https://azure.microsoft.com/free) in which you have administrative-level access.
-
-## Task 2: Provision an Azure Databricks workspace
+## Task 1: Provision an Azure Databricks workspace
 
 In this exercise, you'll use a script to provision a new Azure Databricks workspace.
 
@@ -38,7 +34,7 @@ In this exercise, you'll use a script to provision a new Azure Databricks worksp
 
 1. Wait for the script to complete - this typically takes around 5 minutes, but in some cases may take longer. While you are waiting, review the [What is Azure Databricks?](https://docs.microsoft.com/azure/databricks/scenarios/what-is-azure-databricks) article in the Azure Databricks documentation.
 
-## Task 3: Create a cluster
+## Task 2: Create a cluster
 
 Azure Databricks is a distributed processing platform that uses Apache Spark *clusters* to process data in parallel on multiple nodes. Each cluster consists of a driver node to coordinate the work, and worker nodes to perform processing tasks.
 
@@ -65,7 +61,7 @@ Azure Databricks is a distributed processing platform that uses Apache Spark *cl
 
 > **Note**: If your cluster fails to start, your subscription may have insufficient quota in the region where your Azure Databricks workspace is provisioned. See [CPU core limit prevents cluster creation](https://docs.microsoft.com/azure/databricks/kb/clusters/azure-core-limit) for details. If this happens, you can try deleting your workspace and creating a new one in a different region. You can specify a region as a parameter for the setup script like this: `./setup.ps1 eastus`
 
-## Task 4: Use Spark to analyze a data file
+## Task 3: Use Spark to analyze a data file
 
 As in many Spark environments, Databricks supports the use of notebooks to combine notes and interactive code cells that you can use to explore data.
 
@@ -110,7 +106,7 @@ As in many Spark environments, Databricks supports the use of notebooks to combi
 
     ![A bar chart showing product counts by category](./images/databricks-chart.png)
 
-## Task 5: Create and query a database table
+## Task 4: Create and query a database table
 
 While many data analysis are comfortable using languages like Python or Scala to work with data in files, a lot of data analytics solutions are built on relational databases; in which data is stored in tables and manipulated using SQL.
 
