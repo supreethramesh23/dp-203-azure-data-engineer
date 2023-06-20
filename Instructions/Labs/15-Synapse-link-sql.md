@@ -98,7 +98,7 @@ Now you're ready to configure Azure Synapse Link for SQL in your Synapse Analyti
 
 ### Create a link connection
 
-1. In Synapse Studio, on the **Integrate** page, on the **&#65291;** drop-down menu, select **Link connection**. Then create a new linked connection with the following settings:
+1. In Synapse Studio, on the **Integrate** page, select the **&#65291;** icon and from drop-down menu, select **Link connection**. Then create a new linked connection with the following settings:
     - **Source type**: Azure SQL database
     - **Source linked service**: Add a new linked service with the following settings (a new tab will be opened):
         - **Name**: SqlAdventureWorksLT
