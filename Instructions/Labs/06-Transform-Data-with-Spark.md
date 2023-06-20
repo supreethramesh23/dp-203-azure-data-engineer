@@ -6,7 +6,7 @@ Data *engineers* often use Spark notebooks as one of their preferred tools to pe
 
 In this exercise, you'll use a Spark notebook in Azure Synapse Analytics to transform data in files.
 
-## Task-01: Provision an Azure Synapse Analytics workspace
+## Task 1: Provision an Azure Synapse Analytics workspace
 
 You'll need an Azure Synapse Analytics workspace with access to data lake storage and a Spark pool.
 
@@ -41,7 +41,7 @@ In this exercise, you'll use a combination of a PowerShell script and an ARM tem
 
 7. Wait for the script to complete - this typically takes around 10 minutes, but in some cases may take longer. While you are waiting, review the [Apache Spark in Azure Synapse Analytics Core Concepts](https://learn.microsoft.com/azure/synapse-analytics/spark/apache-spark-concepts) article in the Azure Synapse Analytics documentation.
 
-## Task-02: Use a Spark notebook to transform data
+## Task 2: Use a Spark notebook to transform data
 
 1. After the deployment script has completed, in the Azure portal, go to the **dp203-*xxxxxxx*** resource group that it created, and notice that this resource group contains your Synapse workspace, a Storage account for your data lake, and an Apache Spark pool.
 
