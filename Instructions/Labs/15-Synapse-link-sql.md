@@ -120,17 +120,16 @@ Now you're ready to configure Azure Synapse Link for SQL in your Synapse Analyti
         - **SalesLT.Product**
         - **SalesLT.SalesOrderDetail**
         - **SalesLT.SalesOrderHeader**
-
-        *Continue to configure the following settings:*
+        - Click **Continue** to configure the following settings
 
     > **Note**: Some target tables display an error due to the use of custom data types or because data in the source table is not compatible with the default structure type of *clustered columnstore index*.
 
     - **Target pool**: *Select your **sqlxxxxxxx** dedicated SQL pool*
-
-        *Continue to configure the following settings:*
+    - Click **Continue** to configure the following settings
 
     - **Link connection name**: sql-adventureworkslt-conn
     - **Core count**: 4 (+ 4 Driver cores)
+    - Click **Ok**
 
 2. In the **sql-adventureworkslt-conn** page that is created, view the table mappings that have been created. You can use the **Properties** button (which looks similar to **&#128463;<sub>*</sub>**) to hide the **Properties** pane to make it easier to see eveything. 
 
