@@ -180,7 +180,7 @@ To load the data in the text file into the database table, you will implement an
     - **Description**: Load DimProduct table
     - **Incoming stream**: SetLoadAction
     - **Sink type**: Integration dataset
-    - **Dataset**: DimProduct
+    - **Dataset**: Select DimProduct
     - **Allow schema drift**: Selected
 3. On the **Settings** tab for the new **DimProductTable** sink, specify the following settings:
     - **Update method**: Select **Allow insert** and **Allow Upsert**.
