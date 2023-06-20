@@ -124,6 +124,7 @@ To load the data in the text file into the database table, you will implement an
             - Click on **Create**.
         - **Table name**: dbo.DimProduct
         - **Import schema**: From connection/store
+        -  Click **OK**.
     - **Allow schema drift**: Selected
 4. On the **Projection** tab for the new **ProductTable** source, verify that the following data types are set:
     - **ProductKey**: integer
