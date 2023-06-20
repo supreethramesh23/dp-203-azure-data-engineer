@@ -56,7 +56,7 @@ Before creating an Azure Stream Analytics job to process real-time data, let's t
 
 Now you're ready to create an Azure Stream Analytics job to process the sales transaction data as it arrives in the event hub.
 
-1. In the Azure portal, on the **dp203-*xxxxxxx*** page, select **+ Create** and search for `Stream Analytics job`. Then create a **Stream Analytics job** with the following properties:
+1. In the Azure portal, on the **dp203-*xxxxxxx*** page, select **+ Create** and search for `Stream Analytics job`. Then create a **Stream Analytics job** with the following properties and click on **Review + Create** and then click on **Create**.
     - **Basics**:
         - **Subscription**: Your Azure subscription
         - **Resource group**: Select the existing **dp203-*xxxxxxx*** resource group.
@@ -65,7 +65,7 @@ Now you're ready to create an Azure Stream Analytics job to process the sales tr
         - **Hosting environment**: Cloud
         - **Streaming units**: 1
     - **Storage**:
-        - **Secure private data in storage account**: Unselected
+        - **Add storage account**: Unselected
     - **Tags**:
         - *None*
 2. Wait for deployment to complete and then go to the deployed Stream Analytics job resource.
@@ -74,14 +74,14 @@ Now you're ready to create an Azure Stream Analytics job to process the sales tr
 
 Your Azure Stream Analytics job must get input data from the event hub where the sales orders are recorded.
 
-1. On the **process-orders** overview page, select **Add input**. Then  on the **Inputs** page, use the **Add stream input** menu to add an **Event Hub** input with the following properties:
+1. On the **process-orders** overview page, select **Add input**. Then  on the **Inputs** page, click on  **+ Add input** menu to add an **Event Hub** input with the following properties:
     - **Input alias**: `orders`
     - **Select Event Hub from your subscriptions**: Selected
     - **Subscription**: Your Azure subscription
     - **Event Hub namespace**: Select the **events*xxxxxxx*** Event Hubs namespace
     - **Event Hub name**: Select the existing **eventhub*xxxxxxx*** event hub.
     - **Event Hub consumer group**: Select the existing **$Default** consumer group
-    - **Authentication mode**: Create system assigned managed identity
+    - **Authentication mode**: Managed Identity: System assigned
     - **Partition key**: *Leave blank*
     - **Event serialization format**: JSON
     - **Encoding**: UTF-8
@@ -91,7 +91,7 @@ Your Azure Stream Analytics job must get input data from the event hub where the
 
 You will store the aggregated sales order data in JSON format in an Azure Storage blob container.
 
-1. View the **Outputs** page for the **process-orders** Stream Analytics job. Then use the **Add** menu to add a **Blob storage/ADLS Gen2** output with the following properties:
+1. View the **Outputs** page from the left navigation pane in the  **process-orders** Stream Analytics job page. Then use the **Add** menu to add a **Blob storage/ADLS Gen2** output with the following properties:
     - **Output alias**: `blobstore`
     - **Select Select Blob storage/ADLS Gen2 from your subscriptions from your subscriptions**: Selected
     - **Subscription**: Your Azure subscription
@@ -113,7 +113,7 @@ You will store the aggregated sales order data in JSON format in an Azure Storag
 
 Now that you have defined an input and an output for your Azure Stream Analytics job, you can use a query to select, filter, and aggregate data from the input and send the results to the output.
 
-1. View the **Query** page for the **process-orders** Stream Analytics job. Then wait a few moments until the input preview is displayed (based on the sales order events previously captured in the event hub).
+1. From the left navigation pane, view the **Query** page for the **process-orders** Stream Analytics job. Then wait a few moments until the input preview is displayed (based on the sales order events previously captured in the event hub).
 2. Observe that the input data includes the **ProductID** and **Quantity** fields in the messages submitted by the client app, as well as additional Event Hubs fields - including the **EventProcessedUtcTime** field that indicates when the event was added to the event hub.
 3. Modify the default query as follows:
 
@@ -134,7 +134,10 @@ Now that you have defined an input and an output for your Azure Stream Analytics
     Observe that this query uses the **System.Timestamp** (based on the **EventProcessedUtcTime** field) to define the start and end of each 10 second *tumbling* (non-overlapping sequential) window in which the total quantity for each product ID is calculated.
 
 4. Use the **&#9655; Test query** button to validate the query, and ensure that the **test Results** status indicates **Success** (even though no rows are returned).
-5. Save the query.
+
+   >**Note**: After running the query if you get an output with rows, kindly click on refresh in the **Input Preview** section and click on **Test query** again.
+
+6. Save the query.
 
 ## Run the streaming job
 
