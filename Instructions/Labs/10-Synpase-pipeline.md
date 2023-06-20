@@ -202,6 +202,9 @@ Now that you've built a data flow in a pipeline, you can debug it before publish
 
 1. At the top of the data flow designer, enabled **Data flow debug**. Review the default configuration and select **OK**, then wait for the debug cluster to start (which may take a few minutes).
 2. In the data flow designer, select the **DimProductTable** sink and view its **Data preview** tab.
+
+   >**Note**: kindly collapse **Integrate** pane to view **Data preview** tab.
+   
 3. Use the **&#8635; Refresh** button to refresh the preview, which has the effect of running data through the data flow to debug it.
 4. Review the preview data, noting that it indicates one upserted row (for the existing *AR5381* product), indicated by a **<sub>*</sub><sup>+</sup>** icon; and ten inserted rows, indicated by a **+** icon.
 
