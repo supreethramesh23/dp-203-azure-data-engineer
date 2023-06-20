@@ -65,7 +65,7 @@ In this exercise, you'll use a combination of a PowerShell script and an ARM tem
 
 11. Then on **Develop** page, click on the **+** icon, then select Import option.
 
-    ![Spark Notebook import](./image/../images/spark-notebook-import.png)
+    ![Spark Notebook import](./image/../images/dp-203-lab6-1.png)
         
 12. Select the file you just downloaded and saved as **Spark Transfrom.ipynb**.
 
