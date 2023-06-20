@@ -104,7 +104,7 @@ To load the data in the text file into the database table, you will implement an
     - **Size**: string
     - **ListPrice**: decimal
     - **Discontinued**: boolean
-3. Add a second source with the following properties:
+3. Add a second source with the following properties by selecting **Source Settings** tab:
     - **Output stream name**: ProductTable
     - **Description**: Product table
     - **Source type**: Integration dataset
