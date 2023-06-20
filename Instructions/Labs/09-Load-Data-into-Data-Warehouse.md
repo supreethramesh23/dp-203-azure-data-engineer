@@ -80,17 +80,15 @@ You now have a blank SQL page, which is connected to the instance for the follow
 
     ```sql
     COPY INTO dbo.StageProduct
-        (ProductID, ProductName, ProductCategory, Color, Size, ListPrice, Discontinued)
+    (ProductID, ProductName, ProductCategory, Color, Size, ListPrice, Discontinued)
     FROM 'https://datalakexxxxxx.blob.core.windows.net/files/data/Product.csv'
     WITH
     (
-        FILE_TYPE = 'CSV',
-        MAXERRORS = 0,
-        IDENTITY_INSERT = 'OFF',
-        FIRSTROW = 2 --Skip header row
+    FILE_TYPE = 'CSV',
+    MAXERRORS = 0,
+    IDENTITY_INSERT = 'OFF',
+    FIRSTROW = 2 --Skip header row
     );
-
-
     SELECT COUNT(1) 
     FROM dbo.StageProduct
     ```
