@@ -2,8 +2,6 @@
 
 Data *engineers* often use Spark notebooks as one of their preferred tools to perform *extract, transform, and load (ETL)* or *extract, load, and transform (ELT)* activities that transform data from one format or structure to another.
 
-## Exercise 1: 
-
 In this exercise, you'll use a Spark notebook in Azure Synapse Analytics to transform data in files.
 
 ## Task 1: Provision an Azure Synapse Analytics workspace
