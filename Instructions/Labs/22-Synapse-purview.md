@@ -18,7 +18,7 @@ In this exercise, you'll use Microsoft Purview to track assets and data lineage 
 
     ```
     rm -r dp-203 -f
-    git clone https://github.com/MicrosoftLearning/dp-203-azure-data-engineer dp-203
+    git clone -b prod https://github.com/CloudLabs-MOC/dp-203-azure-data-engineer dp-203
     ```
 
 4. After the repo has been cloned, enter the following commands to change to the folder for this lab and run the **setup.ps1** script it contains:
