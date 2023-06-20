@@ -65,7 +65,7 @@ Before you can set up Azure Synapse Link for your Azure SQL Database, you must e
 
 Your Azure SQL server hosts a sample database named **AdventureWorksLT**. This database represents a transactional database used for operational application data.
 
-1. In the **Overview** page for your Azure SQL server, at the bottom of the, select the **AdventureWorksLT** database:
+1. In the **Overview** page for your Azure SQL server, at the bottom of the page, select the **AdventureWorksLT** database:
 2. In the **AdventureWorksLT** database page, select the **Query editor** tab and log in using SQL server authentication with the following credentials:
     - **Login** SQLUser
     - **Password**: *The password you specified when running the setup script.*
