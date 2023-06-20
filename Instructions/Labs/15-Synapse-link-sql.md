@@ -47,7 +47,7 @@ Before you can set up Azure Synapse Link for your Azure SQL Database, you must e
 
     ![Screenshot of the Azure SQL server Identity page in the Azure portal.](./images/sqldb-identity.png)
 
-3. In the pane on the left, in the **Security** section, select **Networking**. Then, under **Firewall rules**, select the exception to **Allow Azure services and resources to access this server**.
+3. In the pane on the left, in the **Security** section, select **Networking**. Then, under **Firewall rules**, select the exception checkbox to **Allow Azure services and resources to access this server**.
 
 4. Use the **&#65291; Add a firewall rule** button to add a new firewall rule with the following settings:
 
