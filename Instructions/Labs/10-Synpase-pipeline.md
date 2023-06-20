@@ -196,6 +196,8 @@ To load the data in the text file into the database table, you will implement an
 
     ![Screenshot of a data flow with two sources, a lookup, an alter row, and a sink.](./images/dataflow-sink.png)
 
+    >**Note**: In the output column section if there is any extra column apart from the above mentioned column, kindly delete it.
+
 ## Task 4: Debug the Data Flow
 
 Now that you've built a data flow in a pipeline, you can debug it before publishing.
