@@ -87,14 +87,15 @@ To load the data in the text file into the database table, you will implement an
     - **Output stream name**: ProductsText
     - **Description**: Products text data
     - **Source type**: Integration dataset
-    - **Dataset**: Add a **New** dataset with the following properties:
-        - **Type**: Azure Datalake Storage Gen2
-        - **Format**: Delimited text
+    - **Dataset**: Select **+ New** to add new dataset with the following properties:
+        - **New integration dataset**: Select **Azure Data lake Storage Gen2** and click **Continue**.
+        - **Format**: Delimited text and click **Continue**.
         - **Name**: Products_Csv
         - **Linked service**: synapse*xxxxxxx*-WorkspaceDefaultStorage
         - **File path**: files/data/Product.csv
         - **First row as header**: Selected
         - **Import schema**: From connection/store
+        - Click on **OK**.
     - **Allow schema drift**: Selected
 2. On the **Projection** tab for the new **ProductsText** source, set the following data types:
     - **ProductID**: string
