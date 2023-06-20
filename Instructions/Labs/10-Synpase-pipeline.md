@@ -120,7 +120,7 @@ To load the data in the text file into the database table, you will implement an
             - **Server name**: synapse*xxxxxxx* (Synapse workspace)
             - **Database name**: sql*xxxxxxx*
             - **SQL pool**: sql*xxxxxxx*
-            **Authentication type**: System Assigned Managed Identity
+            - **Authentication type**: System Assigned Managed Identity
         - **Table name**: dbo.DimProduct
         - **Import schema**: From connection/store
     - **Allow schema drift**: Selected
