@@ -212,7 +212,7 @@ Now that you've built a data flow in a pipeline, you can debug it before publish
 
 Now you're ready to publish and run the pipeline.
 
-1. Use the **Publish all** button to publish the pipeline (and any other unsaved assets).
+1. Use the **Publish all** button to publish the pipeline (and any other unsaved assets) and on **Publish all** pane click on **Publish**.
 2. When publishing is complete, close the **LoadProductsData** data flow pane and return to the **Load Product Data** pipeline pane.
 3. At the top of the pipeline designer pane, in the **Add trigger** menu, select **Trigger now**. Then select **OK** to confirm you want to run the pipeline.
 
