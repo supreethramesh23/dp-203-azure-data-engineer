@@ -72,7 +72,7 @@ To load the data in the text file into the database table, you will implement an
 4. Under the pipeline design surface, in the **General** tab, set the **Name** property to **LoadProducts**.
 5. On the **Settings** tab, at the bottom of the list of settings, expand **Staging** and set the following staging settings:
     - **Staging linked service**: Select the **synapse*xxxxxxx*-WorkspaceDefaultStorage** linked service.
-    - **Staging storage folder**: Set **container** to **files** and **Directory** to **stage_products**.
+    - **Staging storage folder**: Replace **container** to **files** and replace **Directory** to **stage_products**.
 
 ### Task 3.2: Configure the data flow
 
