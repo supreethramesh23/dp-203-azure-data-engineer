@@ -108,7 +108,7 @@ To load the data in the text file into the database table, you will implement an
     - **Output stream name**: ProductTable
     - **Description**: Product table
     - **Source type**: Integration dataset
-    - **Dataset**: Add a **New** dataset with the following properties:
+    - **Dataset**: Select **+ New** to add a **New** dataset with the following properties:
         - **Type**: Azure Synapse Analytics
         - **Name**: DimProduct
         - **Linked service**: Create a **New** linked service with the following properties:
