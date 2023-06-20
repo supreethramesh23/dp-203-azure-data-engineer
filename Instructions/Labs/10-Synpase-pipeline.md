@@ -111,7 +111,7 @@ To load the data in the text file into the database table, you will implement an
     - **Dataset**: Select **+ New** to add a **New** dataset with the following properties:
         - **New integration dataset**: Select **Azure Synapse Analytics** and click **Continue**.
         - **Name**: DimProduct
-        - **Linked service**: Select **+ New** from the dropdown to create a **New** linked service with the following properties:
+        - **New Linked service**: Select **+ New** from the dropdown to create a **New** linked service with the following properties:
             - **Name**: Data_Warehouse
             - **Description**: Dedicated SQL pool
             - **Connect via integration runtime**: AutoResolveIntegrationRuntime
