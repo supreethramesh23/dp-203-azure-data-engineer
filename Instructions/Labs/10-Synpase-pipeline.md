@@ -184,7 +184,7 @@ To load the data in the text file into the database table, you will implement an
     - **Allow schema drift**: Selected
 3. On the **Settings** tab for the new **DimProductTable** sink, specify the following settings:
     - **Update method**: Select **Allow insert** and **Allow Upsert**.
-    - **Key columns**: Select **List of columns**, and then select the **ProductAltKey** column.
+    - **Key columns**: Select **List of columns**, and then select the **ProductAltKey** column from dropdown.
 4. On the **Mappings** tab for the new **DimProductTable** sink, clear the **Auto mapping** checkbox and specify <u>only</u> the following column mappings:
     - ProductID: ProductAltKey
     - ProductsText@ProductName: ProductName
