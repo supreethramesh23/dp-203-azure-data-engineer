@@ -78,9 +78,9 @@ You now have a blank SQL page, which is connected to the instance for the follow
 2. On the toolbar, use the **&#9655; Run** button to run the SQL code and confirm that there are **0** rows currently in the **StageProduct** table.
 3. Replace the code with the following COPY statement (changing **datalake*xxxxxx*** to the name of your data lake):
 
-    ```sql
+   ```sql
     COPY INTO dbo.StageProduct
-        (ProductID, ProductName, ProductCategory, Color, Size, ListPrice, Discontinued)
+    (ProductID, ProductName, ProductCategory, Color, Size, ListPrice, Discontinued)
     FROM 'https://datalakexxxxxx.blob.core.windows.net/files/data/Product.csv'
     WITH
     (
@@ -89,8 +89,6 @@ You now have a blank SQL page, which is connected to the instance for the follow
         IDENTITY_INSERT = 'OFF',
         FIRSTROW = 2 --Skip header row
     );
-
-
     SELECT COUNT(1) 
     FROM dbo.StageProduct
     ```
