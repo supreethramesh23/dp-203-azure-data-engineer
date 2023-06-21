@@ -2,13 +2,11 @@
 
 Azure Synapse Link for SQL enables you to automatically synchronize a transactional database in SQL Server or Azure SQL Database with a dedicated SQL pool in Azure Synapse Analytics. This synchronization enables you to perform low-latency analytical workloads in Synapse Analytics without incurring query overhead in the source operational database.
 
-This exercise should take approximately **35** minutes to complete.
-
 ## Provision Azure resources
 
 In this exercise, you'll synchronize data from an Azure SQL Database resource to an Azure Synapse Analytics workspace. You'll start by using a script to provision these resources in your Azure subscription.
 
-1. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a ***PowerShell*** environment and creating storage if prompted. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
+1. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a ***PowerShell*** environment and select **create storage**. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
 
     ![Azure portal with a cloud shell pane](./images/cloud-shell.png)
 
@@ -45,11 +43,11 @@ Before you can set up Azure Synapse Link for your Azure SQL Database, you must e
 
     > **Note**: be careful not to mix up the Azure SQL server resource **sqldb*xxxxxxxx***) and the Azure Synapse Analytics dedicated SQL pool (**sql*xxxxxxxx***).
 
-2. In the page for your Azure SQL Server resource, in the pane on the left, in the **Security** section (near the bottom), select **Identity**. Then under **System assigned managed identity**, set the **Status** option to **On**. Then use the **&#128427; Save** icon to save your configuration change.
+2. In the page for your Azure SQL Server resource, in the pane on the left, in the **Security** section (near the bottom), select **Identity (1)**. Then under **System assigned managed identity**, set the **Status** option to **On (2)**. Then use the **&#128427; Save (3)** icon to save your configuration change.
 
-    ![Screenshot of the Azure SQL server Identity page in the Azure portal.](./images/sqldb-identity.png)
+    ![Screenshot of the Azure SQL server Identity page in the Azure portal.](./images/sqldb-identity1.png)
 
-3. In the pane on the left, in the **Security** section, select **Networking**. Then, under **Firewall rules**, select the exception to **Allow Azure services and resources to access this server**.
+3. In the pane on the left, in the **Security** section, select **Networking**. Then, under **Firewall rules**, select the exception checkbox to **Allow Azure services and resources to access this server**.
 
 4. Use the **&#65291; Add a firewall rule** button to add a new firewall rule with the following settings:
 
@@ -61,14 +59,14 @@ Before you can set up Azure Synapse Link for your Azure SQL Database, you must e
 
 5. Use the **Save** button to save your configuration change:
 
-    ![Screenshot of the Azure SQL server Networking page in the Azure portal.](./images/sqldb-network.png)
+    ![Screenshot of the Azure SQL server Networking page in the Azure portal.](./images/sqldb-network1.png)
 
 ## Explore the transactional database
 
 Your Azure SQL server hosts a sample database named **AdventureWorksLT**. This database represents a transactional database used for operational application data.
 
-1. In the **Overview** page for your Azure SQL server, at the bottom of the, select the **AdventureWorksLT** database:
-2. In the **AdventureWorksLT** database page, select the **Query editor** tab and log in using SQL server authentication with the following credentials:
+1. In the **Overview** page for your Azure SQL server, at the bottom of the page, select the **AdventureWorksLT** database:
+2. In the **AdventureWorksLT** database page, from left navigation pane, select the **Query editor** tab and log in using SQL server authentication with the following credentials:
     - **Login** SQLUser
     - **Password**: *The password you specified when running the setup script.*
 3. When the query editor opens, expand the **Tables** node and view the list of tables in the database. Note that they include tables in a **SalesLT** schema (for example, **SalesLT.Customer**).
@@ -100,9 +98,9 @@ Now you're ready to configure Azure Synapse Link for SQL in your Synapse Analyti
 
 ### Create a link connection
 
-1. In Synapse Studio, on the **Integrate** page, on the **&#65291;** drop-down menu, select **Link connection**. Then create a new linked connection with the following settings:
+1. In Synapse Studio, on the **Integrate** page, select the **&#65291;** icon and from drop-down menu, select **Link connection**. Then create a new linked connection with the following settings:
     - **Source type**: Azure SQL database
-    - **Source linked service**: Add a new linked service with the following settings (a new tab will be opened):
+    - **Source linked service**: Select **+ New** from the dropdown to add a new linked service with the following settings (a new tab will be opened):
         - **Name**: SqlAdventureWorksLT
         - **Description**: Connection to AdventureWorksLT database
         - **Connect via integration runtime**: AutoResolveIntegrationRuntime
@@ -122,17 +120,16 @@ Now you're ready to configure Azure Synapse Link for SQL in your Synapse Analyti
         - **SalesLT.Product**
         - **SalesLT.SalesOrderDetail**
         - **SalesLT.SalesOrderHeader**
-
-        *Continue to configure the following settings:*
+        - Click **Continue** to configure the following settings
 
     > **Note**: Some target tables display an error due to the use of custom data types or because data in the source table is not compatible with the default structure type of *clustered columnstore index*.
 
     - **Target pool**: *Select your **sqlxxxxxxx** dedicated SQL pool*
-
-        *Continue to configure the following settings:*
+    - Click **Continue** to configure the following settings
 
     - **Link connection name**: sql-adventureworkslt-conn
     - **Core count**: 4 (+ 4 Driver cores)
+    - Click **Ok**
 
 2. In the **sql-adventureworkslt-conn** page that is created, view the table mappings that have been created. You can use the **Properties** button (which looks similar to **&#128463;<sub>*</sub>**) to hide the **Properties** pane to make it easier to see eveything. 
 
@@ -146,12 +143,12 @@ Now you're ready to configure Azure Synapse Link for SQL in your Synapse Analyti
     |SalesLT.SalesOrderHeader **&#8594;**|\[SalesLT].\[SalesOrderHeader]|Round robin|-|Heap|
 
 4. At the top of the **sql-adventureworkslt-conn** page that is created, use the **&#9655; Start** button to start synchronization. When prompted, select **OK** to publish and start the link connection.
-5. After starting the connection, on the **Monitor** page, view the **Link connections** tab and select the **sql-adventureworkslt-conn** connection. You can use the **&#8635; Refresh** button to update the status periodically. It may take several minutes to complete the initial snapshot copy process and start replicating - after that, all changes in the source database tables will be automatically replayed in the synchronized tables.
+5. After starting the connection, on the **Monitor** page, select the **Link connections** tab and view the **sql-adventureworkslt-conn** connection. You can use the **&#8635; Refresh** button to update the status periodically. It may take several minutes to complete the initial snapshot copy process and start replicating - after that, all changes in the source database tables will be automatically replayed in the synchronized tables.
 
 ### View the replicated data
 
 1. After the status of the tables has changed to **Running**, select the **Data** page and use the  **&#8635;** icon at the top right to refresh the view.
-2. On the **Workspace** tab, expand **SQL databases**,  your **sql*xxxxxxx*** database, and its **Tables** folder to view the replicated tables.
+2. Select **Data** pane, click **Workspace** tab, expand **SQL databases**,  your **sql*xxxxxxx*** database, and its **Tables** folder to view the replicated tables.
 3. In the **...** menu for the **sql*xxxxxxx*** database, select **New SQL script** > **Empty script**. Then in the new script page, enter the following SQL code:
 
     ```sql

@@ -69,10 +69,10 @@ To load the data in the text file into the database table, you will implement an
 
     ![Screenshot of a pipeline with a data flow activity.](./images/dataflow.png)
 
-4. Under the pipeline design surface, in the **General** tab, set the **Name** property to **LoadProducts**.
+4. Under the pipeline design surface, in the **General** tab(at the bottom of the page), set the **Name** property to **LoadProducts**.
 5. On the **Settings** tab, at the bottom of the list of settings, expand **Staging** and set the following staging settings:
     - **Staging linked service**: Select the **synapse*xxxxxxx*-WorkspaceDefaultStorage** linked service.
-    - **Staging storage folder**: Set **container** to **files** and **Directory** to **stage_products**.
+    - **Staging storage folder**: Replace **container** to **files** and replace **Directory** to **stage_products**.
 
 ### Task 3.2: Configure the data flow
 
@@ -87,14 +87,15 @@ To load the data in the text file into the database table, you will implement an
     - **Output stream name**: ProductsText
     - **Description**: Products text data
     - **Source type**: Integration dataset
-    - **Dataset**: Add a **New** dataset with the following properties:
-        - **Type**: Azure Datalake Storage Gen2
-        - **Format**: Delimited text
+    - **Dataset**: Select **+ New** to add new dataset with the following properties:
+        - **New integration dataset**: Select **Azure Data lake Storage Gen2** and click **Continue**.
+        - **Format**: Delimited text and click **Continue**.
         - **Name**: Products_Csv
         - **Linked service**: synapse*xxxxxxx*-WorkspaceDefaultStorage
         - **File path**: files/data/Product.csv
         - **First row as header**: Selected
         - **Import schema**: From connection/store
+        - Click on **OK**.
     - **Allow schema drift**: Selected
 2. On the **Projection** tab for the new **ProductsText** source, set the following data types:
     - **ProductID**: string
@@ -107,10 +108,10 @@ To load the data in the text file into the database table, you will implement an
     - **Output stream name**: ProductTable
     - **Description**: Product table
     - **Source type**: Integration dataset
-    - **Dataset**: Add a **New** dataset with the following properties:
-        - **Type**: Azure Synapse Analytics
+    - **Dataset**: Select **+ New** to add a **New** dataset with the following properties:
+        - **New integration dataset**: Select **Azure Synapse Analytics** and click **Continue**.
         - **Name**: DimProduct
-        - **Linked service**: Create a **New** linked service with the following properties:
+        - **New Linked service**: Select **+ New** from the dropdown to create a **New** linked service with the following properties:
             - **Name**: Data_Warehouse
             - **Description**: Dedicated SQL pool
             - **Connect via integration runtime**: AutoResolveIntegrationRuntime
@@ -119,9 +120,11 @@ To load the data in the text file into the database table, you will implement an
             - **Server name**: synapse*xxxxxxx* (Synapse workspace)
             - **Database name**: sql*xxxxxxx*
             - **SQL pool**: sql*xxxxxxx*
-            **Authentication type**: System Assigned Managed Identity
+            - **Authentication type**: System Assigned Managed Identity
+            - Click on **Create**.
         - **Table name**: dbo.DimProduct
         - **Import schema**: From connection/store
+        -  Click **OK**.
     - **Allow schema drift**: Selected
 4. On the **Projection** tab for the new **ProductTable** source, verify that the following data types are set:
     - **ProductKey**: integer
@@ -177,11 +180,11 @@ To load the data in the text file into the database table, you will implement an
     - **Description**: Load DimProduct table
     - **Incoming stream**: SetLoadAction
     - **Sink type**: Integration dataset
-    - **Dataset**: DimProduct
+    - **Dataset**: Select DimProduct
     - **Allow schema drift**: Selected
 3. On the **Settings** tab for the new **DimProductTable** sink, specify the following settings:
     - **Update method**: Select **Allow insert** and **Allow Upsert**.
-    - **Key columns**: Select **List of columns**, and then select the **ProductAltKey** column.
+    - **Key columns**: Select **List of columns**, and then select the **ProductAltKey** column from dropdown.
 4. On the **Mappings** tab for the new **DimProductTable** sink, clear the **Auto mapping** checkbox and specify <u>only</u> the following column mappings:
     - ProductID: ProductAltKey
     - ProductsText@ProductName: ProductName
@@ -193,12 +196,17 @@ To load the data in the text file into the database table, you will implement an
 
     ![Screenshot of a data flow with two sources, a lookup, an alter row, and a sink.](./images/dataflow-sink.png)
 
+    >**Note**: In the output column section if there is any extra column apart from the above mentioned column, kindly delete it.
+
 ## Task 4: Debug the Data Flow
 
 Now that you've built a data flow in a pipeline, you can debug it before publishing.
 
 1. At the top of the data flow designer, enabled **Data flow debug**. Review the default configuration and select **OK**, then wait for the debug cluster to start (which may take a few minutes).
 2. In the data flow designer, select the **DimProductTable** sink and view its **Data preview** tab.
+
+   >**Note**: kindly collapse **Integrate** pane to view **Data preview** tab.
+   
 3. Use the **&#8635; Refresh** button to refresh the preview, which has the effect of running data through the data flow to debug it.
 4. Review the preview data, noting that it indicates one upserted row (for the existing *AR5381* product), indicated by a **<sub>*</sub><sup>+</sup>** icon; and ten inserted rows, indicated by a **+** icon.
 
@@ -206,9 +214,9 @@ Now that you've built a data flow in a pipeline, you can debug it before publish
 
 Now you're ready to publish and run the pipeline.
 
-1. Use the **Publish all** button to publish the pipeline (and any other unsaved assets).
+1. Use the **Publish all** button to publish the pipeline (and any other unsaved assets) and on **Publish all** pane click on **Publish**.
 2. When publishing is complete, close the **LoadProductsData** data flow pane and return to the **Load Product Data** pipeline pane.
-3. At the top of the pipeline designer pane, in the **Add trigger** menu, select **Trigger now**. Then select **OK** to confirm you want to run the pipeline.
+3. At the top of the pipeline designer pane, select **Add trigger** menu, click **Trigger now**. Then select **OK** to confirm you want to run the pipeline.
 
     **Note**: You can also create a trigger to run the pipeline at a scheduled time or in response to a specific event.
 
