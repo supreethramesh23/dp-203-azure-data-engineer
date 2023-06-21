@@ -2,45 +2,38 @@
 
 You can use notebooks in Azure Databricks to perform data engineering tasks, such as processing data files and loading data into tables. When you need to orchestrate these tasks as part of a data engineering pipeline, you can use Azure Data Factory.
 
-This exercise should take approximately **40** minutes to complete.
-
-## Before you start
-
-You'll need an [Azure subscription](https://azure.microsoft.com/free) in which you have administrative-level access.
-
-## Provision Azure resources
+## Task 1: Provision Azure resources
 
 In this exercise, you'll use a script to provision a new Azure Databricks workspace and an Azure Data Factory resource in your Azure subscription.
 
-1. In a web browser, sign into the [Azure portal](https://portal.azure.com) at `https://portal.azure.com`.
-2. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a ***PowerShell*** environment and creating storage if prompted. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
+1. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a ***PowerShell*** environment and creating storage if prompted. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
 
     ![Azure portal with a cloud shell pane](./images/cloud-shell.png)
 
     > **Note**: If you have previously created a cloud shell that uses a *Bash* environment, use the the drop-down menu at the top left of the cloud shell pane to change it to ***PowerShell***.
 
-3. Note that you can resize the cloud shell by dragging the separator bar at the top of the pane, or by using the **&#8212;**, **&#9723;**, and **X** icons at the top right of the pane to minimize, maximize, and close the pane. For more information about using the Azure Cloud Shell, see the [Azure Cloud Shell documentation](https://docs.microsoft.com/azure/cloud-shell/overview).
+2. Note that you can resize the cloud shell by dragging the separator bar at the top of the pane, or by using the **&#8212;**, **&#9723;**, and **X** icons at the top right of the pane to minimize, maximize, and close the pane. For more information about using the Azure Cloud Shell, see the [Azure Cloud Shell documentation](https://docs.microsoft.com/azure/cloud-shell/overview).
 
-4. In the PowerShell pane, enter the following commands to clone this repo:
+3. In the PowerShell pane, enter the following commands to clone this repo:
 
     ```
     rm -r dp-203 -f
     git clone https://github.com/MicrosoftLearning/dp-203-azure-data-engineer dp-203
     ```
 
-5. After the repo has been cloned, enter the following commands to change to the folder for this lab and run the **setup.ps1** script it contains:
+4. After the repo has been cloned, enter the following commands to change to the folder for this lab and run the **setup.ps1** script it contains:
 
     ```
     cd dp-203/Allfiles/labs/27
     ./setup.ps1
     ```
 
-6. If prompted, choose which subscription you want to use (this will only happen if you have access to multiple Azure subscriptions).
+5. If prompted, choose which subscription you want to use (this will only happen if you have access to multiple Azure subscriptions).
 
-7. Wait for the script to complete - this typically takes around 5 minutes, but in some cases may take longer. While you are waiting, review [What is Azure Data Factory?](https://docs.microsoft.com/azure/data-factory/introduction).
-8. When the script has completed, close the cloud shell pane and browse to the **dp203-*xxxxxxx*** resource group that was created by the script to verify that it contains an Azure Databricks workspace and an Azure Data Factory (V2) resource (you may need to refresh the resource group view).
+6. Wait for the script to complete - this typically takes around 5 minutes, but in some cases may take longer. While you are waiting, review [What is Azure Data Factory?](https://docs.microsoft.com/azure/data-factory/introduction).
+7. When the script has completed, close the cloud shell pane and browse to the **dp203-*xxxxxxx*** resource group that was created by the script to verify that it contains an Azure Databricks workspace and an Azure Data Factory (V2) resource (you may need to refresh the resource group view).
 
-## Import a notebook
+## Task 2: Import a notebook
 
 You can create notebooks in your Azure Databricks workspace to run code written in a range of programming languages. In this exercise, you'll import an existing notebook that contains some Python code.
 
@@ -60,17 +53,17 @@ You can create notebooks in your Azure Databricks workspace to run code written 
 
     > **Tip**: The notebook could contain practically any data processing logic you need. This simple example is designed to show the key principles.
 
-## Enable Azure Databricks integration with Azure Data Factory
+## Task 3: Enable Azure Databricks integration with Azure Data Factory
 
 To use Azure Databricks from an Azure Data Factory pipeline, you need to create a linked service in Azure Data Factory that enables access to your Azure Databricks workspace.
 
-### Generate an access token
+### Task 3.1: Generate an access token
 
 1. In the Azure Databricks portal, at on the top right menu bar, select the username and then select **User Settings** from the drop-down.
 2. In the **User Settings** page, on the **Access tokens** tab, select **Generate new token** and generate a new token with the comment *Data Factory* and a blank lifetime (so the token doesn't expire). Be careful to *copy the token when it is displayed <u>before</u> selecting **Done***.
 3. Paste the copied token to a text file so you have it handy for later in this exercise.
 
-### Create a linked service in Azure Data Factory
+### Task 3.2: Create a linked service in Azure Data Factory
 
 1. Return to the Azure portal, and in the **dp203-*xxxxxxx*** resource group, select the **adf*xxxxxxx*** Azure Data Factory resource.
 2. On the **Overview** page, select the **Launch studio** to open the Azure Data Factory Studio. Sign in if prompted.
@@ -88,17 +81,17 @@ To use Azure Databricks from an Azure Data Factory pipeline, you need to create 
     - **Databrick Workspace URL**: *Automatically set to your Databricks workspace URL*
     - **Authentication type**: Access token
     - **Access token**: *Paste your access token*
-    - **Cluster version**: 10.4 LTS (Scala 2.12, Spark 3.2.1)
+    - **Cluster version**: 10.4 LTS (includes Apache Spark 3.2.1, Scala 2.12)
     - **Cluster node type**: Standard_DS3_v2
     - **Python version**: 3
     - **Worker options**: Fixed
     - **Workers**: 1
 
-## Use a pipeline to run the Azure Databricks notebook
+## Task 4: Use a pipeline to run the Azure Databricks notebook
 
 Now that you have created a linked service, you can use it in a pipeline to run the notebook you viewed previously.
 
-### Create a pipeline
+### Task 4.1: Create a pipeline
 
 1. In Azure Data Factory Studio, in the navigation pane, select **Author**.
 2. On the **Author** page, in the **Factory Resources** pane, use the **+** icon to add a **Pipeline**.
@@ -114,7 +107,7 @@ Now that you have created a linked service, you can use it in a pipeline to run 
         - **Base parameters**: *Add a new parameter named **folder** with the value **product_data***
 6. Use the **Validate** button above the pipeline designer surface to validate the pipeline. Then use the **Publish all** button to publish (save) it.
 
-### Run the pipeline
+### Task 4.2: Run the pipeline
 
 1. Above the pipeline designer surface, select **Add trigger**, and then select **Trigger now**.
 2. In the **Pipeline run** pane, select **OK** to run the pipeline.
@@ -146,15 +139,3 @@ Now that you have created a linked service, you can use it in a pipeline to run 
     ```
 
 5. Note the **runOutput** value, which is the *path* variable to which the notebook saved the data.
-
-## Delete Azure Databricks resources
-
-Now you've finished exploring Azure Data Factory integration with Azure Databricks, you must delete the resources you've created to avoid unnecessary Azure costs and free up capacity in your subscription.
-
-1. Close the Azure Databricks workspace and Azure Data Factory studio browser tabs and return to the Azure portal.
-2. On the Azure portal, on the **Home** page, select **Resource groups**.
-3. Select the **dp203-*xxxxxxx*** resource group containing your Azure Databricks and Azure Data Factory workspace (not the managed resource group).
-4. At the top of the **Overview** page for your resource group, select **Delete resource group**.
-5. Enter the resource group name to confirm you want to delete it, and select **Delete**.
-
-    After a few minutes, your resource group and the managed workspace resource group associated with it will be deleted.

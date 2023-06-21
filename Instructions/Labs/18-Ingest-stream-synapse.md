@@ -14,35 +14,34 @@ In this exercise, you'll need an Azure Synapse Analytics workspace with access t
 
 You'll use a combination of a PowerShell script and an ARM template to provision these resources.
 
-1. Sign into the [Azure portal](https://portal.azure.com) at `https://portal.azure.com`.
-2. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a ***PowerShell*** environment and creating storage if prompted. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
+1. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a ***PowerShell*** environment and creating storage if prompted. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
 
     ![Azure portal with a cloud shell pane](./images/cloud-shell.png)
 
     > **Note**: If you have previously created a cloud shell that uses a *Bash* environment, use the the drop-down menu at the top left of the cloud shell pane to change it to ***PowerShell***.
 
-3. Note that you can resize the cloud shell by dragging the separator bar at the top of the pane, or by using the **&#8212;**, **&#9723;**, and **X** icons at the top right of the pane to minimize, maximize, and close the pane. For more information about using the Azure Cloud Shell, see the [Azure Cloud Shell documentation](https://docs.microsoft.com/azure/cloud-shell/overview).
+2. Note that you can resize the cloud shell by dragging the separator bar at the top of the pane, or by using the **&#8212;**, **&#9723;**, and **X** icons at the top right of the pane to minimize, maximize, and close the pane. For more information about using the Azure Cloud Shell, see the [Azure Cloud Shell documentation](https://docs.microsoft.com/azure/cloud-shell/overview).
 
-4. In the PowerShell pane, enter the following commands to clone the repo containing this exercise:
+3. In the PowerShell pane, enter the following commands to clone the repo containing this exercise:
 
     ```
     rm -r dp-203 -f
     git clone https://github.com/MicrosoftLearning/dp-203-azure-data-engineer dp-203
     ```
 
-5. After the repo has been cloned, enter the following commands to change to the folder for this exercise and run the **setup.ps1** script it contains:
+4. After the repo has been cloned, enter the following commands to change to the folder for this exercise and run the **setup.ps1** script it contains:
 
     ```
     cd dp-203/Allfiles/labs/18
     ./setup.ps1
     ```
 
-6. If prompted, choose which subscription you want to use (this will only happen if you have access to multiple Azure subscriptions).
-7. When prompted, enter a suitable password to be set for your Azure Synapse SQL pool.
+5. If prompted, choose which subscription you want to use (this will only happen if you have access to multiple Azure subscriptions).
+6. When prompted, enter a suitable password to be set for your Azure Synapse SQL pool.
 
     > **Note**: Be sure to remember this password!
 
-8. Wait for the script to complete - this typically takes around 15 minutes, but in some cases may take longer. While you are waiting, review the [Welcome to Azure Stream Analytics](https://learn.microsoft.com/azure/stream-analytics/stream-analytics-introduction) article in the Azure Stream Analytics documentation.
+7. Wait for the script to complete - this typically takes around 15 minutes, but in some cases may take longer. While you are waiting, review the [Welcome to Azure Stream Analytics](https://learn.microsoft.com/azure/stream-analytics/stream-analytics-introduction) article in the Azure Stream Analytics documentation.
 
 ## Ingest streaming data into a dedicated SQL pool
 
@@ -78,10 +77,9 @@ Let's start by ingesting a stream of data directly into a table in an Azure Syna
         - **Hosting environment**: Cloud
         - **Streaming units**: 1
     - **Storage**:
-        - **Secure private data in storage account**: Selected
+        - **Add storage account**: Selected
         - **Subscription**: Your Azure subscription
-        - **Storage account type**: Storage account
-        - **Storage**: Select the **datalake*xxxxxxx*** storage account.
+        - **Storage Accounts**: Select the **datalake*xxxxxxx*** storage account.
         - **Authentication mode**: Connection string
     - **Tags**:
         - *None*
@@ -95,7 +93,7 @@ Let's start by ingesting a stream of data directly into a table in an Azure Syna
     - **Subscription**: Your Azure subscription
     - **Event Hub namespace**: Select the **events*xxxxxxx*** Event Hubs namespace
     - **Event Hub name**: Select the existing **eventhub*xxxxxxx*** event hub.
-    - **Event Hub consumer group**: Select the existing **$Default** consumer group
+    - **Event Hub consumer group**: Select **Use Existing**, then the existing **$Default** consumer group
     - **Authentication mode**: Create system assigned managed identity
     - **Partition key**: *Leave blank*
     - **Event serialization format**: JSON
@@ -166,10 +164,9 @@ So far, you've seen how to use a Stream Analytics job to ingest messages from a 
         - **Hosting environment**: Cloud
         - **Streaming units**: 1
     - **Storage**:
-        - **Secure private data in storage account**: Selected
+        - **Add storage account**: Selected
         - **Subscription**: Your Azure subscription
-        - **Storage account type**: Storage account
-        - **Storage**: Select the **datalake*xxxxxxx*** storage account.
+        - **Storage Accounts**: Select the **datalake*xxxxxxx*** storage account.
         - **Authentication mode**: Connection string
     - **Tags**:
         - *None*
@@ -184,7 +181,7 @@ So far, you've seen how to use a Stream Analytics job to ingest messages from a 
     - **Subscription**: Your Azure subscription
     - **Event Hub namespace**: Select the **events*xxxxxxx*** Event Hubs namespace
     - **Event Hub name**: Select the existing **eventhub*xxxxxxx*** event hub.
-    - **Event Hub consumer group**: Select the existing **$Default** consumer group
+    - **Event Hub consumer group**: Select **Use Existing**, then the existing **$Default** consumer group
     - **Authentication mode**: Create system assigned managed identity
     - **Partition key**: *Leave blank*
     - **Event serialization format**: JSON
@@ -262,14 +259,4 @@ So far, you've seen how to use a Stream Analytics job to ingest messages from a 
 8. Use the **&#9655; Run** button to run the SQL query and view the results, which show the quantity of each product ordered in five-second periods.
 8. Return to the browser tab containing the Azure Portal and use the **&#128454; Stop** button to stop the Stream Analytics job and wait for the notification that the Stream Analytics job has stopped successfully.
 
-## Delete Azure resources
-
-If you've finished exploring Azure Stream Analytics, you should delete the resources you've created to avoid unnecessary Azure costs.
-
-1. Close the Azure Synapse Studio browser tab and return to the Azure portal.
-2. On the Azure portal, on the **Home** page, select **Resource groups**.
-3. Select the **dp203-*xxxxxxx*** resource group containing your Azure Synapse, Event Hubs, and Stream Analytics resources (not the managed resource group).
-4. At the top of the **Overview** page for your resource group, select **Delete resource group**.
-5. Enter the **dp203-*xxxxxxx*** resource group name to confirm you want to delete it, and select **Delete**.
-
-    After a few minutes, the resources created in this exercise will be deleted.
+### You have successfully completed the lab.

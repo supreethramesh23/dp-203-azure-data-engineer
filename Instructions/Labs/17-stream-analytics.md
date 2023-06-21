@@ -82,6 +82,7 @@ Your Azure Stream Analytics job must get input data from the event hub where the
     - **Partition key**: *Leave blank*
     - **Event serialization format**: JSON
     - **Encoding**: UTF-8
+    
 2. Save the input and wait while it is created. You will see several notifications. Wait for a **Successful connection test** notification.
 
 ## Task 05: Create an output for the blob store
@@ -178,5 +179,4 @@ OK, now you're ready to run the job and process some real-time sales order data.
 12. In the Azure portal, refresh the file to see the full set of results that were produced.
 13. Return to the **dp203-*xxxxxxx*** resource group, and re-open the **process-orders** Stream Analytics job.
 14. At the top of the Stream Analytics job page, use the **&#11036; Stop** button to stop the job, confirming when prompted.
-
 

@@ -2,40 +2,33 @@
 
 Microsoft Purview enables you to catalog data assets across your data estate and track the flow of data as it is transferred from one data source to another - a key element of a comprehensive data governance solution.
 
-This exercise should take approximately **40** minutes to complete.
-
-## Before you start
-
-You'll need an [Azure subscription](https://azure.microsoft.com/free) in which you have administrative-level access.
-
-## Provision Azure resources
+## Task 1: Provision Azure resources
 
 In this exercise, you'll use Microsoft Purview to track assets and data lineage in an Azure Synapse Analytics workspace. You'll start by using a script to provision these resources in your Azure subscription.
 
-1. Sign into the [Azure portal](https://portal.azure.com) at `https://portal.azure.com`.
-2. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a ***PowerShell*** environment and creating storage if prompted. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
+1. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a ***PowerShell*** environment and creating storage if prompted. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
 
     ![Azure portal with a cloud shell pane](./images/cloud-shell.png)
 
     > **Note**: If you have previously created a cloud shell that uses a *Bash* environment, use the the drop-down menu at the top left of the cloud shell pane to change it to ***PowerShell***.
 
-3. Note that you can resize the cloud shell by dragging the separator bar at the top of the pane, or by using the **&#8212;**, **&#9723;**, and **X** icons at the top right of the pane to minimize, maximize, and close the pane. For more information about using the Azure Cloud Shell, see the [Azure Cloud Shell documentation](https://docs.microsoft.com/azure/cloud-shell/overview).
+2. Note that you can resize the cloud shell by dragging the separator bar at the top of the pane, or by using the **&#8212;**, **&#9723;**, and **X** icons at the top right of the pane to minimize, maximize, and close the pane. For more information about using the Azure Cloud Shell, see the [Azure Cloud Shell documentation](https://docs.microsoft.com/azure/cloud-shell/overview).
 
-4. In the PowerShell pane, enter the following commands to clone this repo:
+3. In the PowerShell pane, enter the following commands to clone this repo:
 
     ```
     rm -r dp-203 -f
-    git clone https://github.com/MicrosoftLearning/dp-203-azure-data-engineer dp-203
+    git clone -b prod https://github.com/CloudLabs-MOC/dp-203-azure-data-engineer dp-203
     ```
 
-5. After the repo has been cloned, enter the following commands to change to the folder for this lab and run the **setup.ps1** script it contains:
+4. After the repo has been cloned, enter the following commands to change to the folder for this lab and run the **setup.ps1** script it contains:
 
     ```
     cd dp-203/Allfiles/labs/22
     ./setup.ps1
     ```
 
-6. If prompted, choose which subscription you want to use (this will only happen if you have access to multiple Azure subscriptions).
+5. If prompted, choose which subscription you want to use (this will only happen if you have access to multiple Azure subscriptions).
 7. When prompted, enter a suitable password for your Azure SQL Database.
 
     > **Note**: Be sure to remember this password!
@@ -44,11 +37,11 @@ In this exercise, you'll use Microsoft Purview to track assets and data lineage 
 
 > **Tip**: If, after running the setup script you decide not to complete the lab, be sure to delete the **dp203-*xxxxxxx*** resource group that was created in your Azure subscription to avoid unnecessary Azure costs.
 
-## Catalog Azure Synapse Analytics data assets in Microsoft Purview
+## Task 2: Catalog Azure Synapse Analytics data assets in Microsoft Purview
 
 With Microsoft Purview, you can catalog data assets across your data estate - including data sources in an Azure Synapse Workspace. The workspace you deployed using a script includes a data lake (in an Azure Data Lake Storage Gen2 account), a serverless database, and a data warehouse in a dedicated SQL pool.
 
-### Configure role-based access for Microsoft Purview
+### Task 2.1: Configure role-based access for Microsoft Purview
 
 Microsoft Purview is configured to use a managed identity. In order to catalog data assets, this managed identity account must have access to the Azure Synapse Analytics workspace and the storage account for its data lake store.
 
@@ -74,7 +67,7 @@ Microsoft Purview is configured to use a managed identity. In order to catalog d
 7. Use the **Review + Assign** button to complete the role assignment, which makes the **purview*xxxxxxx*** account used by the managed identity for your Microsoft Purview resource a member of the **Storage Blob Data Reader** role for your storage account.
 8. In the Azure portal, return to the **dp203-*xxxxxxx*** resource group and open the **synapse*xxxxxxx*** Synapse Analytics workspace. Then, on its **Access Control (IAM)** page, add a role assignment to make the **purview*xxxxxxx*** managed identity account a member of the **Reader** role in the workspace.
 
-### Configure database permissions for Microsoft Purview
+### Task 2.2: Configure database permissions for Microsoft Purview
 
 Your Azure Synapse Analytics workspace includes databases in both *serverless* and *dedicated* SQL pools, to which the managed identity used by Microsoft Purview requires access.
 
@@ -119,7 +112,7 @@ Your Azure Synapse Analytics workspace includes databases in both *serverless* a
     GO
     ```
 
-### Register sources in the Microsoft Purview catalog
+### Task 2.3: Register sources in the Microsoft Purview catalog
 
 Now that you've configured the required access for Microsoft Purview to scan the data sources used by your Azure Synapse Analytics workspace, you can register them in your Microsoft Purview catalog.
 
@@ -155,7 +148,7 @@ Now that you've configured the required access for Microsoft Purview to scan the
 
     ![A screenshot of the data map, showing the Synapse_data source.](./images//purview-data-map.png)
 
-### Scan registered sources
+### Task 2.4: Scan registered sources
 
 1. In the data map, in the **Synapse_data** source, select **View details**; and observe that the source has no assets cataloged. You will need to scan the source to find the data assets it contains.
 2. In the **Synapse_data** details page, select **New scan**, and then configure a scan with the following settings:
@@ -184,7 +177,7 @@ Now that you've configured the required access for Microsoft Purview to scan the
 
     ![A screenshot of the Synapse_data details with a completed scan.](./images/purview-scan-complete.png)
 
-### View the scanned assets
+### Task 2.5: View the scanned assets
 
 1. On the **Data catalog** page, on the **Browse** sub-page, select the **purview*xxxxxxx*** collection. Here you can see the data assets that were cataloged in your Azure Synapse Workspace and data lake storage, including the Azure Synapse Analytics workspace, the Azure Storage account for the data lake, the two SQL pool databases in Azure Synapse Analytics, the **dbo** schema in each database, the tables and views in the databases, and the folders and files in the data lake.
 2. To filter the results, in the **Narrow results by** list of object types, select **Files** and **Tables** so that only the files, tables, and views that were cataloged by the scan are listed:
@@ -203,18 +196,18 @@ So far, you've used Microsoft Purview to catalog data assets in your Azure Synap
 
 Now let's explore some other ways to integrate Azure Synapse Analytics and Microsoft Purview.
 
-## Integrate Microsoft Purview with Azure Synapse Analytics
+## Task 3: Integrate Microsoft Purview with Azure Synapse Analytics
 
 Azure Synapse Analytics supports integration with Microsoft Purview to make data assets discoverable and to track data lineage through ingestion pipelines that transfer data from one source to another.
 
-### Enable Microsoft Purview integration in Azure Synapse Analytics
+### Task 3.1: Enable Microsoft Purview integration in Azure Synapse Analytics
 
 1. Switch back to the browser tab containing Synapse Studio, and on the **Manage** page, select the **Microsoft Purview** tab, and then use the **Connect to a Purview account** button to connect the **purview*xxxxxxx*** account in your subscription to the workspace.
 2. After connecting the account, view the **Purview account** tab to verify that the account is has a **Data Lineage - Synapse Pipeline** status of **Connected**:
 
     ![A screenshot showing the Purview account in Synapse Studio.](./images/synapse-purview.png)
 
-### Search the Purview catalog in Synapse Studio
+### Task 3.2: Search the Purview catalog in Synapse Studio
 
 Now that you've connected your Microsoft Purview account to your Azure Synapse Analytics workspace, you can search the catalog from Synapse Studio, enabling you to discover data assets across your data estate.
 
@@ -227,7 +220,7 @@ Now that you've connected your Microsoft Purview account to your Azure Synapse A
 
 By integrating the Purview catalog into the Synapse Studio interface, data analysts and engineers can find and examine registered data assets from across the entire data estate (not just within the Azure Synapse Studio workspace).
 
-### Create and run a pipeline
+### Task 3.3: Create and run a pipeline
 
 The **products_csv** view in the **lakedb** database is based on a text file in the data lake that contains product data. The **products** table in the **sql*xxxxxxx*** dedicated SQL database is currently empty. Let's use a Synapse pipeline to load data from the data lake into the table.
 
@@ -248,7 +241,7 @@ The **products_csv** view in the **lakedb** database is based on a text file in 
 10. In Synapse Studio, view the **Monitor** page. Then on the **Pipeline runs** tab, observe the status of the **Load_Product_Data** pipeline. It may take a few minutes for the status to change to **Succeeded**.
 11. When the pipeline run has completed successfully, select its name (**Load_Product_Data**) to view details of the activities in the pipeline; and observe that the pipeline includes a **Copy data** task with an automatically-derived name similar to **Copy_*xxx***. This activity copied the data from the text file in the data lake into the **products** table in the **sql*xxxxxxx*** database.
 
-### View data lineage in Microsoft Purview
+### Task 3.4: View data lineage in Microsoft Purview
 
 You've used a Synapse pipeline to load data into a database. Let's verify that this activity has been tracked in Microsoft Purview.
 
@@ -267,18 +260,6 @@ The lineage tracking capability enabled by integrating Azure Synapse Analytics w
 
 > **Tip**: In this exercise, you viewed the lineage information for in the Microsoft Purview Governance portal; but remember that the same assets can also be viewed in Synapse Studio through the search integration feature.
 
-### Pause the dedicated SQL pool
+### Task 3.5: Pause the dedicated SQL pool
 
 1. Switch back to the Synapse Studio tab, and on the **Manage** page, pause the **sql*xxxxxxx*** dedicated SQL pool.
-
-## Delete Azure resources
-
-If you've finished exploring Azure Synapse Analytics, you should delete the resources you've created to avoid unnecessary Azure costs.
-
-1. Close the Synapse Studio browser tab and return to the Azure portal.
-2. On the Azure portal, on the **Home** page, select **Resource groups**.
-3. Select the **dp203-*xxxxxxx*** resource group for your Synapse Analytics workspace (not the managed resource group), and verify that it contains the Synapse workspace, storage account, and dedicated SQL pool for your workspace.
-4. At the top of the **Overview** page for your resource group, select **Delete resource group**.
-5. Enter the **dp203-*xxxxxxx*** resource group name to confirm you want to delete it, and select **Delete**.
-
-    After a few minutes, your Azure Synapse workspace resource group and the managed workspace resource group associated with it will be deleted.
