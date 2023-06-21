@@ -45,7 +45,7 @@ Before you can set up Azure Synapse Link for your Azure SQL Database, you must e
 
 2. In the page for your Azure SQL Server resource, in the pane on the left, in the **Security** section (near the bottom), select **Identity (1)**. Then under **System assigned managed identity**, set the **Status** option to **On (2)**. Then use the **&#128427; Save (3)** icon to save your configuration change.
 
-    ![Screenshot of the Azure SQL server Identity page in the Azure portal.](./images/sqldb-identity(1).png)
+    ![Screenshot of the Azure SQL server Identity page in the Azure portal.](./images/sqldb-identity1.png)
 
 3. In the pane on the left, in the **Security** section, select **Networking**. Then, under **Firewall rules**, select the exception checkbox to **Allow Azure services and resources to access this server**.
 
