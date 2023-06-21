@@ -59,7 +59,7 @@ Before you can set up Azure Synapse Link for your Azure SQL Database, you must e
 
 5. Use the **Save** button to save your configuration change:
 
-    ![Screenshot of the Azure SQL server Networking page in the Azure portal.](./images/sqldb-network(1).png)
+    ![Screenshot of the Azure SQL server Networking page in the Azure portal.](./images/sqldb-network1.png)
 
 ## Explore the transactional database
 
