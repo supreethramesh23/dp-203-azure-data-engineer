@@ -142,13 +142,16 @@ OK, now you're ready to run the job and process some real-time sales order data.
 
 1. View the **Overview** page for the **process-orders** Stream Analytics job, and on the **Properties** tab review the **Inputs**, **Query**, **Outputs**, and **Functions** for the job. If the number of **Inputs** and **Outputs** is 0, use the **&#8635; Refresh** button on the **Overview** page to display the **orders** input and **blobstore** output.
 2. Select the **&#9655; Start** button, and start the streaming job now. Wait until you are notified that the streaming job started successfully.
-3. Re-open the cloud shell pane, reconnecting if necessary, and then re-run the following command to submit another 1000 orders.
+
+   >**Note**: This might take some time. Kindly refresh the page to check the latest status.
+
+4. Re-open the cloud shell pane, reconnecting if necessary, and then re-run the following command to submit another 1000 orders.
 
     ```
     node ~/dp-203/Allfiles/labs/17/orderclient
     ```
 
-4. While the app is running, in the Azure portal, return to the page for the **dp203-*xxxxxxx*** resource group, and select the **store*xxxxxxxxxxxx*** storage account.
+5. While the app is running, in the Azure portal, return to the page for the **dp203-*xxxxxxx*** resource group, and select the **store*xxxxxxxxxxxx*** storage account.
 6. In the pane on the left of the storage account blade, select the **Containers** tab.
 7. Open the **data** container, and use the **&#8635; Refresh** button to refresh the view until you see a folder with the name of the current year.
 8. In the **data** container, navigate through the folder hierarchy, which includes the folder for the current year, with subfolders for the month and day.
