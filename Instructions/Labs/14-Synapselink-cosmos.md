@@ -50,7 +50,7 @@ Before you can use Synapse Link for Azure Cosmos DB, you must enable it in your 
 
 3. At the top of the **Data Explorer** page, use the **Enable Azure Synapse Link** button to enable Synapse Link.
 
-    ![Cosmos DB Data Explorer with Enable Azure Synapse Link button highlighted](./images/cosmos-enable-synapse-link.png)
+    ![Cosmos DB Data Explorer with Enable Azure Synapse Link button highlighted](./images/l14-1.png)
 
 4. On the left side of the page, in the **Integrations** section, select the **Azure Synapse Link** page and verify that the status of the account is *Enabled*.
 
@@ -69,7 +69,7 @@ Before you can use Synapse Link for Azure Cosmos DB, you must enable it in your 
 
 2. After the container has been created, in the **Data Explorer** page, expand the **AdventureWorks** database and its **Sales** folder; and then select the **Items** folder.
 
-    ![The Adventure Works, Sales, Items folder in Data Explorer](./images/cosmos-items-folder.png)
+    ![The Adventure Works, Sales, Items folder in Data Explorer](./images/l14-2.png)
 
 3. Use the **New Item** button to create a new customer item based on the following JSON. Then save the new item (some additional metadata fields will be added when you save the item).
 
@@ -134,7 +134,7 @@ Now that you have prepared your Azure Cosmos DB account, you can configure Azure
 4. On the **Data** page, view the **Linked** tab. Your workspace should already include a link to your Azure Data Lake Storage Gen2 storage account, but no link to your Cosmos DB account.
 5. In the **+** menu, select **Connect to external data**, and then select **Azure Cosmos DB for NoSQL**.
 
-    ![Adding an Azure Cosmos DB NoSQl API external data link](./images/add-cosmos-db-link.png)
+    ![Adding an Azure Cosmos DB NoSQl API external data link](./images/l14-3.png)
 
 6. Continue, and create a new Cosmos DB connection with the following settings:
     - **Name**: AdventureWorks
@@ -149,7 +149,7 @@ Now that you have prepared your Azure Cosmos DB account, you can configure Azure
 7. After creating the connection, use the **&#8635;** button at the top right of the **Data** page to refresh the view until an **Azure Cosmos DB** category is listed in the **Linked** pane.
 8. Expand the **Azure Cosmos DB** category to see the **AdventureWorks** connection you created and the **Sales** container it contains.
 
-    ![Adding an Azure Cosmos DB SQl API external data link](./images/cosmos-linked-connection.png)
+    ![Adding an Azure Cosmos DB SQl API external data link](./images/l-14-4.png)
 
 ## Task 4: Query Azure Cosmos DB from Azure Synapse Analytics
 
@@ -160,7 +160,7 @@ Now you're ready to query your Cosmos DB database from Azure Synapse Analytics.
 1. In the **Data** pane, select the **Sales** container, and in its **...** menu, select **New Notebook** > **Load to DataFrame**.
 2. In the new **Notebook 1** tab that opens, in the **Attach to** list, select your Spark pool (**spark*xxxxxxx***). Then use the **&#9655; Run all** button to run all of the cells in the notebook (there's currently only one!).
 
-   >**Note**: If don't find the **Attach to** option, kindly collapse **Data** pane to view **Attach to** option next to outline option.
+   >**Note**: If you don't find the **Attach to** option, kindly collapse **Data** pane to view **Attach to** option next to outline option.
    
    >**Note**: Since this is the first time you've run any Spark code in this session, the Spark pool must be started. This means that the first run in the session can take a few minutes. Subsequent runs will be quicker.
 
