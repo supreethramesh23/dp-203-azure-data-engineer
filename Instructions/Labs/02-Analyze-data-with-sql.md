@@ -2,7 +2,7 @@
 
 SQL is probably the most used language for working with data in the world. Most data analysts are proficient in using SQL queries to retrieve, filter, and aggregate data - most commonly in relational databases. As organizations increasingly take advantage of scalable file storage to create data lakes, SQL is often still the preferred choice for querying the data. Azure Synapse Analytics provides serverless SQL pools that enable you to decouple the SQL query engine from the data storage and run queries against data files in common file formats such as delimited text and Parquet.
 
-## Task-01: Provision an Azure Synapse Analytics workspace
+## Task 1: Provision an Azure Synapse Analytics workspace
 
 You'll need an Azure Synapse Analytics workspace with access to data lake storage. You can use the built-in serverless SQL pool to query files in the data lake.
 
@@ -37,11 +37,11 @@ In this exercise, you'll use a combination of a PowerShell script and an ARM tem
 
 7. Wait for the script to complete - this typically takes around 10 minutes, but in some cases may take longer. While you are waiting, review the [Serverless SQL pool in Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) article in the Azure Synapse Analytics documentation.
 
-## Task-02: Query data in files
+## Task 2: Query data in files
 
 The script provisions an Azure Synapse Analytics workspace and an Azure Storage account to host the data lake, then uploads some data files to the data lake.
 
-### Task-02.1: View files in the data lake
+### Task 2.1: View files in the data lake
 
 1. After the script has completed, in the Azure portal, go to the **dp500-*xxxxxxx*** resource group that it created, and select your Synapse workspace.
 
@@ -69,7 +69,7 @@ The script provisions an Azure Synapse Analytics workspace and an Azure Storage 
 
 13. Return to the **sales** folder so you can see the **csv**, **json**, and **parquet** folders.
 
-### Task-02.2: Use SQL to query CSV files
+### Task 2.2: Use SQL to query CSV files
 
 1. Select the **csv** folder, and then in the **New SQL script** list on the toolbar, select **Select TOP 100 rows**.
 
@@ -129,7 +129,7 @@ The script provisions an Azure Synapse Analytics workspace and an Azure Storage 
 
 8. Publish the changes to your script, and then close the script pane.
 
-### Task-02.3: Use SQL to query parquet files
+### Task 2.3: Use SQL to query parquet files
 
 While CSV is an easy format to use, it's common in big data processing scenarios to use file formats that are optimized for compression, indexing, and partitioning. One of the most common of these formats is *parquet*.
 
@@ -189,7 +189,7 @@ While CSV is an easy format to use, it's common in big data processing scenarios
 
 7. Name your script **Sales Parquet query**, and publish it. Then close the script pane.
 
-### Task-02.4: Use SQL to query JSON files
+### Task 2.4: Use SQL to query JSON files
 
 JSON is another popular data format, so it;s useful to be able to query .json files in a serverless SQL pool.
 
@@ -251,11 +251,11 @@ JSON is another popular data format, so it;s useful to be able to query .json fi
 
 7. Name your script **Sales JSON query**, and publish it. Then close the script pane.
 
-## Task-03: Access external data in a database
+## Task 3: Access external data in a database
 
 So far, you've used the OPENROWSET function in a SELECT query to retrieve data from files in a data lake. The queries have been run in the context of the **master** database in your serverless SQL pool. This approach is fine for an initial exploration of the data, but if you plan to create more complex queries it may be more effective to use the *PolyBase* capability of Synapse SQL to create objects in a database that reference the external data location.
 
-### Task-03.1: Create an external data source
+### Task 3.1: Create an external data source
 
 By defining an external data source in a database, you can use it to reference the data lake location where the files are stored.
 
@@ -313,7 +313,7 @@ By defining an external data source in a database, you can use it to reference t
     WHERE orders.filepath(1) = '2019'
     ```
 
-### Task-03.2: Create an external table
+### Task 3.2: Create an external table
 
 The external data source makes it easier to access the files in the data lake, but most data analysts using SQL are used to working with tables in a database. Fortunately, you can also define external file formats and external tables that encapsulate rowsets from files in database tables.
 
@@ -357,7 +357,7 @@ The external data source makes it easier to access the files in the data lake, b
 
 4. Run the SELECT script that has been generated, and verify that it retrieves the first 100 rows of data from the table, which in turn references the files in the data lake.
 
-## Task-04: Visualize query results
+## Task 4: Visualize query results
 
 Now that you've explored various ways to query files in the data lake by using SQL queries, you can analyze the results of these queries to gain insights into the data. Often, insights are easier to uncover by visualizing the query results in a chart; which you can easily do by using the integrated charting functionality in the Synapse Studio query editor.
 
