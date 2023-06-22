@@ -58,7 +58,7 @@ Before you can use Synapse Link for Azure Cosmos DB, you must enable it in your 
 
 1. Return to the **Data Explorer** page, and use the **new Container** button (or tile) to create a new container with the following settings:
     - **Database id**: *(Create new)* AdventureWorks
-    - **Share throughput across containers**: <u>Un</u>selected
+    - **Share throughput across containers**: Unselected
     - **Container id**: Sales
     - **Partition key**: /customerid
     - **Container throughput (autoscale)**: Autoscale
@@ -322,7 +322,8 @@ Now you're ready to query your Cosmos DB database from Azure Synapse Analytics.
                     SERVER_CREDENTIAL = 'cosmosxxxxxxxx'
     ) AS [Sales]
     ```
-
+     >**Note**:Please review the code before executing the query provided. If the query fails to execute successfully, you will not be able to proceed any further.
+     
 7. Use the **&#9655; Run** button to run the script, and review the results, which should include three records; one for each of the items you added to the Cosmos DB database.
 
     Now that you have created the credential, you can use it in any query against the Cosmos DB data source.
