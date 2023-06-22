@@ -27,7 +27,7 @@ $resourceGroupName = "dp203-$suffix"
 Write-Host "Finding an available region. This may take several minutes...";
 $delay = 0, 30, 60, 90, 120 | Get-Random
 Start-Sleep -Seconds $delay # random delay to stagger requests from multi-student classes
-$preferred_list = "australiaeast","centralus","southcentralus","eastus2","northeurope","southeastasia","uksouth","westeurope","westus","westus2", "eastus"
+$preferred_list = "australiaeast","centralus","southcentralus","eastus2","northeurope","southeastasia","uksouth","westeurope","westus","westus2","eastus"
 $locations = Get-AzLocation | Where-Object {
     $_.Providers -contains "Microsoft.Synapse" -and
     $_.Providers -contains "Microsoft.Sql" -and
@@ -130,7 +130,7 @@ sleep 3
 sqlcmd -S "$synapseWorkspace.sql.azuresynapse.net" -U $sqlUser -P $sqlPassword -d $sqlDatabaseName -I -i dedicated.sql
 
 
-Sleep 5
+sleep 5
 
 # Pause SQL Pool
 write-host "Pausing the $sqlDatabaseName SQL Pool..."
@@ -145,3 +145,5 @@ write-host "SQL Server User = $sqlUser"
 write-host "SQL Password = $sqlPassword"
 
 write-host "Script completed at $(Get-Date)"
+
+
