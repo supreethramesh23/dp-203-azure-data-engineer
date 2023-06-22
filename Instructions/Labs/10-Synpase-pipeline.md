@@ -1,16 +1,16 @@
 # Lab 10: Build a data pipeline in Azure Synapse Analytics
 
-In this exercise, you'll load data into a dedicated SQL Pool using a pipeline in Azure Synapse Analytics Explorer. The pipeline will encapsulate a data flow that loads product data into a table in a data warehouse.
+In this lab, you'll load data into a dedicated SQL Pool using a pipeline in Azure Synapse Analytics Explorer. The pipeline will encapsulate a data flow that loads product data into a table in a data warehouse.
 
 ## Task 1: Provision an Azure Synapse Analytics workspace
 
 You'll need an Azure Synapse Analytics workspace with access to data lake storage and a dedicated SQL pool hosting a relational data warehouse.
 
-In this exercise, you'll use a combination of a PowerShell script and an ARM template to provision an Azure Synapse Analytics workspace.
+In this task, you'll use a combination of a PowerShell script and an ARM template to provision an Azure Synapse Analytics workspace.
 
-1. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a ***PowerShell*** environment and click on **Create storage** if prompted. The Cloud Shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
-
-    ![Azure portal with a cloud shell pane](./images/cloud-shell.png)
+1. Click on the **Cloud Shell** button **[\>_]**  to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, select ***PowerShell*** environment and click on **Create Storage** if prompted. The Cloud Shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
+         
+   ![Azure portal with a cloud shell pane](./images/cloud-shell.png)
 
     > **Note**: If you have previously created a cloud shell that uses a *Bash* environment, use the drop-down menu at the top left of the cloud shell pane to change it to ***PowerShell***.
 
@@ -225,5 +225,6 @@ Now you're ready to publish and run the pipeline.
     The pipeline may take five minutes or longer to complete. You can use the **&#8635; Refresh** button on the toolbar to check its status.
 
 5. When the pipeline run has succeeded, on the **Data** page, use the **...** menu for the **dbo.DimProduct** table in your SQL database to run a query that selects the top 100 rows. The table should contain the data loaded by the pipeline.
-   
+
+### You have successfully completed the lab.
 
