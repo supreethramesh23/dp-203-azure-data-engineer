@@ -130,10 +130,18 @@ sleep 3
 sqlcmd -S "$synapseWorkspace.sql.azuresynapse.net" -U $sqlUser -P $sqlPassword -d $sqlDatabaseName -I -i dedicated.sql
 
 
+Sleep 5
+
 # Pause SQL Pool
 write-host "Pausing the $sqlDatabaseName SQL Pool..."
 Suspend-AzSynapseSqlPool -WorkspaceName $synapseWorkspace -Name $sqlDatabaseName -AsJob
 
+
+write-host "Resource Group Name =  $resourceGroupName"
+write-host "Synapse Workspace Name =  $synapseWorkspace"
+write-host "Purview AccountName =  $purviewAccountName"
+write-host "Data Lake Account Name = $dataLakeAccountName"
+write-host "SQL Server User = $sqlUser"
+write-host "SQL Password = $sqlPassword"
+
 write-host "Script completed at $(Get-Date)"
-
-
