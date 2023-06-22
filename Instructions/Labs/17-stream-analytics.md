@@ -49,7 +49,7 @@ Before creating an Azure Stream Analytics job to process real-time data, let's t
 
 3. Observe the sales order data as it is sent - each order consists of a product ID and a quantity. The app will end after sending 1000 orders, which takes a minute or so.
 
-## Task 03: Create an Azure Stream Analytics job
+## Task 3: Create an Azure Stream Analytics job
 
 Now you're ready to create an Azure Stream Analytics job to process the sales transaction data as it arrives in the event hub.
 
@@ -67,7 +67,7 @@ Now you're ready to create an Azure Stream Analytics job to process the sales tr
         - *None*
 2. Wait for deployment to complete and then go to the deployed Stream Analytics job resource.
 
-## Task 04: Create an input for the event stream
+## Task 4: Create an input for the event stream
 
 Your Azure Stream Analytics job must get input data from the event hub where the sales orders are recorded.
 
@@ -85,7 +85,7 @@ Your Azure Stream Analytics job must get input data from the event hub where the
     
 2. Save the input and wait while it is created. You will see several notifications. Wait for a **Successful connection test** notification.
 
-## Task 05: Create an output for the blob store
+## Task 5: Create an output for the blob store
 
 You will store the aggregated sales order data in JSON format in an Azure Storage blob container.
 
@@ -107,7 +107,7 @@ You will store the aggregated sales order data in JSON format in an Azure Storag
     - **Maximum time**: 0 Hours, 1 minutes, 0 seconds
 2. Save the output and wait while it is created. You will see several notifications. Wait for a **Successful connection test** notification.
 
-## Task 06: Create a query
+## Task 6: Create a query
 
 Now that you have defined an input and an output for your Azure Stream Analytics job, you can use a query to select, filter, and aggregate data from the input and send the results to the output.
 
@@ -137,7 +137,7 @@ Now that you have defined an input and an output for your Azure Stream Analytics
 
 6. Save the query.
 
-## Task 07: Run the streaming job
+## Task 7: Run the streaming job
 
 OK, now you're ready to run the job and process some real-time sales order data.
 
