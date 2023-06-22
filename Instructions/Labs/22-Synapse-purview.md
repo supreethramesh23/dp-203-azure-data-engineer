@@ -35,7 +35,7 @@ In this exercise, you'll use Microsoft Purview to track assets and data lineage 
 
 8. Wait for the script to complete - this typically takes around 15 minutes, but in some cases may take longer. While you are waiting, review the [What's available in the Microsoft Purview governance portal?](https://docs.microsoft.com/azure/purview/overview) article in the Microsoft Purview documentation.
 
-> **Note**: After running the setup script, if you are presented with errors regarding failure of lakedb resource not being deployed; please consider deleting the **dp-203-xxxxxx** resource group and then re-run the psscript.
+> **Note**: After running the setup script, if you are presented with errors regarding failure of lakedb resource not being deployed/available; please consider deleting the **dp-203-xxxxxx** resource group and then re-run the psscript.
 
 > **Tip**: If, after running the setup script you decide not to complete the lab, be sure to delete the **dp203-*xxxxxxx*** resource group that was created in your Azure subscription to avoid unnecessary Azure costs.
 
