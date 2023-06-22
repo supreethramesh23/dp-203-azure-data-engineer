@@ -154,7 +154,7 @@ To load the data in the text file into the database table, you will implement an
 
     ![Screenshot of a data flow with two sources and a lookup.](./images/dataflow_lookup.png)
 
-    The lookup returns a set of columns from *both* sources, essentially forming an outer join that matches the **ProductID** column in the text file to the **ProductAltKey** column in the data warehouse table. When a product with the alternate key already exists in the table, the dataset will include the values from both sources. When the product dos not already exist in the data warehouse, the dataset will contain NULL values for the table columns.
+    >**Note**: The lookup returns a set of columns from *both* sources, essentially forming an outer join that matches the **ProductID** column in the text file to the **ProductAltKey** column in the data warehouse table. When a product with the alternate key already exists in the table, the dataset will include the values from both sources. When the product dos not already exist in the data warehouse, the dataset will contain NULL values for the table columns.
 
 ### Task 3.5: Add an Alter Row
 
@@ -166,11 +166,11 @@ To load the data in the text file into the database table, you will implement an
     - **Alter row conditions**: Edit the existing condition and use the **+** button to add a second condition as follows (note that the expressions are *case-sensitive*):
         - InsertIf: `isNull(ProductKey)`
         - UpsertIf: `not(isNull(ProductKey))`
-3. verify that the data flow looks like this:
+3. Verify that the data flow looks like this:
 
     ![Screenshot of a data flow with two sources, a lookup, and an alter row.](./images/dataflow_alterrow.png)
 
-    The alter row step configures the kind of load action to perform for each row. Where there's no existing row in the table (the **ProductKey** is NULL), the row from the text file will be inserted. Where there's already a row for the product, an *upsert* will be performed to update the existing row. This configuration essentially applies a *type 1 slowly changing dimension update*.
+    >**Note**: The alter row step configures the kind of load action to perform for each row. Where there's no existing row in the table (the **ProductKey** is NULL), the row from the text file will be inserted. Where there's already a row for the product, an *upsert* will be performed to update the existing row. This configuration essentially applies a *type 1 slowly changing dimension update*.
 
 ### Task 3.6: Add a sink
 
@@ -218,11 +218,11 @@ Now you're ready to publish and run the pipeline.
 2. When publishing is complete, close the **LoadProductsData** data flow pane and return to the **Load Product Data** pipeline pane.
 3. At the top of the pipeline designer pane, select **Add trigger** menu, click **Trigger now**. Then select **OK** to confirm you want to run the pipeline.
 
-    **Note**: You can also create a trigger to run the pipeline at a scheduled time or in response to a specific event.
+    >**Note**: You can also create a trigger to run the pipeline at a scheduled time or in response to a specific event.
 
 4. When the pipeline has started running, on the **Monitor** page, view the **Pipeline runs** tab and review the status of the **Load Product Data** pipeline.
 
-    The pipeline may take five minutes or longer to complete. You can use the **&#8635; Refresh** button on the toolbar to check its status.
+    >**Note**: The pipeline may take five minutes or longer to complete. You can use the **&#8635; Refresh** button on the toolbar to check its status.
 
 5. When the pipeline run has succeeded, on the **Data** page, use the **...** menu for the **dbo.DimProduct** table in your SQL database to run a query that selects the top 100 rows. The table should contain the data loaded by the pipeline.
 
