@@ -16,7 +16,7 @@ In this exercise, you'll use Microsoft Purview to track assets and data lineage 
 
 3. In the PowerShell pane, enter the following commands to clone this repo:
 
-    ```powershell 
+    ```powershell
     rm -r dp-203 -f
     git clone https://github.com/CloudLabs-MOC/dp-203-azure-data-engineer dp-203
     
@@ -24,7 +24,7 @@ In this exercise, you'll use Microsoft Purview to track assets and data lineage 
 
 4. After the repo has been cloned, enter the following commands to change to the folder for this lab and run the **setup.ps1** script it contains:
 
-    ```
+    ```powershell
     cd dp-203/Allfiles/labs/22
     ./setup.ps1
     ```
