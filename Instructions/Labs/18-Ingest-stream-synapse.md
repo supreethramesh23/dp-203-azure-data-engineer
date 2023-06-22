@@ -100,7 +100,7 @@ Let's start by ingesting a stream of data directly into a table in an Azure Syna
     - **Encoding**: UTF-8
 2. Save the input and wait while it is created. You will see several notifications. Wait for a **Successful connection test** notification.
 
-   > **Note**: If you are shown with a notification stating **Failed to add identity to job**, you can delete the created input named **orders** and then re-execute this sub-task such that the managed identity is assigned successfully.
+   > **Note**: If you are shown with a notification stating **Failed to add identity to job**, you can delete the created input named **orders**. Refresh the synapse studio browser and then re-execute this sub-task such that the managed identity is assigned successfully.
 
 ### Task 2.4: Create an output for the SQL table
 
