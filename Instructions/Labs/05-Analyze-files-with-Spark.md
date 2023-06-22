@@ -2,7 +2,7 @@
 
 Apache Spark is an open source engine for distributed data processing, and is widely used to explore, process, and analyze huge volumes of data in data lake storage. Spark is available as a processing option in many data platform products, including Azure HDInsight, Azure Databricks, and Azure Synapse Analytics on the Microsoft Azure cloud platform. One of the benefits of Spark is support for a wide range of programming languages, including Java, Scala, Python, and SQL; making Spark a very flexible solution for data processing workloads including data cleansing and manipulation, statistical analysis and machine learning, and data analytics and visualization.
 
-## Task-01: Provision an Azure Synapse Analytics workspace
+## Task 1: Provision an Azure Synapse Analytics workspace
 
 You'll need an Azure Synapse Analytics workspace with access to data lake storage and an Apache Spark pool that you can use to query and process files in the data lake.
 
@@ -37,11 +37,11 @@ In this exercise, you'll use a combination of a PowerShell script and an ARM tem
 
 7. Wait for the script to complete - this typically takes around 10 minutes, but in some cases may take longer. While you are waiting, review the [Apache Spark in Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics/spark/apache-spark-overview) article in the Azure Synapse Analytics documentation.
 
-## Task-02: Query data in files
+## Task 2: Query data in files
 
 The script provisions an Azure Synapse Analytics workspace and an Azure Storage account to host the data lake, then uploads some data files to the data lake.
 
-### Task-02.1: View files in the data lake
+### Task 2.1: View files in the data lake
 
 1. After the script has been completed, in the Azure portal, go to the **dp500-xxxxxxx** resource group that it created, and select your Synapse workspace.
 
@@ -61,7 +61,7 @@ The script provisions an Azure Synapse Analytics workspace and an Azure Storage 
 
 9. Right-click any of the files and select **Preview** to see the data it contains. Note that the files do not contain a header row, so you can unselect the option to display column headers.
 
-### Task-02.2: Use Spark to explore data
+### Task 2.2: Use Spark to explore data
 
 1. Select any of the files in the **orders** folder, and then in the **New notebook** list on the toolbar, select **Load to DataFrame**. A dataframe is a structure in Spark that represents a tabular dataset.
 
@@ -126,11 +126,11 @@ The script provisions an Azure Synapse Analytics workspace and an Azure Storage 
 
 9. Run the new cell and verify that the dataframe schema matches the **orderSchema** you defined. The **printSchema** function can be useful when using a dataframe with an automatically inferred schema.
 
-## Task-03: Analyze data in a dataframe
+## Task 3: Analyze data in a dataframe
 
 The **dataframe** object in Spark is similar to a Pandas dataframe in Python, and includes a wide range of functions that you can use to manipulate, filter, group, and otherwise analyze the data it contains.
 
-### Task-03.1: Filter a dataframe
+### Task 3.1: Filter a dataframe
 
 1. Add a new code cell to the notebook, and enter the following code in it:
 
@@ -157,7 +157,7 @@ The **dataframe** object in Spark is similar to a Pandas dataframe in Python, an
 
 4. Run the modified code to view the customers who have purchased the *Road-250 Red, 52* product. Note that you can "chain" multiple functions together so that the output of one function becomes the input for the next - in this case, the dataframe created by the **select** method is the source dataframe for the **where** method that is used to apply filtering criteria.
 
-### Task-03.2: Aggregate and group data in a dataframe
+### Task 3.2: Aggregate and group data in a dataframe
 
 1. Add a new code cell to the notebook, and enter the following code in it:
 
@@ -177,11 +177,11 @@ The **dataframe** object in Spark is similar to a Pandas dataframe in Python, an
 
 4. Run the code cell you added, and note that the results show the number of sales orders per year. Note that the **select** method includes a SQL **year** function to extract the year component of the *OrderDate* field, and then an **alias** method is used to assign a columm name to the extracted year value. The data is then grouped by the derived *Year* column and the count of rows in each group is calculated before finally the **orderBy** method is used to sort the resulting dataframe.
 
-## Task-04: Query data using Spark SQL
+## Task 4: Query data using Spark SQL
 
 As you've seen, the native methods of the dataframe object enable you to query and analyze data quite effectively. However, many data analysts are more comfortable working with SQL syntax. Spark SQL is a SQL language API in Spark that you can use to run SQL statements, or even persist data in relational tables.
 
-### Task-04.1: Use Spark SQL in PySpark code
+### Task 4.1: Use Spark SQL in PySpark code
 
 The default language in Azure Synapse Studio notebooks is PySpark, which is a Spark-based Python runtime. Within this runtime, you can use the **spark.sql** library to embed Spark SQL syntax within your Python code, and work with SQL constructs such as tables and views.
 
@@ -199,7 +199,7 @@ The default language in Azure Synapse Studio notebooks is PySpark, which is a Sp
     - The **spark.sql** method is then used to run a SQL query against the **salesorders** view.
     - The results of the query are stored in a dataframe.
 
-### Task-04.2: Run SQL code in a cell
+### Task 4.2: Run SQL code in a cell
 
 While it's useful to be able to embed SQL statements into a cell containing PySpark code, data analysts often just want to work directly in SQL.
 
@@ -221,11 +221,11 @@ While it's useful to be able to embed SQL statements into a cell containing PySp
 
 > **Note**: For more information about Spark SQL and dataframes, see the [Spark SQL documentation](https://spark.apache.org/docs/2.2.0/sql-programming-guide.html).
 
-## Task-05: Visualize data with Spark
+## Task 5: Visualize data with Spark
 
 A picture is proverbially worth a thousand words, and a chart is often better than a thousand rows of data. While notebooks in Azure Synapse Analytics include a built in chart view for data that is displayed from a dataframe or Spark SQL query, it is not designed for comprehensive charting. However, you can use Python graphics libraries like **matplotlib** and **seaborn** to create charts from data in dataframes.
 
-### Task-05.1: View results as a chart
+### Task 5.1: View results as a chart
 
 1. Add a new code cell to the notebook, and enter the following code in it:
 
@@ -250,7 +250,7 @@ A picture is proverbially worth a thousand words, and a chart is often better th
 
     ![A bar chart of products by total order quantiies](./images/notebook-chart-(1).png)
 
-### Task-05.2: Get started with **matplotlib**
+### Task 5.2: Get started with **matplotlib**
 
 1. Add a new code cell to the notebook, and enter the following code in it:
 
@@ -369,7 +369,7 @@ A picture is proverbially worth a thousand words, and a chart is often better th
 
 > **Note**: To learn more about plotting with matplotlib, see the [matplotlib documentation](https://matplotlib.org/).
 
-### Task-05.3: Use the **seaborn** library
+### Task 5.3: Use the **seaborn** library
 
 While **matplotlib** enables you to create complex charts of multiple types, it can require some complex code to achieve the best results. For this reason, over the years, many new libraries have been built on the base of matplotlib to abstract its complexity and enhance its capabilities. One such library is **seaborn**.
 
