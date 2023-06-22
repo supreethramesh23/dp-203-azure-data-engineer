@@ -2,7 +2,7 @@
 
 In this exercise, you'll provision an Azure Stream Analytics job in your Azure subscription, and use it to query and summarize a stream of real-time event data and store the results in Azure Storage.
 
-## Task 01: Provision Azure resources
+## Task 1: Provision Azure resources
 
 In this exercise, you'll capture a stream of simulated sales transaction data, process it, and store the results in a blob container in Azure Storage. You'll need an Azure Event Hubs namespace to which streaming data can be sent, and an Azure Storage account in which the results of stream processing will be stored.
 
@@ -33,7 +33,7 @@ You'll use a combination of a PowerShell script and an ARM template to provision
 5. If prompted, choose which subscription you want to use (this will only happen if you have access to multiple Azure subscriptions).
 6. Wait for the script to complete - this typically takes around 5 minutes, but in some cases may take longer. While you are waiting, review the [Welcome to Azure Stream Analytics](https://learn.microsoft.com/azure/stream-analytics/stream-analytics-introduction) article in the Azure Stream Analytics documentation.
 
-## Task 02: View the streaming data source
+## Task 2: View the streaming data source
 
 Before creating an Azure Stream Analytics job to process real-time data, let's take a look at the data stream it will need to query.
 
@@ -49,7 +49,7 @@ Before creating an Azure Stream Analytics job to process real-time data, let's t
 
 3. Observe the sales order data as it is sent - each order consists of a product ID and a quantity. The app will end after sending 1000 orders, which takes a minute or so.
 
-## Task 03: Create an Azure Stream Analytics job
+## Task 3: Create an Azure Stream Analytics job
 
 Now you're ready to create an Azure Stream Analytics job to process the sales transaction data as it arrives in the event hub.
 
@@ -67,7 +67,7 @@ Now you're ready to create an Azure Stream Analytics job to process the sales tr
         - *None*
 2. Wait for deployment to complete and then go to the deployed Stream Analytics job resource.
 
-## Task 04: Create an input for the event stream
+## Task 4: Create an input for the event stream
 
 Your Azure Stream Analytics job must get input data from the event hub where the sales orders are recorded.
 
@@ -85,7 +85,7 @@ Your Azure Stream Analytics job must get input data from the event hub where the
     
 2. Save the input and wait while it is created. You will see several notifications. Wait for a **Successful connection test** notification.
 
-## Task 05: Create an output for the blob store
+## Task 5: Create an output for the blob store
 
 You will store the aggregated sales order data in JSON format in an Azure Storage blob container.
 
@@ -107,7 +107,7 @@ You will store the aggregated sales order data in JSON format in an Azure Storag
     - **Maximum time**: 0 Hours, 1 minutes, 0 seconds
 2. Save the output and wait while it is created. You will see several notifications. Wait for a **Successful connection test** notification.
 
-## Task 06: Create a query
+## Task 6: Create a query
 
 Now that you have defined an input and an output for your Azure Stream Analytics job, you can use a query to select, filter, and aggregate data from the input and send the results to the output.
 
@@ -137,7 +137,7 @@ Now that you have defined an input and an output for your Azure Stream Analytics
 
 6. Save the query.
 
-## Task 07: Run the streaming job
+## Task 7: Run the streaming job
 
 OK, now you're ready to run the job and process some real-time sales order data.
 

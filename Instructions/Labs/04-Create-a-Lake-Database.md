@@ -2,7 +2,7 @@
 
 Azure Synapse Analytics enables you to combine the flexibility of file storage in a data lake with the structured schema and SQL querying capabilities of a relational database through the ability to create a *lake database*. A lake database is a relational database schema defined on a data lake file store that enables data storage to be separated from the compute used to query it. Lake databases combine the benefits of a structured schema that includes support for data types, relationships, and other features typically only found in relational database systems, with the flexibility of storing data in files that can be used independently of a relational database store. Essentially, the lake database "overlays" a relational schema onto files in folders in the data lake.
 
-## Task-01: Provision an Azure Synapse Analytics workspace
+## Task 1: Provision an Azure Synapse Analytics workspace
 
 To support a lake database, you need an Azure Synapse Analytics workspace with access to data lake storage. There is no need for a dedicated SQL pool, since you can define the lake database using the built-in serverless SQL pool. Optionally, you can also use a Spark pool to work with data in the lake database.
 
@@ -36,7 +36,7 @@ In this exercise, you'll use a combination of a PowerShell script and an ARM tem
 
 7. Wait for the script to complete - this typically takes around 10 minutes, but in some cases may take longer. While you are waiting, review the [Lake database](https://docs.microsoft.com/azure/synapse-analytics/database-designer/concepts-lake-database) and [Lake database templates](https://docs.microsoft.com/azure/synapse-analytics/database-designer/concepts-database-templates) articles in the Azure Synapse Analytics documentation.
 
-## Task-02: Modify container permissions
+## Task 2: Modify container permissions
 
 1. After the deployment script has completed, in the Azure portal, go to the **dp203-*xxxxxxx*** resource group that it created, and notice that this resource group contains your Synapse workspace, a Storage account for your data lake, and an Apache Spark pool.
 
@@ -52,7 +52,7 @@ In this exercise, you'll use a combination of a PowerShell script and an ARM tem
 
     ![Change to Azure AD user account](./images/dp203-switch-to-aad-user.png)
 
-## Task-03: Create a lake database
+## Task 3: Create a lake database
 
 A lake database is a type of database that you can define in your workspace, and work with using the built-in serverless SQL pool.
 
@@ -74,11 +74,11 @@ A lake database is a type of database that you can define in your workspace, and
 
 9.  In the **files** tab that has opened, select **More** dropdown, then **New folder** button to create a new folder named **RetailDB** - this will be the input folder for the data files used by tables in your database.
 
-## Task-04: Create a table
+## Task 4: Create a table
 
 Now that you have created a lake database, you can define its schema by creating tables.
 
-### Task-04.1: Define the table schema
+### Task 4.1: Define the table schema
 
 1. Switch back to the **RetailDB** tab for your database definition, and in the **+ Table** list, select **Custom**, and note that a new table named **Table_1** is added to your database.
 
@@ -101,7 +101,7 @@ Now that you have created a lake database, you can define its schema by creating
 
 8. In the **Data** pane on the left, switch back to the **Workspace** tab so you can see the **RetailDB** lake database. Then expand it and refresh its **Tables** folder to see the newly created **Customer** table.
 
-### Task-04.2: Load data into the table's storage path
+### Task 4.2: Load data into the table's storage path
 
 1. In the main pane, switch back to the **files** tab, which contains the file system with the **RetailDB** folder. Then open the **RetailDB** folder and create a new folder named **Customer** in it. This is where the **Customer** table will get its data.
 
@@ -115,11 +115,11 @@ Now that you have created a lake database, you can define its schema by creating
 
 5. Close the **SQL script 1** tab, discarding your changes.
 
-## Task-05: Create a table from a database template
+## Task 5: Create a table from a database template
 
 As you've seen, you can create the tables you need in your lake database from scratch. However, Azure Synapse Analytics also provides numerous database templates based on common database workloads and entities that you can use as a starting point for your database schema.
 
-### Task-05.1: Define the table schema
+### Task 5.1: Define the table schema
 
 1. In the main pane, switch back to the **RetailDB** pane, which contains your database schema (currently containing only the **Customer** table).
 
@@ -150,7 +150,7 @@ As you've seen, you can create the tables you need in your lake database from sc
 
 10. In the **Data** pane on the left, switch back to the **Workspace** tab so you can see the **RetailDB** lake database. Then use the **...** menu for its **Tables** folder to refresh the view and see the newly created **Product** table.
 
-### Task-05.2: Load data into the table's storage path
+### Task 5.2: Load data into the table's storage path
 
 1. In the main pane, switch back to the **files** tab, which contains the file system, and navigate to the **files/RetailDB** folder, which currently contains the **Customer** folder for the table you created previously.
 
@@ -164,11 +164,11 @@ As you've seen, you can create the tables you need in your lake database from sc
 
 6. Close the **SQL script 1** tab, discarding your changes.
 
-## Task-06: Create a table from existing data
+## Task 6: Create a table from existing data
 
 So far, you've created tables and then populated them with data. In some cases, you may already have data in a data lake from which you want to derive a table.
 
-### Task-06.1: Upload data
+### Task 6.1: Upload data
 
 1. In the main pane, switch back to the **files** tab, which contains the file system, and navigate to the **files/RetailDB** folder, which currently contains the **Customer** and **Product** folders for the tables you created previously.
 
@@ -178,7 +178,7 @@ So far, you've created tables and then populated them with data. In some cases, 
 
 4. Download the **salesorder.csv** data file from [https://raw.githubusercontent.com/MicrosoftLearning/dp-203-azure-data-engineer/master/Allfiles/labs/04/data/salesorder.csv](https://raw.githubusercontent.com/MicrosoftLearning/dp-203-azure-data-engineer/master/Allfiles/labs/04/data/salesorder.csv) and save it in a folder on your local computer (it doesn't matter where). Then in the **SalesOrder** folder in Synapse Explorer, use the **&#10514; Upload** button to upload the **salesorder.csv** file to the **RetailDB/SalesOrder** folder in your data lake.
 
-### Task-06.2: Create a table
+### Task 6.2: Create a table
 
 1. In the main pane, switch back to the **RetailDB** pane, which contains your database schema (currently containing the **Customer** and **Product** tables).
 2. In the **+ Table** menu, select **From data lake**. Then in the **Create external table from data lake** pane, specify the following options:
@@ -212,11 +212,11 @@ So far, you've created tables and then populated them with data. In some cases, 
 
 8. In the **Data** pane on the left, switch back to the **Workspace** tab so you can see the **RetailDB** lake database. Then use the **...** menu for its **Tables** folder to refresh the view and see the newly created **SalesOrder** table.
 
-## Task-07: Work with lake database tables
+## Task 7: Work with lake database tables
 
 Now that you have some tables in your database, you can use them to work with the underlying data.
 
-### Task-07.1: Query tables using SQL
+### Task 7.1: Query tables using SQL
 
 1. In Synapse Studio, select the **Develop** page.
 
@@ -239,7 +239,7 @@ Now that you have some tables in your database, you can use them to work with th
 
 6. Close the **SQL script 1** pane, discarding your changes.
 
-### Task-07.2: Insert data using Spark
+### Task 7.2: Insert data using Spark
 
 1. In the **Develop** pane, in the **+** menu, select **Notebook**.
 

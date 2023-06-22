@@ -67,7 +67,7 @@ To load the data in the text file into the database table, you will implement an
 2. In the **Properties** pane for your new pipeline, change its name from **Pipeline1** to **Load Product Data**. Then use the **Properties** button above the **Properties** pane to hide it.
 3. In the **Activities** pane, expand **Move & transform**; and then drag a **Data flow** to the pipeline design surface as shown here:
 
-    ![Screenshot of a pipeline with a data flow activity.](./images/dataflow.png)
+    ![Screenshot of a pipeline with a data flow activity.](./images/dataflow(1).png)
 
 4. Under the pipeline design surface, in the **General** tab(at the bottom of the page), set the **Name** property to **LoadProducts**.
 5. On the **Settings** tab, at the bottom of the list of settings, expand **Staging** and set the following staging settings:
@@ -79,7 +79,7 @@ To load the data in the text file into the database table, you will implement an
 1. At the top of the **Settings** tab for the **LoadProducts** data flow, for the **Data flow** property, select **+ New**.
 2. In the **Properties** pane for the new data flow design surface that opens, set the **Name** to **LoadProductsData** and then hide the **Properties** pane. The data flow designer should look like this:
 
-    ![Screenshot of an empty data flow activity.](./images/empty-dataflow.png)
+    ![Screenshot of an empty data flow activity.](./images/empty-dataflow(1).png)
 
 ### Task 3.3: Add sources
 
@@ -136,7 +136,7 @@ To load the data in the text file into the database table, you will implement an
     - **Discontinued**: boolean
 5. Verify that your data flow contains two sources, as shown here:
 
-    ![Screenshot of a data flow with two sources.](./images/dataflow_sources.png)
+    ![Screenshot of a data flow with two sources.](./images/dataflow_sources(1).png)
 
 ### Task 3.4: Add a Lookup
 
@@ -152,7 +152,7 @@ To load the data in the text file into the database table, you will implement an
     - **Lookup conditions**: ProductID == ProductAltKey
 3. Verify that your data flow looks like this:
 
-    ![Screenshot of a data flow with two sources and a lookup.](./images/dataflow_lookup.png)
+    ![Screenshot of a data flow with two sources and a lookup.](./images/dataflow_lookup(1).png)
 
     >**Note**: The lookup returns a set of columns from *both* sources, essentially forming an outer join that matches the **ProductID** column in the text file to the **ProductAltKey** column in the data warehouse table. When a product with the alternate key already exists in the table, the dataset will include the values from both sources. When the product dos not already exist in the data warehouse, the dataset will contain NULL values for the table columns.
 
@@ -168,7 +168,7 @@ To load the data in the text file into the database table, you will implement an
         - UpsertIf: `not(isNull(ProductKey))`
 3. Verify that the data flow looks like this:
 
-    ![Screenshot of a data flow with two sources, a lookup, and an alter row.](./images/dataflow_alterrow.png)
+    ![Screenshot of a data flow with two sources, a lookup, and an alter row.](./images/dataflow_alterrow(1).png)
 
     >**Note**: The alter row step configures the kind of load action to perform for each row. Where there's no existing row in the table (the **ProductKey** is NULL), the row from the text file will be inserted. Where there's already a row for the product, an *upsert* will be performed to update the existing row. This configuration essentially applies a *type 1 slowly changing dimension update*.
 
@@ -194,7 +194,7 @@ To load the data in the text file into the database table, you will implement an
     - ProductsText@Discontinued: Discontinued
 5. Verify that your data flow looks like this:
 
-    ![Screenshot of a data flow with two sources, a lookup, an alter row, and a sink.](./images/dataflow-sink.png)
+    ![Screenshot of a data flow with two sources, a lookup, an alter row, and a sink.](./images/dataflow-sink(1).png)
 
     >**Note**: In the output column section if there is any extra column apart from the above mentioned column, kindly delete it.
 
@@ -227,4 +227,5 @@ Now you're ready to publish and run the pipeline.
 5. When the pipeline run has succeeded, on the **Data** page, use the **...** menu for the **dbo.DimProduct** table in your SQL database to run a query that selects the top 100 rows. The table should contain the data loaded by the pipeline.
 
 ### You have successfully completed the lab.
+
 
