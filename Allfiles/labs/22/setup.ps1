@@ -20,7 +20,7 @@ foreach ($provider in $provider_list){
 }
 
 # Generate unique random suffix
-$suffix = "((Get-AzResourceGroup -Name 'DP-203').Tags).DeploymentId"
+$suffix = ((Get-AzResourceGroup -Name 'DP-203').Tags).DeploymentId
 $resourceGroupName = "dp203-$suffix"
 
 # Choose a random region
