@@ -8,7 +8,7 @@ In this exercise, you'll use Azure Stream Analytics to process a  stream of sale
 
 This exercise should take approximately **45** minutes to complete.
 
-## Provision Azure resources
+## Task 1: Provision Azure resources
 
 In this exercise, you'll need an Azure Synapse Analytics workspace with access to data lake storage and a dedicated SQL pool. You'll also need an Azure Event Hubs namespace to which the streaming order data can be sent.
 
@@ -43,11 +43,11 @@ You'll use a combination of a PowerShell script and an ARM template to provision
 
 7. Wait for the script to complete - this typically takes around 15 minutes, but in some cases may take longer. While you are waiting, review the [Welcome to Azure Stream Analytics](https://learn.microsoft.com/azure/stream-analytics/stream-analytics-introduction) article in the Azure Stream Analytics documentation.
 
-## Ingest streaming data into a dedicated SQL pool
+## Task 2: Ingest streaming data into a dedicated SQL pool
 
 Let's start by ingesting a stream of data directly into a table in an Azure Synapse Analytics dedicated SQL pool.
 
-### View the streaming source and database table
+### Task 2.1: View the streaming source and database table
 
 1. When the setup script has finished running, minimize the cloud shell pane (you'll return to it later). Then in the Azure portal, go to the **dp203-*xxxxxxx*** resource group that it created, and notice that this resource group contains an Azure Synapse workspace, a Storage account for your data lake, a Dedicated SQL pool, and an Event Hubs namespace.
 2. Select your Synapse workspace, and in its **Overview** page, in the **Open Synapse Studio** card, select **Open** to open Synapse Studio in a new browser tab. Synapse Studio is a web-based interface that you can use to work with your Synapse Analytics workspace.
@@ -65,7 +65,7 @@ Let's start by ingesting a stream of data directly into a table in an Azure Syna
 9. In Synapse Studio, on the **Manage** page, ensure that your dedicated SQL pool has a status of **Online**, then switch to the **data** page and in the **Workspace** pane, expand **SQL database**, your **sql*xxxxxxx*** SQL pool, and **Tables** to see the **dbo.FactOrder** table.
 10. In the **...** menu for the **dbo.FactOrder** table, select **New SQL script** > **Select TOP 100 rows** and review the results. Observe that the table includes columns for **OrderDateTime**, **ProductID**, and **Quantity** but there are currently no rows of data.
 
-### Create an Azure Stream Analytics job to ingest order data
+### Task 2.2: Create an Azure Stream Analytics job to ingest order data
 
 1. Switch back to the browser tab containing the Azure portal, and note the region where your **db000-*xxxxxxx*** resource group was provisioned - you will create your Stream Analytics job in the <u>same region</u>.
 2. On the **Home** page select **+ Create a resource** and search for `Stream Analytics job`. Then create a **Stream Analytics job** with the following properties:
@@ -85,7 +85,7 @@ Let's start by ingesting a stream of data directly into a table in an Azure Syna
         - *None*
 3. Wait for deployment to complete and then go to the deployed Stream Analytics job resource.
 
-### Create an input for the event data stream
+### Task 2.3: Create an input for the event data stream
 
 1. On the **ingest-orders** overview page, select **Add input**. Then  on the **Inputs** page, use the **Add stream input** menu to add an **Event Hub** input with the following properties:
     - **Input alias**: `orders`
@@ -100,7 +100,7 @@ Let's start by ingesting a stream of data directly into a table in an Azure Syna
     - **Encoding**: UTF-8
 2. Save the input and wait while it is created. You will see several notifications. Wait for a **Successful connection test** notification.
 
-### Create an output for the SQL table
+### Task 2.4: Create an output for the SQL table
 
 1. View the **Outputs** page for the **ingest-orders** Stream Analytics job. Then use the **Add** menu to add an **Azure Synapse Analytics** output with the following properties:
     - **Output alias**: `FactOrder`
@@ -113,7 +113,7 @@ Let's start by ingesting a stream of data directly into a table in an Azure Syna
     - **Table**: `FactOrder`
 2. Save the output and wait while it is created. You will see several notifications. Wait for a **Successful connection test** notification.
 
-### Create a query to ingest the event stream
+### Task 2.5: Create a query to ingest the event stream
 
 1. View the **Query** page for the **ingest-orders** Stream Analytics job. Then wait a few moments until the input preview is displayed (based on the sales order events previously captured in the event hub).
 2. Observe that the input data includes the **ProductID** and **Quantity** fields in the messages submitted by the client app, as well as additional Event Hubs fields - including the **EventProcessedUtcTime** field that indicates when the event was added to the event hub.
@@ -134,7 +134,7 @@ Let's start by ingesting a stream of data directly into a table in an Azure Syna
 
 4. Save the query.
 
-### Run the streaming job to ingest order data
+### Task 2.6: Run the streaming job to ingest order data
 
 1. View the **Overview** page for the **ingest-orders** Stream Analytics job, and on the **Properties** tab review the **Inputs**, **Query**, **Outputs**, and **Functions** for the job. If the number of **Inputs** and **Outputs** is 0, use the **&#8635; Refresh** button on the **Overview** page to display the **orders** input and **FactTable** output.
 2. Select the **&#9655; Start** button, and start the streaming job now. Wait until you are notified that the streaming job started successfully.
@@ -149,11 +149,11 @@ Let's start by ingesting a stream of data directly into a table in an Azure Syna
 6. On the **Manage** page, pause the **sql*xxxxxxx*** dedicated SQL pool (to prevent unnecessary Azure charges).
 7. Return to the browser tab containing the Azure Portal and minimize the cloud shell pane. Then use the **&#128454; Stop** button to stop the Stream Analytics job and wait for the notification that the Stream Analytics job has stopped successfully.
 
-## Summarize streaming data in a data lake
+## Task 3: Summarize streaming data in a data lake
 
 So far, you've seen how to use a Stream Analytics job to ingest messages from a streaming source into a SQL table. Now let's explore how to use Azure Stream Analytics to aggregate data over temporal windows - in this case, to calculate the total quantity of each product sold every 5 seconds. We'll also explore how to use a different kind of output for the job by writing the results in CSV format in a data lake blob store.
 
-### Create an Azure Stream Analytics job to aggregate order data
+### Task 3.1: Create an Azure Stream Analytics job to aggregate order data
 
 1. In the Azure portal, on the **Home** page select **+ Create a resource** and search for `Stream Analytics job`. Then create a **Stream Analytics job** with the following properties:
     - **Basics**:
@@ -173,7 +173,7 @@ So far, you've seen how to use a Stream Analytics job to ingest messages from a 
 
 2. Wait for deployment to complete and then go to the deployed Stream Analytics job resource.
 
-### Create an input for the raw order data
+### Task 3.2: Create an input for the raw order data
 
 1. On the **aggregate-orders** overview page, select **Add input**. Then  on the **Inputs** page, use the **Add stream input** menu to add an **Event Hub** input with the following properties:
     - **Input alias**: `orders`
@@ -188,7 +188,7 @@ So far, you've seen how to use a Stream Analytics job to ingest messages from a 
     - **Encoding**: UTF-8
 2. Save the input and wait while it is created. You will see several notifications. Wait for a **Successful connection test** notification.
 
-### Create an output for the data lake store
+### Task 3.3: Create an output for the data lake store
 
 1. View the **Outputs** page for the **aggregate-orders** Stream Analytics job. Then use the **Add** menu to add a **Blob storage/ADLS Gen2** output with the following properties:
     - **Output alias**: `datalake`
@@ -206,7 +206,7 @@ So far, you've seen how to use a Stream Analytics job to ingest messages from a 
     - **Maximum time**: 0 Hours, 1 minutes, 0 seconds
 2. Save the output and wait while it is created. You will see several notifications. Wait for a **Successful connection test** notification.
 
-### Create a query to aggregate the event data
+### Task 3.4: Create a query to aggregate the event data
 
 1. View the **Query** page for the **aggregate-orders** Stream Analytics job.
 2. Modify the default query as follows:
@@ -229,7 +229,7 @@ So far, you've seen how to use a Stream Analytics job to ingest messages from a 
 
 3. Save the query.
 
-### Run the streaming job to aggregate order data
+### Task 3.5: Run the streaming job to aggregate order data
 
 1. View the **Overview** page for the **aggregate-orders** Stream Analytics job, and on the **Properties** tab review the **Inputs**, **Query**, **Outputs**, and **Functions** for the job. If the number of **Inputs** and **Outputs** is 0, use the **&#8635; Refresh** button on the **Overview** page to display the **orders** input and **datalake** output.
 2. Select the **&#9655; Start** button, and start the streaming job now. Wait until you are notified that the streaming job started successfully.
