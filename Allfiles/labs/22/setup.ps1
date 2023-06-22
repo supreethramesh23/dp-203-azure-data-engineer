@@ -4,33 +4,11 @@ write-host "Starting script at $(Get-Date)"
 Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
 Install-Module -Name Az.Synapse -Force
 
+
 # Prompt user for a password for the SQL Database
 $sqlUser = "SQLUser"
 write-host ""
-$sqlPassword = ""
-$complexPassword = 0
-
-while ($complexPassword -ne 1)
-{
-    $SqlPassword = Read-Host "Enter a password to use for the $sqlUser login.
-    `The password must meet complexity requirements:
-    ` - Minimum 8 characters. 
-    ` - At least one upper case English letter [A-Z]
-    ` - At least one lower case English letter [a-z]
-    ` - At least one digit [0-9]
-    ` - At least one special character (!,@,#,%,^,&,$)
-    ` "
-
-    if(($SqlPassword -cmatch '[a-z]') -and ($SqlPassword -cmatch '[A-Z]') -and ($SqlPassword -match '\d') -and ($SqlPassword.length -ge 8) -and ($SqlPassword -match '!|@|#|%|\^|&|\$'))
-    {
-        $complexPassword = 1
-	    Write-Output "Password $SqlPassword accepted. Make sure you remember this!"
-    }
-    else
-    {
-        Write-Output "$SqlPassword does not meet the complexity requirements."
-    }
-}
+$sqlPassword = "Password.1!!"
 
 # Register resource providers
 Write-Host "Registering resource providers...";
@@ -42,13 +20,25 @@ foreach ($provider in $provider_list){
 }
 
 # Generate unique random suffix
-[string]$suffix =  -join ((48..57) + (97..122) | Get-Random -Count 7 | % {[char]$_})
-Write-Host "Your randomly-generated suffix for Azure resources is $suffix"
+$suffix = ((Get-AzResourceGroup -Name 'DP-203').Tags).DeploymentId
 $resourceGroupName = "dp203-$suffix"
 
-# Set a region
-$properties = az group list | ConvertFrom-Json
-$Region = $properties[1].location
+# Choose a random region
+Write-Host "Finding an available region. This may take several minutes...";
+$delay = 0, 30, 60, 90, 120 | Get-Random
+Start-Sleep -Seconds $delay # random delay to stagger requests from multi-student classes
+$preferred_list = "australiaeast","centralus","southcentralus","eastus2","northeurope","southeastasia","uksouth","westeurope","westus","westus2", "eastus"
+$locations = Get-AzLocation | Where-Object {
+    $_.Providers -contains "Microsoft.Synapse" -and
+    $_.Providers -contains "Microsoft.Sql" -and
+    $_.Providers -contains "Microsoft.Storage" -and
+    $_.Providers -contains "Microsoft.Compute" -and
+    $_.Providers -contains "Microsoft.Purview" -and
+    $_.Location -in $preferred_list
+}
+$max_index = $locations.Count - 1
+$rand = (0..$max_index) | Get-Random
+$Region = $locations.Get($rand).Location
 
 # Test for subscription Azure SQL capacity constraints in randomly selected regions
 # (for some subsription types, quotas are adjusted dynamically based on capacity)
@@ -124,17 +114,36 @@ Get-ChildItem "./data/*.csv" -File | Foreach-Object {
     Set-AzStorageBlobContent -File $_.FullName -Container "files" -Blob $blobPath -Context $storageContext
 }
 
+
+sleep 15
+
+
 # Create database
 write-host "Creating databases..."
 $serverlessSQL = Get-Content -Path "serverless.sql" -Raw
+$serverlessSQL = Get-Content -Path "serverless.sql" -Raw
+$serverlessSQL = $serverlessSQL.Replace("datalakexxxxxxx", $dataLakeAccountName)
 $serverlessSQL = $serverlessSQL.Replace("datalakexxxxxxx", $dataLakeAccountName)
 Set-Content -Path "serverless$suffix.sql" -Value $serverlessSQL
 sqlcmd -S "$synapseWorkspace-ondemand.sql.azuresynapse.net" -U $sqlUser -P $sqlPassword -d master -I -i serverless$suffix.sql
+sleep 3
 sqlcmd -S "$synapseWorkspace.sql.azuresynapse.net" -U $sqlUser -P $sqlPassword -d $sqlDatabaseName -I -i dedicated.sql
 
+
+Sleep 5
 
 # Pause SQL Pool
 write-host "Pausing the $sqlDatabaseName SQL Pool..."
 Suspend-AzSynapseSqlPool -WorkspaceName $synapseWorkspace -Name $sqlDatabaseName -AsJob
 
+
+write-host "Resource Group Name =  $resourceGroupName"
+write-host "Synapse Workspace Name =  $synapseWorkspace"
+write-host "Purview AccountName =  $purviewAccountName"
+write-host "Data Lake Account Name = $dataLakeAccountName"
+write-host "SQL Server User = $sqlUser"
+write-host "SQL Password = $sqlPassword"
+
 write-host "Script completed at $(Get-Date)"
+
+
