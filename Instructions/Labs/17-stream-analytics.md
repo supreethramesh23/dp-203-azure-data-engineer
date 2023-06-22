@@ -57,7 +57,7 @@ Now you're ready to create an Azure Stream Analytics job to process the sales tr
     - **Basics**:
         - **Subscription**: Your Azure subscription
         - **Resource group**: Select the existing **dp203-*xxxxxxx*** resource group.
-        - **Name**: `process-orders`
+        - **Name**: **process-orders**
         - **Region**: Select the region where your other Azure resources are provisioned.
         - **Hosting environment**: Cloud
         - **Streaming units**: 1
@@ -72,7 +72,7 @@ Now you're ready to create an Azure Stream Analytics job to process the sales tr
 Your Azure Stream Analytics job must get input data from the event hub where the sales orders are recorded.
 
 1. On the **process-orders** overview page, select **Add input**. Then  on the **Inputs** page, click on  **+ Add input** menu to add an **Event Hub** input with the following properties:
-    - **Input alias**: `orders`
+    - **Input alias**: **orders**
     - **Select Event Hub from your subscriptions**: Selected
     - **Subscription**: Your Azure subscription
     - **Event Hub namespace**: Select the **events*xxxxxxx*** Event Hubs namespace
@@ -90,7 +90,7 @@ Your Azure Stream Analytics job must get input data from the event hub where the
 You will store the aggregated sales order data in JSON format in an Azure Storage blob container.
 
 1. View the **Outputs** page from the left navigation pane in the  **process-orders** Stream Analytics job page. Then use the **Add** menu to add a **Blob storage/ADLS Gen2** output with the following properties:
-    - **Output alias**: `blobstore`
+    - **Output alias**: **blobstore**
     - **Select Select Blob storage/ADLS Gen2 from your subscriptions from your subscriptions**: Selected
     - **Subscription**: Your Azure subscription
     - **Storage account**: Select the **store*xxxxxxx*** storage account
