@@ -87,8 +87,25 @@ Your Azure Synapse Analytics workspace includes databases in both *serverless* a
 
     ![A screenshot of the Data page in Synapse Studio, listing two SQL databases,](./images/sql-databases.png)
 
-6. Select the **lakedb** database, and then in its **...** menu, select **New SQL script** > **Empty script** to open a new **SQL script 1** pane. You can use the **Properties** button (which looks similar to **&#128463;<sub>*</sub>**) on the right end of the toolbar to hide the **Properties** pane and see the script pane more easily.
-7. In the **SQL script 1** pane, enter the following SQL code, replacing all instances of ***purviewxxxxxxx*** with the managed identity name for your Microsoft Purview account:
+6. If serverless SQL pool database named **lakedb** is not created then run the following query in Synapse BuiltIn pool, else **skip** this step.
+
+   ```sql
+   create database lakedb
+ 
+   create view product_csv
+   AS
+   SELECT
+       TOP 100 *
+   FROM
+       OPENROWSET(
+           BULK 'https://datalakecjtvng1.dfs.core.windows.net/files/products/products.csv',
+           FORMAT = 'CSV',
+           PARSER_VERSION = '2.0'
+       ) AS [result]
+   ```
+
+7. Select the **lakedb** database, and then in its **...** menu, select **New SQL script** > **Empty script** to open a new **SQL script 1** pane. You can use the **Properties** button (which looks similar to **&#128463;<sub>*</sub>**) on the right end of the toolbar to hide the **Properties** pane and see the script pane more easily.
+8. In the **SQL script 1** pane, enter the following SQL code, replacing all instances of ***purviewxxxxxxx*** with the managed identity name for your Microsoft Purview account:
 
     ```sql
     CREATE LOGIN purviewxxxxxxx FROM EXTERNAL PROVIDER;
@@ -101,8 +118,8 @@ Your Azure Synapse Analytics workspace includes databases in both *serverless* a
     GO
     ```
 
-8. Use the **&#9655; Run** button to run the script, which creates a login in the serverless pool and a user in the **lakedb** user for the managed identity used by Microsoft Purview, and adds the user to the **db_datareader** role in the **lakedb** database.
-9. Create a new empty script for the **sql*xxxxxxx*** decicated SQL pool database, and use it to run the following SQL code (replacing ***purviewxxxxxxx*** with the managed identity name for your Microsoft Purview account); which creates a user in the dedicated SQL pool for the managed identity used by Microsoft Purview, and adds it to the **db_datareader** role in the **sql*xxxxxxx*** database.
+9. Use the **&#9655; Run** button to run the script, which creates a login in the serverless pool and a user in the **lakedb** user for the managed identity used by Microsoft Purview, and adds the user to the **db_datareader** role in the **lakedb** database.
+10. Create a new empty script for the **sql*xxxxxxx*** decicated SQL pool database, and use it to run the following SQL code (replacing ***purviewxxxxxxx*** with the managed identity name for your Microsoft Purview account); which creates a user in the dedicated SQL pool for the managed identity used by Microsoft Purview, and adds it to the **db_datareader** role in the **sql*xxxxxxx*** database.
 
     ```sql
     CREATE USER purviewxxxxxxx FROM EXTERNAL PROVIDER;
