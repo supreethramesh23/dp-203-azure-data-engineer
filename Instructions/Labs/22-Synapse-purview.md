@@ -29,11 +29,13 @@ In this exercise, you'll use Microsoft Purview to track assets and data lineage 
     ```
 
 5. If prompted, choose which subscription you want to use (this will only happen if you have access to multiple Azure subscriptions).
-7. When prompted, enter a suitable password for your Azure SQL Database.
+6. When prompted, enter a suitable password for your Azure SQL Database.
 
     > **Note**: Be sure to remember this password!
 
 8. Wait for the script to complete - this typically takes around 15 minutes, but in some cases may take longer. While you are waiting, review the [What's available in the Microsoft Purview governance portal?](https://docs.microsoft.com/azure/purview/overview) article in the Microsoft Purview documentation.
+
+> **Note**: After running the setup script, if you are presented with errors regarding failure of lakedb resource not being deployed; please consider deleting the **dp-203-xxxxxx** resource group and then re-run the psscript.
 
 > **Tip**: If, after running the setup script you decide not to complete the lab, be sure to delete the **dp203-*xxxxxxx*** resource group that was created in your Azure subscription to avoid unnecessary Azure costs.
 
