@@ -100,6 +100,8 @@ Let's start by ingesting a stream of data directly into a table in an Azure Syna
     - **Encoding**: UTF-8
 2. Save the input and wait while it is created. You will see several notifications. Wait for a **Successful connection test** notification.
 
+   > **Note**: If you are shown with a notification stating **Failed to add identity to job**, you can delete the input named **orders** that you created and then re-execute this task such that the managed identity is created assigned successfully.
+
 ### Task 2.4: Create an output for the SQL table
 
 1. View the **Outputs** page for the **ingest-orders** Stream Analytics job. Then use the **Add** menu to add an **Azure Synapse Analytics** output with the following properties:
