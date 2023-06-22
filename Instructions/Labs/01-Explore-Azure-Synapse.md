@@ -2,45 +2,42 @@
 
 Azure Synapse Analytics provides a single, consolidated data analytics platform for end-to end data analytics. In this exercise, you'll explore various ways to ingest and explore data. This exercise is designed as a high-level overview of the various core capabilities of Azure Synapse Analytics. Other exercises are available to explore specific capabilities in more detail.
 
-This exercise should take approximately **60** minutes to complete.
-
-## Provision an Azure Synapse Analytics workspace
+## Task 1: Provision an Azure Synapse Analytics workspace
 
 An Azure *Synapse Analytics workspace* provides a central point for managing data and data processing runtimes. You can provision a workspace using the interactive interface in the Azure portal, or you can deploy a workspace and resources within it by using a script or template. In most production scenarios, it's best to automate provisioning with scripts and templates so that you can incorporate resource deployment into a repeatable development and operations (*DevOps*) process.
 
 In this exercise, you'll use a combination of a PowerShell script and an ARM template to provision Azure Synapse Analytics.
 
-1. In a web browser, sign into the [Azure portal](https://portal.azure.com) at `https://portal.azure.com` if not already signed in.
-2. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a ***PowerShell*** environment and creating storage if prompted. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
+1. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a ***PowerShell*** environment and creating storage if prompted. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
 
     ![Azure portal with a cloud shell pane](./images/cloud-shell.png)
 
-    > **Note**: If you have previously created a cloud shell that uses a *Bash* environment, use the the drop-down menu at the top left of the cloud shell pane to change it to ***PowerShell***.
+    > **Note**: If you have previously created a cloud shell that uses a *Bash* environment, use the drop-down menu at the top left of the cloud shell pane to change it to ***PowerShell***.
 
-3. Note that you can resize the cloud shell by dragging the separator bar at the top of the pane, or by using the **&#8212;**, **&#9723;**, and **X** icons at the top right of the pane to minimize, maximize, and close the pane. For more information about using the Azure Cloud Shell, see the [Azure Cloud Shell documentation](https://docs.microsoft.com/azure/cloud-shell/overview).
+2. Note that you can resize the cloud shell by dragging the separator bar at the top of the pane, or by using the **&#8212;**, **&#9723;**, and **X** icons at the top right of the pane to minimize, maximize, and close the pane. For more information about using the Azure Cloud Shell, see the [Azure Cloud Shell documentation](https://docs.microsoft.com/azure/cloud-shell/overview).
 
-4. In the PowerShell pane, enter the following commands to clone this repo:
+3. In the PowerShell pane, enter the following commands to clone this repo:
 
     ```
     rm -r dp-203 -f
     git clone https://github.com/MicrosoftLearning/dp-203-azure-data-engineer dp-203
     ```
 
-5. After the repo has been cloned, enter the following commands to change to the folder for this exercise and run the **setup.ps1** script it contains:
+4. After the repo has been cloned, enter the following commands to change to the folder for this exercise and run the **setup.ps1** script it contains:
 
     ```
     cd dp-203/Allfiles/labs/01
     ./setup.ps1
     ```
 
-6. If prompted, choose which subscription you want to use (this will only happen if you have access to multiple Azure subscriptions).
-7. When prompted, enter a suitable password to be set for your Azure Synapse SQL pool.
+5. If prompted, choose which subscription you want to use (this will only happen if you have access to multiple Azure subscriptions).
+6. When prompted, enter a suitable password to be set for your Azure Synapse SQL pool.
 
     > **Note**: Be sure to remember this password!
 
-8. Wait for the script to complete - this typically takes around 20 minutes, but in some cases may take longer. While you are waiting, review the [What is Azure Synapse Analytics?](https://docs.microsoft.com/azure/synapse-analytics/overview-what-is) article in the Azure Synapse Analytics documentation.
+7. Wait for the script to complete - this typically takes around 20 minutes, but in some cases may take longer. While you are waiting, review the [What is Azure Synapse Analytics?](https://docs.microsoft.com/azure/synapse-analytics/overview-what-is) article in the Azure Synapse Analytics documentation.
 
-## Explore Synapse Studio
+## Task 2: Explore Synapse Studio
 
 *Synapse Studio* is a web-based portal in which you can manage and work with the resources in your Azure Synapse Analytics workspace.
 
@@ -64,11 +61,11 @@ In this exercise, you'll use a combination of a PowerShell script and an ARM tem
     - **Apache Spark pools**:
         - **spark*xxxxxxx***: that you can use on-demand to explore or process data in a data lake by using programming languages like Scala or Python.
   
-## Ingest data with a pipeline
+## Task 3: Ingest data with a pipeline
 
 One of the key tasks you can perform with Azure Synapse Analytics is to define *pipelines* that transfer (and if necessary, transform) data from a wide range of sources into your workspace for analysis.
 
-### Use the Copy Data task to create a pipeline
+###  Task 3.1: Use the Copy Data task to create a pipeline
 
 1. In Synapse Studio, on the **Home** page, select **Ingest** to open the **Copy Data** tool
 2. In the Copy Data tool, on the **Properties** step, ensure that **Built-in copy task** and **Run once now** are selected, and click **Next >**.
@@ -123,7 +120,7 @@ One of the key tasks you can perform with Azure Synapse Analytics is to define *
 13. In Synapse Studio, select the **Monitor** page, and in the **Pipeline runs** tab, wait for the **Copy products** pipeline to complete with a status of **Succeeded** (you can use the **&#8635; Refresh** button on the Pipeline runs page to refresh the status).
 14. View the **Integrate** page, and verify that it now contains a pipeline named **Copy products**.
 
-### View the ingested data
+### Task 3.2: View the ingested data
 
 1. On the **Data** page, select the **Linked** tab and expand the **synapse*xxxxxxx* (Primary) datalake** container hierarchy until you see the **files** file storage for your Synapse workspace. Then select the file storage to verify that a folder named **product_data** containing a file named **products.csv** has been copied to this location, as shown here:
 
@@ -131,7 +128,7 @@ One of the key tasks you can perform with Azure Synapse Analytics is to define *
 
 2. Right-click the **products.csv** data file and select **Preview** to view the ingested data. Then close the preview.
 
-## Use a serverless SQL pool to analyze data
+## Task 4: Use a serverless SQL pool to analyze data
 
 Now that you've ingested some data into your workspace, you can use Synapse Analytics to query and analyze it. One of the most common ways to query data is to use SQL, and in Synapse Analytics you can use a serverless SQL pool to run SQL code against data in a data lake.
 
@@ -229,7 +226,7 @@ Now that you've ingested some data into your workspace, you can use Synapse Anal
 
     ![Image showing the product count chart view](./images/column-chart.png)
 
-## Use a Spark pool to analyze data
+## Task 5: Use a Spark pool to analyze data
 
 While SQL is a common language for querying structured datasets, many data analysts find languages like Python useful to explore and prepare data for analysis. In Azure Synapse Analytics, you can run Python (and other) code in a *Spark pool*; which uses a distributed data processing engine based on Apache Spark.
 
@@ -301,7 +298,7 @@ While SQL is a common language for querying structured datasets, many data analy
 
 13. Close the notebook pane and stop the Spark session when prompted. Then view the **Develop** page to verify that the notebook has been saved.
 
-## Use a dedicated SQL pool to query a data warehouse
+## Task 6: Use a dedicated SQL pool to query a data warehouse
 
 So far you've seen some techniques for exploring and processing file-based data in a data lake. In many cases, an enterprise analytics solution uses a data lake to store and prepare unstructured data that can then be loaded into a relational data warehouse to support business intelligence (BI) workloads. In Azure Synapse Analytics, these data warehouses can be implemented in a dedicated SQL pool.
 
@@ -333,7 +330,7 @@ So far you've seen some techniques for exploring and processing file-based data 
 
 Azure Synapse Data Explorer provides a runtime that you can use to store and query data by using Kusto Query Language (KQL). Kusto is optimized for data that includes a time series component, such as realtime data from log files or IoT devices.
 
-### Create a Data Explorer database and ingest data into a table
+### Task 6.1: Create a Data Explorer database and ingest data into a table
 
 1. In Synapse Studio, on the **Manage** page, in the **Data Explorer pools** section, select the **adx*xxxxxxx*** pool row and then use its **&#9655;** icon to resume it.
 2. Wait for the pool to start. It can take some time. Use the **&#8635; Refresh** button to check its status periodically. The status will show as **online** when it is ready.
@@ -368,7 +365,7 @@ Azure Synapse Data Explorer provides a runtime that you can use to store and que
 
 > **Note**: In this example, you imported a very small amount of batch data from a file, which is fine for the purposes of this exercise. In reality, you can use Data Explorer to analyze much larger volumes of data; including realtime data from a streaming source such as Azure Event Hubs.
 
-### Use Kusto query language to query the table
+### Task 6.2: Use Kusto query language to query the table
 
 1. Switch back to the **Data** page and in the **...** menu for the **sales-data** database, select **Refresh**.
 2. Expand the **sales-data** database's **Tables** folder. Then in the **...** menu for the **sales** table, select **New KQL script** > **Take 1000 rows**.
@@ -415,4 +412,4 @@ Azure Synapse Data Explorer provides a runtime that you can use to store and que
 
 11. Close the query pane, and then view the **Develop** page to verify that the KQL script has been saved.
 
-12. On the **Manage** page, select the **adx*xxxxxxx*** Data Explorer pool row and use its &#10074;&#10074; icon to pause it. --->
+12. On the **Manage** page, select the **adx*xxxxxxx*** Data Explorer pool row and use its &#10074;&#10074; icon to pause it.
