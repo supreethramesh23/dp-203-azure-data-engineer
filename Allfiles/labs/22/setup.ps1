@@ -4,8 +4,10 @@ write-host "Starting script at $(Get-Date)"
 Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
 Install-Module -Name Az.Synapse -Force
 
+
 # Prompt user for a password for the SQL Database
 $sqlUser = "SQLUser"
+write-host ""
 $sqlPassword = "Password.1!!"
 
 # Register resource providers
@@ -18,7 +20,7 @@ foreach ($provider in $provider_list){
 }
 
 # Generate unique random suffix
-$suffix = "((Get-AzResourceGroup -Name 'DP-203').Tags).DeploymentId"
+$suffix = ((Get-AzResourceGroup -Name 'DP-203').Tags).DeploymentId
 $resourceGroupName = "dp203-$suffix"
 
 # Choose a random region
@@ -128,9 +130,19 @@ sleep 3
 sqlcmd -S "$synapseWorkspace.sql.azuresynapse.net" -U $sqlUser -P $sqlPassword -d $sqlDatabaseName -I -i dedicated.sql
 
 
+Sleep 5
+
 # Pause SQL Pool
 write-host "Pausing the $sqlDatabaseName SQL Pool..."
 Suspend-AzSynapseSqlPool -WorkspaceName $synapseWorkspace -Name $sqlDatabaseName -AsJob
+
+
+write-host "Resource Group Name =  $resourceGroupName"
+write-host "Synapse Workspace Name =  $synapseWorkspace"
+write-host "Purview AccountName =  $purviewAccountName"
+write-host "Data Lake Account Name = $dataLakeAccountName"
+write-host "SQL Server User = $sqlUser"
+write-host "SQL Password = $sqlPassword"
 
 write-host "Script completed at $(Get-Date)"
 
