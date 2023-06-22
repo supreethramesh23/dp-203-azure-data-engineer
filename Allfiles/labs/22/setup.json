@@ -1,69 +1,69 @@
-﻿{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-      "workspaceName": {
-        "type": "String",
-        "metadata": {
-          "description": "Synapse Workspace name"
-        }
-      },
-      "dataLakeAccountName": {
-        "type": "String",
-        "metadata": {
-          "description": "Azure storage account name for data lake."
-        }
-      },
-      "uniqueSuffix": {
-        "type": "String",
-        "metadata": {
-          "description": "Suffix added to all resource name to make them unique."
-        }
-      },
-      "sqlDatabaseName": {
-        "type": "String",
-        "metadata": {
-          "description": "Name for dedicated SQL pool"
-        }
-      },
-      "sqlUser": {
-        "type": "String",
-        "metadata": {
-          "description": "SQL user name"
-        }
-      },
-      "sqlPassword": {
-        "type": "String",
-        "metadata": {
-          "description": "Password for SQL User"
-        }
-      },
-      "purviewAccountName": {
-        "type": "String",
-        "metadata": {
-          "description": "Purview account name"
-        }
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspaceName": {
+      "type": "String",
+      "metadata": {
+        "description": "Synapse Workspace name"
       }
     },
-    "variables": {
-      "location": "[resourceGroup().location]",
-      "defaultDataLakeStorageFilesystemName": "files",
-      "computeSubnetId": "",
-      "sqlSKU": "DW100c",
-      "storageBlobDataOwnerRoleID": "b7e6dc6d-f1e8-4753-8033-0f276bb0955b",
-      "defaultDataLakeStorageAccountUrl": "[concat('https://', parameters('dataLakeAccountName'), '.dfs.core.windows.net')]"
+    "dataLakeAccountName": {
+      "type": "String",
+      "metadata": {
+        "description": "Azure storage account name for data lake."
+      }
     },
-    "resources": [
-      {
-        "type": "Microsoft.Resources/tags",
-        "name": "default",
-        "apiVersion": "2019-10-01",
-        "dependsOn": [],
-        "properties": {
-            "tags": {
-                "DeploymentId": "[parameters('uniqueSuffix')]"
-            }
+    "uniqueSuffix": {
+      "type": "String",
+      "metadata": {
+        "description": "Suffix added to all resource name to make them unique."
+      }
+    },
+    "sqlDatabaseName": {
+      "type": "String",
+      "metadata": {
+        "description": "Name for dedicated SQL pool"
+      }
+    },
+    "sqlUser": {
+      "type": "String",
+      "metadata": {
+        "description": "SQL user name"
+      }
+    },
+    "sqlPassword": {
+      "type": "String",
+      "metadata": {
+        "description": "Password for SQL User"
+      }
+    },
+    "purviewAccountName": {
+      "type": "String",
+      "metadata": {
+        "description": "Purview account name"
+      }
+    }
+  },
+  "variables": {
+    "location": "[resourceGroup().location]",
+    "defaultDataLakeStorageFilesystemName": "files",
+    "computeSubnetId": "",
+    "sqlSKU": "DW100c",
+    "storageBlobDataOwnerRoleID": "b7e6dc6d-f1e8-4753-8033-0f276bb0955b",
+    "defaultDataLakeStorageAccountUrl": "[concat('https://', parameters('dataLakeAccountName'), '.dfs.core.windows.net')]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/tags",
+      "name": "default",
+      "apiVersion": "2019-10-01",
+      "dependsOn": [],
+      "properties": {
+        "tags": {
+          "DeploymentId": "[parameters('uniqueSuffix')]"
         }
+      }
     },
     {
       "type": "Microsoft.Storage/storageAccounts",
@@ -174,7 +174,8 @@
       "name": "[concat(parameters('dataLakeAccountName'), '/default/', variables('defaultDataLakeStorageFilesystemName'), '/Microsoft.Authorization/',  guid(concat(resourceGroup().id, '/', variables('storageBlobDataOwnerRoleID'), '/', parameters('workspaceName'))))]",
       "location": "[variables('location')]",
       "dependsOn": [
-        "[concat('Microsoft.Synapse/workspaces/', parameters('workspaceName'))]"
+        "[concat('Microsoft.Synapse/workspaces/', parameters('workspaceName'))]",
+        "[concat('Microsoft.Storage/storageAccounts/', parameters('dataLakeAccountName'))]"
       ],
       "properties": {
         "roleDefinitionId": "[resourceId('Microsoft.Authorization/roleDefinitions', variables('storageBlobDataOwnerRoleID'))]",
@@ -188,7 +189,8 @@
       "name": "[guid(concat(resourceGroup().id, '/', variables('storageBlobDataOwnerRoleID'), '/', parameters('workspaceName'), '2'))]",
       "location": "[variables('location')]",
       "dependsOn": [
-        "[concat('Microsoft.Synapse/workspaces/', parameters('workspaceName'))]"
+        "[concat('Microsoft.Synapse/workspaces/', parameters('workspaceName'))]",
+        "[concat('Microsoft.Storage/storageAccounts/', parameters('dataLakeAccountName'))]"
       ],
       "properties": {
         "roleDefinitionId": "[resourceId('Microsoft.Authorization/roleDefinitions', variables('storageBlobDataOwnerRoleID'))]",
@@ -197,39 +199,59 @@
       }
     },
     {
-        "type": "Microsoft.Synapse/workspaces/sqlPools",
-        "apiVersion": "2019-06-01-preview",
-        "name": "[concat(parameters('workspaceName'), '/', parameters('sqlDatabaseName'))]",
-        "location": "[variables('location')]",
-        "sku": {
-          "name": "[variables('sqlSKU')]"
-        },
-        "dependsOn": [
-          "[concat('Microsoft.Synapse/workspaces/', parameters('workspaceName'))]"
-        ],
-        "properties": {
-          "createMode": "Default",
-          "collation": "SQL_Latin1_General_CP1_CI_AS"
-        }
+      "type": "Microsoft.Synapse/workspaces/sqlPools",
+      "apiVersion": "2019-06-01-preview",
+      "name": "[concat(parameters('workspaceName'), '/', parameters('sqlDatabaseName'))]",
+      "location": "[variables('location')]",
+      "sku": {
+        "name": "[variables('sqlSKU')]"
       },
-      {
-        "type": "Microsoft.Purview/accounts",
-        "apiVersion": "2021-12-01",
-        "name": "[parameters('purviewAccountName')]",
-        "location": "[variables('location')]",
-        "sku": {
-            "name": "Standard",
-            "capacity": 1
-        },
-        "identity": {
-            "type": "SystemAssigned"
-        },
-        "properties": {
-            "cloudConnectors": {},
-            "publicNetworkAccess": "Enabled"
-        }
+      "dependsOn": [
+        "[concat('Microsoft.Synapse/workspaces/', parameters('workspaceName'))]"
+      ],
+      "properties": {
+        "createMode": "Default",
+        "collation": "SQL_Latin1_General_CP1_CI_AS"
       }
-    ],
-    "outputs": {}
+    },
+    {
+      "type": "Microsoft.Purview/accounts",
+      "apiVersion": "2021-12-01",
+      "name": "[parameters('purviewAccountName')]",
+      "location": "[variables('location')]",
+      "sku": {
+        "name": "Standard",
+        "capacity": 1
+      },
+      "identity": {
+        "type": "SystemAssigned"
+      },
+      "properties": {
+        "cloudConnectors": {},
+        "publicNetworkAccess": "Enabled"
+      }
+    }
+  ],
+  "outputs": {
+    "sqlUsername": {
+      "type": "string",
+      "value": "[parameters('sqlUser')]"
+    },
+    "sqlPassword": {
+      "type": "string",
+      "value": "[parameters('sqlPassword')]"
+    },
+    "sqlDatabaseName": {
+      "type": "string",
+      "value": "[parameters('sqlDatabaseName')]"
+    },
+    "synapseWorkspaceName": {
+      "type": "string",
+      "value": "[parameters('workspaceName')]"
+    },
+    "purviewAccountName": {
+      "type": "string",
+      "value": "[parameters('purviewAccountName')]"
+    }
   }
-  
+}
