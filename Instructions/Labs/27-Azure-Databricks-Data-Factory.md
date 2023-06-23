@@ -49,7 +49,7 @@ You can create notebooks in your Azure Databricks workspace to run code written 
    
 6. Select **&#8962; Home** and then open the **Process-Data** notebook you just imported.
 
-    **Note**: If a tip is displayed, use the **Got it** button to close it. This applies to any future tips that may be displayed as you navigate the workspace interface for the first time.
+    >**Note**: If a tip is displayed, use the **Got it** button to close it. This applies to any future tips that may be displayed as you navigate the workspace interface for the first time.
 
 7. Review the contents of the notebook, which include some Python code cells to:
     - Retrieve a parameter named **folder** if it is has been passed (otherwise use a default value of *data*).

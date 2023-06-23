@@ -1,10 +1,10 @@
 # Lab 17: Get started with Azure Stream Analytics
 
-In this exercise, you'll provision an Azure Stream Analytics job in your Azure subscription, and use it to query and summarize a stream of real-time event data and store the results in Azure Storage.
+In this lab, you'll provision an Azure Stream Analytics job in your Azure subscription, and use it to query and summarize a stream of real-time event data and store the results in Azure Storage.
 
 ## Task 1: Provision Azure resources
 
-In this exercise, you'll capture a stream of simulated sales transaction data, process it, and store the results in a blob container in Azure Storage. You'll need an Azure Event Hubs namespace to which streaming data can be sent, and an Azure Storage account in which the results of stream processing will be stored.
+In this task, you'll capture a stream of simulated sales transaction data, process it, and store the results in a blob container in Azure Storage. You'll need an Azure Event Hubs namespace to which streaming data can be sent, and an Azure Storage account in which the results of stream processing will be stored.
 
 You'll use a combination of a PowerShell script and an ARM template to provision these resources.
 
@@ -39,7 +39,7 @@ Before creating an Azure Stream Analytics job to process real-time data, let's t
 
 1. When the setup script has finished running, resize or minimize the cloud shell pane so you can see the Azure portal (you'll return to the cloud shell later). Then in the Azure portal, go to the **dp203-*xxxxxxx*** resource group that it created, and notice that this resource group contains an Azure Storage account and an Event Hubs namespace.
 
-    Note the **Location** where the resources have been provisioned - later, you'll create an Azure Stream Analytics job in the same location.
+    >**Note**: The **Location** where the resources have been provisioned - later, you'll create an Azure Stream Analytics job in the same location.
 
 2. Re-open the cloud shell pane, and enter the following command to run a client app that sends 100 simulated orders to Azure Event Hubs:
 
