@@ -8,7 +8,7 @@ In this exercise, you'll capture a stream of simulated sales transaction data, p
 
 You'll use a combination of a PowerShell script and an ARM template to provision these resources.
 
-1. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, select **PowerShell** environment and click on create storage. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
+1. Click on the **Cloud Shell** button  **[\>_]** to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, select **PowerShell** environment and click on **Create Storage**. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
 
     ![Azure portal with a cloud shell pane](./images/cloud-shell.png)
 
@@ -180,3 +180,4 @@ OK, now you're ready to run the job and process some real-time sales order data.
 13. Return to the **dp203-*xxxxxxx*** resource group, and re-open the **process-orders** Stream Analytics job.
 14. At the top of the Stream Analytics job page, use the **&#11036; Stop** button to stop the job, confirming when prompted.
 
+### You have successfully completed the lab.
