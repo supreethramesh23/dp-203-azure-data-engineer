@@ -1,10 +1,10 @@
 # Lab 17: Get started with Azure Stream Analytics
 
-In this exercise, you'll provision an Azure Stream Analytics job in your Azure subscription, and use it to query and summarize a stream of real-time event data and store the results in Azure Storage.
+In this lab, you'll provision an Azure Stream Analytics job in your Azure subscription, and use it to query and summarize a stream of real-time event data and store the results in Azure Storage.
 
 ## Task 1: Provision Azure resources
 
-In this exercise, you'll capture a stream of simulated sales transaction data, process it, and store the results in a blob container in Azure Storage. You'll need an Azure Event Hubs namespace to which streaming data can be sent, and an Azure Storage account in which the results of stream processing will be stored.
+In this task, you'll capture a stream of simulated sales transaction data, process it, and store the results in a blob container in Azure Storage. You'll need an Azure Event Hubs namespace to which streaming data can be sent, and an Azure Storage account in which the results of stream processing will be stored.
 
 You'll use a combination of a PowerShell script and an ARM template to provision these resources.
 
