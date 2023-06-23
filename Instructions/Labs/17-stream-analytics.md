@@ -39,7 +39,7 @@ Before creating an Azure Stream Analytics job to process real-time data, let's t
 
 1. When the setup script has finished running, resize or minimize the cloud shell pane so you can see the Azure portal (you'll return to the cloud shell later). Then in the Azure portal, go to the **dp203-*xxxxxxx*** resource group that it created, and notice that this resource group contains an Azure Storage account and an Event Hubs namespace.
 
-    Note the **Location** where the resources have been provisioned - later, you'll create an Azure Stream Analytics job in the same location.
+    >**Note**: The **Location** where the resources have been provisioned - later, you'll create an Azure Stream Analytics job in the same location.
 
 2. Re-open the cloud shell pane, and enter the following command to run a client app that sends 100 simulated orders to Azure Event Hubs:
 
