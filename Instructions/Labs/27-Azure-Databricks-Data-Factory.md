@@ -4,9 +4,9 @@ You can use notebooks in Azure Databricks to perform data engineering tasks, suc
 
 ## Task 1: Provision Azure resources
 
-In this exercise, you'll use a script to provision a new Azure Databricks workspace and an Azure Data Factory resource in your Azure subscription.
+In this task, you'll use a script to provision a new Azure Databricks workspace and an Azure Data Factory resource in your Azure subscription.
 
-1. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a ***PowerShell*** environment and creating storage if prompted. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
+1. Click on **Cloud Shell** button **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, select a ***PowerShell*** environment and click on **Create Storage** if prompted. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
 
     ![Azure portal with a cloud shell pane](./images/cloud-shell.png)
 
@@ -38,10 +38,15 @@ In this exercise, you'll use a script to provision a new Azure Databricks worksp
 You can create notebooks in your Azure Databricks workspace to run code written in a range of programming languages. In this exercise, you'll import an existing notebook that contains some Python code.
 
 1. In the Azure portal, in the **dp203-*xxxxxxx*** resource group, select the **databricks*xxxxxxx*** Azure Databricks Service resource.
+   
 2. In the **Overview** page for **databricks*xxxxxxx***, use the **Launch Workspace** button to open your Azure Databricks workspace in a new browser tab; signing in if prompted.
+   
 3. If a **What's your current data project?** message is displayed, select **Finish** to close it. Then view the Azure Databricks workspace portal and note that the sidebar on the left side contains icons for the various tasks you can perform. The sidebar expands to show the names of the task categories.
+   
 4. Expand the sidebar and select the **Workspace** tab. Then select the **Users** folder and in the **&#9662;** menu for the **&#8962; *your_user_name*** folder, select **Import**.
+   
 5. In the **Import Notebooks** dialog box, select **URL** and import the notebook from `https://github.com/MicrosoftLearning/dp-203-azure-data-engineer/raw/master/Allfiles/labs/27/Process-Data.ipynb`
+   
 6. Select **&#8962; Home** and then open the **Process-Data** notebook you just imported.
 
     **Note**: If a tip is displayed, use the **Got it** button to close it. This applies to any future tips that may be displayed as you navigate the workspace interface for the first time.
@@ -51,7 +56,7 @@ You can create notebooks in your Azure Databricks workspace to run code written 
     - Download data from GitHub and save it in the specified folder in the Databricks File System (DBFS).
     - Exit the notebook, returning the path where the data was saved as an output
 
-    > **Tip**: The notebook could contain practically any data processing logic you need. This simple example is designed to show the key principles.
+       > **Tip**: The notebook could contain practically any data processing logic you need. This simple example is designed to show the key principles.
 
 ## Task 3: Enable Azure Databricks integration with Azure Data Factory
 
@@ -60,16 +65,23 @@ To use Azure Databricks from an Azure Data Factory pipeline, you need to create 
 ### Task 3.1: Generate an access token
 
 1. In the Azure Databricks portal, at on the top right menu bar, select the username and then select **User Settings** from the drop-down.
+   
 2. In the **User Settings** page, on the **Access tokens** tab, select **Generate new token** and generate a new token with the comment *Data Factory* and a blank lifetime (so the token doesn't expire). Be careful to *copy the token when it is displayed <u>before</u> selecting **Done***.
+   
 3. Paste the copied token to a text file so you have it handy for later in this exercise.
 
 ### Task 3.2: Create a linked service in Azure Data Factory
 
 1. Return to the Azure portal, and in the **dp203-*xxxxxxx*** resource group, select the **adf*xxxxxxx*** Azure Data Factory resource.
+   
 2. On the **Overview** page, select the **Launch studio** to open the Azure Data Factory Studio. Sign in if prompted.
+   
 3. In Azure Data Factory Studio, use the **>>** icon to expand the navigation pane on the left. Then select the **Manage** page.
+   
 4. On the **Manage** page, in the **Linked services** tab, select **+ New** to add a new linked service.
+   
 5. In the **New linked service** pane, select the **Compute** tab at the top. Then select **Azure Databricks**.
+   
 6. Continue, and create the linked service with the following settings:
     - **Name**: AzureDatabricks
     - **Description**: Azure Databricks workspace
@@ -94,9 +106,13 @@ Now that you have created a linked service, you can use it in a pipeline to run 
 ### Task 4.1: Create a pipeline
 
 1. In Azure Data Factory Studio, in the navigation pane, select **Author**.
+   
 2. On the **Author** page, in the **Factory Resources** pane, use the **+** icon to add a **Pipeline**.
+   
 3. In the **Properties** pane for the new pipeline, change its name to **Process Data with Databricks**. Then use the **Properties** button (which looks similar to **&#128463;<sub>*</sub>**) on the right end of the toolbar to hide the **Properties** pane.
+   
 4. In the **Activities** pane, expand **Databricks** and drag a **Notebook** activity to the pipeline designer surface.
+   
 5. With the new **Notebook1** activity selected, set the following properties in the bottom pane:
     - **General**:
         - **Name**: Process Data
@@ -105,12 +121,15 @@ Now that you have created a linked service, you can use it in a pipeline to run 
     - **Settings**:
         - **Notebook path**: *Browse to the **Users/your_user_name** folder and select the **Process-Data** notebook*
         - **Base parameters**: *Add a new parameter named **folder** with the value **product_data***
+          
 6. Use the **Validate** button above the pipeline designer surface to validate the pipeline. Then use the **Publish all** button to publish (save) it.
 
 ### Task 4.2: Run the pipeline
 
 1. Above the pipeline designer surface, select **Add trigger**, and then select **Trigger now**.
+   
 2. In the **Pipeline run** pane, select **OK** to run the pipeline.
+   
 3. In the navigation pane on the left, select **Monitor** and observe the **Process Data with Databricks** pipeline on the **Pipeline runs** tab. It may take a while to run as it dynamically creates a Spark cluster and runs the notebook. You can use the **&#8635; Refresh** button on the **Pipeline runs** page to refresh the status.
 
     > **Note**: If your pipeline fails, your subscription may have insufficient quota in the region where your Azure Databricks workspace is provisioned to create a job cluster. See [CPU core limit prevents cluster creation](https://docs.microsoft.com/azure/databricks/kb/clusters/azure-core-limit) for details. If this happens, you can try deleting your workspace and creating a new one in a different region. You can specify a region as a parameter for the setup script like this: `./setup.ps1 eastus`
@@ -139,3 +158,5 @@ Now that you have created a linked service, you can use it in a pipeline to run 
     ```
 
 5. Note the **runOutput** value, which is the *path* variable to which the notebook saved the data.
+
+ ### You have successfully completed the lab.
