@@ -6,7 +6,7 @@ Azure Synapse Analytics is built on a scalable set capabilities to support enter
 
 In this exercise, you'll use a combination of a PowerShell script and an ARM template to provision Azure Synapse Analytics.
 
-1. Click on the **Cloud Shell button** **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, select  ***PowerShell*** environment and click on **Create Storage** if prompted. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
+1. Click on the **Cloud Shell** button **[\>_]** to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, select  ***PowerShell*** environment and click on **Create Storage** if prompted. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
 
     ![Azure portal with a cloud shell pane](./images/cloud-shell.png)
 
