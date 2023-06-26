@@ -413,3 +413,5 @@ Azure Synapse Data Explorer provides a runtime that you can use to store and que
 11. Close the query pane, and then view the **Develop** page to verify that the KQL script has been saved.
 
 12. On the **Manage** page, select the **adx*xxxxxxx*** Data Explorer pool row and use its &#10074;&#10074; icon to pause it.
+
+### You have successfully completed the lab.
