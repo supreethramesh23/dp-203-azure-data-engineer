@@ -29,11 +29,12 @@ In this exercise, you'll synchronize data from an Azure SQL Database resource to
     ```
 
 5. If prompted, choose which subscription you want to use (this will only happen if you have access to multiple Azure subscriptions).
+   
 6. When prompted, enter a suitable password for your Azure SQL Database.
 
     > **Note**: Be sure to remember this password!
 
-7. Wait for the script to complete - this typically takes around 15 minutes, but in some cases may take longer. While you are waiting, review the [What is Azure Synapse Link for SQL?](https://docs.microsoft.com/azure/synapse-analytics/synapse-link/sql-synapse-link-overview) article in the Azure Synapse Analytics documentation.
+8. Wait for the script to complete - this typically takes around 15 minutes, but in some cases may take longer. While you are waiting, review the [What is Azure Synapse Link for SQL?](https://docs.microsoft.com/azure/synapse-analytics/synapse-link/sql-synapse-link-overview) article in the Azure Synapse Analytics documentation.
 
 ## Task 2: Configure Azure SQL Database
 
@@ -55,7 +56,7 @@ Before you can set up Azure Synapse Link for your Azure SQL Database, you must e
     | -- | -- | -- |
     | AllClients | 0.0.0.0 | 255.255.255.255 |
 
-    > **Note**: This rule allows access to your server from any Internet-connected computer. We're enabling this to simplify the exercise, but in a production scenario you should restrict access to only network addresses that need to use your databases.
+    > **Note**: This rule allows access to your server from any Internet-connected computer. We're enabling this to simplify the exercise, but in a production scenario, you should restrict access to only network addresses that need to use your databases.
 
 5. Use the **Save** button to save your configuration change:
 
@@ -66,9 +67,11 @@ Before you can set up Azure Synapse Link for your Azure SQL Database, you must e
 Your Azure SQL server hosts a sample database named **AdventureWorksLT**. This database represents a transactional database used for operational application data.
 
 1. In the **Overview** page for your Azure SQL server, at the bottom of the page, select the **AdventureWorksLT** database:
-2. In the **AdventureWorksLT** database page, from left navigation pane, select the **Query editor** tab and log in using SQL server authentication with the following credentials:
+   
+2. In the **AdventureWorksLT** database page, from the left navigation pane, select the **Query editor** tab and log in using SQL server authentication with the following credentials:
     - **Login** SQLUser
     - **Password**: *The password you specified when running the setup script.*
+      
 3. When the query editor opens, expand the **Tables** node and view the list of tables in the database. Note that they include tables in a **SalesLT** schema (for example, **SalesLT.Customer**).
 
 ## Task 4: Configure Azure Synapse Link
@@ -79,14 +82,19 @@ Now you're ready to configure Azure Synapse Link for SQL in your Synapse Analyti
 
 1. In the Azure portal, close the query editor for your Azure SQL database (discarding any changes) and return to the page for your **dp203-*xxxxxxx*** resource group.
 2. Open the **synapse*xxxxxxx*** Synapse workspace, and on its **Overview** page, in the **Open Synapse Studio** card, select **Open** to open Synapse Studio in a new browser tab; signing in if prompted.
+   
 3. On the left side of Synapse Studio, use the **&rsaquo;&rsaquo;** icon to expand the menu - this reveals the different pages within Synapse Studio.
+   
 4. On the **Manage** page, on the **SQL pools** tab, select the row for the **sql*xxxxxxx*** dedicated SQL pool and use its **&#9655;** icon to start it; confirming that you want to resume it when prompted.
+   
 5. Wait for the SQL pool to resume. This can take a few minutes. You can use the **&#8635; Refresh** button to check its status periodically. The status will show as **Online** when it is ready.
 
 ### Task 4.2: Create the target schema
 
 1. In Synapse Studio, on the **Data** page, on the **Workspace** tab, expand **SQL databases** and select your **sql*xxxxxxx*** database.
+   
 2. In the **...** menu for the **sql*xxxxxxx*** database, select **New SQL script** > **Empty script**.
+   
 3. In the **SQL Script 1** pane, enter the following SQL code and use the  **&#9655; Run** button to run it.
 
     ```sql
@@ -143,12 +151,15 @@ Now you're ready to configure Azure Synapse Link for SQL in your Synapse Analyti
     |SalesLT.SalesOrderHeader **&#8594;**|\[SalesLT].\[SalesOrderHeader]|Round robin|-|Heap|
 
 4. At the top of the **sql-adventureworkslt-conn** page that is created, use the **&#9655; Start** button to start synchronization. When prompted, select **OK** to publish and start the link connection.
+   
 5. After starting the connection, on the **Monitor** page, select the **Link connections** tab and view the **sql-adventureworkslt-conn** connection. You can use the **&#8635; Refresh** button to update the status periodically. It may take several minutes to complete the initial snapshot copy process and start replicating - after that, all changes in the source database tables will be automatically replayed in the synchronized tables.
 
 ### Tsk 4.4: View the replicated data
 
 1. After the status of the tables has changed to **Running**, select the **Data** page and use the  **&#8635;** icon at the top right to refresh the view.
+   
 2. Select **Data** pane, click **Workspace** tab, expand **SQL databases**,  your **sql*xxxxxxx*** database, and its **Tables** folder to view the replicated tables.
+   
 3. In the **...** menu for the **sql*xxxxxxx*** database, select **New SQL script** > **Empty script**. Then in the new script page, enter the following SQL code:
 
     ```sql
@@ -167,6 +178,7 @@ Now you're ready to configure Azure Synapse Link for SQL in your Synapse Analyti
     ```
 
 4. Use the **&#9655; Run** button to run the script and view the results. The query is run against the replicated tables in the dedicated SQL pool and not the source database, enabling you to run analytical queries without impacting business applications.
+   
 5. When you're done, on the **Manage** page, pause the **sql*xxxxxxx*** dedicated SQL pool.
 
 ### You have successfully completed the lab.
