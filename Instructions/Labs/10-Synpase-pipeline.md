@@ -1,16 +1,16 @@
 # Lab 10: Build a data pipeline in Azure Synapse Analytics
 
-In this exercise, you'll load data into a dedicated SQL Pool using a pipeline in Azure Synapse Analytics Explorer. The pipeline will encapsulate a data flow that loads product data into a table in a data warehouse.
+In this lab, you'll load data into a dedicated SQL Pool using a pipeline in Azure Synapse Analytics Explorer. The pipeline will encapsulate a data flow that loads product data into a table in a data warehouse.
 
 ## Task 1: Provision an Azure Synapse Analytics workspace
 
 You'll need an Azure Synapse Analytics workspace with access to data lake storage and a dedicated SQL pool hosting a relational data warehouse.
 
-In this exercise, you'll use a combination of a PowerShell script and an ARM template to provision an Azure Synapse Analytics workspace.
+In this task, you'll use a combination of a PowerShell script and an ARM template to provision an Azure Synapse Analytics workspace.
 
-1. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a ***PowerShell*** environment and click on **Create storage** if prompted. The Cloud Shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
-
-    ![Azure portal with a cloud shell pane](./images/cloud-shell.png)
+1. Click on the **Cloud Shell** button **[\>_]**  to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, select ***PowerShell*** environment and click on **Create Storage** if prompted. The Cloud Shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
+         
+   ![Azure portal with a cloud shell pane](./images/cloud-shell.png)
 
     > **Note**: If you have previously created a cloud shell that uses a *Bash* environment, use the drop-down menu at the top left of the cloud shell pane to change it to ***PowerShell***.
 
@@ -67,7 +67,7 @@ To load the data in the text file into the database table, you will implement an
 2. In the **Properties** pane for your new pipeline, change its name from **Pipeline1** to **Load Product Data**. Then use the **Properties** button above the **Properties** pane to hide it.
 3. In the **Activities** pane, expand **Move & transform**; and then drag a **Data flow** to the pipeline design surface as shown here:
 
-    ![Screenshot of a pipeline with a data flow activity.](./images/dataflow.png)
+    ![Screenshot of a pipeline with a data flow activity.](./images/dataflow(1).png)
 
 4. Under the pipeline design surface, in the **General** tab(at the bottom of the page), set the **Name** property to **LoadProducts**.
 5. On the **Settings** tab, at the bottom of the list of settings, expand **Staging** and set the following staging settings:
@@ -79,7 +79,7 @@ To load the data in the text file into the database table, you will implement an
 1. At the top of the **Settings** tab for the **LoadProducts** data flow, for the **Data flow** property, select **+ New**.
 2. In the **Properties** pane for the new data flow design surface that opens, set the **Name** to **LoadProductsData** and then hide the **Properties** pane. The data flow designer should look like this:
 
-    ![Screenshot of an empty data flow activity.](./images/empty-dataflow.png)
+    ![Screenshot of an empty data flow activity.](./images/empty-dataflow(1).png)
 
 ### Task 3.3: Add sources
 
@@ -136,7 +136,7 @@ To load the data in the text file into the database table, you will implement an
     - **Discontinued**: boolean
 5. Verify that your data flow contains two sources, as shown here:
 
-    ![Screenshot of a data flow with two sources.](./images/dataflow_sources.png)
+    ![Screenshot of a data flow with two sources.](./images/dataflow_sources(1).png)
 
 ### Task 3.4: Add a Lookup
 
@@ -152,9 +152,9 @@ To load the data in the text file into the database table, you will implement an
     - **Lookup conditions**: ProductID == ProductAltKey
 3. Verify that your data flow looks like this:
 
-    ![Screenshot of a data flow with two sources and a lookup.](./images/dataflow_lookup.png)
+    ![Screenshot of a data flow with two sources and a lookup.](./images/dataflow_lookup(1).png)
 
-    The lookup returns a set of columns from *both* sources, essentially forming an outer join that matches the **ProductID** column in the text file to the **ProductAltKey** column in the data warehouse table. When a product with the alternate key already exists in the table, the dataset will include the values from both sources. When the product dos not already exist in the data warehouse, the dataset will contain NULL values for the table columns.
+    >**Note**: The lookup returns a set of columns from *both* sources, essentially forming an outer join that matches the **ProductID** column in the text file to the **ProductAltKey** column in the data warehouse table. When a product with the alternate key already exists in the table, the dataset will include the values from both sources. When the product dos not already exist in the data warehouse, the dataset will contain NULL values for the table columns.
 
 ### Task 3.5: Add an Alter Row
 
@@ -166,11 +166,11 @@ To load the data in the text file into the database table, you will implement an
     - **Alter row conditions**: Edit the existing condition and use the **+** button to add a second condition as follows (note that the expressions are *case-sensitive*):
         - InsertIf: `isNull(ProductKey)`
         - UpsertIf: `not(isNull(ProductKey))`
-3. verify that the data flow looks like this:
+3. Verify that the data flow looks like this:
 
-    ![Screenshot of a data flow with two sources, a lookup, and an alter row.](./images/dataflow_alterrow.png)
+    ![Screenshot of a data flow with two sources, a lookup, and an alter row.](./images/dataflow_alterrow(1).png)
 
-    The alter row step configures the kind of load action to perform for each row. Where there's no existing row in the table (the **ProductKey** is NULL), the row from the text file will be inserted. Where there's already a row for the product, an *upsert* will be performed to update the existing row. This configuration essentially applies a *type 1 slowly changing dimension update*.
+    >**Note**: The alter row step configures the kind of load action to perform for each row. Where there's no existing row in the table (the **ProductKey** is NULL), the row from the text file will be inserted. Where there's already a row for the product, an *upsert* will be performed to update the existing row. This configuration essentially applies a *type 1 slowly changing dimension update*.
 
 ### Task 3.6: Add a sink
 
@@ -194,7 +194,7 @@ To load the data in the text file into the database table, you will implement an
     - ProductsText@Discontinued: Discontinued
 5. Verify that your data flow looks like this:
 
-    ![Screenshot of a data flow with two sources, a lookup, an alter row, and a sink.](./images/dataflow-sink.png)
+    ![Screenshot of a data flow with two sources, a lookup, an alter row, and a sink.](./images/dataflow-sink(1).png)
 
     >**Note**: In the output column section if there is any extra column apart from the above mentioned column, kindly delete it.
 
@@ -218,10 +218,14 @@ Now you're ready to publish and run the pipeline.
 2. When publishing is complete, close the **LoadProductsData** data flow pane and return to the **Load Product Data** pipeline pane.
 3. At the top of the pipeline designer pane, select **Add trigger** menu, click **Trigger now**. Then select **OK** to confirm you want to run the pipeline.
 
-    **Note**: You can also create a trigger to run the pipeline at a scheduled time or in response to a specific event.
+    >**Note**: You can also create a trigger to run the pipeline at a scheduled time or in response to a specific event.
 
 4. When the pipeline has started running, on the **Monitor** page, view the **Pipeline runs** tab and review the status of the **Load Product Data** pipeline.
 
-    The pipeline may take five minutes or longer to complete. You can use the **&#8635; Refresh** button on the toolbar to check its status.
+    >**Note**: The pipeline may take five minutes or longer to complete. You can use the **&#8635; Refresh** button on the toolbar to check its status.
 
 5. When the pipeline run has succeeded, on the **Data** page, use the **...** menu for the **dbo.DimProduct** table in your SQL database to run a query that selects the top 100 rows. The table should contain the data loaded by the pipeline.
+
+### You have successfully completed the lab.
+
+

@@ -1,14 +1,14 @@
 # Lab 17: Get started with Azure Stream Analytics
 
-In this exercise, you'll provision an Azure Stream Analytics job in your Azure subscription, and use it to query and summarize a stream of real-time event data and store the results in Azure Storage.
+In this lab, you'll provision an Azure Stream Analytics job in your Azure subscription, and use it to query and summarize a stream of real-time event data and store the results in Azure Storage.
 
 ## Task 1: Provision Azure resources
 
-In this exercise, you'll capture a stream of simulated sales transaction data, process it, and store the results in a blob container in Azure Storage. You'll need an Azure Event Hubs namespace to which streaming data can be sent, and an Azure Storage account in which the results of stream processing will be stored.
+In this task, you'll capture a stream of simulated sales transaction data, process it, and store the results in a blob container in Azure Storage. You'll need an Azure Event Hubs namespace to which streaming data can be sent, and an Azure Storage account in which the results of stream processing will be stored.
 
 You'll use a combination of a PowerShell script and an ARM template to provision these resources.
 
-1. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, select **PowerShell** environment and click on create storage. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
+1. Click on the **Cloud Shell** button  **[\>_]** to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, select **PowerShell** environment and click on **Create Storage**. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
 
     ![Azure portal with a cloud shell pane](./images/cloud-shell.png)
 
@@ -39,7 +39,7 @@ Before creating an Azure Stream Analytics job to process real-time data, let's t
 
 1. When the setup script has finished running, resize or minimize the cloud shell pane so you can see the Azure portal (you'll return to the cloud shell later). Then in the Azure portal, go to the **dp203-*xxxxxxx*** resource group that it created, and notice that this resource group contains an Azure Storage account and an Event Hubs namespace.
 
-    Note the **Location** where the resources have been provisioned - later, you'll create an Azure Stream Analytics job in the same location.
+    >**Note**: The **Location** where the resources have been provisioned - later, you'll create an Azure Stream Analytics job in the same location.
 
 2. Re-open the cloud shell pane, and enter the following command to run a client app that sends 100 simulated orders to Azure Event Hubs:
 
@@ -57,7 +57,7 @@ Now you're ready to create an Azure Stream Analytics job to process the sales tr
     - **Basics**:
         - **Subscription**: Your Azure subscription
         - **Resource group**: Select the existing **dp203-*xxxxxxx*** resource group.
-        - **Name**: `process-orders`
+        - **Name**: **process-orders**
         - **Region**: Select the region where your other Azure resources are provisioned.
         - **Hosting environment**: Cloud
         - **Streaming units**: 1
@@ -72,7 +72,7 @@ Now you're ready to create an Azure Stream Analytics job to process the sales tr
 Your Azure Stream Analytics job must get input data from the event hub where the sales orders are recorded.
 
 1. On the **process-orders** overview page, select **Add input**. Then  on the **Inputs** page, click on  **+ Add input** menu to add an **Event Hub** input with the following properties:
-    - **Input alias**: `orders`
+    - **Input alias**: **orders**
     - **Select Event Hub from your subscriptions**: Selected
     - **Subscription**: Your Azure subscription
     - **Event Hub namespace**: Select the **events*xxxxxxx*** Event Hubs namespace
@@ -90,7 +90,7 @@ Your Azure Stream Analytics job must get input data from the event hub where the
 You will store the aggregated sales order data in JSON format in an Azure Storage blob container.
 
 1. View the **Outputs** page from the left navigation pane in the  **process-orders** Stream Analytics job page. Then use the **Add** menu to add a **Blob storage/ADLS Gen2** output with the following properties:
-    - **Output alias**: `blobstore`
+    - **Output alias**: **blobstore**
     - **Select Select Blob storage/ADLS Gen2 from your subscriptions from your subscriptions**: Selected
     - **Subscription**: Your Azure subscription
     - **Storage account**: Select the **store*xxxxxxx*** storage account
@@ -180,3 +180,4 @@ OK, now you're ready to run the job and process some real-time sales order data.
 13. Return to the **dp203-*xxxxxxx*** resource group, and re-open the **process-orders** Stream Analytics job.
 14. At the top of the Stream Analytics job page, use the **&#11036; Stop** button to stop the job, confirming when prompted.
 
+### You have successfully completed the lab.

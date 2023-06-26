@@ -41,9 +41,13 @@ Azure Databricks is a distributed processing platform that uses Apache Spark *cl
 > **Note**: In this exercise, you'll create a *single-node* cluster to minimize the compute resources used in the lab environment (in which resources may be constrained). In a production environment, you'd typically create a cluster with multiple worker nodes.
 
 1. In the Azure portal, browse to the **dp203-*xxxxxxx*** resource group that was created by the script you ran.
+   
 2. Select the **databricks*xxxxxxx*** Azure Databricks Service resource.
+   
 3. In the **Overview** page for **databricks*xxxxxxx***, use the **Launch Workspace** button to open your Azure Databricks workspace in a new browser tab; signing in if prompted.
+   
 4. If a **What's your current data project?** message is displayed, select **Finish** to close it. Then view the Azure Databricks workspace portal and note that the sidebar on the left side contains icons for the various tasks you can perform. The sidebar expands to show the names of the task categories.
+   
 5. Select the **(+) New** task, and then select **Cluster**.
 
     **Note**: If a tip is displayed, use the **Got it** button to close it. This applies to any future tips that may be displayed as you navigate the workspace interface for the first time.
@@ -70,11 +74,13 @@ As in many Spark environments, Databricks supports the use of notebooks to combi
     - **Default language**: Python
     - **Cluster**: *User Name's* cluster
 2. In the **Explore products** notebook, on the **&#128463; File** menu, select **Upload data to DBFS**.
+   
 3. In the **Upload Data** dialog box, note the **DBFS Target Directory** to where the file will be uploaded. Then select the **Files** area, and in the **Open** dialog box, in the **File** box, type `https://raw.githubusercontent.com/MicrosoftLearning/dp-203-azure-data-engineer/master/Allfiles/labs/23/adventureworks/products.csv` and select **Open**. Then, when the file has been uploaded, select **Next**.
 
     > **Tip**: If your browser or operating system doesn't support entering a URL in the **File** box, download the CSV file to your computer and then upload it from the local folder where you saved it.
 
 4. In the **Access files from notebooks** pane, select the sample PySpark code and copy it to the clipboard. You will use it to load the data from the file into a DataFrame. Then select **Done**.
+   
 5. In the **Explore products** notebook, in the empty code cell, paste the code you copied; which should look similar to this:
 
     ```python
@@ -82,7 +88,9 @@ As in many Spark environments, Databricks supports the use of notebooks to combi
     ```
 
 6. Use the **&#9656; Run Cell** menu option at the top-right of the cell to run it, starting and attaching the cluster if prompted.
+
 7. Wait for the Spark job run by the code to complete. The code has created a *dataframe* object named **df1** from the data in the file you uploaded.
+   
 8. Under the existing code cell, use the **+** icon to add a new code cell. Then in the new cell, enter the following code:
 
     ```python
@@ -111,6 +119,7 @@ As in many Spark environments, Databricks supports the use of notebooks to combi
 While many data analysis are comfortable using languages like Python or Scala to work with data in files, a lot of data analytics solutions are built on relational databases; in which data is stored in tables and manipulated using SQL.
 
 1. In the **Explore products** notebook, under the chart output from the previously run code cell, use the **+** icon to add a new cell.
+   
 2. Enter and run the following code in the new cell:
 
     ```python
@@ -128,5 +137,8 @@ While many data analysis are comfortable using languages like Python or Scala to
     ```
 
 4. Run the new cell, which contains SQL code to return the name and price of products in the *Touring Bikes* category.
+   
 5. In the tab on the left, select the **Data** task, and verify that the **products** table has been created in the default database (which is unsurprisingly named **default**). It's possible to use Spark code to create custom databases and a schema of relational tables that data analysts can use to explore data and generate analytical reports.
+
+    ### You have successfully completed the lab.
 

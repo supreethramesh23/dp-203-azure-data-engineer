@@ -2,18 +2,18 @@
 
 Data *engineers* often use Spark notebooks as one of their preferred tools to perform *extract, transform, and load (ETL)* or *extract, load, and transform (ELT)* activities that transform data from one format or structure to another.
 
-In this exercise, you'll use a Spark notebook in Azure Synapse Analytics to transform data in files.
-
 ## Task 1: Provision an Azure Synapse Analytics workspace
+
+In this task, you'll use a Spark notebook in Azure Synapse Analytics to transform data in files.
 
 You'll need an Azure Synapse Analytics workspace with access to data lake storage and a Spark pool.
 
-In this exercise, you'll use a combination of a PowerShell script and an ARM template to provision an Azure Synapse Analytics workspace.
+In this task, you'll use a combination of a PowerShell script and an ARM template to provision an Azure Synapse Analytics workspace.
 
-1. In Azure Portal, use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell, selecting a ***PowerShell*** environment and select **create storage**. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
+
+1. In Azure Portal, click on the **Cloud Shell** button **[\>_]** to the right of the search bar at the top of the page to create a new Cloud Shell, select  ***PowerShell*** environment and click on **Create Storage**. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
 
     ![Azure portal with a cloud shell pane](./images/cloud-shell.png)
-
 
 2. Note that you can resize the cloud shell by dragging the separator bar at the top of the pane, or by using the **&#8212;**, **&#9723;**, and **X** icons at the top right of the pane to minimize, maximize, and close the pane. For more information about using the Azure Cloud Shell, see the [Azure Cloud Shell documentation](https://docs.microsoft.com/azure/cloud-shell/overview).
 
@@ -71,8 +71,10 @@ In this exercise, you'll use a combination of a PowerShell script and an ARM tem
 
 13. Attach the notebook to your **sparkxxxxxxx** Spark pool.
 
-    >**Note**: If you don't find the **Attach to** option, kindly collapse **Develop** pane to view **Attach to** option next to outline option.
+    >**Note**: If you don't find the **Attach to** option, kindly collapse the **Develop** pane to view the **Attach to** option next to the outline option.
 
 14. Review the notes in the notebook and run the each code cells.
 
     > **Note**: The first code cell will take a few minutes to run because the Spark pool must be started. Subsequent cells will run more quickly.
+    
+### You have successfully completed the lab.

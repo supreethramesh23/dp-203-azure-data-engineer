@@ -6,9 +6,9 @@ Azure Synapse Link for Azure Cosmos DB is a cloud-native *hybrid transactional a
 
 To explore Azure Synapse Link for Azure Cosmos DB, you'll need an Azure Synapse Analytics workspace and an Azure Cosmos DB account. In this exercise, you'll use a combination of a PowerShell script and an ARM template to provision these resources in your Azure subscription.
 
-1. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, select ***PowerShell*** environment and click on **Create storage** if prompted. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
+1. Click on the **Cloud Shell** button **[\>_]**  to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, select ***PowerShell*** environment and click on **Create Storage** if prompted. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
 
-    ![Azure portal with a cloud shell pane](./images/cloud-shell.png)
+    ![Azure portal with a cloud shell pane](./images/cloud-shell-dp-203.png)
 
     > **Note**: If you have previously created a cloud shell that uses a *Bash* environment, use the the drop-down menu at the top left of the cloud shell pane to change it to ***PowerShell***.
 
@@ -42,11 +42,11 @@ Before you can use Synapse Link for Azure Cosmos DB, you must enable it in your 
 
 1. In the [Azure portal](https://portal.azure.com), browse to the **dp203-*xxxxxxx*** resource group that was created by the setup script, and identify your **cosmos*xxxxxxxx*** Cosmos DB account.
 
-    > **Note**: In some cases, the script may have tried to create Cosmos DB accounts in multiple regions, so there may be one or more accounts in a *deleting* state. The active account should be the one with the largest number at the end of its name - for example **cosmos*xxxxxxx*3**.
+    > **Note**: In some cases, the script may have tried to create Cosmos DB accounts in multiple regions, so there may be one or more accounts in a *deleting* state. The active account should be the one with the largest number at the end of its name - for example **cosmos*xxxxxxx***.
 
 2. Open your Azure Cosmos DB account, and select the **Data Explorer** page on the left side of its blade.
 
-    *If a **Welcome** dialog box is displayed, close it*
+    > **Note**:If a **Welcome** dialog box is displayed, close it.
 
 3. At the top of the **Data Explorer** page, use the **Enable Azure Synapse Link** button to enable Synapse Link.
 
@@ -58,7 +58,7 @@ Before you can use Synapse Link for Azure Cosmos DB, you must enable it in your 
 
 1. Return to the **Data Explorer** page, and use the **new Container** button (or tile) to create a new container with the following settings:
     - **Database id**: *(Create new)* AdventureWorks
-    - **Share throughput across containers**: <u>Un</u>selected
+    - **Share throughput across containers**: Unselected
     - **Container id**: Sales
     - **Partition key**: /customerid
     - **Container throughput (autoscale)**: Autoscale
@@ -160,7 +160,7 @@ Now you're ready to query your Cosmos DB database from Azure Synapse Analytics.
 1. In the **Data** pane, select the **Sales** container, and in its **...** menu, select **New Notebook** > **Load to DataFrame**.
 2. In the new **Notebook 1** tab that opens, in the **Attach to** list, select your Spark pool (**spark*xxxxxxx***). Then use the **&#9655; Run all** button to run all of the cells in the notebook (there's currently only one!).
 
-   >**Note**: If you don't find the **Attach to** option, kindly collapse **Data** pane to view **Attach to** option next to outline option.
+   >**Note**: If you don't find the **Attach to** option, kindly collapse the **Data** pane to view the **Attach to** option next to the outline option.
    
    >**Note**: Since this is the first time you've run any Spark code in this session, the Spark pool must be started. This means that the first run in the session can take a few minutes. Subsequent runs will be quicker.
 
@@ -322,7 +322,8 @@ Now you're ready to query your Cosmos DB database from Azure Synapse Analytics.
                     SERVER_CREDENTIAL = 'cosmosxxxxxxxx'
     ) AS [Sales]
     ```
-
+     >**Note**:Please review the code before executing the query provided. If the query fails to execute successfully, you will not be able to proceed any further.
+     
 7. Use the **&#9655; Run** button to run the script, and review the results, which should include three records; one for each of the items you added to the Cosmos DB database.
 
     Now that you have created the credential, you can use it in any query against the Cosmos DB data source.
@@ -384,4 +385,4 @@ Now you're ready to query your Cosmos DB database from Azure Synapse Analytics.
 4. Return to the Synapse Studio tab and in the **SQL Script 1** tab, re-run the query. Initially, it may show the same results as before, but wait a minute or so and then re-run the query again until the results include the sale to Samir Nadoy on 2019-07-02.
 5. Switch back to the **Notebook 1** tab and re-run the last cell in the Spark notebook to verify that the sale to Samir Nadoy is now included in the query results.
 
-
+### You have successfully completed the lab.

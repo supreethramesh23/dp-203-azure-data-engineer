@@ -6,7 +6,7 @@ Azure Synapse Analytics is built on a scalable set capabilities to support enter
 
 In this exercise, you'll use a combination of a PowerShell script and an ARM template to provision Azure Synapse Analytics.
 
-1. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a ***PowerShell*** environment and creating storage if prompted. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
+1. Click on the **Cloud Shell** button **[\>_]** to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, select  ***PowerShell*** environment and click on **Create Storage** if prompted. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
 
     ![Azure portal with a cloud shell pane](./images/cloud-shell.png)
 
@@ -42,7 +42,9 @@ In this lab, the data warehouse is hosted in a dedicated SQL pool in Azure Synap
 ### Task 2.1: Start the dedicated SQL pool
 
 1. After the script has completed, in the Azure portal, go to the **dp500-*xxxxxxx*** resource group that it created, and select your Synapse workspace.
+   
 2. In the **Overview** page for your Synapse workspace, in the **Open Synapse Studio** card, select **Open** to open Synapse Studio in a new browser tab; signing in if prompted.
+   
 3. On the left side of Synapse Studio, use the **&rsaquo;&rsaquo;** icon to expand the menu - this reveals the different pages within Synapse Studio that are used to manage resources and perform data analytics tasks.
 4. On the **Manage** page, ensure the **SQL pools** tab is selected and then select the **sql*xxxxxxx*** dedicated SQL pool and use its **&#9655;** icon to start it; confirming that you want to resume it when prompted.
 5. Wait for the SQL pool to resume. This can take a few minutes. Use the **&#8635; Refresh** button to check its status periodically. The status will show as **Online** when it is ready.
@@ -52,23 +54,23 @@ In this lab, the data warehouse is hosted in a dedicated SQL pool in Azure Synap
 1. In Synapse Studio, select the **Data** page and ensure that the **Workspace** tab is selected and contains a **SQL database** category.
 2. Expand **SQL database**, the **sql*xxxxxxx*** pool, and its **Tables** folder to see the tables in the database.
 
-    A relational data warehouse is typically based on a schema that consists of *fact* and *dimension* tables. The tables are optimized for analytical queries in which numeric metrics in the fact tables are aggregated by attributes of the entities represented by the dimension tables - for example, enabling you to aggregate Internet sales revenue by product, customer, date, and so on.
+    > **Note**: A relational data warehouse is typically based on a schema that consists of *fact* and *dimension* tables. The tables are optimized for analytical queries in which numeric metrics in the fact tables are aggregated by attributes of the entities represented by the dimension tables - for example, enabling you to aggregate Internet sales revenue by product, customer, date, and so on.
     
 3. Expand the **dbo.FactInternetSales** table and its **Columns** folder to see the columns in this table. Note that many of the columns are *keys* that reference rows in the dimension tables. Others are numeric values (*measures*) for analysis.
     
-    The keys are used to relate a fact table to one or more dimension tables, often in a *star* schema; in which the fact table is directly related to each dimension table (forming a multi-pointed "star" with the fact table at the center).
+    > **Note**: The keys are used to relate a fact table to one or more dimension tables, often in a *star* schema; in which the fact table is directly related to each dimension table (forming a multi-pointed "star" with the fact table at the center).
 
 4. View the columns for the **dbo.DimPromotion** table, and note that it has a unique **PromotionKey** that uniquely identifies each row in the table. It also has an **AlternateKey**.
 
-    Usually, data in a data warehouse has been imported from one or more transactional sources. The *alternate* key reflects the business identifier for the instance of this entity in the source, but a unique numeric *surrogate* key is usually generated to uniquely identify each row in the data warehouse dimension table. One of the benefits of this approach is that it enables the data warehouse to contain multiple instances of the same entity at different points in time (for example, records for the same customer reflecting their address at the time an order was placed).
+    > **Note**: Usually, data in a data warehouse has been imported from one or more transactional sources. The *alternate* key reflects the business identifier for the instance of this entity in the source, but a unique numeric *surrogate* key is usually generated to uniquely identify each row in the data warehouse dimension table. One of the benefits of this approach is that it enables the data warehouse to contain multiple instances of the same entity at different points in time (for example, records for the same customer reflecting their address at the time an order was placed).
 
 5. View the columns for the **dbo.DimProduct**, and note that it contains a **ProductSubcategoryKey** column, which references the **dbo.DimProductSubcategory** table, which in turn contains a **ProductCategoryKey** column that references the  **dbo.DimProductCategory** table.
 
-    In some cases, dimensions are partially normalized into multiple related tables to allow for different levels of granularity - such as products that can be grouped into subcategories and categories. This results in a simple star being extended to a *snowflake* schema, in which the central fact table is related to a dimension table, which is turn related to further dimension tables.
+    > **Note**:In some cases, dimensions are partially normalized into multiple related tables to allow for different levels of granularity - such as products that can be grouped into subcategories and categories. This results in a simple star being extended to a *snowflake* schema, in which the central fact table is related to a dimension table, which is turn related to further dimension tables.
 
 6. View the columns for the **dbo.DimDate** table, and note that it contains multiple columns that reflect different temporal attributes of a date - including the day of week, day of month, month, year, day name, month name, and so on.
 
-    Time dimensions in a data warehouse are usually implemented as a dimension table containing a row for each of the smallest temporal units of granularity (often called the *grain* of the dimension) by which you want to aggregate the measures in the fact tables. In this case, the lowest grain at which measures can be aggregated is an individual date, and the table contains a row for each date from the first to the last date referenced in the data. The attributes in the **DimDate** table enable analysts to aggregate measures based on any date key in the fact table, using a consistent set of temporal attributes (for example, viewing orders by month based on the order date). The **FactInternetSales** table contains three keys that relate to the **DimDate** table: **OrderDateKey**, **DueDateKey**, and **ShipDateKey**.
+    > **Note**:Time dimensions in a data warehouse are usually implemented as a dimension table containing a row for each of the smallest temporal units of granularity (often called the *grain* of the dimension) by which you want to aggregate the measures in the fact tables. In this case, the lowest grain at which measures can be aggregated is an individual date, and the table contains a row for each date from the first to the last date referenced in the data. The attributes in the **DimDate** table enable analysts to aggregate measures based on any date key in the fact table, using a consistent set of temporal attributes (for example, viewing orders by month based on the order date). The **FactInternetSales** table contains three keys that relate to the **DimDate** table: **OrderDateKey**, **DueDateKey**, and **ShipDateKey**.
 
 ## Task 3: Query the data warehouse tables
 
@@ -105,7 +107,7 @@ Numeric values in a relational data warehouse are stored in fact tables with rel
     ORDER BY Year, Month;
     ```
 
-    Note that the attributes in the time dimension enable you to aggregate the measures in the fact table at multiple hierarchical levels - in this case, year and month. This is a common pattern in data warehouses.
+    > **Note**: that the attributes in the time dimension enable you to aggregate the measures in the fact table at multiple hierarchical levels - in this case, year and month. This is a common pattern in data warehouses.
 
 6. Modify the query as follows to remove the month and add a second dimension to the aggregation, and then run it to view the results (which show yearly Internet sales totals for each region):
 
@@ -121,7 +123,7 @@ Numeric values in a relational data warehouse are stored in fact tables with rel
     ORDER BY Year, Region;
     ```
 
-    Note that geography is a *snowflake* dimension that is related to the Internet sales fact table through the customer dimension. You therefore need two joins in the query to aggregate Internet sales by geography.
+   > **Note**: that geography is a *snowflake* dimension that is related to the Internet sales fact table through the customer dimension. You therefore need two joins in the query to aggregate Internet sales by geography.
 
 7. Modify and re-run the query to add another snowflake dimension and aggregate the yearly regional sales by product category:
 
@@ -141,7 +143,7 @@ Numeric values in a relational data warehouse are stored in fact tables with rel
     ORDER BY Year, ProductCategory, Region;
     ```
 
-    This time, the snowflake dimension for product category requires three joins to reflect the hierarchical relationship between products, subcategories, and categories.
+    > **Note**:This time, the snowflake dimension for product category requires three joins to reflect the hierarchical relationship between products, subcategories, and categories.
 
 8. Publish the script to save it.
 
@@ -197,14 +199,14 @@ Another common requirement when analyzing large volumes of data is to group the 
     |...|...|...|...|...|...|...|
     |United States|10051|SO66863|1|2443.3500|2905011.1600|289.0270|
 
-    Observe the following facts about these results:
+3. Observe the following facts about these results:
 
     - There's a row for each sales order line item.
     - The rows are organized in partitions based on the geography where the sale was made.
     - The rows within each geographical partition are numbered in order of sales amount (from smallest to highest).
     - For each row, the line item sales amount as well as the regional total and average sales amounts are included.
 
-3. Under the existing queries, add the following code to apply windowing functions within a GROUP BY query and rank the cities in each region based on their total sales amount:
+4. Under the existing queries, add the following code to apply windowing functions within a GROUP BY query and rank the cities in each region based on their total sales amount:
 
     ```sql
     SELECT  g.EnglishCountryRegionName AS Region,
@@ -221,15 +223,15 @@ Another common requirement when analyzing large volumes of data is to group the 
     ORDER BY Region;
     ```
 
-4. Select only the new query code, and use the **&#9655; Run** button to run it. Then review the results, and observe the following:
+5. Select only the new query code, and use the **&#9655; Run** button to run it. Then review the results, and observe the following:
     - The results include a row for each city, grouped by region.
     - The total sales (sum of individual sales amounts) is calculated for each city
     - The regional sales total (the sum of the sum of sales amounts for each city in the region) is calculated based on the regional partition.
     - The rank for each city within its regional partition is calculated by ordering the total sales amount per city in descending order.
 
-5. Publish the updated script to save the changes.
+6. Publish the updated script to save the changes.
 
-> **Tip**: ROW_NUMBER and RANK are examples of ranking functions available in Transact-SQL. For more details, see the [Ranking Functions](https://docs.microsoft.com/sql/t-sql/functions/ranking-functions-transact-sql) reference in the Transact-SQL language documentation.
+   > **Tip**: ROW_NUMBER and RANK are examples of ranking functions available in Transact-SQL. For more details, see the [Ranking Functions](https://docs.microsoft.com/sql/t-sql/functions/ranking-functions-transact-sql) reference in the Transact-SQL language documentation.
 
 ### Task 3.3: Retrieve an approximate count
 
@@ -266,7 +268,7 @@ When exploring very large volumes of data, queries can take significant time and
 
 5. Publish the script to save the changes.
 
-> **Tip**: See the [APPROX_COUNT_DISTINCT](https://docs.microsoft.com/sql/t-sql/functions/approx-count-distinct-transact-sql) function documentation for more details.
+    > **Tip**: See the [APPROX_COUNT_DISTINCT](https://docs.microsoft.com/sql/t-sql/functions/approx-count-distinct-transact-sql) function documentation for more details.
 
 ## Task 4: Challenge - Analyze reseller sales
 
@@ -278,7 +280,9 @@ When exploring very large volumes of data, queries can take significant time and
     - The rank of each sales territory per fiscal year based on total sales amount for the year.
     - The approximate number of sales order per year in each sales territory.
 
-    > **Tip**: Compare your queries to the ones in the **Solution** script in the **Develop** page in Synapse Studio.
+      > **Tip**: Compare your queries to the ones in the **Solution** script in the **Develop** page in Synapse Studio.
 
 3. Experiment with queries to explore the rest of the tables in the data warehouse schema as your leisure.
 4. When you're done, on the **Manage** page, pause the **sql*xxxxxxx*** dedicated SQL pool.
+
+### You have successfully completed the lab.
