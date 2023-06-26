@@ -16,24 +16,24 @@ In this exercise, you'll use Microsoft Purview to track assets and data lineage 
 
 3. In the PowerShell pane, enter the following commands to clone this repo:
 
-    ```
+    ```powershell
     rm -r dp-203 -f
-    git clone -b prod https://github.com/CloudLabs-MOC/dp-203-azure-data-engineer dp-203
+    git clone https://github.com/CloudLabs-MOC/dp-203-azure-data-engineer dp-203
+    
     ```
 
 4. After the repo has been cloned, enter the following commands to change to the folder for this lab and run the **setup.ps1** script it contains:
 
-    ```
+    ```powershell
     cd dp-203/Allfiles/labs/22
     ./setup.ps1
     ```
 
 5. If prompted, choose which subscription you want to use (this will only happen if you have access to multiple Azure subscriptions).
-7. When prompted, enter a suitable password for your Azure SQL Database.
 
-    > **Note**: Be sure to remember this password!
+6. Wait for the script to complete - this typically takes around 15 minutes, but in some cases may take longer. While you are waiting, review the [What's available in the Microsoft Purview governance portal?](https://docs.microsoft.com/azure/purview/overview) article in the Microsoft Purview documentation.
 
-8. Wait for the script to complete - this typically takes around 15 minutes, but in some cases may take longer. While you are waiting, review the [What's available in the Microsoft Purview governance portal?](https://docs.microsoft.com/azure/purview/overview) article in the Microsoft Purview documentation.
+> **Note**: After running the setup script, if you are presented with errors regarding failure of lakedb resource not being deployed/available; please consider deleting the **dp-203-xxxxxx** resource group and then re-run the psscript.
 
 > **Tip**: If, after running the setup script you decide not to complete the lab, be sure to delete the **dp203-*xxxxxxx*** resource group that was created in your Azure subscription to avoid unnecessary Azure costs.
 
@@ -92,9 +92,25 @@ Your Azure Synapse Analytics workspace includes databases in both *serverless* a
 
     ![A screenshot of the Data page in Synapse Studio, listing two SQL databases,](./images/sql-databases.png)
 
-6. Select the **lakedb** database, and then in its **...** menu, select **New SQL script** > **Empty script** to open a new **SQL script 1** pane. You can use the **Properties** button (which looks similar to **&#128463;<sub>*</sub>**) on the right end of the toolbar to hide the **Properties** pane and see the script pane more easily.
+6. If serverless SQL pool database named **lakedb** is not created then run the following query in Synapse BuiltIn pool, else **skip** this step.
 
-7. In the **SQL script 1** pane, enter the following SQL code, replacing all instances of ***purviewxxxxxxx*** with the managed identity name for your Microsoft Purview account:
+   ```sql
+   create database lakedb
+ 
+   create view product_csv
+   AS
+   SELECT
+       TOP 100 *
+   FROM
+       OPENROWSET(
+           BULK 'https://datalakecjtvng1.dfs.core.windows.net/files/products/products.csv',
+           FORMAT = 'CSV',
+           PARSER_VERSION = '2.0'
+       ) AS [result]
+   ```
+
+7. Select the **lakedb** database, and then in its **...** menu, select **New SQL script** > **Empty script** to open a new **SQL script 1** pane. You can use the **Properties** button (which looks similar to **&#128463;<sub>*</sub>**) on the right end of the toolbar to hide the **Properties** pane and see the script pane more easily.
+8. In the **SQL script 1** pane, enter the following SQL code, replacing all instances of ***purviewxxxxxxx*** with the managed identity name for your Microsoft Purview account:
 
     ```sql
     CREATE LOGIN purviewxxxxxxx FROM EXTERNAL PROVIDER;
@@ -107,7 +123,8 @@ Your Azure Synapse Analytics workspace includes databases in both *serverless* a
     GO
     ```
 
-8. Use the **&#9655; Run** button to run the script, which creates a login in the serverless pool and a user in the **lakedb** user for the managed identity used by Microsoft Purview, and adds the user to the **db_datareader** role in the **lakedb** database.
+9. Use the **&#9655; Run** button to run the script, which creates a login in the serverless pool and a user in the **lakedb** user for the managed identity used by Microsoft Purview, and adds the user to the **db_datareader** role in the **lakedb** database.
+
 10. Create a new empty script for the **sql*xxxxxxx*** decicated SQL pool database, and use it to run the following SQL code (replacing ***purviewxxxxxxx*** with the managed identity name for your Microsoft Purview account); which creates a user in the dedicated SQL pool for the managed identity used by Microsoft Purview, and adds it to the **db_datareader** role in the **sql*xxxxxxx*** database.
 
     ```sql
