@@ -31,17 +31,18 @@ After completing this lab, you will be able to:
  - Summarize streaming data in a data lake
 
 
-## Lab 19: Create a realtime report with Azure Stream Analytics and Microsoft Power BI
+## Lab 19: Create a real-time report with Azure Stream Analytics and Microsoft Power BI
 
 ### Lab overview
 
-In this lab, you will learn about Azure Stream Analytics which provides a real-time data processing engine that you can use to ingest streaming event data into Azure Synapse Analytics for further analysis and reporting.
+In this lab, you will learn about the stream processing capabilities of Azure Stream Analytics and the data visualization capabilities of Microsoft Power BI to create real-time data dashboards.
 
 
 ## Objectives
 
 After completing this lab, you will be able to:
 
- - Ingest streaming data into a dedicated SQL pool
- - Summarize streaming data in a data lake
+ - Configure a Stream Analytics output for Power BI.
+ - Use a Stream Analytics query to write data to Power BI.
+ - Create a real-time data visualization in Power BI.
 
