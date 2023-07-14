@@ -15,7 +15,7 @@ After completing this lab, you will be able to:
 - Use SQL to load data into data warehouse tables.
 - Use SQL to query relational data warehouse tables.
 
-- ## Lab 09: Load Data into a Relational Data Warehouse
+## Lab 09: Load Data into a Relational Data Warehouse
 
 ### Lab overview
 
