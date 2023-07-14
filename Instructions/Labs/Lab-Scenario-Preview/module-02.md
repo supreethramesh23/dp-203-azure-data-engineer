@@ -11,7 +11,7 @@ In this lab, you will understand the technical tasks to design and implement dat
 After completing this lab, you will be able to:
 
 - Query the data in files
-- Access external data in a databse
+- Access external data in a database
 - Visualize the query results
 
 
@@ -34,12 +34,12 @@ After completing this lab, you will be able to:
 
 ### Lab overview
 
-In this lab, you'll use a combination of a PowerShell script and an ARM template to provision an Azure Synapse Analytics workspace.
+In this lab, you'll use a combination of a PowerShell script and an ARM template to provision an Azure Synapse Analytics workspace and will insert data into the lake database using Spark
 
 ## Objectives
   
 After completing this lab, you will be able to:
 
-- Create a lake databse in Syanpse studio and a table from a databse template
+- Create a lake database in Synapse Studio and a table from a database template
 - Insert data into lake database tables using Spark
 
