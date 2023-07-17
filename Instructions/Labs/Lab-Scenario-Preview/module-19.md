@@ -16,8 +16,7 @@ After completing this lab, you will be able to:
  - Use Azure Stream Analytics to process streaming data.
  - Visualize the streaming data in Power BI.
 
-   ## Architecture Diagram
+## Architecture Diagram
 
-
-      ![Azure portal with a cloud shell pane](./media/lab19.png)
+   ![Azure portal with a cloud shell pane](./media/lab19.png)
 
