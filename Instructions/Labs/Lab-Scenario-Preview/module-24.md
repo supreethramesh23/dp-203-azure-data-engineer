@@ -16,10 +16,9 @@ After completing this lab, you will be able to:
  - Create a cluster.
  - Explore data using a notebook.
 
-   ## Architecture Diagram
+## Architecture Diagram
 
-
-      ![Azure portal with a cloud shell pane](./media/lab24.png)
+   ![Azure portal with a cloud shell pane](./media/lab24.png)
 
 
  
