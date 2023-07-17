@@ -1,3 +1,6 @@
+# Lab Scenario Preview: DP-203: Implement a Data Streaming Solution with Azure Stream Analytics
+
+
 ## Lab 18: Ingest realtime data with Azure Stream Analytics and Azure Synapse Analytics
 
 ### Lab overview
