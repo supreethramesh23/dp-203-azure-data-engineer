@@ -17,4 +17,8 @@ After completing this lab, you will be able to:
  - Use Spark to analyze a data file.
  - Create and query a database table.
 
- 
+ ## Architecture Diagram
+
+
+   ![Azure portal with a cloud shell pane](./media/lab23.png)
+
