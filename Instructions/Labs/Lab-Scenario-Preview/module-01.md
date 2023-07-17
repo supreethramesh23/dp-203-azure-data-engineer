@@ -11,7 +11,9 @@ In this lab, you will explore various ways to ingest and explore data. This lab 
 After completing this lab, you will be able to:
 
 - Provision an Azure Synapse Analytics workspace
+- Explore Synapse Studio
 - Ingesting data with a pipeline in Synapse Studio
-- Analyze data using a serverless SQL pool and Spark pool
+- Analyze data using a serverless SQL pool
+- Analyze data using the Spark pool
 - Query a data warehouse using a dedicated SQL pool
 
