@@ -15,3 +15,9 @@ After completing this lab, you will be able to:
 - Configure Azure SQL Database.
 - Explore the transactional database.
 - Configure Azure Synapse Link.
+
+   ## Architecture Diagram
+
+
+   ![Azure portal with a cloud shell pane](./media/lab15.png)
+
