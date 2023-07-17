@@ -19,4 +19,9 @@ After completing this lab, you will be able to:
  - Create a query
  - Create a dashboard
 
+## Architecture Diagram
+
+
+   ![Azure portal with a cloud shell pane](./media/lab26.png)
+
  

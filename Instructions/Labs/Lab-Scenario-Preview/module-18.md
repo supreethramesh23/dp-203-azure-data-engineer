@@ -14,3 +14,8 @@ After completing this lab, you will be able to:
 
  - Ingest streaming data into a dedicated SQL pool
  - Summarize streaming data in a data lake
+
+ ## Architecture Diagram
+
+
+   ![Azure portal with a cloud shell pane](./media/lab18.png)

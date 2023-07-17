@@ -15,3 +15,8 @@ After completing this lab, you will be able to:
 - Configure Synapse Link in Azure Cosmos DB.
 - Configure Synapse Link in Azure Synapse Analytics.
 - Query Azure Cosmos DB from Azure Synapse Analytics.
+
+## Architecture Diagram
+
+
+   ![Azure portal with a cloud shell pane](./media/lab14.1.png)

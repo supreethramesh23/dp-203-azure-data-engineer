@@ -17,3 +17,7 @@ After completing this lab, you will be able to:
  - Explore data using a notebook.
 
  
+## Architecture Diagram
+
+
+   ![Azure portal with a cloud shell pane](./media/lab25.png)

@@ -2,9 +2,9 @@
 
 Delta Lake is an open source project to build a transactional data storage layer for Spark on top of a data lake. Delta Lake adds support for relational semantics for both batch and streaming data operations, and enables the creation of a *Lakehouse* architecture in which Apache Spark can be used to process and query data in tables that are based on underlying files in the data lake.
 
-## Exercise 1:  Provision an Azure Databricks workspace
+## Task 1:  Provision an Azure Databricks workspace
 
-In this exercise, you'll use a script to provision a new Azure Databricks workspace.
+In this task, you'll use a script to provision a new Azure Databricks workspace.
 
 1. In a web browser, sign into the [Azure portal](https://portal.azure.com) at `https://portal.azure.com`.
 1. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal.
@@ -52,11 +52,11 @@ In this exercise, you'll use a script to provision a new Azure Databricks worksp
 
     ![Azure portal with a cloud shell pane](./images/25-6.png)
 
-## Exercise 2: Create a cluster
+## Task 2: Create a cluster
 
 Azure Databricks is a distributed processing platform that uses Apache Spark *clusters* to process data in parallel on multiple nodes. Each cluster consists of a driver node to coordinate the work, and worker nodes to perform processing tasks.
 
-> **Note**: In this exercise, you'll create a *single-node* cluster to minimize the compute resources used in the lab environment (in which resources may be constrained). In a production environment, you'd typically create a cluster with multiple worker nodes.
+> **Note**: In this task, you'll create a *single-node* cluster to minimize the compute resources used in the lab environment (in which resources may be constrained). In a production environment, you'd typically create a cluster with multiple worker nodes.
 
 1. In the Azure portal, browse to the **dp203-*xxxxxxx*** resource group that was created by the script you ran.
 
@@ -101,7 +101,7 @@ Azure Databricks is a distributed processing platform that uses Apache Spark *cl
 
 > **Note**: If your cluster fails to start, your subscription may have insufficient quota in the region where your Azure Databricks workspace is provisioned. See [CPU core limit prevents cluster creation](https://docs.microsoft.com/azure/databricks/kb/clusters/azure-core-limit) for details. If this happens, you can try deleting your workspace and creating a new one in a different region. You can specify a region as a parameter for the setup script like this: `./setup.ps1 eastus`
 
-## Exercise 3: Explore data using a notebook
+## Task 3: Explore data using a notebook
 
 As in many Spark environments, Databricks supports the use of notebooks to combine notes and interactive code cells that you can use to explore data.
 
