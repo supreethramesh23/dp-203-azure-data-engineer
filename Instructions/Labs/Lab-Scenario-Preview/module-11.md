@@ -14,3 +14,10 @@ After completing this lab, you will be able to:
 
 - Run a Spark notebook interactively.
 - Run the notebook in a pipeline.
+
+## Architecture Diagram
+
+
+   ![Azure portal with a cloud shell pane](./media/lab11.png)
+
+
