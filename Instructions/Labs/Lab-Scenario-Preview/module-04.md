@@ -15,3 +15,7 @@ After completing this lab, you will be able to:
 - Create a table from a database template
 - Create a table from existing data
 - Work with lake database tables
+
+## Architecture Diagram
+
+   ![Azure portal with a cloud shell pane](./media/lab4.png)
