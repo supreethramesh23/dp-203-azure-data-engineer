@@ -13,3 +13,7 @@ After completing this lab, you will be able to:
 - Query the data in files
 - Access external data in a database
 - Visualize the query results
+
+## Architecture Diagram
+
+   ![Azure portal with a cloud shell pane](./media/lab2.png)

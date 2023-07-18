@@ -13,3 +13,8 @@ After completing this lab, you will be able to:
 - Query the data in files
 - Transform data using CREATE EXTERAL TABLE AS SELECT (CETAS) statements
 - Encapsulate data transformation in a stored procedure
+
+
+## Architecture Diagram
+
+   ![Azure portal with a cloud shell pane](./media/lab3.png)

@@ -13,3 +13,7 @@ After completing this lab, you will be able to:
 - Prepare to load data
 - Load data warehouse tables
 - Perform post-load optimization
+
+## Architecture Diagram
+
+   ![Azure portal with a cloud shell pane](./media/lab9.png)

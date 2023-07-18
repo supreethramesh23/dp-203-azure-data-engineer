@@ -14,3 +14,7 @@ After completing this lab, you will be able to:
 - Create catalog tables
 - Use delta tables for streaming data
 - Query a delta table from a serverless SQL pool.
+
+## Architecture Diagram
+
+   ![Azure portal with a cloud shell pane](./media/lab7.png)
