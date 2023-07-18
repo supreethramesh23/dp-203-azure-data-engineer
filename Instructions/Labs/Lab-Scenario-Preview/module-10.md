@@ -16,3 +16,7 @@ After completing this lab, you will be able to:
 - Implement a pipeline.
 - Debug the Data Flow.
 - Publish and run the pipeline.
+
+## Architecture Diagram
+
+   ![Azure portal with a cloud shell pane](./media/lab10.png)
