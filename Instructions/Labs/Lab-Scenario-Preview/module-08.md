@@ -13,3 +13,7 @@ After completing this lab, you will be able to:
 - Explore the data warehouse schema
 - Query the data warehouse tables
 - Challenge - Analyze reseller sales.
+
+## Architecture Diagram
+
+   ![Azure portal with a cloud shell pane](./media/lab8.png)
