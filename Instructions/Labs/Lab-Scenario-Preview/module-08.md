@@ -6,7 +6,7 @@
 
 In this lab, you will understand about Relational data warehouses which are a core element of most enterprise Business Intelligence (BI) solutions, and are used as the basis for data models, reports, and analysis.
 
-## Objectives
+### Objectives
 
 After completing this lab, you will be able to:
 
@@ -14,7 +14,7 @@ After completing this lab, you will be able to:
 - Query the data warehouse tables
 - Challenge - Analyze reseller sales.
 
-## Architecture Diagram
+### Architecture Diagram
 
    ![Azure portal with a cloud shell pane](./media/lab8.png)
 
