@@ -6,7 +6,7 @@
 
 In this lab, you will understand the technical tasks to design and implement data storage; develop data processing; and secure, monitor, and optimize data storage and data processing.
 
-## Objectives
+### Objectives
   
 After completing this lab, you will be able to:
 
@@ -14,7 +14,7 @@ After completing this lab, you will be able to:
 - Access external data in a database
 - Visualize the query results
 
-## Architecture Diagram
+### Architecture Diagram
 
    ![Azure portal with a cloud shell pane](./media/lab2.png)
 
