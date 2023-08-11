@@ -8,7 +8,7 @@
 In this lab, you will how to use Azure Synapse Analytics pipelines to build integrated data solutions that extract, transform, and load data across diverse systems.
 
 
-## Objectives
+### Objectives
   
 After completing this lab, you will be able to:
 
@@ -17,7 +17,7 @@ After completing this lab, you will be able to:
 - Debug the Data Flow.
 - Publish and run the pipeline.
 
-## Architecture Diagram
+### Architecture Diagram
 
    ![Azure portal with a cloud shell pane](./media/lab10.png)
 
