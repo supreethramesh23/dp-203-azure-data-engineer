@@ -7,7 +7,7 @@
 In this lab, you will provision an Azure Stream Analytics job in your Azure subscription, and use it to query and summarize a stream of real-time event data and store the results in Azure Storage.
 
 
-## Objectives
+### Objectives
 
 After completing this lab, you will be able to:
 
@@ -18,7 +18,7 @@ After completing this lab, you will be able to:
  - Create a query
  - Run the streaming job
 
-  ## Architecture Diagram
+  ### Architecture Diagram
 
 
    ![Azure portal with a cloud shell pane](./media/lab17.png)
