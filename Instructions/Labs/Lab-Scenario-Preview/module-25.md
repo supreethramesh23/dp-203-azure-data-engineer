@@ -8,7 +8,7 @@
 In this lab, you'll learn about Delta Lake which is an open source relational storage area for Spark that you can use to implement a data lakehouse architecture in Azure Databricks.
 
 
-## Objectives
+### Objectives
 
 After completing this lab, you will be able to:
 
@@ -17,7 +17,7 @@ After completing this lab, you will be able to:
  - Explore data using a notebook.
 
  
-## Architecture Diagram
+### Architecture Diagram
 
    ![Azure portal with a cloud shell pane](./media/lab25.png)
 
