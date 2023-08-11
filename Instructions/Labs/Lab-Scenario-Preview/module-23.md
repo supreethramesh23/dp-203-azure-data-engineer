@@ -8,7 +8,7 @@
 In this lab, you'll learn about Azure Databricks workspace which provides a central point for managing Databricks clusters, data, and resources on Azure.
 
 
-## Objectives
+### Objectives
 
 After completing this lab, you will be able to:
 
@@ -17,7 +17,7 @@ After completing this lab, you will be able to:
  - Use Spark to analyze a data file.
  - Create and query a database table.
 
- ## Architecture Diagram
+ ### Architecture Diagram
 
    ![Azure portal with a cloud shell pane](./media/lab23.png)
 
