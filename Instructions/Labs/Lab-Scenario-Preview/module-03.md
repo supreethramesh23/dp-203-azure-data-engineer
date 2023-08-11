@@ -6,7 +6,7 @@
 
 In this lab, you'll use a serverless SQL pool in Azure Synapse Analytics to transform data in files.
 
-## Objectives
+### Objectives
   
 After completing this lab, you will be able to:
 
@@ -15,7 +15,7 @@ After completing this lab, you will be able to:
 - Encapsulate data transformation in a stored procedure
 
 
-## Architecture Diagram
+### Architecture Diagram
 
    ![Azure portal with a cloud shell pane](./media/lab3.png)
 
