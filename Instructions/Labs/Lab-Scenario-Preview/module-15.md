@@ -8,7 +8,7 @@
 In this lab, you will explore about Azure Synapse Link for SQL which enables low-latency synchronization of operational data in a relational database to Azure Synapse Analytics.
 
 
-## Objectives
+### Objectives
   
 After completing this lab, you will be able to:
 
@@ -16,8 +16,7 @@ After completing this lab, you will be able to:
 - Explore the transactional database.
 - Configure Azure Synapse Link.
 
-## Architecture Diagram
-
+### Architecture Diagram
 
    ![Azure portal with a cloud shell pane](./media/lab15.png)
 
