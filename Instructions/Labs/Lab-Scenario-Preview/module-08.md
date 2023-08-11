@@ -17,3 +17,5 @@ After completing this lab, you will be able to:
 ## Architecture Diagram
 
    ![Azure portal with a cloud shell pane](./media/lab8.png)
+
+>**Note**: Once you understand the lab's content, you can start the Hands-on Lab by clicking the **Launch** button located at the top right corner which leads you to the lab environment and guide. You can also have a detailed preview the full lab guide [here](https://experience.cloudlabs.ai/#/labguidepreview/71b49940-3a1d-4fe9-b070-4e95a2527caa), prior to launching your environment.
