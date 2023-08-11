@@ -8,14 +8,14 @@
 In this lab, you will learn about Azure Stream Analytics which provides a real-time data processing engine that you can use to ingest streaming event data into Azure Synapse Analytics for further analysis and reporting.
 
 
-## Objectives
+### Objectives
 
 After completing this lab, you will be able to:
 
  - Ingest streaming data into a dedicated SQL pool
  - Summarize streaming data in a data lake
 
- ## Architecture Diagram
+ ### Architecture Diagram
 
 
    ![Azure portal with a cloud shell pane](./media/lab18.png)
