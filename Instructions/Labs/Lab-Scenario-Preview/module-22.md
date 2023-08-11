@@ -8,14 +8,14 @@
 In this lab, you'll learn about Microsoft Purview to track assets and data lineage in an Azure Synapse Analytics workspace
 
 
-## Objectives
+### Objectives
 
 After completing this lab, you will be able to:
 
  - Catalog Azure Synapse Analytics data assets in Microsoft Purview.
  - Integrate Microsoft Purview with Azure Synapse Analytics.
 
- ## Architecture Diagram
+ ### Architecture Diagram
 
 
    ![Azure portal with a cloud shell pane](./media/lab22.png)
