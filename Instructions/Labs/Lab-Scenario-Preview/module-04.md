@@ -6,7 +6,7 @@
 
 In this lab, you'll use a combination of a PowerShell script and an ARM template to provision an Azure Synapse Analytics workspace and will insert data into the lake database using Spark
 
-## Objectives
+### Objectives
   
 After completing this lab, you will be able to:
 
@@ -16,7 +16,7 @@ After completing this lab, you will be able to:
 - Create a table from existing data
 - Work with lake database tables
 
-## Architecture Diagram
+### Architecture Diagram
 
    ![Azure portal with a cloud shell pane](./media/lab4.png)
 
