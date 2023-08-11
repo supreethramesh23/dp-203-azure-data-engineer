@@ -8,7 +8,7 @@
 In this lab, you'll learn about Azure Databricks that provides SQL Warehouses that enable data analysts to work with data using familiar relational SQL queries.
 
 
-## Objectives
+### Objectives
 
 After completing this lab, you will be able to:
 
@@ -19,7 +19,7 @@ After completing this lab, you will be able to:
  - Create a query
  - Create a dashboard
 
-## Architecture Diagram
+### Architecture Diagram
 
    ![Azure portal with a cloud shell pane](./media/lab26.png)
 
