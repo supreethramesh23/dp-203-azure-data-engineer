@@ -6,7 +6,7 @@
 
 In this lab, you will explore Delta Lake which is an open source relational storage area for Spark that you can use to implement a data lakehouse architecture in Azure Synapse Analytics.
 
-## Objectives
+### Objectives
   
 After completing this lab, you will be able to:
 
@@ -15,7 +15,7 @@ After completing this lab, you will be able to:
 - Use delta tables for streaming data
 - Query a delta table from a serverless SQL pool.
 
-## Architecture Diagram
+### Architecture Diagram
 
    ![Azure portal with a cloud shell pane](./media/lab7.png)
 
