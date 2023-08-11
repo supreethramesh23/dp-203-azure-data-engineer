@@ -8,7 +8,7 @@
 In this lab, you'll learn about Apache Spark clusters to process data in parallel on multiple nodes. As in many Spark environments, Databricks supports the use of notebooks to combine notes and interactive code cells that you can use to explore data.
 
 
-## Objectives
+### Objectives
 
 After completing this lab, you will be able to:
 
@@ -16,7 +16,7 @@ After completing this lab, you will be able to:
  - Create a cluster.
  - Explore data using a notebook.
 
-## Architecture Diagram
+### Architecture Diagram
 
    ![Azure portal with a cloud shell pane](./media/lab24.png)
 
