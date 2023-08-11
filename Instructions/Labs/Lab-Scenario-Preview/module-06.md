@@ -7,13 +7,13 @@
 
 In this lab, you will explore the Spark notebook in Azure Synapse Analytics to transform data into files.
 
-## Objectives
+### Objectives
   
 After completing this lab, you will be able to:
 
 - Use a Spark notebook to transform data
 
-## Architecture Diagram
+### Architecture Diagram
 
    ![Azure portal with a cloud shell pane](./media/lab6.png)
 
