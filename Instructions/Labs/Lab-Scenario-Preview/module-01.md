@@ -6,7 +6,7 @@
 
 In this lab, you will explore various ways to ingest and explore data. This lab is designed as a high-level overview of the various core capabilities of Azure Synapse Analytics. 
 
-## Objectives
+### Objectives
   
 After completing this lab, you will be able to:
 
@@ -17,7 +17,7 @@ After completing this lab, you will be able to:
 - Analyze data using the Spark pool
 - Query a data warehouse using a dedicated SQL pool
 
-## Architecture Diagram
+### Architecture Diagram
 
    ![Azure portal with a cloud shell pane](./media/lab1.png)
 
