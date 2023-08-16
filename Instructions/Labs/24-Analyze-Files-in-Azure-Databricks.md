@@ -68,4 +68,4 @@ As in many Spark environments, Databricks supports the use of notebooks to combi
 3. Select **&#8962; Home** and then open the **Databricks-Spark** notebook you just imported.
 4. Ensure that the notebook is attached to ***User Name's* cluster**, and follow the instructions it contains; running the cells it contains to explore data in files.
 
-
+**You have successfully completed the lab**
