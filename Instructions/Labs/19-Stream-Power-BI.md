@@ -176,3 +176,5 @@ Now that you have a dataset for the streaming order data, you can create a Power
     ![A screenshot of a Power BI report showing a realtime stream of order data.](./images/powerbi-line-chart.png)
 
     You can re-run the **orderclient** script and observe the data being captured in the real-time dashboard.
+
+**You have successfully completed the lab**
