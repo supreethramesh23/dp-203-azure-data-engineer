@@ -111,4 +111,4 @@ Saving a query makes it easy to retrieve the same data again at a later time.
 Dashboards are a great way to share data tables and visualizations with business users. You can schedule the dashboards to be refreshed periodically, and emailed to subscribers.
 
 
-**You have successfully completed the lab**
+ ### You have successfully completed the lab.
