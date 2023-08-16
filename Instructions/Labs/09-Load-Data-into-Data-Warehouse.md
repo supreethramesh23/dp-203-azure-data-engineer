@@ -227,3 +227,5 @@ After loading new data into the data warehouse, it's recommended to rebuild the 
     ```
 
 4. Run the script to create or update statistics on the **GeographyKey** column of the **DimCustomer** table.
+
+**You have successfully completed the lab**
