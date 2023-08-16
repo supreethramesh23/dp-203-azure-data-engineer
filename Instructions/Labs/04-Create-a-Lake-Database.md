@@ -265,3 +265,5 @@ Now that you have some tables in your database, you can use them to work with th
 7. Use the **&#9655;** button on the left of the cell to run it and verify that a row for sales order 99999 was inserted into the **SalesOrder** table.
 
 8. Close the **Notebook 1** pane, stopping the Spark session and discarding your changes.
+
+**You have successfully completed the lab**
