@@ -68,4 +68,11 @@ As in many Spark environments, Databricks supports the use of notebooks to combi
 3. Select **&#8962; Home** and then open the **Databricks-Spark** notebook you just imported.
 4. Ensure that the notebook is attached to ***User Name's* cluster**, and follow the instructions it contains; running the cells it contains to explore data in files.
 
-    ### You have successfully completed the lab.
+  **Congratulations** on completing the lab! Now, it's time to validate it. Here are the steps:
+
+  > - Navigate to the Lab Validation tab, from the upper right corner in the lab guide section.
+  > - Hit the Validate button for the corresponding task. If you receive a success message, you have successfully validated the lab. 
+  > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+  > - If you need any assistance, please contact us at labs-support@spektrasystems.com.
+
+### You have successfully completed the lab.
