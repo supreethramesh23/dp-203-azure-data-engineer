@@ -414,4 +414,4 @@ Azure Synapse Data Explorer provides a runtime that you can use to store and que
 
 12. On the **Manage** page, select the **adx*xxxxxxx*** Data Explorer pool row and use its &#10074;&#10074; icon to pause it.
 
-**You have successfully completed the lab**
+    ### You have successfully completed the lab.
