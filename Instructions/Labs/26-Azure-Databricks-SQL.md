@@ -117,4 +117,14 @@ Dashboards are a great way to share data tables and visualizations with business
   > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
   > - If you need any assistance, please contact us at labs-support@spektrasystems.com.
 
+ ## Review
+
+ In this lab, you have accomplished the following:
+  - Provision an Azure Databricks workspace.
+ - View and start a SQL Warehouse.
+ - Create a database.
+ - Create a table.
+ - Create a query
+ - Create a dashboard
+ 
  ### You have successfully completed the lab.
