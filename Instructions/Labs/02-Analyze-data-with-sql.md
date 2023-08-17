@@ -396,8 +396,7 @@ Now that you've explored various ways to query files in the data lake by using S
 
 ## Review
 
-In this lab, you have completed the following:
-
+In this lab, you have accomplished the following:
 - Query the data in files
 - Access external data in a database
 - Visualize the query results
