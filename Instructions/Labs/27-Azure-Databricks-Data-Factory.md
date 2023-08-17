@@ -2,6 +2,8 @@
 
 You can use notebooks in Azure Databricks to perform data engineering tasks, such as processing data files and loading data into tables. When you need to orchestrate these tasks as part of a data engineering pipeline, you can use Azure Data Factory.
 
+### Estimated time: 40 minutes
+
 ## Task 1: Provision Azure resources
 
 In this task, you'll use a script to provision a new Azure Databricks workspace and an Azure Data Factory resource in your Azure subscription.
