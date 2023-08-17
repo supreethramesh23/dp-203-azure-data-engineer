@@ -414,6 +414,17 @@ Azure Synapse Data Explorer provides a runtime that you can use to store and que
 
 12. On the **Manage** page, select the **adx*xxxxxxx*** Data Explorer pool row and use its &#10074;&#10074; icon to pause it.
 
+### Review
+
+In this lab, you have completed the following:
+
+- Provision an Azure Synapse Analytics workspace
+- Explore Synapse Studio
+- Ingesting data with a pipeline in Synapse Studio
+- Analyze data using a serverless SQL pool
+- Analyze data using the Spark pool
+- Query a data warehouse using a dedicated SQL pool
+
   **Congratulations** on completing the lab! Now, it's time to validate it. Here are the steps:
 
   > - Navigate to the Lab Validation tab, from the upper right corner in the lab guide section.
@@ -421,4 +432,4 @@ Azure Synapse Data Explorer provides a runtime that you can use to store and que
   > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
   > - If you need any assistance, please contact us at labs-support@spektrasystems.com.
 
-    ### You have successfully completed the lab.
+### You have successfully completed the lab.
