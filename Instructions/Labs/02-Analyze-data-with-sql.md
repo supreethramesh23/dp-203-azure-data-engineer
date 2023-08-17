@@ -394,7 +394,7 @@ Now that you've explored various ways to query files in the data lake by using S
   > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
   > - If you need any assistance, please contact us at labs-support@spektrasystems.com.
 
-### Review
+## Review
 
 In this lab, you have completed the following:
 
@@ -402,4 +402,4 @@ In this lab, you have completed the following:
 - Access external data in a database
 - Visualize the query results
 
-  ### You have successfully completed the lab.
+### You have successfully completed the lab.
