@@ -38,6 +38,13 @@ You'll use a combination of a PowerShell script and an ARM template to provision
 
 1. While you are waiting for the script to complete, continue with the next task.
 
+  **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+
+  > - Navigate to the Lab Validation tab, from the upper right corner in the lab guide section.
+  > - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task. 
+  > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+  > - If you need any assistance, please contact us at labs-support@spektrasystems.com.
+
 ## Task 2: Create a Power BI workspace
 
 In the Power BI service, you organize datasets, reports, and other resources in *workspaces*. Every Power BI user has a default workspace named **My Workspace**, which you can use in this exercise; but it's generally good practice to create a workspace for each discrete reporting solution you want to manage.
@@ -59,6 +66,13 @@ In the Power BI service, you organize datasets, reports, and other resources in 
     ![A screenshot of the Create workspace tab in Power BI.](./images/workspace2.png)
    
 1. When viewing your workspace, note its globally unique identifier (GUID) in the page URL (which should be similar to `https://app.powerbi.com/groups/<GUID>/list`). You will need this GUID later.
+
+  **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+
+  > - Navigate to the Lab Validation tab, from the upper right corner in the lab guide section.
+  > - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task. 
+  > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+  > - If you need any assistance, please contact us at labs-support@spektrasystems.com.
 
 ## Task 3: Use Azure Stream Analytics to process streaming data
 
@@ -82,6 +96,13 @@ An Azure Stream Analytics job defines a perpetual query that operates on streami
 
 4. Wait for deployment to complete and then go to the deployed Stream Analytics job resource.
 
+  **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+
+  > - Navigate to the Lab Validation tab, from the upper right corner in the lab guide section.
+  > - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task. 
+  > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+  > - If you need any assistance, please contact us at labs-support@spektrasystems.com.
+
 ### Task 3.2: Create an input for the event data stream
 
 1. On the **stream-orders** overview page, select **Add input**. Then  on the **Inputs** page, use the **Add stream input** menu to add an **Event Hub** input with the following properties:
@@ -97,6 +118,13 @@ An Azure Stream Analytics job defines a perpetual query that operates on streami
     - **Encoding**: UTF-8
 2. Save the input and wait while it is created. You will see several notifications. Wait for a **Successful connection test** notification.
 
+  **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+
+  > - Navigate to the Lab Validation tab, from the upper right corner in the lab guide section.
+  > - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task. 
+  > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+  > - If you need any assistance, please contact us at labs-support@spektrasystems.com.
+
 ### Task 3.3: Create an output for the Power BI workspace
 
 1. View the **Outputs** page for the **stream-orders** Stream Analytics job. Then use the **Add** menu to add an **Power BI** output with the following properties:
@@ -108,6 +136,13 @@ An Azure Stream Analytics job defines a perpetual query that operates on streami
     - **Table name**: `orders`
 
 2. Save the output and wait while it is created. You will see several notifications. Wait for a **Successful connection test** notification.
+
+  **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+
+  > - Navigate to the Lab Validation tab, from the upper right corner in the lab guide section.
+  > - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task. 
+  > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+  > - If you need any assistance, please contact us at labs-support@spektrasystems.com.
 
 ### Task 3.4: Create a query to summarize the event stream
 
@@ -144,6 +179,13 @@ An Azure Stream Analytics job defines a perpetual query that operates on streami
 
 4. While the order client app is running, switch to the Power BI app browser tab and view your workspace.
 5. Refresh the Power BI app page until you see the **realtime-data** dataset in your workspace. This dataset is generated by the Azure Stream Analytics job.
+
+  **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+
+  > - Navigate to the Lab Validation tab, from the upper right corner in the lab guide section.
+  > - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task. 
+  > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+  > - If you need any assistance, please contact us at labs-support@spektrasystems.com.
 
 ## Task 4: Visualize the streaming data in Power BI
 
