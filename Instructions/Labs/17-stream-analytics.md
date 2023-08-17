@@ -208,4 +208,14 @@ OK, now you're ready to run the job and process some real-time sales order data.
   > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
   > - If you need any assistance, please contact us at labs-support@spektrasystems.com.
 
+## Review
+
+In this lab, you have accomplished the following:
+ - View the streaming data source.
+ - Create an Azure Stream Analytics job
+ - Create an input for the event stream
+ - Create an output for the blob store
+ - Create a query
+ - Run the streaming job
+
 ### You have successfully completed the lab.
