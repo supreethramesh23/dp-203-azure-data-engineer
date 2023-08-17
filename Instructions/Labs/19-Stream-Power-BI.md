@@ -6,6 +6,8 @@ Azure Stream Analytics provides a cloud service that you can use to define a *qu
 
 In this exercise, you'll use Azure Stream Analytics to process a  stream of sales order data, such as might be generated from an online retail application. The order data will be sent to Azure Event Hubs, from where your Azure Stream Analytics job will read and summarize the data before sending it to Power BI, where you will visualize the data in a report.
 
+### Estimated time: 45 minutes
+
 ## Task 1: Provision Azure resources
 
 In this exercise, you'll need an Azure Synapse Analytics workspace with access to data lake storage and a dedicated SQL pool. You'll also need an Azure Event Hubs namespace to which the streaming order data can be sent.
