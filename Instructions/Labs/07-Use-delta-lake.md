@@ -410,4 +410,12 @@ In addition to Spark pools, Azure Synapse Analytics includes a built-in serverle
   > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
   > - If you need any assistance, please contact us at labs-support@spektrasystems.com.
 
+## Review
+
+In this lab, you have accomplished the following:
+- Create delta tables
+- Create catalog tables
+- Use delta tables for streaming data
+- Query a delta table from a serverless SQL pool.
+
 ### You have successfully completed the lab.
