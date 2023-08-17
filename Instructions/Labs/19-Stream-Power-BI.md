@@ -219,4 +219,11 @@ Now that you have a dataset for the streaming order data, you can create a Power
 
     You can re-run the **orderclient** script and observe the data being captured in the real-time dashboard.
 
-    ### You have successfully completed the lab.
+## Review
+
+In this lab, you have accomplished the following:
+ - Create a Power BI workspace.
+ - Use Azure Stream Analytics to process streaming data.
+ - Visualize the streaming data in Power BI.
+
+### You have successfully completed the lab.
