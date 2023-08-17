@@ -147,5 +147,12 @@ While many data analysis are comfortable using languages like Python or Scala to
   > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
   > - If you need any assistance, please contact us at labs-support@spektrasystems.com.
 
-### You have successfully completed the lab.
+## Review
 
+In this lab, you have accomplished the following:
+ - Provision an Azure Databricks workspace.
+ - Create a cluster.
+ - Use Spark to analyze a data file.
+ - Create and query a database table.
+
+### You have successfully completed the lab.
