@@ -266,12 +266,20 @@ Now that you have some tables in your database, you can use them to work with th
 
 8. Close the **Notebook 1** pane, stopping the Spark session and discarding your changes.
 
-
   **Congratulations** on completing the lab! Now, it's time to validate it. Here are the steps:
 
   > - Navigate to the Lab Validation tab, from the upper right corner in the lab guide section.
   > - Hit the Validate button for the corresponding task. If you receive a success message, you have successfully validated the lab. 
   > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
-  > - If you need any assistance, please contact us at labs-support@spektrasystems.com.
-    
+  > - If you need any assistance, please contact us at labs-support@spektrasystems.com.   
+
+## Review
+
+In this lab, you have accomplished the following:
+- Modify container permissions in the Stroage account
+- Create a lake database in Synapse Studio
+- Create a table from a database template
+- Create a table from existing data
+- Work with lake database tables
+
 ### You have successfully completed the lab.
