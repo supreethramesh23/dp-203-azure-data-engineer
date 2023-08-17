@@ -426,4 +426,12 @@ While **matplotlib** enables you to create complex charts of multiple types, it 
   > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
   > - If you need any assistance, please contact us at labs-support@spektrasystems.com.
 
+## Review
+
+In this lab, you have accomplished the following:
+- Query the data in files
+- Analyze data in a data frame
+- Query data using Spark SQL
+- Visualize data with Spark
+
 ### You have successfully completed the lab.
