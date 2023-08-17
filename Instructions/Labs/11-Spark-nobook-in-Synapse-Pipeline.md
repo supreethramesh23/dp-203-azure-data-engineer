@@ -118,4 +118,10 @@ Now that you understand the transformation process, you're ready to automate it 
   > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
   > - If you need any assistance, please contact us at labs-support@spektrasystems.com.
  
+## Review
+
+In this lab, you have accomplished the following:
+- Run a Spark notebook interactively.
+- Run the notebook in a pipeline.
+
 ### You have successfully completed the lab.
