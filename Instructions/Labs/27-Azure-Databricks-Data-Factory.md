@@ -166,4 +166,11 @@ Now that you have created a linked service, you can use it in a pipeline to run 
   > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
   > - If you need any assistance, please contact us at labs-support@spektrasystems.com.
 
+ ## Review
+
+ In this lab, you have accomplished the following:
+ - Import a notebook.
+ - Enable Azure Databricks integration with Azure Data Factory.
+ - Use a pipeline to run the Azure Databricks notebook.
+ 
  ### You have successfully completed the lab.
