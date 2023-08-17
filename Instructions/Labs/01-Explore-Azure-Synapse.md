@@ -423,8 +423,7 @@ Azure Synapse Data Explorer provides a runtime that you can use to store and que
 
 ## Review
 
-In this lab, you have completed the following:
-
+In this lab, you have accomplished the following:
 - Provision an Azure Synapse Analytics workspace
 - Explore Synapse Studio
 - Ingesting data with a pipeline in Synapse Studio
