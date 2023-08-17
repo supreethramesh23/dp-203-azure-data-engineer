@@ -111,4 +111,4 @@ Now that you understand the transformation process, you're ready to automate it 
 
 5. When the pipeline run has succeeded, on the **Data** page, browse to the **files** storage container and verify that a new folder named for the pipeline run ID has been created, and that it contains Parquet files for the transformed sales data.
    
-**You have successfully completed the lab**
+    ### You have successfully completed the lab.
