@@ -328,10 +328,6 @@ So far you've seen some techniques for exploring and processing file-based data 
 
 10. On the **Manage** page, select the **sql*xxxxxxx*** dedicated SQL pool row and use its &#10074;&#10074; icon to pause it.
 
-<!--- ## Explore data with a Data Explorer pool
-
-Azure Synapse Data Explorer provides a runtime that you can use to store and query data by using Kusto Query Language (KQL). Kusto is optimized for data that includes a time series component, such as realtime data from log files or IoT devices.
-
 ### Task 6.1: Create a Data Explorer database and ingest data into a table
 
 1. In Synapse Studio, on the **Manage** page, in the **Data Explorer pools** section, select the **adx*xxxxxxx*** pool row and then use its **&#9655;** icon to resume it.
