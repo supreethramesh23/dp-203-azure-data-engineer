@@ -131,4 +131,11 @@ As in many Spark environments, Databricks supports the use of notebooks to combi
   > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
   > - If you need any assistance, please contact us at labs-support@spektrasystems.com.
 
+## Review
+
+In this lab, you have accomplished the following:
+ - Provision an Azure Databricks workspace.
+ - Create a cluster.
+ - Explore data using a notebook.
+
 ### You have successfully completed the lab.
