@@ -2,6 +2,8 @@
 
 Azure Databricks is a Microsoft Azure-based version of the popular open-source Databricks platform. Azure Databricks is built on Apache Spark, and offers a highly scalable solution for data engineering and analysis tasks that involve working with data in files. One of the benefits of Spark is support for a wide range of programming languages, including Java, Scala, Python, and SQL; making Spark a very flexible solution for data processing workloads including data cleansing and manipulation, statistical analysis and machine learning, and data analytics and visualization.
 
+### Estimated time: 45 minutes
+
 ## Tasl 1: Provision an Azure Databricks workspace
 
 In this exercise, you'll use a script to provision a new Azure Databricks workspace.
