@@ -13,7 +13,7 @@ After completing this lab, you will be able to:
 - Create delta tables
 - Create catalog tables
 - Use delta tables for streaming data
-- Query a delta table from a serverless SQL pool.
+- Query a delta table from a serverless SQL pool
 
 ### Architecture Diagram
 
