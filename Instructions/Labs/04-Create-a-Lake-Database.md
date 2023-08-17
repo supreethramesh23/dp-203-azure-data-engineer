@@ -266,4 +266,4 @@ Now that you have some tables in your database, you can use them to work with th
 
 8. Close the **Notebook 1** pane, stopping the Spark session and discarding your changes.
 
-**You have successfully completed the lab**
+    ### You have successfully completed the lab.
