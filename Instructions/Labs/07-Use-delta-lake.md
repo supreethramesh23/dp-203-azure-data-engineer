@@ -416,6 +416,6 @@ In this lab, you have accomplished the following:
 - Create delta tables
 - Create catalog tables
 - Use delta tables for streaming data
-- Query a delta table from a serverless SQL pool.
+- Query a delta table from a serverless SQL pool
 
 ### You have successfully completed the lab.
