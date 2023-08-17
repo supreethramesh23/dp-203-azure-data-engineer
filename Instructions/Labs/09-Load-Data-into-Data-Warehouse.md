@@ -242,4 +242,11 @@ After loading new data into the data warehouse, it's recommended to rebuild the 
   > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
   > - If you need any assistance, please contact us at labs-support@spektrasystems.com.
 
-    ### You have successfully completed the lab.
+## Review
+
+In this lab, you have accomplished the following:
+- Prepare to load data
+- Load data warehouse tables
+- Perform post-load optimization
+
+### You have successfully completed the lab.
