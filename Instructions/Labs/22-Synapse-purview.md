@@ -2,6 +2,8 @@
 
 Microsoft Purview enables you to catalog data assets across your data estate and track the flow of data as it is transferred from one data source to another - a key element of a comprehensive data governance solution.
 
+### Estimated time: 1 hour 15 minutes
+
 ## Task 1: Provision Azure resources
 
 In this exercise, you'll use Microsoft Purview to track assets and data lineage in an Azure Synapse Analytics workspace. You'll start by using a script to provision these resources in your Azure subscription.
