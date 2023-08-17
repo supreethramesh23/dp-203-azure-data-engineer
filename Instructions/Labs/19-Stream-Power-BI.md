@@ -177,4 +177,4 @@ Now that you have a dataset for the streaming order data, you can create a Power
 
     You can re-run the **orderclient** script and observe the data being captured in the real-time dashboard.
 
-**You have successfully completed the lab**
+    ### You have successfully completed the lab.
