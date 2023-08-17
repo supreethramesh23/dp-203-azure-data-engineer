@@ -124,5 +124,4 @@ As in many Spark environments, Databricks supports the use of notebooks to combi
 
 1. Ensure that the notebook is attached to ***User Name's* cluster**, and follow the instructions it contains; running the cells it contains to work with Delta Lake.
 
-
-**You have successfully completed the lab**
+    ### You have successfully completed the lab.
