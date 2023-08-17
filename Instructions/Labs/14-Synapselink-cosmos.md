@@ -399,4 +399,11 @@ Now you're ready to query your Cosmos DB database from Azure Synapse Analytics.
 4. Return to the Synapse Studio tab and in the **SQL Script 1** tab, re-run the query. Initially, it may show the same results as before, but wait a minute or so and then re-run the query again until the results include the sale to Samir Nadoy on 2019-07-02.
 5. Switch back to the **Notebook 1** tab and re-run the last cell in the Spark notebook to verify that the sale to Samir Nadoy is now included in the query results.
 
+## Review
+
+In this lab, you have accomplished the following:
+- Configure Synapse Link in Azure Cosmos DB.
+- Configure Synapse Link in Azure Synapse Analytics.
+- Query Azure Cosmos DB from Azure Synapse Analytics.
+
 ### You have successfully completed the lab.
