@@ -293,4 +293,11 @@ When exploring very large volumes of data, queries can take significant time and
   > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
   > - If you need any assistance, please contact us at labs-support@spektrasystems.com.
 
+## Review
+
+In this lab, you have accomplished the following:
+- Explore the data warehouse schema
+- Query the data warehouse tables
+- Challenge - Analyze reseller sales.
+
 ### You have successfully completed the lab.
