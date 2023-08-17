@@ -76,5 +76,12 @@ In this task, you'll use a combination of a PowerShell script and an ARM templat
 14. Review the notes in the notebook and run the each code cells.
 
     > **Note**: The first code cell will take a few minutes to run because the Spark pool must be started. Subsequent cells will run more quickly.
-    
+
+  **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+
+  > - Navigate to the Lab Validation tab, from the upper right corner in the lab guide section.
+  > - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task. 
+  > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+  > - If you need any assistance, please contact us at labs-support@spektrasystems.com.
+
 ### You have successfully completed the lab.
