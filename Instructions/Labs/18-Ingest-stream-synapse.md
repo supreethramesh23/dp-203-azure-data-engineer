@@ -268,4 +268,10 @@ So far, you've seen how to use a Stream Analytics job to ingest messages from a 
   > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
   > - If you need any assistance, please contact us at labs-support@spektrasystems.com.
 
+## Review
+
+In this lab, you have accomplished the following:
+ - Ingest streaming data into a dedicated SQL pool
+ - Summarize streaming data in a data lake
+
 ### You have successfully completed the lab.
