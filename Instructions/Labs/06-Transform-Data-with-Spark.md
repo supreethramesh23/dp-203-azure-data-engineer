@@ -84,4 +84,10 @@ In this task, you'll use a combination of a PowerShell script and an ARM templat
   > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
   > - If you need any assistance, please contact us at labs-support@spektrasystems.com.
 
+## Review
+
+In this lab,  you have accomplished the following:
+- Provision an Azure Synapse Analytics workspace
+- Use a Spark notebook to transform data
+
 ### You have successfully completed the lab.
