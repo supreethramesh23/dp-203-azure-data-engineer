@@ -326,4 +326,10 @@ The lineage tracking capability enabled by integrating Azure Synapse Analytics w
 
 1. Switch back to the Synapse Studio tab, and on the **Manage** page, pause the **sql*xxxxxxx*** dedicated SQL pool.
 
-    ### You have successfully completed the lab.
+## Review
+
+In this lab, you have accomplished the following:
+ - Catalog Azure Synapse Analytics data assets in Microsoft Purview.
+ - Integrate Microsoft Purview with Azure Synapse Analytics.
+
+### You have successfully completed the lab.
