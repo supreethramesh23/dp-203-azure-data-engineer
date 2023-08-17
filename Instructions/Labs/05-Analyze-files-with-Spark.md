@@ -419,4 +419,4 @@ While **matplotlib** enables you to create complex charts of multiple types, it 
 
 > **Note**: To learn more about plotting with seaborn, see the [seaborn documentation](https://seaborn.pydata.org/index.html).
 
-**You have successfully completed the lab**
+### You have successfully completed the lab.
