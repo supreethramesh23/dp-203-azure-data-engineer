@@ -233,4 +233,12 @@ Now you're ready to publish and run the pipeline.
   > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
   > - If you need any assistance, please contact us at labs-support@spektrasystems.com.
 
+## Review
+
+In this lab, you have accomplished the following:
+- View source and destination data stores.
+- Implement a pipeline.
+- Debug the Data Flow.
+- Publish and run the pipeline.
+
 ### You have successfully completed the lab.
