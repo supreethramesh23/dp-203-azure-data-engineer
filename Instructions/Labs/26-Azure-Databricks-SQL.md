@@ -2,6 +2,8 @@
 
 SQL is an industry-standard language for querying and manipulating data. Many data analysts perform data analytics by using SQL to query tables in a relational database. Azure Databricks includes SQL functionality that builds on Spark and Delta Lake technologies to provide a relational database layer over files in a data lake.
 
+### Estimated time: 45 minutes
+
 ## Task 1: Provision an Azure Databricks workspace
 
 In this exercise, you'll need a premium-tier Azure Databricks workspace.
