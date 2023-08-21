@@ -300,7 +300,7 @@ While SQL is a common language for querying structured datasets, many data analy
 
 13. Close the notebook pane and stop the Spark session when prompted. Then view the **Develop** page to verify that the notebook has been saved.
 
-<!-- ## Task 6: Use a dedicated SQL pool to query a data warehouse
+## Task 6: Use a dedicated SQL pool to query a data warehouse [READ ONLY]
 
 So far you've seen some techniques for exploring and processing file-based data in a data lake. In many cases, an enterprise analytics solution uses a data lake to store and prepare unstructured data that can then be loaded into a relational data warehouse to support business intelligence (BI) workloads. In Azure Synapse Analytics, these data warehouses can be implemented in a dedicated SQL pool.
 
@@ -363,7 +363,7 @@ So far you've seen some techniques for exploring and processing file-based data 
 
 > **Note**: In this example, you imported a very small amount of batch data from a file, which is fine for the purposes of this exercise. In reality, you can use Data Explorer to analyze much larger volumes of data; including realtime data from a streaming source such as Azure Event Hubs.
 
-### Task 6.2: Use Kusto query language to query the table
+### Task 6.2: Use Kusto query language to query the table [READ ONLY]
 
 1. Switch back to the **Data** page and in the **...** menu for the **sales-data** database, select **Refresh**.
 2. Expand the **sales-data** database's **Tables** folder. Then in the **...** menu for the **sales** table, select **New KQL script** > **Take 1000 rows**.
@@ -410,7 +410,7 @@ So far you've seen some techniques for exploring and processing file-based data 
 
 11. Close the query pane, and then view the **Develop** page to verify that the KQL script has been saved.
 
-12. On the **Manage** page, select the **adx*xxxxxxx*** Data Explorer pool row and use its &#10074;&#10074; icon to pause it. -->
+12. On the **Manage** page, select the **adx*xxxxxxx*** Data Explorer pool row and use its &#10074;&#10074; icon to pause it.
 
 ## Review
 
