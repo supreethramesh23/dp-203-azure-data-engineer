@@ -328,7 +328,7 @@ So far you've seen some techniques for exploring and processing file-based data 
 
 10. On the **Manage** page, select the **sql*xxxxxxx*** dedicated SQL pool row and use its &#10074;&#10074; icon to pause it.
 
-### Task 6.1: Create a Data Explorer database and ingest data into a table
+<!--- ### Task 6.1: Create a Data Explorer database and ingest data into a table
 
 1. In Synapse Studio, on the **Manage** page, in the **Data Explorer pools** section, select the **adx*xxxxxxx*** pool row and then use its **&#9655;** icon to resume it.
 2. Wait for the pool to start. It can take some time. Use the **&#8635; Refresh** button to check its status periodically. The status will show as **online** when it is ready.
@@ -410,7 +410,7 @@ So far you've seen some techniques for exploring and processing file-based data 
 
 11. Close the query pane, and then view the **Develop** page to verify that the KQL script has been saved.
 
-12. On the **Manage** page, select the **adx*xxxxxxx*** Data Explorer pool row and use its &#10074;&#10074; icon to pause it.
+12. On the **Manage** page, select the **adx*xxxxxxx*** Data Explorer pool row and use its &#10074;&#10074; icon to pause it. ---!>
 
   **Congratulations** on completing the lab! Now, it's time to validate it. Here are the steps:
 
