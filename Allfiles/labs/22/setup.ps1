@@ -49,6 +49,10 @@ $Region = $locations.Get($rand).Location #>
 
 # $Region = "eastus"
 
+# Set a region
+$properties = az group list | ConvertFrom-Json
+$Region = $properties[1].location
+
 # Test for subscription Azure SQL capacity constraints in randomly selected regions
 # (for some subsription types, quotas are adjusted dynamically based on capacity)
  $success = 0
