@@ -27,7 +27,7 @@ Write-Host "Your randomly-generated suffix for Azure resources is $suffix"
 $resourceGroupName = "dp203-$suffix"
 
 
-# Choose a random region
+<# # Choose a random region
  Write-Host "Finding an available region. This may take several minutes...";
 $delay = 0, 30, 60, 90, 120 | Get-Random
 Start-Sleep -Seconds $delay # random delay to stagger requests from multi-student classes
@@ -45,7 +45,7 @@ $locations = Get-AzLocation | Where-Object {
 }
 $max_index = $locations.Count - 1
 $rand = (0..$max_index) | Get-Random
-$Region = $locations.Get($rand).Location
+$Region = $locations.Get($rand).Location #>
 
 # $Region = "eastus"
 
