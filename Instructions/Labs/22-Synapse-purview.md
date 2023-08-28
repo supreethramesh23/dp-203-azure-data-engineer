@@ -149,9 +149,9 @@ Now that you've configured the required access for Microsoft Purview to scan the
 
 4. On the left side of the Azure Purview Governance Portal, use the **&rsaquo;&rsaquo;** icon to expand the menu - this reveals the different pages within the portal.
 
-5. On the **Data map** page, on the **Sources** sub-page, select **Register**:
+5. On the **Data map** page, on the **Data Sources** sub-page, select **Register**:
 
-    ![Screenshot of the Data map page in the Microsoft Purview Governance Portal.](./images/purview-register.png)
+    ![Screenshot of the Data map page in the Microsoft Purview Governance Portal.](./images/dp-203-data1.png)
 
 6. In the **Register sources** tab that appears, select **Azure Synapse Analytics**, and continue to register a source with the following settings:
     - **Name**: Synapse_data
