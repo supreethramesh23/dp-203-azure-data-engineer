@@ -67,7 +67,7 @@ Let's start by ingesting a stream of data directly into a table in an Azure Syna
 
 ### Task 2.2: Create an Azure Stream Analytics job to ingest order data
 
-1. Switch back to the browser tab containing the Azure portal, and note the region where your **db000-*xxxxxxx*** resource group was provisioned - you will create your Stream Analytics job in the <u>same region</u>.
+1. Switch back to the browser tab containing the Azure portal, and note the region where your **dp203-*xxxxxxx*** resource group was provisioned - you will create your Stream Analytics job in the <u>same region</u>.
 2. On the **Home** page select **+ Create a resource** and search for `Stream Analytics job`. Then create a **Stream Analytics job** with the following properties:
     - **Basics**:
         - **Subscription**: Your Azure subscription
