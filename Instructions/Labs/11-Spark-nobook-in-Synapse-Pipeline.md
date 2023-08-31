@@ -2,7 +2,7 @@
 
 In this exercise, we're going to create an Azure Synapse Analytics pipeline that includes an activity to run an Apache Spark notebook..
 
-### Estimated time: 45 minutes
+### Estimated timing: 45 minutes
 
 ## Task 1: Provision an Azure Synapse Analytics workspace
 
