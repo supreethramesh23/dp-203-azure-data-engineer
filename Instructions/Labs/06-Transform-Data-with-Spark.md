@@ -2,7 +2,7 @@
 
 Data *engineers* often use Spark notebooks as one of their preferred tools to perform *extract, transform, and load (ETL)* or *extract, load, and transform (ELT)* activities that transform data from one format or structure to another.
 
-### Estimated time: 30 minutes
+### Estimated timing: 30 minutes
 
 ## Task 1: Provision an Azure Synapse Analytics workspace
 
