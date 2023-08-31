@@ -2,7 +2,7 @@
 
 In this exercise, you're going to load data into a dedicated SQL Pool.
 
-### Estimated time: 45 minutes
+### Estimated timing: 45 minutes
 
 ## Task 1: Provision an Azure Synapse Analytics workspace
 
