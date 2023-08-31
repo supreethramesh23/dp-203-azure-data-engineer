@@ -2,7 +2,7 @@
 
 Azure Synapse Analytics provides a single, consolidated data analytics platform for end-to end data analytics. In this exercise, you'll explore various ways to ingest and explore data. This exercise is designed as a high-level overview of the various core capabilities of Azure Synapse Analytics. Other exercises are available to explore specific capabilities in more detail.
 
-### Estimated time: 45 minutes
+### Estimated time: 60 minutes
 
 ## Task 1: Provision an Azure Synapse Analytics workspace
 
