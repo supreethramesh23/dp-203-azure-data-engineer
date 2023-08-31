@@ -2,7 +2,7 @@
 
 In this lab, you'll load data into a dedicated SQL Pool using a pipeline in Azure Synapse Analytics Explorer. The pipeline will encapsulate a data flow that loads product data into a table in a data warehouse.
 
-### Estimated time: 45 minutes
+### Estimated timing: 45 minutes
 
 ## Task 1: Provision an Azure Synapse Analytics workspace
 
