@@ -4,7 +4,7 @@ Data *analysts* often use SQL to query data for analysis and reporting. Data *en
 
 In this exercise, you'll use a serverless SQL pool in Azure Synapse Analytics to transform data in files.
 
-### Estimated time: 45 minutes
+### Estimated timing: 45 minutes
 
 ## Task 1: Provision an Azure Synapse Analytics workspace
 
