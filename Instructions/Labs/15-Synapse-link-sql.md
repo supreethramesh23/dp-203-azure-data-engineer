@@ -2,7 +2,7 @@
 
 Azure Synapse Link for SQL enables you to automatically synchronize a transactional database in SQL Server or Azure SQL Database with a dedicated SQL pool in Azure Synapse Analytics. This synchronization enables you to perform low-latency analytical workloads in Synapse Analytics without incurring query overhead in the source operational database.
 
-### Estimated time: 45 minutes
+### Estimated timing: 45 minutes
 
 ## Task 1: Provision Azure resources
 
