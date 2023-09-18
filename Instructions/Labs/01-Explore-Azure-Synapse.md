@@ -1,6 +1,23 @@
 # Lab 01: Explore Azure Synapse Analytics
 
+## Lab Scenario
+
 Azure Synapse Analytics provides a single, consolidated data analytics platform for end-to end data analytics. In this exercise, you'll explore various ways to ingest and explore data. This exercise is designed as a high-level overview of the various core capabilities of Azure Synapse Analytics. Other exercises are available to explore specific capabilities in more detail.
+
+## Objectives
+  
+After completing this lab, you will be able to:
+
+- Provision an Azure Synapse Analytics workspace
+- Explore Synapse Studio
+- Ingesting data with a pipeline in Synapse Studio
+- Analyze data using a serverless SQL pool
+- Analyze data using the Spark pool
+- Query a data warehouse using a dedicated SQL pool
+
+## Architecture Diagram
+
+   ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab1.png)
 
 ### Estimated timing: 60 minutes
 
