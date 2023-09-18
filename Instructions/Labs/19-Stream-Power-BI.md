@@ -16,11 +16,11 @@ After completing this lab, you will be able to:
  - Use Azure Stream Analytics to process streaming data.
  - Visualize the streaming data in Power BI.
 
+### Estimated timing: 45 minutes
+
 ### Architecture Diagram
 
    ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab19.png)
-
-### Estimated timing: 45 minutes
 
 ## Task 1: Provision Azure resources
 
@@ -242,4 +242,4 @@ In this lab, you have accomplished the following:
  - Use Azure Stream Analytics to process streaming data.
  - Visualize the streaming data in Power BI.
 
-### You have successfully completed the lab.
+## You have successfully completed the lab.
