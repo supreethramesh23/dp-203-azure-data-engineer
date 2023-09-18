@@ -16,11 +16,11 @@ After completing this lab, you will be able to:
  - Ingest streaming data into a dedicated SQL pool
  - Summarize streaming data in a data lake
 
+ ### Estimated timing: 45 minutes
+ 
  ### Architecture Diagram
 
    ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab18.png)
-
-### Estimated timing: 45 minutes
 
 ## Task 1: Provision Azure resources
 
@@ -289,4 +289,4 @@ In this lab, you have accomplished the following:
  - Ingest streaming data into a dedicated SQL pool
  - Summarize streaming data in a data lake
 
-### You have successfully completed the lab.
+## You have successfully completed the lab.
