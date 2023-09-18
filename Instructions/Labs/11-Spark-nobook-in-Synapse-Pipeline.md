@@ -2,7 +2,7 @@
 
 ## Lab Scenario
 
-In this exercise, we're going to create an Azure Synapse Analytics pipeline that includes an activity to run an Apache Spark notebook..
+In this exercise, we're going to create an Azure Synapse Analytics pipeline that includes an activity to run an Apache Spark notebook.
 
 ### Objectives
   
