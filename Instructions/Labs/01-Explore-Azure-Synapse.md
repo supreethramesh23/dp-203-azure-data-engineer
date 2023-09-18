@@ -243,7 +243,7 @@ Now that you've ingested some data into your workspace, you can use Synapse Anal
 
     The resulting chart should resemble this:
 
-    ![Image showing the product count chart view](./images/column-chart.png)
+    ![Image showing the product count chart view](./images/column-chart1.png)
 
 ## Task 5: Use a Spark pool to analyze data
 
