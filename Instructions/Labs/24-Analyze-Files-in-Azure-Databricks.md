@@ -1,6 +1,22 @@
 # Lab 24: Use Spark in Azure Databricks
 
+## Lab-SCenario
+
 Azure Databricks is a Microsoft Azure-based version of the popular open-source Databricks platform. Azure Databricks is built on Apache Spark, and offers a highly scalable solution for data engineering and analysis tasks that involve working with data in files. One of the benefits of Spark is support for a wide range of programming languages, including Java, Scala, Python, and SQL; making Spark a very flexible solution for data processing workloads including data cleansing and manipulation, statistical analysis and machine learning, and data analytics and visualization.
+
+In this lab, you'll learn about Apache Spark clusters to process data in parallel on multiple nodes. As in many Spark environments, Databricks supports the use of notebooks to combine notes and interactive code cells that you can use to explore data.
+
+### Objectives
+
+After completing this lab, you will be able to:
+
+ - Provision an Azure Databricks workspace.
+ - Create a cluster.
+ - Explore data using a notebook.
+
+### Architecture Diagram
+
+   ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab24.png)
 
 ### Estimated timing: 45 minutes
 
