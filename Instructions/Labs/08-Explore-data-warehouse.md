@@ -12,11 +12,11 @@ After completing this lab, you will be able to:
 - Query the data warehouse tables
 - Challenge - Analyze reseller sales.
 
+### Estimated timing: 45 minutes
+
 ### Architecture Diagram
 
    ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab8.png)
-
-### Estimated timing: 45 minutes
 
 ## Task 1: Provision an Azure Synapse Analytics workspace
 
@@ -316,4 +316,4 @@ In this lab, you have accomplished the following:
 - Query the data warehouse tables
 - Challenge - Analyze reseller sales.
 
-### You have successfully completed the lab.
+## You have successfully completed the lab.
