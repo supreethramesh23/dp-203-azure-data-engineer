@@ -429,7 +429,7 @@ So far you've seen some techniques for exploring and processing file-based data 
 
 12. On the **Manage** page, select the **adx*xxxxxxx*** Data Explorer pool row and use its &#10074;&#10074; icon to pause it.
 
-## Review
+### Review
 
 In this lab, you have accomplished the following:
 - Provision an Azure Synapse Analytics workspace
@@ -439,4 +439,4 @@ In this lab, you have accomplished the following:
 - Analyze data using the Spark pool
 - Query a data warehouse using a dedicated SQL pool
 
-### You have successfully completed the lab.
+## You have successfully completed the lab.
