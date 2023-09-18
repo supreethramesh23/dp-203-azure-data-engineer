@@ -17,11 +17,11 @@ After completing this lab, you will be able to:
  - Create a query
  - Create a dashboard
 
+### Estimated timing: 45 minutes
+
 ### Architecture Diagram
 
    ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab26.png)
-
-### Estimated timing: 45 minutes
 
 ## Task 1: Provision an Azure Databricks workspace
 
@@ -148,4 +148,4 @@ Dashboards are a great way to share data tables and visualizations with business
  - Create a query
  - Create a dashboard
  
- ### You have successfully completed the lab.
+ ## You have successfully completed the lab.
