@@ -12,11 +12,11 @@ After completing this lab, you will be able to:
 - Transform data using CREATE EXTERAL TABLE AS SELECT (CETAS) statements
 - Encapsulate data transformation in a stored procedure
 
+### Estimated timing: 45 minutes
+
 ### Architecture Diagram
 
    ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab3.png)
-
-### Estimated timing: 45 minutes
 
 ## Task 1: Provision an Azure Synapse Analytics workspace
 
@@ -316,4 +316,4 @@ In this lab, you have accomplished the following:
 - Transform data using CREATE EXTERAL TABLE AS SELECT (CETAS) statements
 - Encapsulate data transformation in a stored procedure
 
-### You have successfully completed the lab.
+## You have successfully completed the lab.
