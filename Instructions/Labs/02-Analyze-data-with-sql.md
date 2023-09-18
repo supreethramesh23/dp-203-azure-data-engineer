@@ -417,4 +417,4 @@ In this lab, you have accomplished the following:
 - Access external data in a database
 - Visualize the query results
 
-### You have successfully completed the lab.
+## You have successfully completed the lab.
