@@ -12,11 +12,11 @@ After completing this lab, you will be able to:
 - Configure Synapse Link in Azure Synapse Analytics.
 - Query Azure Cosmos DB from Azure Synapse Analytics.
 
+### Estimated timing: 45 minutes
+
 ### Architecture Diagram
 
    ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab14.1.png)
-
-### Estimated timing: 45 minutes
 
 ## Task 1: Provision Azure resources
 
@@ -423,4 +423,4 @@ In this lab, you have accomplished the following:
 - Configure Synapse Link in Azure Synapse Analytics.
 - Query Azure Cosmos DB from Azure Synapse Analytics.
 
-### You have successfully completed the lab.
+## You have successfully completed the lab.
