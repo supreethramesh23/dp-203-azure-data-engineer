@@ -13,11 +13,11 @@ After completing this lab, you will be able to:
 - Query data using Spark SQL
 - Visualize data with Spark
 
+### Estimated timing: 30 minutes
+
 ### Architecture Diagram
 
    ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview//media/lab5.png)
-
-### Estimated timing: 30 minutes
 
 ## Task 1: Provision an Azure Synapse Analytics workspace
 
@@ -451,4 +451,4 @@ In this lab, you have accomplished the following:
 - Query data using Spark SQL
 - Visualize data with Spark
 
-### You have successfully completed the lab.
+## You have successfully completed the lab.
