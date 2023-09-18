@@ -1,6 +1,20 @@
 # Lab 02: Query files using a serverless SQL pool
 
-SQL is probably the most used language for working with data in the world. Most data analysts are proficient in using SQL queries to retrieve, filter, and aggregate data - most commonly in relational databases. As organizations increasingly take advantage of scalable file storage to create data lakes, SQL is often still the preferred choice for querying the data. Azure Synapse Analytics provides serverless SQL pools that enable you to decouple the SQL query engine from the data storage and run queries against data files in common file formats such as delimited text and Parquet.
+## Lab Scenario
+
+SQL is probably the most used language for working with data in the world. Most data analysts are proficient in using SQL queries to retrieve, filter, and aggregate data - most commonly in relational databases. As organizations increasingly take advantage of scalable file storage to create data lakes, SQL is often still the preferred choice for querying the data. Azure Synapse Analytics provides serverless SQL pools that enable you to decouple the SQL query engine from the data storage and run queries against data files in common file formats such as delimited text and Parquet. In this lab, you will understand the technical tasks to design and implement data storage; develop data processing; and secure, monitor, and optimize data storage and data processing.
+
+### Objectives
+  
+After completing this lab, you will be able to:
+
+- Query the data in files
+- Access external data in a database
+- Visualize the query results
+
+### Architecture Diagram
+
+   ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab2.png)
 
 ### Estimated timing: 45 minutes
 
