@@ -15,11 +15,11 @@ After completing this lab, you will be able to:
  - Create a query
  - Run the streaming job
 
-  ### Architecture Diagram
+### Estimated timing: 30 minutes
+  
+### Architecture Diagram
 
    ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab17.png)
-
-### Estimated timing: 30 minutes
 
 ## Task 1: Provision Azure resources
 
@@ -237,4 +237,4 @@ In this lab, you have accomplished the following:
  - Create a query
  - Run the streaming job
 
-### You have successfully completed the lab.
+## You have successfully completed the lab.
