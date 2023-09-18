@@ -171,7 +171,8 @@ You now have a blank SQL page, which is connected to the instance for the follow
     ```
 
 2. Run the script, which creates a new table named **DimProduct**  from the staged product data that uses **ProductAltKey** as its hash distribution key and has a clustered columnstore index.
-4. Use the following query to view the contents of the new **DimProduct** table:
+
+3. Use the following query to view the contents of the new **DimProduct** table:
 
     ```sql
     SELECT ProductKey,
