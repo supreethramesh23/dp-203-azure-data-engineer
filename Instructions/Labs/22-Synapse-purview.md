@@ -11,11 +11,11 @@ After completing this lab, you will be able to:
  - Catalog Azure Synapse Analytics data assets in Microsoft Purview.
  - Integrate Microsoft Purview with Azure Synapse Analytics.
 
+ ### Estimated timing: 1 hour 15 minutes
+ 
  ### Architecture Diagram
 
    ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab22.png)
-
-### Estimated timing: 1 hour 15 minutes
 
 ## Task 1: Provision Azure resources
 
@@ -348,4 +348,4 @@ In this lab, you have accomplished the following:
  - Catalog Azure Synapse Analytics data assets in Microsoft Purview.
  - Integrate Microsoft Purview with Azure Synapse Analytics.
 
-### You have successfully completed the lab.
+## You have successfully completed the lab.
