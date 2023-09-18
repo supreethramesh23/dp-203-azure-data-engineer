@@ -1,6 +1,21 @@
 # Lab 15: Use Azure Synapse Link for SQL
 
-Azure Synapse Link for SQL enables you to automatically synchronize a transactional database in SQL Server or Azure SQL Database with a dedicated SQL pool in Azure Synapse Analytics. This synchronization enables you to perform low-latency analytical workloads in Synapse Analytics without incurring query overhead in the source operational database.
+## Lab Scenario
+
+Azure Synapse Link for SQL enables you to automatically synchronize a transactional database in SQL Server or Azure SQL Database with a dedicated SQL pool in Azure Synapse Analytics. This synchronization enables you to perform low-latency analytical workloads in Synapse Analytics without incurring query overhead in the source operational database. In this lab, you will explore about Azure Synapse Link for SQL which enables low-latency synchronization of operational data in a relational database to Azure Synapse Analytics.
+
+### Objectives
+  
+After completing this lab, you will be able to:
+
+- Configure Azure SQL Database.
+- Explore the transactional database.
+- Configure Azure Synapse Link.
+
+### Architecture Diagram
+
+   ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab15.png)
+
 
 ### Estimated timing: 45 minutes
 
