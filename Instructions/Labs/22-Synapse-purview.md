@@ -83,7 +83,7 @@ Microsoft Purview is configured to use a managed identity. In order to catalog d
 
 7. Use the **Review + Assign** button to complete the role assignment, which makes the **purview*xxxxxxx*** account used by the managed identity for your Microsoft Purview resource a member of the **Storage Blob Data Reader** role for your storage account.
 
-9. In the Azure portal, return to the **dp203-*xxxxxxx*** resource group and open the **synapse*xxxxxxx*** Synapse Analytics workspace. Then, on its **Access Control (IAM)** page, add a role assignment to make the **purview*xxxxxxx*** managed identity account a member of the **Reader** role in the workspace.
+8. In the Azure portal, return to the **dp203-*xxxxxxx*** resource group and open the **synapse*xxxxxxx*** Synapse Analytics workspace. Then, on its **Access Control (IAM)** page, add a role assignment to make the **purview*xxxxxxx*** managed identity account a member of the **Reader** role in the workspace.
 
 ### Task 2.2: Configure database permissions for Microsoft Purview
 
@@ -125,6 +125,7 @@ Your Azure Synapse Analytics workspace includes databases in both *serverless* a
    ```
 
 7. Select the **lakedb** database, and then in its **...** menu, select **New SQL script** > **Empty script** to open a new **SQL script 1** pane. You can use the **Properties** button (which looks similar to **&#128463;<sub>*</sub>**) on the right end of the toolbar to hide the **Properties** pane and see the script pane more easily.
+
 8. In the **SQL script 1** pane, enter the following SQL code, replacing all instances of ***purviewxxxxxxx*** with the managed identity name for your Microsoft Purview account:
 
     ```sql
@@ -160,13 +161,13 @@ Now that you've configured the required access for Microsoft Purview to scan the
 
     >**Tip**: Alternatively, you can browse directly to https://web.purview.azure.com in a new browser tab.
 
-4. On the left side of the Azure Purview Governance Portal, use the **&rsaquo;&rsaquo;** icon to expand the menu - this reveals the different pages within the portal.
+3. On the left side of the Azure Purview Governance Portal, use the **&rsaquo;&rsaquo;** icon to expand the menu - this reveals the different pages within the portal.
 
-5. On the **Data map** page, on the **Data Sources** sub-page, select **Register**:
+4. On the **Data map** page, on the **Data Sources** sub-page, select **Register**:
 
     ![Screenshot of the Data map page in the Microsoft Purview Governance Portal.](./images/dp-203-data1.png)
 
-6. In the **Register sources** tab that appears, select **Azure Synapse Analytics**, and continue to register a source with the following settings:
+5. In the **Register sources** tab that appears, select **Azure Synapse Analytics**, and continue to register a source with the following settings:
     - **Name**: Synapse_data
     - **Azure subscription**: *Select your Azure subscription*
     - **Workspace name**: *Select your **synapsexxxxxxx** workspace*
@@ -176,7 +177,7 @@ Now that you've configured the required access for Microsoft Purview to scan the
 
     This data source includes the SQL databases in your Azure Synapse Analytics workspace.
 
-7. After registering the **Synapse_data** source, select **Register** again, and register a second source for the data lake storage used by your Azure Synapse workspace. Select **Azure Data Lake Storage Gen2**, and specify the following settings:
+6. After registering the **Synapse_data** source, select **Register** again, and register a second source for the data lake storage used by your Azure Synapse workspace. Select **Azure Data Lake Storage Gen2**, and specify the following settings:
     - **Name**: Data_lake
     - **Azure subscription**: *Select your Azure subscription*
     - **Workspace name**: *Select your **datalakexxxxxxx** storage account*
@@ -264,7 +265,7 @@ Now that you've connected your Microsoft Purview account to your Azure Synapse A
 
     ![Screenshot of the search box in Synapse Studio searching Purview.](./images/synapse-search-purview.png)
 
-4. In the results, select **products.csv** to view its details from the Purview catalog.
+3. In the results, select **products.csv** to view its details from the Purview catalog.
 
 By integrating the Purview catalog into the Synapse Studio interface, data analysts and engineers can find and examine registered data assets from across the entire data estate (not just within the Azure Synapse Studio workspace).
 
