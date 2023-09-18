@@ -13,12 +13,11 @@ After completing this lab, you will be able to:
 - Use delta tables for streaming data
 - Query a delta table from a serverless SQL pool
 
+### Estimated timing: 45 minutes
+
 ### Architecture Diagram
 
    ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab7.png)
-
-
-### Estimated timing: 45 minutes
 
 ## Task 1: Provision an Azure Synapse Analytics workspace
 
@@ -436,4 +435,4 @@ In this lab, you have accomplished the following:
 - Use delta tables for streaming data
 - Query a delta table from a serverless SQL pool
 
-### You have successfully completed the lab.
+## You have successfully completed the lab.
