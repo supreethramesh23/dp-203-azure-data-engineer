@@ -14,11 +14,11 @@ After completing this lab, you will be able to:
  - Create a cluster.
  - Explore data using a notebook.
 
+### Estimated timing: 45 minutes
+
 ### Architecture Diagram
 
    ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab24.png)
-
-### Estimated timing: 45 minutes
 
 ## Tasl 1: Provision an Azure Databricks workspace
 
@@ -100,4 +100,4 @@ In this lab, you have accomplished the following:
  - Create a cluster.
  - Explore data using a notebook.
 
-### You have successfully completed the lab.
+## You have successfully completed the lab.
