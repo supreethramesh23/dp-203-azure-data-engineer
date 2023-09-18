@@ -1,6 +1,20 @@
 # Lab 09: Load Data into a Relational Data Warehouse
 
-In this exercise, you're going to load data into a dedicated SQL Pool.
+## Lab Scenario
+
+In this exercise, you're going to load data into a dedicated SQL Pool. Also you will learn about data ingestion solution that loads new data into a relational data warehouse.
+
+### Objectives
+
+After completing this lab, you will be able to:
+
+- Prepare to load data
+- Load data warehouse tables
+- Perform post-load optimization
+
+### Architecture Diagram
+
+   ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab9.png)
 
 ### Estimated timing: 45 minutes
 
