@@ -1,8 +1,24 @@
 # Lab 04: Analyze data in a lake database
 
+## Lab Scenario
+
 Azure Synapse Analytics enables you to combine the flexibility of file storage in a data lake with the structured schema and SQL querying capabilities of a relational database through the ability to create a *lake database*. A lake database is a relational database schema defined on a data lake file store that enables data storage to be separated from the compute used to query it. Lake databases combine the benefits of a structured schema that includes support for data types, relationships, and other features typically only found in relational database systems, with the flexibility of storing data in files that can be used independently of a relational database store. Essentially, the lake database "overlays" a relational schema onto files in folders in the data lake.
 
+### Objectives
+  
+After completing this lab, you will be able to:
+
+- Modify container permissions in the Stroage account
+- Create a lake database in Synapse Studio
+- Create a table from a database template
+- Create a table from existing data
+- Work with lake database tables
+
 ### Estimated timing: 45 minutes
+
+### Architecture Diagram
+
+   ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab4.png)
 
 ## Task 1: Provision an Azure Synapse Analytics workspace
 
@@ -113,9 +129,9 @@ Now that you have created a lake database, you can define its schema by creating
 
     > **Note**: In a real production scenario, you would probably create a pipeline to ingest data into the folder for the table data. We're uploading it directly in the Synapse Studio user interface in this exercise for expediency.
 
-4. In the **Data** pane on the left, on the **Workspace** tab, in the **...** menu for the **Customer** table, select **New SQL script** > **Select TOP 100 rows**. Then, in the new **SQL script 1** pane that has opened, ensure that the **Built-in** SQL pool is connected, and use the **&#9655; Run** button to run the SQL code. The results should include first 100 rows from the **Customer** table, based on the data stored in the underlying folder in the data lake.
+3. In the **Data** pane on the left, on the **Workspace** tab, in the **...** menu for the **Customer** table, select **New SQL script** > **Select TOP 100 rows**. Then, in the new **SQL script 1** pane that has opened, ensure that the **Built-in** SQL pool is connected, and use the **&#9655; Run** button to run the SQL code. The results should include first 100 rows from the **Customer** table, based on the data stored in the underlying folder in the data lake.
 
-5. Close the **SQL script 1** tab, discarding your changes.
+4. Close the **SQL script 1** tab, discarding your changes.
 
 ## Task 5: Create a table from a database template
 
@@ -284,4 +300,4 @@ In this lab, you have accomplished the following:
 - Create a table from existing data
 - Work with lake database tables
 
-### You have successfully completed the lab.
+## You have successfully completed the lab.

@@ -1,8 +1,22 @@
 # Lab 09: Load Data into a Relational Data Warehouse
 
-In this exercise, you're going to load data into a dedicated SQL Pool.
+## Lab Scenario
+
+In this exercise, you're going to load data into a dedicated SQL Pool. Also you will learn about data ingestion solution that loads new data into a relational data warehouse.
+
+### Objectives
+
+After completing this lab, you will be able to:
+
+- Prepare to load data
+- Load data warehouse tables
+- Perform post-load optimization
 
 ### Estimated timing: 45 minutes
+
+### Architecture Diagram
+
+   ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab9.png)
 
 ## Task 1: Provision an Azure Synapse Analytics workspace
 
@@ -157,7 +171,8 @@ You now have a blank SQL page, which is connected to the instance for the follow
     ```
 
 2. Run the script, which creates a new table named **DimProduct**  from the staged product data that uses **ProductAltKey** as its hash distribution key and has a clustered columnstore index.
-4. Use the following query to view the contents of the new **DimProduct** table:
+
+3. Use the following query to view the contents of the new **DimProduct** table:
 
     ```sql
     SELECT ProductKey,
@@ -251,4 +266,4 @@ In this lab, you have accomplished the following:
 - Load data warehouse tables
 - Perform post-load optimization
 
-### You have successfully completed the lab.
+## You have successfully completed the lab.

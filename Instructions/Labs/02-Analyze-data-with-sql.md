@@ -1,8 +1,22 @@
 # Lab 02: Query files using a serverless SQL pool
 
-SQL is probably the most used language for working with data in the world. Most data analysts are proficient in using SQL queries to retrieve, filter, and aggregate data - most commonly in relational databases. As organizations increasingly take advantage of scalable file storage to create data lakes, SQL is often still the preferred choice for querying the data. Azure Synapse Analytics provides serverless SQL pools that enable you to decouple the SQL query engine from the data storage and run queries against data files in common file formats such as delimited text and Parquet.
+## Lab Scenario
+
+SQL is probably the most used language for working with data in the world. Most data analysts are proficient in using SQL queries to retrieve, filter, and aggregate data - most commonly in relational databases. As organizations increasingly take advantage of scalable file storage to create data lakes, SQL is often still the preferred choice for querying the data. Azure Synapse Analytics provides serverless SQL pools that enable you to decouple the SQL query engine from the data storage and run queries against data files in common file formats such as delimited text and Parquet. In this lab, you will understand the technical tasks to design and implement data storage; develop data processing; and secure, monitor, and optimize data storage and data processing.
+
+### Objectives
+  
+After completing this lab, you will be able to:
+
+- Query the data in files
+- Access external data in a database
+- Visualize the query results
 
 ### Estimated timing: 45 minutes
+
+### Architecture Diagram
+
+   ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab2.png)
 
 ## Task 1: Provision an Azure Synapse Analytics workspace
 
@@ -189,7 +203,7 @@ While CSV is an easy format to use, it's common in big data processing scenarios
 
 8. Review the results and note that they include only the sales counts for 2019 and 2020. This filtering is achieved by inclusing a wildcard for the partition folder value in the BULK path (*year=\**) and a WHERE clause based on the *filepath* property of the results returned by OPENROWSET (which in this case has the alias *[result]*).
 
-7. Name your script **Sales Parquet query**, and publish it. Then close the script pane.
+9. Name your script **Sales Parquet query**, and publish it. Then close the script pane.
 
 ### Task 2.4: Use SQL to query JSON files
 
@@ -403,4 +417,4 @@ In this lab, you have accomplished the following:
 - Access external data in a database
 - Visualize the query results
 
-### You have successfully completed the lab.
+## You have successfully completed the lab.

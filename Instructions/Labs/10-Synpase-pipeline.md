@@ -1,8 +1,23 @@
 # Lab 10: Build a data pipeline in Azure Synapse Analytics
 
+## Lab-Scenario-Preview
+
 In this lab, you'll load data into a dedicated SQL Pool using a pipeline in Azure Synapse Analytics Explorer. The pipeline will encapsulate a data flow that loads product data into a table in a data warehouse.
 
+### Objectives
+  
+After completing this lab, you will be able to:
+
+- View source and destination data stores.
+- Implement a pipeline.
+- Debug the Data Flow.
+- Publish and run the pipeline.
+
 ### Estimated timing: 45 minutes
+
+### Architecture Diagram
+
+   ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab10.png)
 
 ## Task 1: Provision an Azure Synapse Analytics workspace
 
@@ -243,4 +258,4 @@ In this lab, you have accomplished the following:
 - Debug the Data Flow.
 - Publish and run the pipeline.
 
-### You have successfully completed the lab.
+## You have successfully completed the lab.

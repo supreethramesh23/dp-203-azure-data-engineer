@@ -1,8 +1,25 @@
 # Lab 17: Get started with Azure Stream Analytics
 
+## Lab Scenario
+
 In this lab, you'll provision an Azure Stream Analytics job in your Azure subscription, and use it to query and summarize a stream of real-time event data and store the results in Azure Storage.
 
+### Objectives
+
+After completing this lab, you will be able to:
+
+ - View the streaming data source.
+ - Create an Azure Stream Analytics job
+ - Create an input for the event stream
+ - Create an output for the blob store
+ - Create a query
+ - Run the streaming job
+
 ### Estimated timing: 30 minutes
+  
+### Architecture Diagram
+
+   ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab17.png)
 
 ## Task 1: Provision Azure resources
 
@@ -158,7 +175,7 @@ Now that you have defined an input and an output for your Azure Stream Analytics
 
    >**Note**: After running the query if you get an output with rows, kindly click on refresh in the **Input Preview** section and click on **Test query** again.
 
-6. Save the query.
+5. Save the query.
 
 ## Task 7: Run the streaming job
 
@@ -169,18 +186,18 @@ OK, now you're ready to run the job and process some real-time sales order data.
 
    >**Note**: This might take some time. Kindly refresh the page to check the latest status.
 
-4. Re-open the cloud shell pane, reconnecting if necessary, and then re-run the following command to submit another 1000 orders.
+3. Re-open the cloud shell pane, reconnecting if necessary, and then re-run the following command to submit another 1000 orders.
 
     ```
     node ~/dp-203/Allfiles/labs/17/orderclient
     ```
 
-5. While the app is running, in the Azure portal, return to the page for the **dp203-*xxxxxxx*** resource group, and select the **store*xxxxxxxxxxxx*** storage account.
-6. In the pane on the left of the storage account blade, select the **Containers** tab.
-7. Open the **data** container, and use the **&#8635; Refresh** button to refresh the view until you see a folder with the name of the current year.
-8. In the **data** container, navigate through the folder hierarchy, which includes the folder for the current year, with subfolders for the month and day.
-9. In the folder for the hour, note the file that has been created, which should have a name similar to **0_xxxxxxxxxxxxxxxx.json**.
-10. On the **...** menu for the file (to the right of the file details), select **View/edit**, and review the contents of the file; which should consist of a JSON record for each 10 second period, showing the number of orders processed for each product ID, like this:
+4. While the app is running, in the Azure portal, return to the page for the **dp203-*xxxxxxx*** resource group, and select the **store*xxxxxxxxxxxx*** storage account.
+5. In the pane on the left of the storage account blade, select the **Containers** tab.
+6. Open the **data** container, and use the **&#8635; Refresh** button to refresh the view until you see a folder with the name of the current year.
+7. In the **data** container, navigate through the folder hierarchy, which includes the folder for the current year, with subfolders for the month and day.
+8. In the folder for the hour, note the file that has been created, which should have a name similar to **0_xxxxxxxxxxxxxxxx.json**.
+9. On the **...** menu for the file (to the right of the file details), select **View/edit**, and review the contents of the file; which should consist of a JSON record for each 10 second period, showing the number of orders processed for each product ID, like this:
 
     ```
     {"StartTime":"2022-11-23T18:16:25.0000000Z","EndTime":"2022-11-23T18:16:35.0000000Z","ProductID":6,"Orders":13.0}
@@ -198,10 +215,10 @@ OK, now you're ready to run the job and process some real-time sales order data.
     ...
     ```
 
-11. In the Azure Cloud Shell pane, wait for the order client app to finish.
-12. In the Azure portal, refresh the file to see the full set of results that were produced.
-13. Return to the **dp203-*xxxxxxx*** resource group, and re-open the **process-orders** Stream Analytics job.
-14. At the top of the Stream Analytics job page, use the **&#11036; Stop** button to stop the job, confirming when prompted.
+10. In the Azure Cloud Shell pane, wait for the order client app to finish.
+11. In the Azure portal, refresh the file to see the full set of results that were produced.
+12. Return to the **dp203-*xxxxxxx*** resource group, and re-open the **process-orders** Stream Analytics job.
+13. At the top of the Stream Analytics job page, use the **&#11036; Stop** button to stop the job, confirming when prompted.
 
   **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
 
@@ -220,4 +237,4 @@ In this lab, you have accomplished the following:
  - Create a query
  - Run the streaming job
 
-### You have successfully completed the lab.
+## You have successfully completed the lab.

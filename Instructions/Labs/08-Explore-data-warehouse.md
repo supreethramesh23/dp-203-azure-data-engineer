@@ -1,8 +1,22 @@
 # Lab 08: Explore a relational data warehouse
 
+## Lab Scenario
+
 Azure Synapse Analytics is built on a scalable set capabilities to support enterprise data warehousing; including file-based data analytics in a data lake as well as large-scale relational data warehouses and the data transfer and transformation pipelines used to load them. In this lab, you'll explore how to use a dedicated SQL pool in Azure Synapse Analytics to store and query data in a relational data warehouse.
 
+### Objectives
+
+After completing this lab, you will be able to:
+
+- Explore the data warehouse schema
+- Query the data warehouse tables
+- Challenge - Analyze reseller sales.
+
 ### Estimated timing: 45 minutes
+
+### Architecture Diagram
+
+   ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab8.png)
 
 ## Task 1: Provision an Azure Synapse Analytics workspace
 
@@ -302,4 +316,4 @@ In this lab, you have accomplished the following:
 - Query the data warehouse tables
 - Challenge - Analyze reseller sales.
 
-### You have successfully completed the lab.
+## You have successfully completed the lab.

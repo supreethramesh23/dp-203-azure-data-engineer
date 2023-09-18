@@ -1,8 +1,23 @@
 # Lab 07: Use Delta Lake with Spark in Azure Synapse Analytics
 
-Delta Lake is an open source project to build a transactional data storage layer on top of a data lake. Delta Lake adds support for relational semantics for both batch and streaming data operations, and enables the creation of a *Lakehouse* architecture in which Apache Spark can be used to process and query data in tables that are based on underlying files in the data lake.
+## Lab Scenario
+
+Delta Lake is an open source project to build a transactional data storage layer on top of a data lake. Delta Lake adds support for relational semantics for both batch and streaming data operations, and enables the creation of a *Lakehouse* architecture in which Apache Spark can be used to process and query data in tables that are based on underlying files in the data lake. In this lab, you will explore Delta Lake which is an open source relational storage area for Spark that you can use to implement a data lakehouse architecture in Azure Synapse Analytics.
+
+### Objectives
+  
+After completing this lab, you will be able to:
+
+- Create delta tables
+- Create catalog tables
+- Use delta tables for streaming data
+- Query a delta table from a serverless SQL pool
 
 ### Estimated timing: 45 minutes
+
+### Architecture Diagram
+
+   ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab7.png)
 
 ## Task 1: Provision an Azure Synapse Analytics workspace
 
@@ -420,4 +435,4 @@ In this lab, you have accomplished the following:
 - Use delta tables for streaming data
 - Query a delta table from a serverless SQL pool
 
-### You have successfully completed the lab.
+## You have successfully completed the lab.

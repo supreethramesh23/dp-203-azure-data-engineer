@@ -1,8 +1,20 @@
 # Lab 06: Transform data using Spark in Synapse Analytics
 
-Data *engineers* often use Spark notebooks as one of their preferred tools to perform *extract, transform, and load (ETL)* or *extract, load, and transform (ELT)* activities that transform data from one format or structure to another.
+## Lab Scenario
+
+Data *engineers* often use Spark notebooks as one of their preferred tools to perform *extract, transform, and load (ETL)* or *extract, load, and transform (ELT)* activities that transform data from one format or structure to another. In this lab, you will explore the Spark notebook in Azure Synapse Analytics to transform data into files.
+
+### Objectives
+  
+After completing this lab, you will be able to:
+
+- Use a Spark notebook to transform data
 
 ### Estimated timing: 30 minutes
+
+### Architecture Diagram
+
+   ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab6.png)
 
 ## Task 1: Provision an Azure Synapse Analytics workspace
 
@@ -92,4 +104,4 @@ In this lab,  you have accomplished the following:
 - Provision an Azure Synapse Analytics workspace
 - Use a Spark notebook to transform data
 
-### You have successfully completed the lab.
+## You have successfully completed the lab.

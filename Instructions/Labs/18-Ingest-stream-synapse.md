@@ -1,12 +1,26 @@
 # Lab 18: Ingest realtime data with Azure Stream Analytics and Azure Synapse Analytics
 
+## Lab-Scenario
+
 Data analytics solutions often include a requirement to ingest and process *streams* of data. Stream processing differs from batch processing in that streams are generally *boundless* - in other words they are continuous sources of data that must be processed perpetually rather than at fixed intervals.
 
 Azure Stream Analytics provides a cloud service that you can use to define a *query* that operates on a stream of data from a streaming source, such as Azure Event Hubs or an Azure IoT Hub. You can use an Azure Stream Analytics query to ingest the stream of data directly into a data store for further analysis, or to filter, aggregate, and summarize the data based on temporal windows.
 
 In this exercise, you'll use Azure Stream Analytics to process a  stream of sales order data, such as might be generated from an online retail application. The order data will be sent to Azure Event Hubs, from where your Azure Stream Analytics jobs will read the data and ingest it into Azure Synapse Analytics.
 
-### Estimated timing: 45 minutes
+
+### Objectives
+
+After completing this lab, you will be able to:
+
+ - Ingest streaming data into a dedicated SQL pool
+ - Summarize streaming data in a data lake
+
+ ### Estimated timing: 45 minutes
+ 
+ ### Architecture Diagram
+
+   ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab18.png)
 
 ## Task 1: Provision Azure resources
 
@@ -259,7 +273,8 @@ So far, you've seen how to use a Stream Analytics job to ingest messages from a 
     ```
 
 8. Use the **&#9655; Run** button to run the SQL query and view the results, which show the quantity of each product ordered in five-second periods.
-8. Return to the browser tab containing the Azure Portal and use the **&#128454; Stop** button to stop the Stream Analytics job and wait for the notification that the Stream Analytics job has stopped successfully.
+
+9. Return to the browser tab containing the Azure Portal and use the **&#128454; Stop** button to stop the Stream Analytics job and wait for the notification that the Stream Analytics job has stopped successfully.
 
   **Congratulations** on completing the lab! Now, it's time to validate it. Here are the steps:
 
@@ -274,4 +289,4 @@ In this lab, you have accomplished the following:
  - Ingest streaming data into a dedicated SQL pool
  - Summarize streaming data in a data lake
 
-### You have successfully completed the lab.
+## You have successfully completed the lab.
