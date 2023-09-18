@@ -13,11 +13,11 @@ After completing this lab, you will be able to:
 - Debug the Data Flow.
 - Publish and run the pipeline.
 
+### Estimated timing: 45 minutes
+
 ### Architecture Diagram
 
    ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab10.png)
-
-### Estimated timing: 45 minutes
 
 ## Task 1: Provision an Azure Synapse Analytics workspace
 
@@ -258,4 +258,4 @@ In this lab, you have accomplished the following:
 - Debug the Data Flow.
 - Publish and run the pipeline.
 
-### You have successfully completed the lab.
+## You have successfully completed the lab.
