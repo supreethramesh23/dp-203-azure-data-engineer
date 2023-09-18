@@ -102,7 +102,7 @@ The script provisions an Azure Synapse Analytics workspace and an Azure Storage 
 
     This code uses the OPENROWSET to read data from the CSV files in the sales folder and retrieves the first 100 rows of data.
 
-6. In this case, the data files include the column names in the first row; so modify the query to add a `HEADER_ROW = TRUE` parameter to the `WITH` clause, as shown here (don't forget to add a comma after the previous parameter):
+5. In this case, the data files include the column names in the first row; so modify the query to add a `HEADER_ROW = TRUE` parameter to the `WITH` clause, as shown here (don't forget to add a comma after the previous parameter):
 
     ```SQL
     SELECT
@@ -116,14 +116,14 @@ The script provisions an Azure Synapse Analytics workspace and an Azure Storage 
         ) AS [result]
     ```
 
-7. In the **Connect to** list, ensure **Built-in** is selected - this represents the built-in SQL Pool that was created with your workspace. Then on the toolbar, use the **&#9655; Run** button to run the SQL code, and review the results, which should look similar to this:
+6. In the **Connect to** list, ensure **Built-in** is selected - this represents the built-in SQL Pool that was created with your workspace. Then on the toolbar, use the **&#9655; Run** button to run the SQL code, and review the results, which should look similar to this:
 
     | SalesOrderNumber | SalesOrderLineNumber | OrderDate | CustomerName | EmailAddress | Item | Quantity | UnitPrice | TaxAmount |
     | -- | -- | -- | -- | -- | -- | -- | -- | -- |
     | SO43701 | 1 | 2019-07-01 | Christy Zhu | christy12@adventure-works.com |Mountain-100 Silver, 44 | 1 | 3399.99 | 271.9992 |
     | ... | ... | ... | ... | ... | ... | ... | ... | ... |
 
-8. Publish the changes to your script, and then close the script pane.
+7. Publish the changes to your script, and then close the script pane.
 
 ## Task 3: Transform data using CREATE EXTERAL TABLE AS SELECT (CETAS) statements
 
@@ -161,13 +161,13 @@ By defining an external data source in a database, you can use it to reference t
     GO;
     ```
 
-4. Modify the script properties to change its name to **Create Sales DB**, and publish it.
+3. Modify the script properties to change its name to **Create Sales DB**, and publish it.
    
-5. Ensure that the script is connected to the **Built-in** SQL pool and the **master** database, and then run it.
+4. Ensure that the script is connected to the **Built-in** SQL pool and the **master** database, and then run it.
    
-6. Switch back to the **Data** page and use the **&#8635;** button at the top right of Synapse Studio to refresh the page. Then view the **Workspace** tab in the **Data** pane, where a **SQL database** list is now displayed. Expand this list to verify that the **Sales** database has been created.
+5. Switch back to the **Data** page and use the **&#8635;** button at the top right of Synapse Studio to refresh the page. Then view the **Workspace** tab in the **Data** pane, where a **SQL database** list is now displayed. Expand this list to verify that the **Sales** database has been created.
 
-7. Expand the **Sales** database, its **External Resources** folder, and the **External data sources** folder under that to see the **sales_data** external data source you created.
+6. Expand the **Sales** database, its **External Resources** folder, and the **External data sources** folder under that to see the **sales_data** external data source you created.
 
 ### Task 3.2: Create an External table
 
@@ -193,14 +193,14 @@ By defining an external data source in a database, you can use it to reference t
     GROUP BY Item;
     ```
 
-4. Run the script. The results should look similar to this:
+3. Run the script. The results should look similar to this:
 
     | Product | ItemsSold | NetRevenue |
     | -- | -- | -- |
     | AWC Logo Cap | 1063 | 8791.86 |
     | ... | ... | ... |
 
-5. Modify the SQL code to save the results of query in an external table, like this:
+4. Modify the SQL code to save the results of query in an external table, like this:
 
     ```sql
     CREATE EXTERNAL TABLE ProductSalesTotals
@@ -224,17 +224,17 @@ By defining an external data source in a database, you can use it to reference t
     GROUP BY Item;
     ```
 
-6. Run the script. This time there's no output, but the code should have created an external table based on the results of the query.
+5. Run the script. This time there's no output, but the code should have created an external table based on the results of the query.
    
-7. Name the script **Create ProductSalesTotals table** and publish it.
+6. Name the script **Create ProductSalesTotals table** and publish it.
    
-8. On the **data** page, in the **Workspace** tab, view the contents of the **External tables** folder for the **Sales** SQL database to verify that a new table named **ProductSalesTotals** has been created.
+7. On the **data** page, in the **Workspace** tab, view the contents of the **External tables** folder for the **Sales** SQL database to verify that a new table named **ProductSalesTotals** has been created.
    
-9. In the **...** menu for the **ProductSalesTotals** table, select **New SQL script** > **Select TOP 100 rows**. Then run the resulting script and verify that it returns the aggregated product sales data.
+8. In the **...** menu for the **ProductSalesTotals** table, select **New SQL script** > **Select TOP 100 rows**. Then run the resulting script and verify that it returns the aggregated product sales data.
    
-10. On the **files** tab containing the file system for your data lake, view the contents of the **sales** folder (refreshing the view if necessary) and verify that a new **productsales** folder has been created.
+9. On the **files** tab containing the file system for your data lake, view the contents of the **sales** folder (refreshing the view if necessary) and verify that a new **productsales** folder has been created.
     
-11. In the **productsales** folder, observe that one or more files with names similar to ABC123DE----.parquet have been created. These files contain the aggregated product sales data. To prove this, you can select one of the files and use the **New SQL script** > **Select TOP 100 rows** menu to query it directly.
+10. In the **productsales** folder, observe that one or more files with names similar to ABC123DE----.parquet have been created. These files contain the aggregated product sales data. To prove this, you can select one of the files and use the **New SQL script** > **Select TOP 100 rows** menu to query it directly.
 
 ## Task 4: Encapsulate data transformation in a stored procedure
 
@@ -279,27 +279,27 @@ If you will need to transform data frequently, you can use a stored procedure to
     END
     ```
 
-4. Run the script to create the stored procedure.
+3. Run the script to create the stored procedure.
    
-5. Under the code you just ran, add the following code to call the stored procedure:
+4. Under the code you just ran, add the following code to call the stored procedure:
 
     ```sql
     EXEC sp_GetYearlySales;
     ```
 
-6. Select only the `EXEC sp_GetYearlySales;` statement you just added, and use the **&#9655; Run** button to run it.
+5. Select only the `EXEC sp_GetYearlySales;` statement you just added, and use the **&#9655; Run** button to run it.
    
-7. On the **files** tab containing the file system for your data lake, view the contents of the **sales** folder (refreshing the view if necessary) and verify that a new **yearlysales** folder has been created.
+6. On the **files** tab containing the file system for your data lake, view the contents of the **sales** folder (refreshing the view if necessary) and verify that a new **yearlysales** folder has been created.
    
-8. In the **yearlysales** folder, observe that a parquet file containing the aggregated yearly sales data has been created.
+7. In the **yearlysales** folder, observe that a parquet file containing the aggregated yearly sales data has been created.
    
-9. Switch back to the SQL script and re-run the `EXEC sp_GetYearlySales;` statement, and observe that an error occurs.
+8. Switch back to the SQL script and re-run the `EXEC sp_GetYearlySales;` statement, and observe that an error occurs.
 
     Even though the script drops the external table, the folder containing the data is not deleted. To re-run the stored procedure (for example, as part of a scheduled data transformation pipeline), you must delete the old data.
 
-10. Switch back to the **files** tab, and view the **sales** folder. Then select the **yearlysales** folder and delete it.
+9. Switch back to the **files** tab, and view the **sales** folder. Then select the **yearlysales** folder and delete it.
     
-11. Switch back to the SQL script and re-run the `EXEC sp_GetYearlySales;` statement. This time, the operation succeeds and a new data file is generated.
+10. Switch back to the SQL script and re-run the `EXEC sp_GetYearlySales;` statement. This time, the operation succeeds and a new data file is generated.
 
 
   **Congratulations** on completing the lab! Now, it's time to validate it. Here are the steps:
