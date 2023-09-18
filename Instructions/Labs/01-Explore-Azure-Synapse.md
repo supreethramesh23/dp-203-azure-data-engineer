@@ -15,11 +15,11 @@ After completing this lab, you will be able to:
 - Analyze data using the Spark pool
 - Query a data warehouse using a dedicated SQL pool
 
+### Estimated timing: 60 minutes
+
 ## Architecture Diagram
 
    ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab1.png)
-
-### Estimated timing: 60 minutes
 
 ## Task 1: Provision an Azure Synapse Analytics workspace
 
@@ -429,7 +429,7 @@ So far you've seen some techniques for exploring and processing file-based data 
 
 12. On the **Manage** page, select the **adx*xxxxxxx*** Data Explorer pool row and use its &#10074;&#10074; icon to pause it.
 
-### Review
+## Review
 
 In this lab, you have accomplished the following:
 - Provision an Azure Synapse Analytics workspace
