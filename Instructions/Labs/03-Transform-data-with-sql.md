@@ -1,8 +1,20 @@
 # Lab 03: Transform files using a serverless SQL pool
 
-Data *analysts* often use SQL to query data for analysis and reporting. Data *engineers* can also make use of SQL to manipulate and transform data; often as part of a data ingestion pipeline or extract, transform, and load (ETL) process.
+## Lab Scenario
 
-In this exercise, you'll use a serverless SQL pool in Azure Synapse Analytics to transform data in files.
+Data *analysts* often use SQL to query data for analysis and reporting. Data *engineers* can also make use of SQL to manipulate and transform data; often as part of a data ingestion pipeline or extract, transform, and load (ETL) process. In this exercise, you'll use a serverless SQL pool in Azure Synapse Analytics to transform data in files.
+
+### Objectives
+  
+After completing this lab, you will be able to:
+
+- Query the data in files
+- Transform data using CREATE EXTERAL TABLE AS SELECT (CETAS) statements
+- Encapsulate data transformation in a stored procedure
+
+### Architecture Diagram
+
+   ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab3.png)
 
 ### Estimated timing: 45 minutes
 
