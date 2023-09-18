@@ -194,7 +194,7 @@ Now you're ready to query your Cosmos DB database from Azure Synapse Analytics.
    
    >**Note**: Since this is the first time you've run any Spark code in this session, the Spark pool must be started. This means that the first run in the session can take a few minutes. Subsequent runs will be quicker.
 
-4. While you are waiting for the Spark session to initialize, review the code that was generated (you can use the **Properties** button, which looks similar to **&#128463;<sub>*</sub>**, on the right end of the toolbar to close the **Properties** pane so you can see the code more clearly). The code should look similar to this:
+3. While you are waiting for the Spark session to initialize, review the code that was generated (you can use the **Properties** button, which looks similar to **&#128463;<sub>*</sub>**, on the right end of the toolbar to close the **Properties** pane so you can see the code more clearly). The code should look similar to this:
 
     ```python
     # Read from Cosmos DB analytical store into a Spark DataFrame and display 10 rows from the DataFrame
@@ -209,15 +209,16 @@ Now you're ready to query your Cosmos DB database from Azure Synapse Analytics.
     display(df.limit(10))
     ```
 
-5. When the code has finished running, and then review the output beneath the cell in the notebook. The results should include three records; one for each of the items you added to the Cosmos DB database. Each record includes the fields you entered when you created the items as well as some of the metadata fields that were automatically generated.
-6. Under the results from the previous cell, use the **+ Code** icon to add a new cell to the notebook, and then enter the following code in it:
+4. When the code has finished running, and then review the output beneath the cell in the notebook. The results should include three records; one for each of the items you added to the Cosmos DB database. Each record includes the fields you entered when you created the items as well as some of the metadata fields that were automatically generated.
+
+5. Under the results from the previous cell, use the **+ Code** icon to add a new cell to the notebook, and then enter the following code in it:
 
     ```python
     customer_df = df.select("customerid", "customerdetails")
     display(customer_df)
     ```
 
-7. Use the **&#9655;** icon to the left of the cell to run it, and view the results; which should be similar to this:
+6. Use the **&#9655;** icon to the left of the cell to run it, and view the results; which should be similar to this:
 
     | customerid | customerdetails |
     | -- | -- |
@@ -227,14 +228,14 @@ Now you're ready to query your Cosmos DB database from Azure Synapse Analytics.
 
     This query created a new dataframe containing only the **customerid** and **customerdetails** columns. Observe that the **customerdetails** column contains the JSON structure for the nested data in the source item. In the table of results that is displayed, you can use the **&#9658;** icon next to the JSON value to expand it and see the individual fields it contains.
 
-8. Add another new code cell and enter the following code:
+7. Add another new code cell and enter the following code:
 
     ```python
     customerdetails_df = df.select("customerid", "customerdetails.*")
     display(customerdetails_df)
     ```
 
-9. Run the cell and review the results, which should include the **customername** and **customeremail** from the **customerdetails** value as columns:
+8. Run the cell and review the results, which should include the **customername** and **customeremail** from the **customerdetails** value as columns:
 
     | customerid | customername | customeremail |
     | -- | -- | -- |
@@ -244,7 +245,7 @@ Now you're ready to query your Cosmos DB database from Azure Synapse Analytics.
 
     Spark enables you to run complex data manipulation code to restructure and explore the data from Cosmos DB. In this case, the PySpark language enables you to navigate the JSON properties hierarchy to retrieve the child fields of the **customerdetails** field.
 
-10. Add another new code cell and enter the following code:
+9. Add another new code cell and enter the following code:
 
     ```sql
     %%sql
@@ -265,8 +266,8 @@ Now you're ready to query your Cosmos DB database from Azure Synapse Analytics.
     FROM salesorders;
     ```
 
-11. Run the new cell to create a new database containing a table that includes data from the Cosmos DB analytical store.
-12. Add another new code cell, and then enter and run the following code:
+10. Run the new cell to create a new database containing a table that includes data from the Cosmos DB analytical store.
+11. Add another new code cell, and then enter and run the following code:
 
     ```sql
     %%sql
@@ -286,7 +287,7 @@ Now you're ready to query your Cosmos DB database from Azure Synapse Analytics.
 
     Observe that when using Spark SQL, you can retrieve named properties of a JSON structure as columns.
 
-13. Keep the **Notebook 1** tab open - you'll return to it later.
+12. Keep the **Notebook 1** tab open - you'll return to it later.
 
 ### Task 4.2: Query Azure Cosmos DB from a serverless SQL pool
 
