@@ -12,12 +12,11 @@ After completing this lab, you will be able to:
 - Explore the transactional database.
 - Configure Azure Synapse Link.
 
+### Estimated timing: 45 minutes
+
 ### Architecture Diagram
 
    ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab15.png)
-
-
-### Estimated timing: 45 minutes
 
 ## Task 1: Provision Azure resources
 
@@ -212,4 +211,4 @@ In this lab, you have accomplished the following:
 - Explore the transactional database.
 - Configure Azure Synapse Link.
 
-### You have successfully completed the lab.
+## You have successfully completed the lab.
