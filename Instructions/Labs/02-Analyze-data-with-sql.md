@@ -203,7 +203,7 @@ While CSV is an easy format to use, it's common in big data processing scenarios
 
 8. Review the results and note that they include only the sales counts for 2019 and 2020. This filtering is achieved by inclusing a wildcard for the partition folder value in the BULK path (*year=\**) and a WHERE clause based on the *filepath* property of the results returned by OPENROWSET (which in this case has the alias *[result]*).
 
-7. Name your script **Sales Parquet query**, and publish it. Then close the script pane.
+9. Name your script **Sales Parquet query**, and publish it. Then close the script pane.
 
 ### Task 2.4: Use SQL to query JSON files
 
