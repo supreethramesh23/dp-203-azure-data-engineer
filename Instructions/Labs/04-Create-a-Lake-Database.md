@@ -1,6 +1,22 @@
 # Lab 04: Analyze data in a lake database
 
+## Lab Scenario
+
 Azure Synapse Analytics enables you to combine the flexibility of file storage in a data lake with the structured schema and SQL querying capabilities of a relational database through the ability to create a *lake database*. A lake database is a relational database schema defined on a data lake file store that enables data storage to be separated from the compute used to query it. Lake databases combine the benefits of a structured schema that includes support for data types, relationships, and other features typically only found in relational database systems, with the flexibility of storing data in files that can be used independently of a relational database store. Essentially, the lake database "overlays" a relational schema onto files in folders in the data lake.
+
+### Objectives
+  
+After completing this lab, you will be able to:
+
+- Modify container permissions in the Stroage account
+- Create a lake database in Synapse Studio
+- Create a table from a database template
+- Create a table from existing data
+- Work with lake database tables
+
+### Architecture Diagram
+
+   ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab4.png)
 
 ### Estimated timing: 45 minutes
 
