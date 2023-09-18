@@ -1,6 +1,23 @@
 # Lab 17: Get started with Azure Stream Analytics
 
+## Lab Scenario
+
 In this lab, you'll provision an Azure Stream Analytics job in your Azure subscription, and use it to query and summarize a stream of real-time event data and store the results in Azure Storage.
+
+### Objectives
+
+After completing this lab, you will be able to:
+
+ - View the streaming data source.
+ - Create an Azure Stream Analytics job
+ - Create an input for the event stream
+ - Create an output for the blob store
+ - Create a query
+ - Run the streaming job
+
+  ### Architecture Diagram
+
+   ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab17.png)
 
 ### Estimated timing: 30 minutes
 
