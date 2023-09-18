@@ -17,11 +17,11 @@ After completing this lab, you will be able to:
  - Use Spark to analyze a data file.
  - Create and query a database table.
 
+ ### Estimated timing: 45 minutes
+ 
  ### Architecture Diagram
 
    ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab23.png)
-
-### Estimated timing: 45 minutes
 
 ## Task 1: Provision an Azure Databricks workspace
 
@@ -174,4 +174,4 @@ In this lab, you have accomplished the following:
  - Use Spark to analyze a data file.
  - Create and query a database table.
 
-### You have successfully completed the lab.
+## You have successfully completed the lab.
