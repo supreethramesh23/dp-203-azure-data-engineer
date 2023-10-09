@@ -91,9 +91,11 @@ Azure Databricks is a distributed processing platform that uses Apache Spark *cl
 
     ![Azure portal with a cloud shell pane](./images/25-10.png)
 
-4. If a **What's your current data project?** message is displayed, select **Finish** to close it. Then view the Azure Databricks workspace portal and note that the sidebar on the left side contains icons for the various tasks you can perform. The sidebar expands to show the names of the task categories.
+4. If a **What's your current data project?** message is displayed, select **Finish** to close it. Then view the Azure Databricks workspace portal and note that the sidebar on the left side contains icons for the various tasks you can perform.
 
     ![Azure portal with a cloud shell pane](./images/25-11.png)
+
+    >**Tip**: As you use the Databricks Workspace portal, various tips and notifications may be displayed. Dismiss these and follow the instructions provided to complete the tasks in this exercise.
 
 5. Select the **(+) New** task, and then select **Cluster**.
 
@@ -104,9 +106,9 @@ Azure Databricks is a distributed processing platform that uses Apache Spark *cl
 6. In the **New Cluster** page, create a new cluster with the following settings:
     - **Cluster name**: *User Name's* cluster (the default cluster name)
     - **Cluster mode**: Single Node
-    - **Access mode** (*if prompted*): Single user
-    - **Databricks runtime version**: 10.4 LTS (Scala 2.12, Spark 3.2.1)
-    - **Use Photon Acceleration**: Unselected
+    - **Access mode** Single user (*with your user account selected*)
+    - **Databricks runtime version**: 12.2 LTS (Scala 2.12, Spark 3.2.2)
+    - **Use Photon Acceleration**: Selected
     - **Node type**: Standard_DS3_v2
     - **Terminate after** *30* **minutes of inactivity**
 
@@ -121,26 +123,13 @@ Azure Databricks is a distributed processing platform that uses Apache Spark *cl
 
 ## Task 3: Explore data using a notebook
 
-As in many Spark environments, Databricks supports the use of notebooks to combine notes and interactive code cells that you can use to explore data.
+In this exercise, you'll use code in a notebook to explore delta lake in Azure Databricks.
 
-1. Expand the task bar on the left and select the **Workspace** tab. Then select the **Users** folder and in the **&#9662;** menu for the **&#8962; *your_user_name*** folder, select **Import**.
+1. In the sidebar on the left, select **Workspace**. Then select the **&#8962; Home** folder.
 
-    ![Azure portal with a cloud shell pane](./images/25-15.png)
-
-1. In the **Import Notebooks** dialog box.
-
-    ![Azure portal with a cloud shell pane](./images/25-16.png)
+1. At the top of the page, in the **&#8942;** menu next to your user name, select **Import**. Then in the **Import** dialog box, select **URL** and import the notebook from `https://github.com/MicrosoftLearning/dp-203-azure-data-engineer/raw/master/Allfiles/labs/25/Delta-Lake.ipynb`
    
-1.  select **URL** and import the notebook from `https://github.com/MicrosoftLearning/dp-203-azure-data-engineer/raw/master/Allfiles/labs/25/Delta-Lake.ipynb`.
-
-     ![Azure portal with a cloud shell pane](./images/25-17.png)
-
-
-1. Select **&#8962; Home** and then open the **Delta-Lake** notebook you just imported.
-
-    ![Azure portal with a cloud shell pane](./images/25-18.png)
-
-1. Ensure that the notebook is attached to ***User Name's* cluster**, and follow the instructions it contains; running the cells it contains to work with Delta Lake.
+1. Connect the notebook to your cluster, and follow the instructions it contains; running the cells it contains to explore delta lake functionality.
 
   **Congratulations** on completing the lab! Now, it's time to validate it. Here are the steps:
 
