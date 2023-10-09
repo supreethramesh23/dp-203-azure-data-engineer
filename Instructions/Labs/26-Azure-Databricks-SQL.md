@@ -57,9 +57,7 @@ In this exercise, you'll need a premium-tier Azure Databricks workspace.
 
 1. When the Azure Databricks workspace resource has been deployed, go to it in the Azure portal.
 2. In the **Overview** page for your Azure Databricks workspace, use the **Launch Workspace** button to open your Azure Databricks workspace in a new browser tab; signing in if prompted.
-3. If a **What's your current data project?** message is displayed, select **Finish** to close it. Then view the Azure Databricks workspace portal and note that the sidebar on the left side contains icons for the various tasks you can perform. The sidebar expands to show the names of the task categories.
-
->**Tip**: As you use the Databricks Workspace portal, various tips and notifications may be displayed. Dismiss these and follow the instructions provided to complete the tasks in this exercise.
+3. If a **What's your current data project?** message is displayed, select **Finish** to close it. Then view the Azure Databricks workspace portal and note that the sidebar on the left side contains the names of the task categories.
 
 4. In the sidebar, under **SQL**, select **SQL Warehouses**.
 
@@ -74,24 +72,26 @@ In this exercise, you'll need a premium-tier Azure Databricks workspace.
 ## Task 3: Create a database schema
 
 1. When your SQL Warehouse is *running*, select **SQL Editor** in the sidebar.
-2. In the **Schema browser** pane, observe that the hive metastore contains a database named **default**.
+2. In the **Schema browser** pane, observe that the *hive_metastore* catalogue contains a database named **default**.
 3. In the **New query** pane, enter the following SQL code:
 
     ```sql
     CREATE SCHEMA adventureworks;
     ```
-4. Use the **Run All** button to run the SQL code.
-5. When the code has been successfully executed, in the **Schema browser** pane, use the refresh button at the bottom of the pane to refresh the list. Then expand **hive_metastore** and **adventureworks**, and observe that the database has been created, but contains no tables.
+4. Use the **&#9658;Run (1000)** button to run the SQL code.
+5. When the code has been successfully executed, in the **Schema browser** pane, use the **&#8635;** button to refresh the list. Then select **adventureworks** and observe that the database has been created, but contains no tables.
 
 You can use the **default** database for your tables, but when building an analytical data store its best to create custom databases for specific data.
 
 ## Task 4: Create a table
 
-1. Download the [**products.csv**](https://raw.githubusercontent.com/MicrosoftLearning/dp-203-azure-data-engineer/master/Allfiles/labs/26/data/products.csv) file to your local computer, saving it as **products.csv**.
+1. In the sidebar, select **(+) New** and then select **File Upload** under **Data**.
 
-2. In the Azure Databricks workspace portal, in the sidebar, select **(+) New** and then select **File Upload** and upload the **products.csv** file you downloaded to your computer.
+2. In the **Upload file** area, select **browse**. Then in the **Open** dialog box, enter `https://raw.githubusercontent.com/MicrosoftLearning/dp-203-azure-data-engineer/master/Allfiles/labs/26/data/products.csv` for the file name and select **Open**.
 
-3. In the **Upload data** page, select the **adventureworks** schema and set the table name to **products**. Then select **Create table** on the bottom left corner of the page.
+> **Tip**: If your browser or operating system doesn't support entering a URL in the **File** box, download the CSV file to your computer and then upload it from the local folder where you saved it.
+
+3. > **Tip**: If your browser or operating system doesn't support entering a URL in the **File** box, download the CSV file to your computer and then upload it from the local folder where you saved it.
 
 4. When the table has been created, review its details.
 
@@ -99,7 +99,7 @@ The ability to create a table by importing data from a file makes it easy to pop
 
 ## Task 5: Create a query
 
-1. In the sidebar, select **(+) New** and then select **Query**.
+1. In the sidebar, select **(+) New** and then select **Query** under **SQL**.
 2. In the **Schema browser** pane, expand **hive_metastore** and **adventureworks**, and verify that the **products** table is listed.
 3. In the **New query** pane, enter the following SQL code:
 
@@ -108,7 +108,7 @@ The ability to create a table by importing data from a file makes it easy to pop
     FROM adventureworks.products; 
     ```
 
-4. Use the **Run All** button to run the SQL code.
+4. Use the **&#9658;Run (1000)** button to run the SQL code.
 5. When the query has completed, review the table of results.
 6. Use the **Save** button at the top right of the query editor to save the query as **Products and Categories**.
 
@@ -116,7 +116,7 @@ Saving a query makes it easy to retrieve the same data again at a later time.
 
 ## Task 6: Create a dashboard
 
-1. In the sidebar, select **(+) New** and then select **Dashboard**.
+1. In the sidebar, select **(+) New** and then select **Dashboard** under **SQL**.
 2. In the **New dashboard** dialog box, enter the name **Adventure Works Products** and select **Save**.
 3. In the **Adventure Works Products** dashboard, in the **Add** drop-down list, select **Visualization**.
 4. In the **Add visualization widget** dialog box, select the **Products and Categories** query. Then select **Create new visualization**, set the title to **Products Per Category**. and select **Create visualization**.
@@ -130,6 +130,7 @@ Saving a query makes it easy to retrieve the same data again at a later time.
     - **Legend items order**: Normal
     - **Stacking**: Stack
     - **Normalize values to percentage**: <u>Un</u>selected
+    - **Missing and NULL values**: Do not display in chart
 
 6. Save the visualization and view it in the dashboard.
 7. Select **Done editing** to view the dashboard as users will see it.
