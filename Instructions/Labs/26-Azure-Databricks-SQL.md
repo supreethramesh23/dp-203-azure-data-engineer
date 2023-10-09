@@ -12,7 +12,7 @@ After completing this lab, you will be able to:
 
  - Provision an Azure Databricks workspace
  - View and start a SQL Warehouse
- - Create a database
+ - Create a database schema
  - Create a table
  - Create a query
  - Create a dashboard
@@ -71,7 +71,7 @@ In this exercise, you'll need a premium-tier Azure Databricks workspace.
 
 > **Note**: If your SQL Warehouse fails to start, your subscription may have insufficient quota in the region where your Azure Databricks workspace is provisioned. See [Required Azure vCPU quota](https://docs.microsoft.com/azure/databricks/sql/admin/sql-endpoints#required-azure-vcpu-quota) for details. If this happens, you can try requesting for a quota increase as detailed in the error message when the warehouse fails to start. Alternatively, you can try deleting your workspace and creating a new one in a different region. You can specify a region as a parameter for the setup script like this: `./setup.ps1 eastus`
 
-## Task 3: Create a database
+## Task 3: Create a database schema
 
 1. When your SQL Warehouse is *running*, select **SQL Editor** in the sidebar.
 2. In the **Schema browser** pane, observe that the *hive_metastore* catalogue contains a database named **default**.
