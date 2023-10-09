@@ -12,7 +12,7 @@ After completing this lab, you will be able to:
 
  - Provision an Azure Databricks workspace.
  - View and start a SQL Warehouse.
- - Create a database.
+ - Create a database schema.
  - Create a table.
  - Create a query
  - Create a dashboard
@@ -71,7 +71,7 @@ In this exercise, you'll need a premium-tier Azure Databricks workspace.
 
 > **Note**: If your SQL Warehouse fails to start, your subscription may have insufficient quota in the region where your Azure Databricks workspace is provisioned. See [Required Azure vCPU quota](https://docs.microsoft.com/azure/databricks/sql/admin/sql-endpoints#required-azure-vcpu-quota) for details. If this happens, you can try requesting for a quota increase as detailed in the error message when the warehouse fails to start. Alternatively, you can try deleting your workspace and creating a new one in a different region. You can specify a region as a parameter for the setup script like this: `./setup.ps1 eastus`
 
-## Task 3: Create a database
+## Task 3: Create a database schema
 
 1. When your SQL Warehouse is *running*, select **SQL Editor** in the sidebar.
 2. In the **Schema browser** pane, observe that the hive metastore contains a database named **default**.
@@ -91,7 +91,7 @@ You can use the **default** database for your tables, but when building an analy
 
 2. In the Azure Databricks workspace portal, in the sidebar, select **(+) New** and then select **File Upload** and upload the **products.csv** file you downloaded to your computer.
 
-3. In the **Upload data** page, select the **adventureworks** database and set the table name to **products**. Then select **Create table** on the bottom left corner of the page.
+3. In the **Upload data** page, select the **adventureworks** schema and set the table name to **products**. Then select **Create table** on the bottom left corner of the page.
 
 4. When the table has been created, review its details.
 
