@@ -66,7 +66,7 @@ In this task, you'll use a script to provision a new Azure Databricks workspace.
 
 9. If prompted, choose which subscription you want to use (this will only happen if you have access to multiple Azure subscriptions).
 
-10. Wait for the script to complete - this typically takes around 5 minutes, but in some cases may take longer. While you are waiting, review the [Introduction to Delta Lake](https://docs.microsoft.com/azure/databricks/delta/delta-intro) article in the Azure Databricks documentation.
+10. Wait for the script to complete - this typically takes around 5 minutes, but in some cases may take longer. While you are waiting, review the [Introduction to Delta Technologies](https://learn.microsoft.com/azure/databricks/introduction/delta-comparison) article in the Azure Databricks documentation.
 
     ![Azure portal with a cloud shell pane](./images/25-6.png)
 
