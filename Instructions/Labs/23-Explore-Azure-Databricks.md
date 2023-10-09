@@ -75,7 +75,7 @@ Azure Databricks is a distributed processing platform that uses Apache Spark *cl
     - **Cluster name**: *User Name's* cluster (the default cluster name)
     - **Cluster mode**: Single Node
     - **Access mode** Single user (*with your user account selected*)
-    - **Databricks runtime version**: 12.3 LTS (Scala 2.12, Spark 3.2.2)
+    - **Databricks runtime version**: 12.2 LTS (Scala 2.12, Spark 3.2.2)
     - **Use Photon Acceleration**: Selected
     - **Node type**: Standard_DS3_v2
     - **Terminate after** *30* **minutes of inactivity**
