@@ -100,7 +100,7 @@ An Azure Stream Analytics job defines a perpetual query that operates on streami
 
 2. On the **Home** page of the Azure portal, select **+ Create a resource** and search for `Stream Analytics job`. Then create a **Stream Analytics job** with the following properties and click on **Review+Create**.
     - **Subscription**: Retain the existing subscription
-    - **Resource group**: Select the existing **dp203-xxxxxxx** resouce group.
+    - **Resource group**: Select the existing **dp203-xxxxxxx** resource group.
     - **Name**: `stream-orders`
     - **Region**: Select the region where your **dp203-xxxxxxx** resource group was provisioned.
     - **Hosting environment**: Cloud
