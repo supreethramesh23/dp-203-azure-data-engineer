@@ -4,6 +4,8 @@
 
 Microsoft Purview enables you to catalog data assets across your data estate and track the flow of data as it is transferred from one data source to another - a key element of a comprehensive data governance solution. In this lab, you'll learn about Microsoft Purview to track assets and data lineage in an Azure Synapse Analytics workspace
 
+> **Important**: Microsoft Purview has been updated to restrict organizations to a single Microsoft Purview account per Azure tenant. Consequently, this lab is not supported in shared tenant environments, including many hosted lab environments used in instructor-led training courses.
+
 ### Objectives
 
 After completing this lab, you will be able to:
