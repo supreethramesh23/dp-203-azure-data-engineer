@@ -167,13 +167,6 @@ Now that you have prepared your Azure Cosmos DB account, you can configure Azure
 
     ![Adding an Azure Cosmos DB SQl API external data link](./images/l-14-4.png)
 
-  **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
-
-  > - Navigate to the Lab Validation tab, from the upper right corner in the lab guide section.
-  > - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task. 
-  > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
-  > - If you need any assistance, please contact us at labs-support@spektrasystems.com.
-
 ## Task 4: Query Azure Cosmos DB from Azure Synapse Analytics
 
 Now you're ready to query your Cosmos DB database from Azure Synapse Analytics.
