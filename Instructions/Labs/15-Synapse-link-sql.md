@@ -197,13 +197,6 @@ Now you're ready to configure Azure Synapse Link for SQL in your Synapse Analyti
    
 5. When you're done, on the **Manage** page, pause the **sql*xxxxxxx*** dedicated SQL pool.
 
-  **Congratulations** on completing the lab! Now, it's time to validate it. Here are the steps:
-
-  > - Navigate to the Lab Validation tab, from the upper right corner in the lab guide section.
-  > - Hit the Validate button for the corresponding task. If you receive a success message, you have successfully validated the lab. 
-  > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
-  > - If you need any assistance, please contact us at labs-support@spektrasystems.com.
-
 ## Review
 
 In this lab, you have accomplished the following:
