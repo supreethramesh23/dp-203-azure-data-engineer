@@ -302,13 +302,6 @@ The **products_csv** view in the **lakedb** database is based on a text file in 
     
 11. When the pipeline run has completed successfully, select its name (**Load_Product_Data**) to view details of the activities in the pipeline; and observe that the pipeline includes a **Copy data** task with an automatically-derived name similar to **Copy_*xxx***. This activity copied the data from the text file in the data lake into the **products** table in the **sql*xxxxxxx*** database.
 
-  **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
-
-  > - Navigate to the Lab Validation tab, from the upper right corner in the lab guide section.
-  > - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task. 
-  > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
-  > - If you need any assistance, please contact us at labs-support@spektrasystems.com.
-
 ### Task 3.4: View data lineage in Microsoft Purview
 
 You've used a Synapse pipeline to load data into a database. Let's verify that this activity has been tracked in Microsoft Purview.
@@ -332,13 +325,6 @@ You've used a Synapse pipeline to load data into a database. Let's verify that t
 The lineage tracking capability enabled by integrating Azure Synapse Analytics with Microsoft Purview enables you to determine how and when the data in your data stores was loaded, and where it came from.
 
 > **Tip**: In this exercise, you viewed the lineage information for in the Microsoft Purview Governance portal; but remember that the same assets can also be viewed in Synapse Studio through the search integration feature.
-
-  **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
-
-  > - Navigate to the Lab Validation tab, from the upper right corner in the lab guide section.
-  > - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task. 
-  > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
-  > - If you need any assistance, please contact us at labs-support@spektrasystems.com.
 
 ### Task 3.5: Pause the dedicated SQL pool
 
