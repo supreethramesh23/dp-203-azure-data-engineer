@@ -2,7 +2,7 @@
   {
     "Name": "DP-203: Azure Data Engineer",
     "Language": "English",
-    "BaseURL": "https://github.com/CloudLabs-MOC/dp-203-azure-data-engineer",
+    "BaseURL": "https://github.com/CloudLabs-MOC/dp-203-azure-data-engineer/tree/prod-combined",
     "Files": [
       {
         "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/dp-203-azure-data-engineer/prod/Instructions/Labs/00-GettingStarted.md",
