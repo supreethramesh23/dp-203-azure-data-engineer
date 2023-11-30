@@ -24,6 +24,8 @@ After completing this lab, you will be able to:
 
 In this exercise, you'll use a script to provision a new Azure Databricks workspace.
 
+> **Tip**: If you already have a *Standard* or *Trial* Azure Databricks workspace, you can skip this procedure and use your existing workspace.
+
 1. On the Azure Portal home page, click the button **[\>_]** from the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a ***PowerShell*** environment and creating storage if prompted. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
 
     ![Azure portal with a cloud shell pane](./images/cloud-shell.png)
@@ -54,21 +56,22 @@ In this exercise, you'll use a script to provision a new Azure Databricks worksp
 
 Azure Databricks is a distributed processing platform that uses Apache Spark *clusters* to process data in parallel on multiple nodes. Each cluster consists of a driver node to coordinate the work, and worker nodes to perform processing tasks.
 
-> **Note**: In this exercise, you'll create a *single-node* cluster to minimize the compute resources used in the lab environment (in which resources may be constrained). In a production environment, you'd typically create a cluster with multiple worker nodes.
+> **Tip**: If you already have a cluster with a 13.3 LTS runtime version in your Azure Databricks workspace, you can use it to complete this exercise and skip this procedure.
 
 1. In the Azure portal, browse to the **dp203-*xxxxxxx*** resource group that was created by the script you ran.
-2. Select the **databricks*xxxxxxx*** Azure Databricks Service resource.
-3. In the **Overview** page for **databricks*xxxxxxx***, use the **Launch Workspace** button to open your Azure Databricks workspace in a new browser tab; signing in if prompted.
-4. If a **What's your current data project?** message is displayed, select **Finish** to close it. Then view the Azure Databricks workspace portal and note that the sidebar on the left side contains icons for the various tasks you can perform.
+1. Select your Azure Databricks Service resource (named **databricks*xxxxxxx*** if you used the setup script to create it).
+1. In the **Overview** page for your workspace, use the **Launch Workspace** button to open your Azure Databricks workspace in a new browser tab; signing in if prompted.
 
-   >**Tip**: As you use the Databricks Workspace portal, various tips and notifications may be displayed. Dismiss these and follow the instructions provided to complete the tasks in this exercise.
+    > **Tip**: As you use the Databricks Workspace portal, various tips and notifications may be displayed. Dismiss these and follow the instructions provided to complete the tasks in this exercise.
+
+1. View the Azure Databricks workspace portal and note that the sidebar on the left side contains icons for the various tasks you can perform.
 
 5. Select the **(+) New** task, and then select **Cluster**.
 6. In the **New Cluster** page, create a new cluster with the following settings:
     - **Cluster name**: Leave it as **default**
     - **Cluster mode**: Single Node
     - **Access mode** Single user (*with your user account selected*)
-    - **Databricks runtime version**: 12.2 LTS (Scala 2.12, Spark 3.2.2)
+    - **Databricks runtime version**: 13.3 LTS (Spark 3.4.1, Scala 2.12)
     - **Use Photon Acceleration**: Selected
     - **Node type**: Standard_DS3_v2
     - **Terminate after** *30* **minutes of inactivity**
