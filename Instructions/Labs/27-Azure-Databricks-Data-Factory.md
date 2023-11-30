@@ -111,7 +111,7 @@ To use Azure Databricks from an Azure Data Factory pipeline, you need to create 
     - **Databrick Workspace URL**: *Automatically set to your Databricks workspace URL*
     - **Authentication type**: Access token
     - **Access token**: *Paste your access token*
-    - **Cluster version**: 12.2 LTS (Scala 2.12, Spark 3.2.2)
+    - **Cluster version**: 13.3 LTS (Spark 3.4.1, Scala 2.12)
     - **Cluster node type**: Standard_DS3_v2
     - **Python version**: 3
     - **Worker options**: Fixed
