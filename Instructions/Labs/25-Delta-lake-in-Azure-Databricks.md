@@ -97,7 +97,7 @@ Azure Databricks is a distributed processing platform that uses Apache Spark *cl
 
 4. View the Azure Databricks workspace portal and note that the sidebar on the left side contains icons for the various tasks you can perform.
 
-5. Select the **(+) New** task, and then select **Cluster**.
+5. Select the **(+) New** link, and then select **Cluster**.
 
     ![Azure portal with a cloud shell pane](./images/25-12.png)
 
