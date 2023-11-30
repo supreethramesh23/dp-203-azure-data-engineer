@@ -21,7 +21,7 @@ After completing this lab, you will be able to:
 
 ### Architecture Diagram
 
-   ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab26.png)
+   ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab26.0.png)
 
 ## Task 1: Provision an Azure Databricks workspace
 
@@ -88,11 +88,11 @@ You can use the **default** database for your tables, but when building an analy
 
 ## Task 4: Create a table
 
-1. Download the [**products.csv**](https://raw.githubusercontent.com/MicrosoftLearning/dp-203-azure-data-engineer/master/Allfiles/labs/26/data/products.csv) file to your local computer, saving it as **products.csv**.
+1. Download the [**products.csv**](https://raw.githubusercontent.com/MicrosoftLearning/dp-203-azure-data-engineer/master/Allfiles/labs/26/data/products.csv) file to your local computer to download the file press ctrl+s, saving it as **products.csv**, .
 
 2. In the Azure Databricks workspace portal, in the sidebar, select **(+) New** and then select **File Upload** and upload the **products.csv** file you downloaded to your computer.
 
-3. In the **Upload data** page, select the **adventureworks** database and set the table name to **products**. Then select **Create table** on the bottom left corner of the page.
+3. In the **Upload data** page, select the **adventureworks** database from schema dropdown and set the table name to **products**. Then select **Create table** on the bottom left corner of the page.
 
 4. When the table has been created, review its details.
 
@@ -117,7 +117,7 @@ Saving a query makes it easy to retrieve the same data again at a later time.
 
 ## Task 6: Create a dashboard
 
-1. In the sidebar, select **(+) New** and then select **Dashboard**.
+1. In the sidebar, select **(+) New** link and then select **Dashboard**.
 2. In the **New dashboard** dialog box, enter the name **Adventure Works Products** and select **Save**.
 3. In the **Adventure Works Products** dashboard, in the **Add** drop-down list, select **Visualization**.
 4. In the **Add visualization widget** dialog box, select the **Products and Categories** query. Then select **Create new visualization**, set the title to **Products Per Category**, and select **Create visualization**.
