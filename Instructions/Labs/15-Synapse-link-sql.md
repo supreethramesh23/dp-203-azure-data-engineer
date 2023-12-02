@@ -157,7 +157,7 @@ Now you're ready to configure Azure Synapse Link for SQL in your Synapse Analyti
 
 2. In the **sql-adventureworkslt-conn** page that is created, view the table mappings that have been created. You can use the **Properties** button (which looks similar to **&#128463;<sub>*</sub>**) to hide the **Properties** pane to make it easier to see eveything. 
 
-3. Modify thes structure types in the table mappings as follows:
+3. Modify the structure types in the table mappings as follows:
 
     |Source table|Target table|Distribution type|Distribution column|Structure type|
     |--|--|--|--|--|
