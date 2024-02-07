@@ -1,7 +1,6 @@
-# Lab Scenario Preview: DP-203: Transfer and transform data with Azure Synapse Analytics pipelines
+# Lab Scenario Preview: Guided Lab : Build a Data Pipeline in Synapse Analytics
 
-
-## Lab 10: Build a data pipeline in Azure Synapse Analytics
+## Lab 1: Build a data pipeline in Azure Synapse Analytics
 
 ### Lab overview
 

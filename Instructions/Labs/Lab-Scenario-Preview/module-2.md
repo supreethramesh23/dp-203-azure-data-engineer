@@ -1,7 +1,6 @@
-# Lab Scenario Preview: DP-203: Transfer and transform data with Azure Synapse Analytics pipelines
+# Lab Scenario Preview: Guided Lab : Build a Data Pipeline in Synapse Analytics
 
-
-## Lab 11: Use an Apache Spark notebook in a pipeline
+## Lab 1: Use an Apache Spark notebook in a pipeline
 
 ### Lab overview
 
