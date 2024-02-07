@@ -1,4 +1,4 @@
-# Lab 15: Use Azure Synapse Link for SQL
+# Lab 3: Use Azure Synapse Link for SQL
 
 ## Lab Scenario
 
