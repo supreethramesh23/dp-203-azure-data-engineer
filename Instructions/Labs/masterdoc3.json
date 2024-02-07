@@ -1,0 +1,17 @@
+[
+    {
+      "Name": "Lab 3: Use Azure Synapse Link for Azure Cosmos DB",
+      "Language": "English",
+      "Files": [
+        {
+          "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/dp-203-azure-data-engineer/guidedlabs/Instructions/Labs/00-GettingStarted-V2.md",
+          "Order": 1
+        },
+  
+        {
+          "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/dp-203-azure-data-engineer/guidedlabs/Instructions/Labs/3-Synapselink-cosmos.md",
+          "Order": 2
+        }
+      ]
+    }
+  ]
