@@ -1,4 +1,4 @@
-# Lab 10: Build a data pipeline in Azure Synapse Analytics
+# Lab 1: Build a data pipeline in Azure Synapse Analytics
 
 ## Lab-Scenario-Preview
 

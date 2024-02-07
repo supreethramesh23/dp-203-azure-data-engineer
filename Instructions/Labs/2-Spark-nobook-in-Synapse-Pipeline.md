@@ -1,4 +1,4 @@
-# Lab 11: Use an Apache Spark notebook in a pipeline
+# Lab 2: Use an Apache Spark notebook in a pipeline
 
 ## Lab Scenario
 
