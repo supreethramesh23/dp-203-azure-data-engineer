@@ -1,4 +1,4 @@
-# Lab 2: Use Azure Synapse Link for Azure Cosmos DB
+# Lab 3: Use Azure Synapse Link for Azure Cosmos DB
 
 ## Lab-Scenario
 

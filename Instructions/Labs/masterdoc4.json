@@ -1,0 +1,17 @@
+[
+    {
+      "Name": "Lab 4: Use Azure Synapse Link for SQL",
+      "Language": "English",
+      "Files": [
+        {
+          "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/dp-203-azure-data-engineer/guidedlabs/Instructions/Labs/00-GettingStarted-V2.md",
+          "Order": 1
+        },
+  
+        {
+          "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/dp-203-azure-data-engineer/guidedlabs/Instructions/Labs/4-Synapse-link-sql.md",
+          "Order": 2
+        }
+      ]
+    }
+  ]
