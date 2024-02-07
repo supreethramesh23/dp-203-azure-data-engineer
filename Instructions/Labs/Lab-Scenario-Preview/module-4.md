@@ -1,7 +1,7 @@
-# Lab Scenario Preview: DP-203: Work with Hybrid Transactional and Analytical Processing Solutions using Azure Synapse Analytics
+# Lab Scenario Preview: Guided Lab : Build a Data Pipeline in Synapse Analytics
 
 
-## Lab 15: Use Azure Synapse Link for SQL
+## Lab 3: Use Azure Synapse Link for SQL
 
 ### Lab overview
 
