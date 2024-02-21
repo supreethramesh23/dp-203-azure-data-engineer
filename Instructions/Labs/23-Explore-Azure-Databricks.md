@@ -59,10 +59,8 @@ Azure Databricks is a distributed processing platform that uses Apache Spark *cl
 
 > **Note**: In this exercise, you'll create a *single-node* cluster to minimize the compute resources used in the lab environment (in which resources may be constrained). In a production environment, you'd typically create a cluster with multiple worker nodes.
 
-1. In the Azure portal, browse to the **dp203-*xxxxxxx*** resource group that was created by the script you ran.
-   
-1. Select the **databricks*xxxxxxx*** Azure Databricks Service resource.
-   
+1. In the Azure portal, browse to the **dp203-*xxxxxxx*** resource group that was created by the script (or the resource group containing your existing Azure Databricks workspace)
+1. Select your Azure Databricks Service resource (named **databricks*xxxxxxx*** if you used the setup script to create it).
 1. In the **Overview** page for your workspace, use the **Launch Workspace** button to open your Azure Databricks workspace in a new browser tab; signing in if prompted.
 
     > **Tip**: As you use the Databricks Workspace portal, various tips and notifications may be displayed. Dismiss these and follow the instructions provided to complete the tasks in this exercise.
