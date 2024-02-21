@@ -61,9 +61,8 @@ In this exercise, you'll need a premium-tier Azure Databricks workspace.
 
 1. When the Azure Databricks workspace resource has been deployed, go to it in the Azure portal.
 1. In the **Overview** page for your Azure Databricks workspace, use the **Launch Workspace** button to open your Azure Databricks workspace in a new browser tab; signing in if prompted.
-
     > **Tip**: As you use the Databricks Workspace portal, various tips and notifications may be displayed. Dismiss these and follow the instructions provided to complete the tasks in this exercise.
-
+ 
 1. View the Azure Databricks workspace portal and note that the sidebar on the left side contains the names of the task categories.
 1. In the sidebar, under **SQL**, select **SQL Warehouses**.
 1. Observe that the workspace already includes a SQL Warehouse named **Starter Warehouse**.
