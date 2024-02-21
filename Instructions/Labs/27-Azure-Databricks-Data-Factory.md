@@ -59,15 +59,15 @@ You can create notebooks in your Azure Databricks workspace to run code written 
    
 3. In the **Overview** page for **databricks*xxxxxxx***, use the **Launch Workspace** button to open your Azure Databricks workspace in a new browser tab; signing in if prompted.
    
-4. If a **What's your current data project?** message is displayed, select **Finish** to close it. Then view the Azure Databricks workspace portal and note that the sidebar on the left side contains icons for the various tasks you can perform.
+    > **Tip**: As you use the Databricks Workspace portal, various tips and notifications may be displayed. Dismiss these and follow the instructions provided to complete the tasks in this exercise.
 
-    >**Tip**: As you use the Databricks Workspace portal, various tips and notifications may be displayed. Dismiss these and follow the instructions provided to complete the tasks in this exercise.
+4. View the Azure Databricks workspace portal and note that the sidebar on the left side contains icons for the various tasks you can perform.
 
-7. In the sidebar on the left, select **Workspace**. Then select the **&#8962; Home** folder.
+5. In the sidebar on the left, select **Workspace**. Then select the **&#8962; Home** folder.
 
-8. At the top of the page, in the **&#8942;** menu next to your user name, select **Import**. Then in the **Import** dialog box, select **URL** and import the notebook from `https://github.com/MicrosoftLearning/dp-203-azure-data-engineer/raw/master/Allfiles/labs/27/Process-Data.ipynb`
+6. At the top of the page, in the **&#8942;** menu next to your user name, select **Import**. Then in the **Import** dialog box, select **URL** and import the notebook from `https://github.com/MicrosoftLearning/dp-203-azure-data-engineer/raw/master/Allfiles/labs/27/Process-Data.ipynb`
 
-9. Review the contents of the notebook, which include some Python code cells to:
+7. Review the contents of the notebook, which include some Python code cells to:
     - Retrieve a parameter named **folder** if it is has been passed (otherwise use a default value of *data*).
     - Download data from GitHub and save it in the specified folder in the Databricks File System (DBFS).
     - Exit the notebook, returning the path where the data was saved as an output
