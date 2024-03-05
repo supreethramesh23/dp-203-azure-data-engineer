@@ -1,28 +1,37 @@
-# Lab 4: Use Azure Synapse Link for SQL
+# Lab 04: Use a SQL Warehouse in Azure Databricks
 
 ## Lab Scenario
 
-Azure Synapse Link for SQL enables you to automatically synchronize a transactional database in SQL Server or Azure SQL Database with a dedicated SQL pool in Azure Synapse Analytics. This synchronization enables you to perform low-latency analytical workloads in Synapse Analytics without incurring query overhead in the source operational database. In this lab, you will explore about Azure Synapse Link for SQL which enables low-latency synchronization of operational data in a relational database to Azure Synapse Analytics.
+SQL is an industry-standard language for querying and manipulating data. Many data analysts perform data analytics by using SQL to query tables in a relational database. Azure Databricks includes SQL functionality that builds on Spark and Delta Lake technologies to provide a relational database layer over files in a data lake.
+
+In this lab, you'll learn about Azure Databricks that provides SQL Warehouses that enable data analysts to work with data using familiar relational SQL queries.
 
 ### Objectives
-  
+
 After completing this lab, you will be able to:
 
-- Configure Azure SQL Database.
-- Explore the transactional database.
-- Configure Azure Synapse Link.
+ - Provision an Azure Databricks workspace
+ - View and start a SQL Warehouse
+ - Create a database schema
+ - Create a table
+ - Create a query
+ - Create a dashboard
 
 ### Estimated timing: 45 minutes
 
 ### Architecture Diagram
 
-   ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab15.png)
+   ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab26.0.png)
 
-## Task 1: Provision Azure resources
+## Task 1: Provision an Azure Databricks workspace
 
-In this exercise, you'll synchronize data from an Azure SQL Database resource to an Azure Synapse Analytics workspace. You'll start by using a script to provision these resources in your Azure subscription.
+In this exercise, you'll need a premium-tier Azure Databricks workspace.
 
-1. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a ***PowerShell*** environment and select **create storage**. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
+> **Tip**: If you already have a *Premium* or *Trial* Azure Databricks workspace, you can skip this procedure.
+
+1. In a web browser, sign into the [Azure portal](https://portal.azure.com) at `https://portal.azure.com`.
+
+1. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a ***PowerShell*** environment and creating storage if prompted. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
 
     ![Azure portal with a cloud shell pane](./images/cloud-shell.png)
 
@@ -34,168 +43,97 @@ In this exercise, you'll synchronize data from an Azure SQL Database resource to
 
     ```
     rm -r dp-203 -f
-    git clone https://github.com/MicrosoftLearning/dp-203-azure-data-engineer dp-203
+    git clone -b prod https://github.com/CloudLabs-MOC/dp-203-azure-data-engineer dp-203
     ```
 
-4. After the repo has been cloned, enter the following commands to change to the folder for this exercise and run the **setup.ps1** script it contains:
+4. After the repo has been cloned, enter the following commands to change to the folder for this lab and run the **setup.ps1** script it contains:
 
     ```
-    cd dp-203/Allfiles/labs/15
+    cd dp-203/Allfiles/labs/26
     ./setup.ps1
     ```
 
 5. If prompted, choose which subscription you want to use (this will only happen if you have access to multiple Azure subscriptions).
-   
-6. When prompted, enter a suitable password for your Azure SQL Database.
 
-    > **Note**: Be sure to remember this password!
+6. Wait for the script to complete - this typically takes around 5 minutes, but in some cases may take longer. While you are waiting, review the [What is data warehousing on Azure Databricks?](https://learn.microsoft.com/azure/databricks/sql/) article in the Azure Databricks documentation.
 
-7. Wait for the script to complete - this typically takes around 15 minutes, but in some cases may take longer. While you are waiting, review the [What is Azure Synapse Link for SQL?](https://docs.microsoft.com/azure/synapse-analytics/synapse-link/sql-synapse-link-overview) article in the Azure Synapse Analytics documentation.
+## Task 2: View and start a SQL Warehouse
 
-## Task 2: Configure Azure SQL Database
+1. When the Azure Databricks workspace resource has been deployed, go to it in the Azure portal.
+1. In the **Overview** page for your Azure Databricks workspace, use the **Launch Workspace** button to open your Azure Databricks workspace in a new browser tab; signing in if prompted.
+    > **Tip**: As you use the Databricks Workspace portal, various tips and notifications may be displayed. Dismiss these and follow the instructions provided to complete the tasks in this exercise.
+ 
+1. View the Azure Databricks workspace portal and note that the sidebar on the left side contains the names of the task categories.
+1. In the sidebar, under **SQL**, select **SQL Warehouses**.
+1. Observe that the workspace already includes a SQL Warehouse named **Starter Warehouse**.
+1. In the **Actions** (**&#8285;**) menu for the SQL Warehouse, select **Edit**. Then set the **Cluster size** property to **2X-Small** and save your changes.
+1. Use the **Start** button to start the SQL Warehouse (which may take a minute or two).
 
-Before you can set up Azure Synapse Link for your Azure SQL Database, you must ensure that the required configuration settings have been applied in your Azure SQL Database server.
+> **Note**: If your SQL Warehouse fails to start, your subscription may have insufficient quota in the region where your Azure Databricks workspace is provisioned. See [Required Azure vCPU quota](https://docs.microsoft.com/azure/databricks/sql/admin/sql-endpoints#required-azure-vcpu-quota) for details. If this happens, you can try requesting for a quota increase as detailed in the error message when the warehouse fails to start. Alternatively, you can try deleting your workspace and creating a new one in a different region. You can specify a region as a parameter for the setup script like this: `./setup.ps1 eastus`
 
-1. In the [Azure portal](https://portal.azure.com), browse to the **dp203-*xxxxxxx*** resource group that was created by the setup script, and select your **sqldb*xxxxxxxx*** Azure SQL server.
+## Task 3: Create a database schema
 
-    > **Note**: be careful not to mix up the Azure SQL server resource **sqldb*xxxxxxxx***) and the Azure Synapse Analytics dedicated SQL pool (**sql*xxxxxxxx***).
-
-2. In the page for your Azure SQL Server resource, in the pane on the left, in the **Security** section (near the bottom), select **Identity (1)**. Then under **System assigned managed identity**, set the **Status** option to **On (2)**. Then use the **&#128427; Save (3)** icon to save your configuration change.
-
-    ![Screenshot of the Azure SQL server Identity page in the Azure portal.](./images/sqldb-identity1.png)
-
-3. In the pane on the left, in the **Security** section, select **Networking**. Then, under **Firewall rules**, select the exception checkbox to **Allow Azure services and resources to access this server**.
-
-4. Use the **&#65291; Add a firewall rule** button to add a new firewall rule with the following settings:
-
-    | Rule name | Start IP | End IP |
-    | -- | -- | -- |
-    | AllClients | 0.0.0.0 | 255.255.255.255 |
-
-    > **Note**: This rule allows access to your server from any Internet-connected computer. We're enabling this to simplify the exercise, but in a production scenario, you should restrict access to only network addresses that need to use your databases.
-
-5. Use the **Save** button to save your configuration change:
-
-    ![Screenshot of the Azure SQL server Networking page in the Azure portal.](./images/sqldb-network1.png)
-
-## Task 3: Explore the transactional database
-
-Your Azure SQL server hosts a sample database named **AdventureWorksLT**. This database represents a transactional database used for operational application data.
-
-1. In the **Overview** page for your Azure SQL server, at the bottom of the page, select the **AdventureWorksLT** database:
-   
-2. In the **AdventureWorksLT** database page, from the left navigation pane, select the **Query editor** tab and log in using SQL server authentication with the following credentials:
-    - **Login** SQLUser
-    - **Password**: *The password you specified when running the setup script.*
-      
-3. When the query editor opens, expand the **Tables** node and view the list of tables in the database. Note that they include tables in a **SalesLT** schema (for example, **SalesLT.Customer**).
-
-## Task 4: Configure Azure Synapse Link
-
-Now you're ready to configure Azure Synapse Link for SQL in your Synapse Analytics workspace.
-
-### Task 4.1: Start the dedicated SQL pool
-
-1. In the Azure portal, close the query editor for your Azure SQL database (discarding any changes) and return to the page for your **dp203-*xxxxxxx*** resource group.
-2. Open the **synapse*xxxxxxx*** Synapse workspace, and on its **Overview** page, in the **Open Synapse Studio** card, select **Open** to open Synapse Studio in a new browser tab; signing in if prompted.
-   
-3. On the left side of Synapse Studio, use the **&rsaquo;&rsaquo;** icon to expand the menu - this reveals the different pages within Synapse Studio.
-   
-4. On the **Manage** page, on the **SQL pools** tab, select the row for the **sql*xxxxxxx*** dedicated SQL pool and use its **&#9655;** icon to start it; confirming that you want to resume it when prompted.
-   
-5. Wait for the SQL pool to resume. This can take a few minutes. You can use the **&#8635; Refresh** button to check its status periodically. The status will show as **Online** when it is ready.
-
-### Task 4.2: Create the target schema
-
-1. In Synapse Studio, on the **Data** page, on the **Workspace** tab, expand **SQL databases** and select your **sql*xxxxxxx*** database.
-   
-2. In the **...** menu for the **sql*xxxxxxx*** database, select **New SQL script** > **Empty script**.
-   
-3. In the **SQL Script 1** pane, enter the following SQL code and use the  **&#9655; Run** button to run it.
+1. When your SQL Warehouse is *running*, select **SQL Editor** in the sidebar.
+2. In the **Schema browser** pane, observe that the *hive_metastore* catalogue contains a database named **default**.
+3. In the **New query** pane, enter the following SQL code:
 
     ```sql
-    CREATE SCHEMA SalesLT;
-    GO
+    CREATE SCHEMA adventureworks;
     ```
+4. Use the **&#9658;Run (1000)** button to run the SQL code.
+5. When the code has been successfully executed, in the **Schema browser** pane, use the refresh button at the bottom of the pane to refresh the list. Then expand **hive_metastore** and **adventureworks**, and observe that the database has been created, but contains no tables.
 
-4. Wait for the query to complete successfully. This code creates a schema named **SalesLT** in the database for your dedicated SQL pool, enabling you to synchronize tables in the schema of that name from your Azure SQL database.
+You can use the **default** database for your tables, but when building an analytical data store its best to create custom databases for specific data.
 
-### Task 4.3: Create a link connection
+## Task 4: Create a table
 
-1. In Synapse Studio, on the **Integrate** page, select the **&#65291;** icon and from drop-down menu, select **Link connection**. Then create a new linked connection with the following settings:
-    - **Source type**: Azure SQL database
-    - **Source linked service**: Select **+ New** from the dropdown to add a new linked service with the following settings (a new tab will be opened):
-        - **Name**: SqlAdventureWorksLT
-        - **Description**: Connection to AdventureWorksLT database
-        - **Connect via integration runtime**: AutoResolveIntegrationRuntime
-        - **Connection String**: Selected
-        - **From Azure subscription**: Selected
-        - **Azure subscription**: *Select your Azure subscription*
-        - **Server name**: *Select your **sqldbxxxxxxx** Azure SQL server*
-        - **Database name**: AdventureWorksLT
-        - **Authentication type**: SQL authentication
-        - **User name**: SQLUser
-        - **Password**: *The password you set when running the setup script*
+1. Download the [**products.csv**](https://raw.githubusercontent.com/MicrosoftLearning/dp-203-azure-data-engineer/master/Allfiles/labs/26/data/products.csv) file to your local computer to download the file press ctrl+s, saving it as **products.csv**, .
 
-        *Use the **Test Connection** option to ensure your connection settings are correct before continuing! Afterwards, click **Create**.*
+2. In the Azure Databricks workspace portal, in the sidebar, select **(+) New** and then select **File Upload** and upload the **products.csv** file you downloaded to your computer.
 
-    - **Source tables**: Select the following tables:
-        - **SalesLT.Customer**
-        - **SalesLT.Product**
-        - **SalesLT.SalesOrderDetail**
-        - **SalesLT.SalesOrderHeader**
-        - Click **Continue** to configure the following settings
+3. In the **Upload data** page, select the **adventureworks** database from schema dropdown and set the table name to **products**. Then select **Create table** on the bottom left corner of the page.
 
-    > **Note**: Some target tables display an error due to the use of custom data types or because data in the source table is not compatible with the default structure type of *clustered columnstore index*.
+4. When the table has been created, review its details.
 
-    - **Target pool**: *Select your **sqlxxxxxxx** dedicated SQL pool*
-    - Click **Continue** to configure the following settings
+The ability to create a table by importing data from a file makes it easy to populate a database. You can also use Spark SQL to create tables using code. The tables themselves are metadata definitions in the hive metastore, and the data they contain is stored in Delta format in Databricks File System (DBFS) storage.
 
-    - **Link connection name**: sql-adventureworkslt-conn
-    - **Core count**: 4 (+ 4 Driver cores)
-    - Click **Ok**
+## Task 5: Create a query
 
-2. In the **sql-adventureworkslt-conn** page that is created, view the table mappings that have been created. You can use the **Properties** button (which looks similar to **&#128463;<sub>*</sub>**) to hide the **Properties** pane to make it easier to see eveything. 
-
-3. Modify the structure types in the table mappings as follows:
-
-    |Source table|Target table|Distribution type|Distribution column|Structure type|
-    |--|--|--|--|--|
-    |SalesLT.Customer **&#8594;**|\[SalesLT].\[Customer]|Round robin|-|Clustered columnstore index|
-    |SalesLT.Product **&#8594;**|\[SalesLT].\[Product]|Round robin| - |Heap|
-    |SalesLT.SalesOrderDetail **&#8594;**|\[SalesLT].\[SalesOrderDetail]|Round robin|-|Clustered columnstore index|
-    |SalesLT.SalesOrderHeader **&#8594;**|\[SalesLT].\[SalesOrderHeader]|Round robin|-|Heap|
-
-4. At the top of the **sql-adventureworkslt-conn** page that is created, use the **&#9655; Start** button to start synchronization. When prompted, select **OK** to publish and start the link connection.
-   
-5. After starting the connection, on the **Monitor** page, select the **Link connections** tab and view the **sql-adventureworkslt-conn** connection. You can use the **&#8635; Refresh** button to update the status periodically. It may take several minutes to complete the initial snapshot copy process and start replicating - after that, all changes in the source database tables will be automatically replayed in the synchronized tables.
-
-### Tsk 4.4: View the replicated data
-
-1. After the status of the tables has changed to **Running**, select the **Data** page and use the  **&#8635;** icon at the top right to refresh the view.
-   
-2. Select **Data** pane, click **Workspace** tab, expand **SQL databases**,  your **sql*xxxxxxx*** database, and its **Tables** folder to view the replicated tables.
-   
-3. In the **...** menu for the **sql*xxxxxxx*** database, select **New SQL script** > **Empty script**. Then in the new script page, enter the following SQL code:
+1. In the sidebar, select **(+) New** and then select **Query**.
+2. In the **Schema browser** pane, expand **hive_metastore** and **adventureworks**, and verify that the **products** table is listed.
+3. In the **New query** pane, enter the following SQL code:
 
     ```sql
-    SELECT  oh.SalesOrderID, oh.OrderDate,
-            p.ProductNumber, p.Color, p.Size,
-            c.EmailAddress AS CustomerEmail,
-            od.OrderQty, od.UnitPrice
-    FROM SalesLT.SalesOrderHeader AS oh
-    JOIN SalesLT.SalesOrderDetail AS od 
-        ON oh.SalesOrderID = od.SalesOrderID
-    JOIN  SalesLT.Product AS p 
-        ON od.ProductID = p.ProductID
-    JOIN SalesLT.Customer as c
-        ON oh.CustomerID = c.CustomerID
-    ORDER BY oh.SalesOrderID;
+    SELECT ProductID, ProductName, Category
+    FROM adventureworks.products; 
     ```
 
-4. Use the **&#9655; Run** button to run the script and view the results. The query is run against the replicated tables in the dedicated SQL pool and not the source database, enabling you to run analytical queries without impacting business applications.
-   
-5. When you're done, on the **Manage** page, pause the **sql*xxxxxxx*** dedicated SQL pool.
+4. Use the **&#9658;Run (1000)** button to run the SQL code.
+5. When the query has completed, review the table of results.
+6. Use the **Save** button at the top right of the query editor to save the query as **Products and Categories**.
+
+Saving a query makes it easy to retrieve the same data again at a later time.
+
+## Task 6: Create a dashboard
+
+1. In the sidebar, select **(+) New** link and then select **Dashboard**.
+2. In the **New dashboard** dialog box, enter the name **Adventure Works Products** and select **Save**.
+3. In the **Adventure Works Products** dashboard, in the **Add** drop-down list, select **Visualization**.
+4. In the **Add visualization widget** dialog box, select the **Products and Categories** query. Then select **Create new visualization**, set the title to **Products Per Category**, and select **Create visualization**.
+5. In the visualization editor, set the following properties:
+    - **Visualization type**: bar
+    - **Horizontal chart**: selected
+    - **Y column**: Category
+    - **X columns**: Product ID : Count
+    - **Group by**: *Leave blank*
+    - **Stacking**: Disabled
+    - **Normalize values to percentage**: <u>Un</u>selected
+    - **Missing and NULL values**: Do not display in chart
+
+6. Save the visualization and view it in the dashboard.
+7. Select **Done editing** to view the dashboard as users will see it.
+
+Dashboards are a great way to share data tables and visualizations with business users. You can schedule the dashboards to be refreshed periodically, and emailed to subscribers.
 
   **Congratulations** on completing the lab! Now, it's time to validate it. Here are the steps:
 
@@ -204,11 +142,14 @@ Now you're ready to configure Azure Synapse Link for SQL in your Synapse Analyti
   > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
   > - If you need any assistance, please contact us at labs-support@spektrasystems.com.
 
-## Review
+ ## Review
 
-In this lab, you have accomplished the following:
-- Configure Azure SQL Database.
-- Explore the transactional database.
-- Configure Azure Synapse Link.
-
-## You have successfully completed the lab.
+ In this lab, you have accomplished the following:
+  - Provision an Azure Databricks workspace.
+ - View and start a SQL Warehouse.
+ - Create a database.
+ - Create a table.
+ - Create a query
+ - Create a dashboard
+ 
+ ## You have successfully completed the lab.
