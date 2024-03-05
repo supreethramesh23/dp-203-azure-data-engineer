@@ -1,15 +1,14 @@
 [
     {
-      "Name": "Lab 2: Use an Apache Spark notebook in a pipeline",
+      "Name": "Lab 02: Use Spark in Azure Databricks",
       "Language": "English",
       "Files": [
         {
           "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/dp-203-azure-data-engineer/guidedlabs/Instructions/Labs/00-GettingStarted-V2.md",
           "Order": 1
         },
-  
         {
-          "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/dp-203-azure-data-engineer/guidedlabs/Instructions/Labs/2-Spark-nobook-in-Synapse-Pipeline.md",
+          "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/dp-203-azure-data-engineer/guidedlabs-Azure-Databricks/Instructions/Labs/2-Analyze-Files-in-Azure-Databricks.md",
           "Order": 2
         }
       ]
