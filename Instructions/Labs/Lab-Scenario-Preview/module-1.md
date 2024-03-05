@@ -1,23 +1,23 @@
-# Lab Scenario Preview: Guided Lab : Build a Data Pipeline in Synapse Analytics
+# Lab Scenario Preview: Guided Lab: Getting started with Azure Databricks Analytics & Engineering Scenarios
 
-## Lab 1: Build a data pipeline in Azure Synapse Analytics
+## Lab 01: Explore Azure Databricks
 
 ### Lab overview
 
-In this lab, you will how to use Azure Synapse Analytics pipelines to build integrated data solutions that extract, transform, and load data across diverse systems.
+In this lab, you'll learn about Azure Databricks workspace which provides a central point for managing Databricks clusters, data, and resources on Azure.
 
 
 ### Objectives
-  
+
 After completing this lab, you will be able to:
 
-- View source and destination data stores.
-- Implement a pipeline.
-- Debug the Data Flow.
-- Publish and run the pipeline.
+ - Provision an Azure Databricks workspace.
+ - Create a cluster.
+ - Use Spark to analyze a data file.
+ - Create and query a database table.
 
-### Architecture Diagram
+ ### Architecture Diagram
 
-   ![Azure portal with a cloud shell pane](./media/lab10.png)
+   ![Azure portal with a cloud shell pane](./media/lab23.png)
 
->**Note**: Once you understand the lab's content, you can start the Hands-on Lab by clicking the **Launch** button located at the top right corner which leads you to the lab environment and lab guide interface. You can also have a detailed preview of the full lab guide [here](https://experience.cloudlabs.ai/#/labguidepreview/ac64bc5f-5506-4b6d-82e9-b564e20ce6c3), prior to launching your environment.
+>**Note**: Once you understand the lab's content, you can start the Hands-on Lab by clicking the **Launch** button located at the top right corner which leads you to the lab environment and lab guide interface. You can also have a detailed preview of the full lab guide [here](https://experience.cloudlabs.ai/#/labguidepreview/21ed74a6-5bde-4a42-9d37-126673e42a46), prior to launching your environment.
