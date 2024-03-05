@@ -1,22 +1,24 @@
-# Lab Scenario Preview: Guided Lab: Build a Data Pipeline in Synapse Analytics
+# Lab Scenario Preview: Guided Lab: Getting started with Azure Databricks Analytics & Engineering Scenarios
 
-## Lab 4: Use Azure Synapse Link for SQL
+## Lab 04: Use a SQL Warehouse in Azure Databricks
 
 ### Lab overview
 
-In this lab, you will explore about Azure Synapse Link for SQL which enables low-latency synchronization of operational data in a relational database to Azure Synapse Analytics.
-
+In this lab, you'll learn about Azure Databricks that provides SQL Warehouses that enable data analysts to work with data using familiar relational SQL queries.
 
 ### Objectives
-  
+
 After completing this lab, you will be able to:
 
-- Configure Azure SQL Database.
-- Explore the transactional database.
-- Configure Azure Synapse Link.
+ - Provision an Azure Databricks workspace.
+ - View and start a SQL Warehouse.
+ - Create a database.
+ - Create a table.
+ - Create a query
+ - Create a dashboard
 
 ### Architecture Diagram
 
-   ![Azure portal with a cloud shell pane](./media/lab15.png)
+   ![Azure portal with a cloud shell pane](./media/lab26.png)
 
->**Note**: Once you understand the lab's content, you can start the Hands-on Lab by clicking the **Launch** button located at the top right corner which leads you to the lab environment and lab guide interface. You can also have a detailed preview of the full lab guide [here](https://experience.cloudlabs.ai/#/labguidepreview/c08415e8-c4b9-4e74-ad1b-80aa629d4d61), prior to launching your environment.
+>**Note**: Once you understand the lab's content, you can start the Hands-on Lab by clicking the **Launch** button located at the top right corner which leads you to the lab environment and lab guide interface. You can also have a detailed preview of the full lab guide [here](https://experience.cloudlabs.ai/#/labguidepreview/0f11a608-c9de-49ad-81a9-2f47e8fb7c90), prior to launching your environment.
