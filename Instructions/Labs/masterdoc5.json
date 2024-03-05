@@ -1,0 +1,16 @@
+[
+    {
+      "Name": "Lab 05: Automate an Azure Databricks Notebook with Azure Data Factory",
+      "Language": "English",
+      "Files": [
+        {
+          "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/dp-203-azure-data-engineer/guidedlabs/Instructions/Labs/00-GettingStarted-V2.md",
+          "Order": 1
+        },
+        {
+          "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/dp-203-azure-data-engineer/guidedlabs-Azure-Databricks/Instructions/Labs/5-Azure-Databricks-Data-Factory.md",
+          "Order": 2
+        }
+      ]
+    }
+  ]
