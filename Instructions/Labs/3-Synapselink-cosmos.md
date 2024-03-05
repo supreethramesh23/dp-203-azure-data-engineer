@@ -1,426 +1,148 @@
-# Lab 3: Use Azure Synapse Link for Azure Cosmos DB
+# Lab 03: Use Delta Lake in Azure Databricks
 
-## Lab-Scenario
+## Lab Scenario
 
-Azure Synapse Link for Azure Cosmos DB is a cloud-native *hybrid transactional analytical processing* (HTAP) technology that enables you to run near-real-time analytics over operational data stored in Azure Cosmos DB from Azure Synapse Analytics. In this lab, you will explore about Hybrid Transactional and Analytical Processing (HTAP) is a technique for near real time analytics without a complex ETL solution.
+Delta Lake is an open source project to build a transactional data storage layer for Spark on top of a data lake. Delta Lake adds support for relational semantics for both batch and streaming data operations, and enables the creation of a *Lakehouse* architecture in which Apache Spark can be used to process and query data in tables that are based on underlying files in the data lake.
+
+In this lab, you'll learn about Delta Lake which is an open source relational storage area for Spark that you can use to implement a data lakehouse architecture in Azure Databricks.
 
 ### Objectives
-  
+
 After completing this lab, you will be able to:
 
-- Configure Synapse Link in Azure Cosmos DB.
-- Configure Synapse Link in Azure Synapse Analytics.
-- Query Azure Cosmos DB from Azure Synapse Analytics.
-
+ - Provision an Azure Databricks workspace.
+ - Create a cluster.
+ - Explore data using a notebook.
+ 
 ### Estimated timing: 45 minutes
 
 ### Architecture Diagram
 
-   ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab14.1.png)
+   ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab25.png)
 
-## Task 1: Provision Azure resources
+## Task 1:  Provision an Azure Databricks workspace
 
-To explore Azure Synapse Link for Azure Cosmos DB, you'll need an Azure Synapse Analytics workspace and an Azure Cosmos DB account. In this exercise, you'll use a combination of a PowerShell script and an ARM template to provision these resources in your Azure subscription.
+In this task, you'll use a script to provision a new Azure Databricks workspace.
 
-1. Click on the **Cloud Shell** button **[\>_]**  to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, select ***PowerShell*** environment and click on **Create Storage** if prompted. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
+> **Tip**: If you already have a *Standard* or *Trial* Azure Databricks workspace, you can skip this procedure.
 
-    ![Azure portal with a cloud shell pane](./images/cloud-shell-dp-203.png)
+1. In a web browser, sign into the [Azure portal](https://portal.azure.com) at `https://portal.azure.com`.
+2. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal.
+
+    ![Azure portal with a cloud shell pane](./images/25-1.png)
+
+3. Selecting a ***PowerShell*** environment and creating storage if prompted. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
+
+    ![Azure portal with a cloud shell pane](./images/25-2.png)
 
     > **Note**: If you have previously created a cloud shell that uses a *Bash* environment, use the the drop-down menu at the top left of the cloud shell pane to change it to ***PowerShell***.
 
-2. Note that you can resize the cloud shell by dragging the separator bar at the top of the pane, or by using the **&#8212;**, **&#9723;**, and **X** icons at the top right of the pane to minimize, maximize, and close the pane. For more information about using the Azure Cloud Shell, see the [Azure Cloud Shell documentation](https://docs.microsoft.com/azure/cloud-shell/overview).
+    ![Azure portal with a cloud shell pane](./images/25-4.png)
 
-3. In the PowerShell pane, enter the following commands to clone this repo:
+
+4. If You dont have precreated storage account then select advanced setting.
+
+    ![Azure portal with a cloud shell pane](./images/25-2a.png)
+
+5. Keep all settings default and give unique storage account name and in file share section write **None**.
+
+    ![Azure portal with a cloud shell pane](./images/25-3.png)
+
+6. Note that you can resize the cloud shell by dragging the separator bar at the top of the pane, or by using the **&#8212;**, **&#9723;**, and **X** icons at the top right of the pane to minimize, maximize, and close the pane. For more information about using the Azure Cloud Shell, see the [Azure Cloud Shell documentation](https://docs.microsoft.com/azure/cloud-shell/overview)
+
+    ![Azure portal with a cloud shell pane](./images/25-5.png)
+
+7. In the PowerShell pane, enter the following commands to clone this repo:
 
     ```
     rm -r dp-203 -f
     git clone https://github.com/MicrosoftLearning/dp-203-azure-data-engineer dp-203
     ```
 
-4. After the repo has been cloned, enter the following commands to change to the folder for this exercise and run the **setup.ps1** script it contains:
+8. After the repo has been cloned, enter the following commands to change to the folder for this lab and run the **setup.ps1** script it contains:
 
     ```
-    cd dp-203/Allfiles/labs/14
+    cd dp-203/Allfiles/labs/25
     ./setup.ps1
     ```
 
-5. When prompted, enter a suitable password to be set for your Azure Synapse SQL pool.
+9. If prompted, choose which subscription you want to use (this will only happen if you have access to multiple Azure subscriptions).
 
-    > **Note**: Be sure to remember this password!
+10. Wait for the script to complete - this typically takes around 5 minutes, but in some cases may take longer. While you are waiting, review the [Introduction to Delta Technologies](https://learn.microsoft.com/azure/databricks/introduction/delta-comparison) article in the Azure Databricks documentation.
 
-6. Wait for the script to complete - this typically takes around 10 minutes, but in some cases may take longer. While you are waiting, review the [What is Azure Synapse Link for Azure Cosmos DB?](https://docs.microsoft.com/azure/cosmos-db/synapse-link) article in the Azure Synapse Analytics documentation.
+    ![Azure portal with a cloud shell pane](./images/25-6.png)
 
-## Task 2: Configure Synapse Link in Azure Cosmos DB
+## Task 2: Create a cluster
 
-Before you can use Synapse Link for Azure Cosmos DB, you must enable it in your Azure Cosmos DB account and configure a container as an analytical store.
+Azure Databricks is a distributed processing platform that uses Apache Spark *clusters* to process data in parallel on multiple nodes. Each cluster consists of a driver node to coordinate the work, and worker nodes to perform processing tasks.
 
-### Task 2.1: Enable the Synapse Link feature in your Cosmos DB account
+> **Tip**: If you already have a cluster with a 13.3 LTS runtime version in your Azure Databricks workspace, you can use it to complete this exercise and skip this procedure.
 
-1. In the [Azure portal](https://portal.azure.com), browse to the **dp203-*xxxxxxx*** resource group that was created by the setup script, and identify your **cosmos*xxxxxxxx*** Cosmos DB account.
+1. In the Azure portal, browse to the **dp203-*xxxxxxx*** resource group that was created by the script you ran.
 
-    > **Note**: In some cases, the script may have tried to create Cosmos DB accounts in multiple regions, so there may be one or more accounts in a *deleting* state. The active account should be the one with the largest number at the end of its name - for example **cosmos*xxxxxxx***.
+    ![Azure portal with a cloud shell pane](./images/25-7.png)
 
-2. Open your Azure Cosmos DB account, and select the **Data Explorer** page on the left side of its blade.
+    ![Azure portal with a cloud shell pane](./images/25-8.png)
 
-    > **Note**:If a **Welcome** dialog box is displayed, close it.
 
-3. At the top of the **Data Explorer** page, use the **Enable Azure Synapse Link** button to enable Synapse Link.
+2. Select the **databricks*xxxxxxx*** Azure Databricks Service resource.
 
-    ![Cosmos DB Data Explorer with Enable Azure Synapse Link button highlighted](./images/l14-1.png)
+    ![Azure portal with a cloud shell pane](./images/25-9.png)
 
-4. On the left side of the page, in the **Integrations** section, select the **Azure Synapse Link** page and verify that the status of the account is *Enabled*.
+3. In the **Overview** page for **databricks*xxxxxxx***, use the **Launch Workspace** button to open your Azure Databricks workspace in a new browser tab; signing in if prompted.
 
-### Task 2.2: Create an analytical store container
+   > **Tip**: As you use the Databricks Workspace portal, various tips and notifications may be displayed. Dismiss these and follow the instructions provided to complete the tasks in this exercise.
 
-1. Return to the **Data Explorer** page, and use the **new Container** button (or tile) to create a new container with the following settings:
-    - **Database id**: *(Create new)* AdventureWorks
-    - **Share throughput across containers**: Unselected
-    - **Container id**: Sales
-    - **Partition key**: /customerid
-    - **Container throughput (autoscale)**: Autoscale
-    - **Container Max RU/s**: 4000
-    - **Analytical store**: On
+    ![Azure portal with a cloud shell pane](./images/25-10.png)
 
-    > **Note**: In this scenario, **customerid** is used for partition key as it's likely to be used in many queries to retrieve customer and sales order information in a hypothetical application, it has relatively high cardinality (number of unique values), so it will allow the container to scale as the number of customers and sales orders grows. Using autoscale and setting the maximum value to 4000 RU/s is appropriate for a new application with initially low query volumes. A max value 4000 RU/s will enable the container to automatically scale between this value all the way down to 10% of this max value (400 RU/s) when not needed.
+4. View the Azure Databricks workspace portal and note that the sidebar on the left side contains icons for the various tasks you can perform.
 
-2. After the container has been created, in the **Data Explorer** page, expand the **AdventureWorks** database and its **Sales** folder; and then select the **Items** folder.
+5. Select the **(+) New** link, and then select **Cluster**.
 
-    ![The Adventure Works, Sales, Items folder in Data Explorer](./images/l14-2.png)
+    ![Azure portal with a cloud shell pane](./images/25-12.png)
 
-3. Use the **New Item** button to create a new customer item based on the following JSON. Then save the new item (some additional metadata fields will be added when you save the item).
+    **Note**: If a tip is displayed, use the **Got it** button to close it. This applies to any future tips that may be displayed as you navigate the workspace interface for the first time.
 
-    ```json
-    {
-        "id": "SO43701",
-        "orderdate": "2019-07-01",
-        "customerid": 123,
-        "customerdetails": {
-            "customername": "Christy Zhu",
-            "customeremail": "christy12@adventure-works.com"
-        },
-        "product": "Mountain-100 Silver, 44",
-        "quantity": 1,
-        "price": 3399.99
-    }
-    ```
+6. In the **New Cluster** page, create a new cluster with the following settings:
+    - **Cluster name**: *User Name's* cluster (the default cluster name)
+    - **Cluster mode**: Single Node
+    - **Access mode** Single user (*with your user account selected*)
+    - **Databricks runtime version**: 13.3 LTS (Spark 3.4.1, Scala 2.12)
+    - **Use Photon Acceleration**: Selected
+    - **Node type**: Standard_DS3_v2
+    - **Terminate after** *30* **minutes of inactivity**
 
-4. Add a second item with the following JSON:
+    ![Azure portal with a cloud shell pane](./images/25-13.png)
 
-    ```json
-    {
-        "id": "SO43704",
-        "orderdate": "2019-07-01",
-        "customerid": 124,
-        "customerdetails": {
-            "customername": "Julio Ruiz",
-            "customeremail": "julio1@adventure-works.com"
-        },
-        "product": "Mountain-100 Black, 48",
-        "quantity": 1,
-        "price": 3374.99
-    }
-    ```
 
-5. Add a third item with the following JSON:
+7. Wait for the cluster to be created. It may take a minute or two.
 
-    ```json
-    {
-        "id": "SO43707",
-        "orderdate": "2019-07-02",
-        "customerid": 125,
-        "customerdetails": {
-            "customername": "Emma Brown",
-            "customeremail": "emma3@adventure-works.com"
-        },
-        "product": "Road-150 Red, 48",
-        "quantity": 1,
-        "price": 3578.27
-    }
-    ```
+    ![Azure portal with a cloud shell pane](./images/25-14.png)
 
-> **Note**: In reality, the analytical store would contain a much larger volume of data, written to the store by an application. These few items will be sufficient to demonstrate the principle in this exercise.
+> **Note**: If your cluster fails to start, your subscription may have insufficient quota in the region where your Azure Databricks workspace is provisioned. See [CPU core limit prevents cluster creation](https://docs.microsoft.com/azure/databricks/kb/clusters/azure-core-limit) for details. If this happens, you can try deleting your workspace and creating a new one in a different region. You can specify a region as a parameter for the setup script like this: `./setup.ps1 eastus`
 
-  **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+## Task 3: Explore data lake using a notebook
 
-  > - Navigate to the Lab Validation tab, from the upper right corner in the lab guide section.
-  > - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task. 
-  > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
-  > - If you need any assistance, please contact us at labs-support@spektrasystems.com.
+In this exercise, you'll use code in a notebook to explore delta lake in Azure Databricks.
 
-## Task 3: Configure Synapse Link in Azure Synapse Analytics
+1. In the Azure Databricks workspace portal for your workspace, in the sidebar on the left, select **Workspace**. Then select the **&#8962; Home** folder.
 
-Now that you have prepared your Azure Cosmos DB account, you can configure Azure Synapse link for Azure Cosmos DB in your Azure Synapse Analytics workspace.
-
-1. In the Azure portal, close the blade for your Cosmos DB account if it is still open, and return to the **dp203-*xxxxxxx*** resource group.
-2. Open the **synapse*xxxxxxx*** Synapse workspace, and on its **Overview** page, in the **Open Synapse Studio** card, select **Open** to open Synapse Studio in a new browser tab; sign in if prompted.
-3. On the left side of Synapse Studio, use the **&rsaquo;&rsaquo;** icon to expand the menu - this reveals the different pages within Synapse Studio.
-4. On the **Data** page, view the **Linked** tab. Your workspace should already include a link to your Azure Data Lake Storage Gen2 storage account, but no link to your Cosmos DB account.
-5. In the **+** menu, select **Connect to external data**, and then select **Azure Cosmos DB for NoSQL**.
-
-    ![Adding an Azure Cosmos DB NoSQl API external data link](./images/l14-3.png)
-
-6. Continue, and create a new Cosmos DB connection with the following settings:
-    - **Name**: AdventureWorks
-    - **Description**: AdventureWorks Cosmos DB database
-    - **Connect via integration runtime**: AutoResolveIntegrationRuntime
-    - **Authentication type**: Account key
-    - **Connection string**: *selected*
-    - **Account selection method**: From subscription
-    - **Azure subscription**: *select your Azure subscription*
-    - **Azure Cosmos DB account name**: *select your **cosmosxxxxxxx** account*
-    - **Database name**: AdventureWorks
-7. After creating the connection, use the **&#8635;** button at the top right of the **Data** page to refresh the view until an **Azure Cosmos DB** category is listed in the **Linked** pane.
-8. Expand the **Azure Cosmos DB** category to see the **AdventureWorks** connection you created and the **Sales** container it contains.
-
-    ![Adding an Azure Cosmos DB SQl API external data link](./images/l-14-4.png)
-
-  **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
-
-  > - Navigate to the Lab Validation tab, from the upper right corner in the lab guide section.
-  > - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task. 
-  > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
-  > - If you need any assistance, please contact us at labs-support@spektrasystems.com.
-
-## Task 4: Query Azure Cosmos DB from Azure Synapse Analytics
-
-Now you're ready to query your Cosmos DB database from Azure Synapse Analytics.
-
-### Task 4.1: Query Azure Cosmos DB from a Spark pool
-
-1. In the **Data** pane, select the **Sales** container, and in its **...** menu, select **New Notebook** > **Load to DataFrame**.
-2. In the new **Notebook 1** tab that opens, in the **Attach to** list, select your Spark pool (**spark*xxxxxxx***). Then use the **&#9655; Run all** button to run all of the cells in the notebook (there's currently only one!).
-
-   >**Note**: If you don't find the **Attach to** option, kindly collapse the **Data** pane to view the **Attach to** option next to the outline option.
+1. At the top of the page, in the **&#8942;** menu next to your user name, select **Import**. Then in the **Import** dialog box, select **URL** and import the notebook from `https://github.com/MicrosoftLearning/dp-203-azure-data-engineer/raw/master/Allfiles/labs/25/Delta-Lake.ipynb`
    
-   >**Note**: Since this is the first time you've run any Spark code in this session, the Spark pool must be started. This means that the first run in the session can take a few minutes. Subsequent runs will be quicker.
+1. Connect the notebook to your cluster, and follow the instructions it contains; running the cells it contains to explore delta lake functionality.
 
-3. While you are waiting for the Spark session to initialize, review the code that was generated (you can use the **Properties** button, which looks similar to **&#128463;<sub>*</sub>**, on the right end of the toolbar to close the **Properties** pane so you can see the code more clearly). The code should look similar to this:
+  **Congratulations** on completing the lab! Now, it's time to validate it. Here are the steps:
 
-    ```python
-    # Read from Cosmos DB analytical store into a Spark DataFrame and display 10 rows from the DataFrame
-    # To select a preferred list of regions in a multi-region Cosmos DB account, add .option("spark.cosmos.preferredRegions", "<Region1>,<Region2>")
-
-    df = spark.read\
-        .format("cosmos.olap")\
-        .option("spark.synapse.linkedService", "AdventureWorks")\
-        .option("spark.cosmos.container", "Sales")\
-        .load()
-
-    display(df.limit(10))
-    ```
-
-4. When the code has finished running, and then review the output beneath the cell in the notebook. The results should include three records; one for each of the items you added to the Cosmos DB database. Each record includes the fields you entered when you created the items as well as some of the metadata fields that were automatically generated.
-
-5. Under the results from the previous cell, use the **+ Code** icon to add a new cell to the notebook, and then enter the following code in it:
-
-    ```python
-    customer_df = df.select("customerid", "customerdetails")
-    display(customer_df)
-    ```
-
-6. Use the **&#9655;** icon to the left of the cell to run it, and view the results; which should be similar to this:
-
-    | customerid | customerdetails |
-    | -- | -- |
-    | 124 | "{"customername": "Julio Ruiz","customeremail": "julio1@adventure-works.com"}" |
-    | 125 | "{"customername": "Emma Brown","customeremail": "emma3@adventure-works.com"}" |
-    | 123 | "{"customername": "Christy Zhu","customeremail": "christy12@adventure-works.com"}" |
-
-    This query created a new dataframe containing only the **customerid** and **customerdetails** columns. Observe that the **customerdetails** column contains the JSON structure for the nested data in the source item. In the table of results that is displayed, you can use the **&#9658;** icon next to the JSON value to expand it and see the individual fields it contains.
-
-7. Add another new code cell and enter the following code:
-
-    ```python
-    customerdetails_df = df.select("customerid", "customerdetails.*")
-    display(customerdetails_df)
-    ```
-
-8. Run the cell and review the results, which should include the **customername** and **customeremail** from the **customerdetails** value as columns:
-
-    | customerid | customername | customeremail |
-    | -- | -- | -- |
-    | 124 | Julio Ruiz |julio1@adventure-works.com |
-    | 125 | Emma Brown |emma3@adventure-works.com |
-    | 123 | Christy Zhu | christy12@adventure-works.com |
-
-    Spark enables you to run complex data manipulation code to restructure and explore the data from Cosmos DB. In this case, the PySpark language enables you to navigate the JSON properties hierarchy to retrieve the child fields of the **customerdetails** field.
-
-9. Add another new code cell and enter the following code:
-
-    ```sql
-    %%sql
-
-    -- Create a logical database in the Spark metastore
-    CREATE DATABASE salesdb;
-
-    USE salesdb;
-
-    -- Create a table from the Cosmos DB container
-    CREATE TABLE salesorders using cosmos.olap options (
-        spark.synapse.linkedService 'AdventureWorks',
-        spark.cosmos.container 'Sales'
-    );
-
-    -- Query the table
-    SELECT *
-    FROM salesorders;
-    ```
-
-10. Run the new cell to create a new database containing a table that includes data from the Cosmos DB analytical store.
-11. Add another new code cell, and then enter and run the following code:
-
-    ```sql
-    %%sql
-
-    SELECT id, orderdate, customerdetails.customername, product
-    FROM salesorders
-    ORDER BY id;
-    ```
-
-    The results from this query should resemble this:
-
-    | id | orderdate | customername | product |
-    | -- | -- | -- | -- |
-    | SO43701 | 2019-07-01 | Christy Zhu | Mountain-100 Silver, 44 |
-    | SO43704 | 2019-07-01 | Julio Ruiz |Mountain-100 Black, 48 |
-    | SO43707 | 2019-07-02 | Emma Brown |Road-150 Red, 48 |
-
-    Observe that when using Spark SQL, you can retrieve named properties of a JSON structure as columns.
-
-12. Keep the **Notebook 1** tab open - you'll return to it later.
-
-### Task 4.2: Query Azure Cosmos DB from a serverless SQL pool
-
-1. In the **Data** pane, select the **Sales** container, and in its **...** menu, select **New SQL script** > **Select TOP 100 rows**.
-2. In the **SQL script 1** tab that opens, hide the **Properties** pane and view the code that has been generated, which should look similar to this:
-
-    ```sql
-    IF (NOT EXISTS(SELECT * FROM sys.credentials WHERE name = 'cosmosxxxxxxxx'))
-    THROW 50000, 'As a prerequisite, create a credential with Azure Cosmos DB key in SECRET option:
-    CREATE CREDENTIAL [cosmosxxxxxxxx]
-    WITH IDENTITY = ''SHARED ACCESS SIGNATURE'', SECRET = ''<Enter your Azure Cosmos DB key here>''', 0
-    GO
-
-    SELECT TOP 100 *
-    FROM OPENROWSET(​PROVIDER = 'CosmosDB',
-                    CONNECTION = 'Account=cosmosxxxxxxxx;Database=AdventureWorks',
-                    OBJECT = 'Sales',
-                    SERVER_CREDENTIAL = 'cosmosxxxxxxxx'
-    ) AS [Sales]
-    ```
-
-    The SQL pool requires a credential to use when accessing Cosmos DB, which is based on an authorization key for your Cosmos DB account. The script includes an initial `IF (NOT EXISTS(...` statement that checks for this credential, and throws an error if it does not exist.
-
-3. Replace the `IF (NOT EXISTS(...` statement in the script with the following code to create a credential, replacing *cosmosxxxxxxxx* with the name of your Cosmos DB account:
-
-    ```sql
-    CREATE CREDENTIAL [cosmosxxxxxxxx]
-    WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
-    SECRET = '<Enter your Azure Cosmos DB key here>'
-    GO
-    ```
-
-    The whole script should now resemble the following:
-
-    ```sql
-    CREATE CREDENTIAL [cosmosxxxxxxxx]
-    WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
-    SECRET = '<Enter your Azure Cosmos DB key here>'
-    GO
-
-    SELECT TOP 100 *
-    FROM OPENROWSET(​PROVIDER = 'CosmosDB',
-                    CONNECTION = 'Account=cosmosxxxxxxxx;Database=AdventureWorks',
-                    OBJECT = 'Sales',
-                    SERVER_CREDENTIAL = 'cosmosxxxxxxxx'
-    ) AS [Sales]
-    ```
-
-4. Switch to the browser tab containing the Azure portal (or open a new tab and sign into the Azure portal at [https://portal.azure.com](https://portal.azure.com)). Then in the **dp203-*xxxxxxx*** resource group, open your **cosmos*xxxxxxxx*** Azure Cosmos DB account.
-5. In the pane on the left, in the **Settings** section, select the **Keys** page. Then copy the **Primary Key** value to the clipboard.
-6. Switch back to the browser tab containing the SQL script in Azure Synapse Studio, and paste the key into the code replacing the ***\<Enter your Azure Cosmos DB key here\>*** placeholder so that the script looks similar to this:
-
-    ```sql
-    CREATE CREDENTIAL [cosmosxxxxxxxx]
-    WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
-    SECRET = '1a2b3c....................................=='
-    GO
-
-    SELECT TOP 100 *
-    FROM OPENROWSET(​PROVIDER = 'CosmosDB',
-                    CONNECTION = 'Account=cosmosxxxxxxxx;Database=AdventureWorks',
-                    OBJECT = 'Sales',
-                    SERVER_CREDENTIAL = 'cosmosxxxxxxxx'
-    ) AS [Sales]
-    ```
-     >**Note**:Please review the code before executing the query provided. If the query fails to execute successfully, you will not be able to proceed any further.
-     
-7. Use the **&#9655; Run** button to run the script, and review the results, which should include three records; one for each of the items you added to the Cosmos DB database.
-
-    Now that you have created the credential, you can use it in any query against the Cosmos DB data source.
-
-8. Replace all of the code in the script (both the CREATE CREDENTIAL and SELECT statements) with the following code (substituting *cosmosxxxxxxxx* with the name of your Azure Cosmos DB account):
-
-    ```sql
-    SELECT *
-    FROM OPENROWSET(​PROVIDER = 'CosmosDB',
-                    CONNECTION = 'Account=cosmosxxxxxxxx;Database=AdventureWorks',
-                    OBJECT = 'Sales',
-                    SERVER_CREDENTIAL = 'cosmosxxxxxxxx'
-    )
-    WITH (
-        OrderID VARCHAR(10) '$.id',
-        OrderDate VARCHAR(10) '$.orderdate',
-        CustomerID INTEGER '$.customerid',
-        CustomerName VARCHAR(40) '$.customerdetails.customername',
-        CustomerEmail VARCHAR(30) '$.customerdetails.customeremail',
-        Product VARCHAR(30) '$.product',
-        Quantity INTEGER '$.quantity',
-        Price FLOAT '$.price'
-    )
-    AS sales
-    ORDER BY OrderID;
-    ```
-
-9. Run the script and review the results, which should match the schema defined in the `WITH` clause:
-
-    | OrderID | OrderDate | CustomerID | CustomerName | CustomerEmail | Product | Quantity | Price |
-    | -- | -- | -- | -- | -- | -- | -- | -- |
-    | SO43701 | 2019-07-01 | 123 | Christy Zhu | christy12@adventure-works.com | Mountain-100 Silver, 44 | 1 | 3399.99 |
-    | SO43704 | 2019-07-01 | 124 | Julio Ruiz | julio1@adventure-works.com | Mountain-100 Black, 48 | 1 | 3374.99 |
-    | SO43707 | 2019-07-02 | 125 | Emma Brown | emma3@adventure-works.com | Road-150 Red, 48 | 1 | 3578.27 |
-
-10. Keep the **SQL script 1** tab open - you'll return to it later.
-
-### Task 4.3: Verify data modifications in Cosmos DB are reflected in Synapse 
-
-1. Leaving the browser tab containing Synapse Studio open, switch back to the tab containing the Azure portal, which should be open at the **Keys** page for your Cosmos DB account.
-2. On the **Data Explorer** page, expand the **AdventureWorks** database and its **Sales** folder; and then select the **Items** folder.
-3. Use the **New Item** button to create a new customer item based on the following JSON. Then save the new item (some additional metadata fields will be added when you save the item).
-
-    ```json
-    {
-        "id": "SO43708",
-        "orderdate": "2019-07-02",
-        "customerid": 126,
-        "customerdetails": {
-            "customername": "Samir Nadoy",
-            "customeremail": "samir1@adventure-works.com"
-        },
-        "product": "Road-150 Black, 48",
-        "quantity": 1,
-        "price": 3578.27
-    }
-    ```
-
-4. Return to the Synapse Studio tab and in the **SQL Script 1** tab, re-run the query. Initially, it may show the same results as before, but wait a minute or so and then re-run the query again until the results include the sale to Samir Nadoy on 2019-07-02.
-5. Switch back to the **Notebook 1** tab and re-run the last cell in the Spark notebook to verify that the sale to Samir Nadoy is now included in the query results.
+  > - Navigate to the Lab Validation tab, from the upper right corner in the lab guide section.
+  > - Hit the Validate button for the corresponding task. If you receive a success message, you have successfully validated the lab. 
+  > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+  > - If you need any assistance, please contact us at labs-support@spektrasystems.com.
 
 ## Review
 
 In this lab, you have accomplished the following:
-- Configure Synapse Link in Azure Cosmos DB.
-- Configure Synapse Link in Azure Synapse Analytics.
-- Query Azure Cosmos DB from Azure Synapse Analytics.
+ - Provision an Azure Databricks workspace.
+ - Create a cluster.
+ - Explore data using a notebook.
 
 ## You have successfully completed the lab.
