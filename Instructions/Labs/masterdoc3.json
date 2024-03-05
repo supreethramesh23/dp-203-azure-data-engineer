@@ -1,15 +1,14 @@
 [
     {
-      "Name": "Lab 3: Use Azure Synapse Link for Azure Cosmos DB",
+      "Name": "Lab 03: Use Delta Lake in Azure Databricks",
       "Language": "English",
       "Files": [
         {
           "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/dp-203-azure-data-engineer/guidedlabs/Instructions/Labs/00-GettingStarted-V2.md",
           "Order": 1
         },
-  
         {
-          "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/dp-203-azure-data-engineer/guidedlabs/Instructions/Labs/3-Synapselink-cosmos.md",
+          "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/dp-203-azure-data-engineer/guidedlabs-Azure-Databricks/Instructions/Labs/3-Delta-lake-in-Azure-Databricks.md",
           "Order": 2
         }
       ]
