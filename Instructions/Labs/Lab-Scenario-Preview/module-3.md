@@ -1,23 +1,23 @@
-# Lab Scenario Preview: Guided Lab : Build a Data Pipeline in Synapse Analytics
+# Lab Scenario Preview: Guided Lab: Getting started with Azure Databricks Analytics & Engineering Scenarios
 
 
-## Lab 3: Use Azure Synapse Link for Azure Cosmos DB
+## Lab 03: Use Delta Lake in Azure Databricks
 
 ### Lab overview
 
-In this lab, you will explore Hybrid Transactional and Analytical Processing (HTAP) a technique for near real-time analytics without a complex ETL solution. Azure Synapse Link for Azure Cosmos DB enables HTAP integration between operational data in Azure Cosmos DB and Azure Synapse Analytics runtimes for Spark and SQL.
-
+In this lab, you'll learn about Delta Lake which is an open source relational storage area for Spark that you can use to implement a data lakehouse architecture in Azure Databricks.
 
 ### Objectives
-  
+
 After completing this lab, you will be able to:
 
-- Configure Synapse Link in Azure Cosmos DB.
-- Configure Synapse Link in Azure Synapse Analytics.
-- Query Azure Cosmos DB from Azure Synapse Analytics.
+ - Provision an Azure Databricks workspace.
+ - Create a cluster.
+ - Explore data using a notebook.
 
+ 
 ### Architecture Diagram
 
-   ![Azure portal with a cloud shell pane](./media/lab14.1.png)
+   ![Azure portal with a cloud shell pane](./media/lab25.png)
 
->**Note**: Once you understand the lab's content, you can start the Hands-on Lab by clicking the **Launch** button located at the top right corner which leads you to the lab environment and lab guide interface. You can also have a detailed preview of the full lab guide [here](https://experience.cloudlabs.ai/#/labguidepreview/3e991b51-03f4-4c2e-b643-937927d50478), prior to launching your environment.
+>**Note**: Once you understand the lab's content, you can start the Hands-on Lab by clicking the **Launch** button located at the top right corner which leads you to the lab environment and lab guide interface. You can also have a detailed preview of the full lab guide [here](https://experience.cloudlabs.ai/#/labguidepreview/d36f08cf-bd2d-4d09-bdc0-691982c87880), prior to launching your environment.
