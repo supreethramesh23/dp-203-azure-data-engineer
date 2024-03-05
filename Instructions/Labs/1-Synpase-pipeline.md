@@ -1,247 +1,159 @@
-# Lab 1: Build a data pipeline in Azure Synapse Analytics
+# Lab 01: Explore Azure Databricks
 
-## Lab-Scenario-Preview
+## Lab-Scenario
 
-In this lab, you'll load data into a dedicated SQL Pool using a pipeline in Azure Synapse Analytics Explorer. The pipeline will encapsulate a data flow that loads product data into a table in a data warehouse.
+Azure Databricks is a Microsoft Azure-based version of the popular open-source Databricks platform.
+
+Similarly to Azure Synapse Analytics, an Azure Databricks *workspace* provides a central point for managing Databricks clusters, data, and resources on Azure.
+
+In this lab, you'll learn about Azure Databricks workspace which provides a central point for managing Databricks clusters, data, and resources on Azure.
 
 ### Objectives
-  
+
 After completing this lab, you will be able to:
 
-- View source and destination data stores.
-- Implement a pipeline.
-- Debug the Data Flow.
-- Publish and run the pipeline.
+ - Provision an Azure Databricks workspace.
+ - Create a cluster.
+ - Use Spark to analyze a data file.
+ - Create and query table.
 
-### Estimated timing: 45 minutes
+ ### Estimated timing: 45 minutes
+ 
+ ### Architecture Diagram
 
-### Architecture Diagram
+   ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab23.png)
 
-   ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab10.png)
+## Task 1: Provision an Azure Databricks workspace
 
-## Task 1: Provision an Azure Synapse Analytics workspace
+In this exercise, you'll use a script to provision a new Azure Databricks workspace.
 
-You'll need an Azure Synapse Analytics workspace with access to data lake storage and a dedicated SQL pool hosting a relational data warehouse.
+1. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a ***PowerShell*** environment and creating storage if prompted. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
 
-In this task, you'll use a combination of a PowerShell script and an ARM template to provision an Azure Synapse Analytics workspace.
+    ![Azure portal with a cloud shell pane](./images/cloud-shell.png)
 
-1. Click on the **Cloud Shell** button **[\>_]**  to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, select ***PowerShell*** environment and click on **Create Storage** if prompted. The Cloud Shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
-         
-   ![Azure portal with a cloud shell pane](./images/cloud-shell.png)
+    > **Note**: If you have previously created a cloud shell that uses a *Bash* environment, use the the drop-down menu at the top left of the cloud shell pane to change it to ***PowerShell***.
 
-    > **Note**: If you have previously created a cloud shell that uses a *Bash* environment, use the drop-down menu at the top left of the cloud shell pane to change it to ***PowerShell***.
+1. Note that you can resize the cloud shell by dragging the separator bar at the top of the pane, or by using the **&#8212;**, **&#9723;**, and **X** icons at the top right of the pane to minimize, maximize, and close the pane. For more information about using the Azure Cloud Shell, see the [Azure Cloud Shell documentation](https://docs.microsoft.com/azure/cloud-shell/overview).
 
-2. Note that Cloud Shell can be resized by dragging the separator bar at the top of the pane, or by using the—, **&#9723;**, and **X** icons at the top right of the pane to minimize, maximize, and close the pane. For more information about using the Azure Cloud Shell, see the [Azure Cloud Shell documentation](https://docs.microsoft.com/azure/cloud-shell/overview).
+1. In the PowerShell pane, enter the following commands to clone this repo:
 
-3. In the PowerShell pane, enter the following commands to clone this repository:
-
-    ```powershell
+    ```
     rm -r dp-203 -f
     git clone https://github.com/MicrosoftLearning/dp-203-azure-data-engineer dp-203
     ```
 
-4. After the repository has been cloned, enter the following commands to change to the folder for this exercise, and run the **setup.ps1** script it contains:
+1. After the repo has been cloned, enter the following commands to change to the folder for this lab and run the **setup.ps1** script it contains:
 
-    ```powershell
-    cd dp-203/Allfiles/labs/10
+    ```
+    cd dp-203/Allfiles/labs/23
     ./setup.ps1
     ```
 
-5. If prompted, choose which subscription you want to use (this will only happen if you have access to multiple Azure subscriptions).
-6. When prompted, enter a suitable password to be set for your Azure Synapse SQL pool.
+1. If prompted, choose which subscription you want to use (this will only happen if you have access to multiple Azure subscriptions).
 
-    > **Note**: Be sure to remember this password!
+1. Wait for the script to complete - this typically takes around 5 minutes, but in some cases may take longer. While you are waiting, review the [What is Azure Databricks?](https://learn.microsoft.com/azure/databricks/introduction/) article in the Azure Databricks documentation.
 
-7. Wait for the script to complete - this typically takes around 10 minutes, but in some cases may take longer. While you're waiting, review the [Data flows in Azure Synapse Analytics](https://learn.microsoft.com/azure/synapse-analytics/concepts-data-flow-overview) article in the Azure Synapse Analytics documentation.
+## Task 2: Create a cluster
 
-## Task 2: View source and destination data stores
+Azure Databricks is a distributed processing platform that uses Apache Spark *clusters* to process data in parallel on multiple nodes. Each cluster consists of a driver node to coordinate the work, and worker nodes to perform processing tasks.
 
-The source data for this exercise is a text file containing product data. The destination is a table in a dedicated SQL pool. Your goal is to create a pipeline that encapsulates a data flow in which the product data in the file is loaded into the table; inserting new products and updating existing ones.
+> **Note**: In this exercise, you'll create a *single-node* cluster to minimize the compute resources used in the lab environment (in which resources may be constrained). In a production environment, you'd typically create a cluster with multiple worker nodes.
 
-1. After the script has completed, in the Azure portal, go to the **dp203-*xxxxxxx*** resource group that it created, and select your Synapse workspace.
-2. In the **Overview** page for your Synapse Workspace, in the **Open Synapse Studio** card, select **Open** to open Synapse Studio in a new browser tab; signing in if prompted.
-3. On the left side of Synapse Studio, use the ›› icon to expand the menu - this reveals the different pages within Synapse Studio that you’ll use to manage resources and perform data analytics tasks.
-4. On the **Manage** page, on the **SQL pools** tab, select the row for the **sql*xxxxxxx*** dedicated SQL pool and use its **&#9655;** icon to start it; confirming that you want to resume it when prompted.
+1. In the Azure portal, browse to the **dp203-*xxxxxxx*** resource group that was created by the script (or the resource group containing your existing Azure Databricks workspace)
+1. Select your Azure Databricks Service resource (named **databricks*xxxxxxx*** if you used the setup script to create it).
+1. In the **Overview** page for your workspace, use the **Launch Workspace** button to open your Azure Databricks workspace in a new browser tab; signing in if prompted.
 
-     Resuming the pool can take a few minutes. You can use the **&#8635; Refresh** button to check its status periodically. The status will show as **Online** when it's ready. While you're waiting, continue with the steps below to view the source data.
+    > **Tip**: As you use the Databricks Workspace portal, various tips and notifications may be displayed. Dismiss these and follow the instructions provided to complete the tasks in this exercise.
 
-5. On the **Data** page, view the **Linked** tab and verify that your workspace includes a link to your Azure Data Lake Storage Gen2 storage account, which should have a name similar to **synapse*xxxxxxx* (Primary - datalake*xxxxxxx*)**.
-6. Expand your storage account and verify that it contains a file system container named **files (primary)**.
-7. Select the files container, and note that it contains a folder named **data**.
-8. Open the **data** folder and observe the **Product.csv** file it contains.
-9. Right-click **Product.csv** and select **Preview** to see the data it contains. Note that it contains a header row and some records of product data.
-10. Return to the **Manage** page and ensure that your dedicated SQL pool is now online. If not, wait for it.
-11. In the **Data** page, on the **Workspace** tab, expand **SQL database**, your **sql*xxxxxxx* (SQL)** database, and its **Tables**.
-12. Select the **dbo.DimProduct** table. Then in its **...** menu, select **New SQL script** > **Select TOP 100 rows**; which will run a query that returns the product data from the table - there should be a single row.
+1. View the Azure Databricks workspace portal and note that the sidebar on the left side contains links for the various types of task you can perform.
 
-## Task 3: Implement a pipeline
+1. Select the **(+) New** link in the sidebar, and then select **Cluster**.
+ 
+1. In the **New Cluster** page, create a new cluster with the following settings:
+    - **Cluster name**: *User Name's* cluster (the default cluster name)
+    - **Cluster mode**: Single Node
+    - **Access mode** Single user (*with your user account selected*)
+    - **Databricks runtime version**: 13.3 LTS (Spark 3.4.1, Scala 2.12)
+    - **Use Photon Acceleration**: Selected
+    - **Node type**: Standard_DS3_v2
+    - **Terminate after** *30* **minutes of inactivity**
 
-To load the data in the text file into the database table, you will implement an Azure Synapse Analytics pipeline that contains a dataflow encapsulating the logic to ingest the data from the text file, lookup the surrogate **ProductKey** column for products that already exist in the database, and then insert or update rows in the table accordingly.
+1. Wait for the cluster to be created. It may take a minute or two.
 
-### Task 3.1: Create a pipeline with a data flow activity
+> **Note**: If your cluster fails to start, your subscription may have insufficient quota in the region where your Azure Databricks workspace is provisioned. See [CPU core limit prevents cluster creation](https://docs.microsoft.com/azure/databricks/kb/clusters/azure-core-limit) for details. If this happens, you can try deleting your workspace and creating a new one in a different region. You can specify a region as a parameter for the setup script like this: `./setup.ps1 eastus`
 
-1. In Synapse Studio, select the **Integrate** page. Then in the **+** menu select **Pipeline** to create a new pipeline.
-2. In the **Properties** pane for your new pipeline, change its name from **Pipeline1** to **Load Product Data**. Then use the **Properties** button above the **Properties** pane to hide it.
-3. In the **Activities** pane, expand **Move & transform**; and then drag a **Data flow** to the pipeline design surface as shown here:
+## Task 3: Use Spark to analyze a data file
 
-    ![Screenshot of a pipeline with a data flow activity.](./images/dataflow(1).png)
+As in many Spark environments, Databricks supports the use of notebooks to combine notes and interactive code cells that you can use to explore data.
 
-4. Under the pipeline design surface, in the **General** tab(at the bottom of the page), set the **Name** property to **LoadProducts**.
-5. On the **Settings** tab, at the bottom of the list of settings, expand **Staging** and set the following staging settings:
-    - **Staging linked service**: Select the **synapse*xxxxxxx*-WorkspaceDefaultStorage** linked service.
-    - **Staging storage folder**: Replace **container** to **files** and replace **Directory** to **stage_products**.
+1. In the sidebar, use the **(+) New** link to create a **Notebook**.
 
-### Task 3.2: Configure the data flow
+2. Change the default notebook name (**Untitled Notebook *[date]***) to **Explore products** and in the **Connect** drop-down list, select your cluster if it is not already selected. If the cluster is not running, it may take a minute or so to start.
 
-1. At the top of the **Settings** tab for the **LoadProducts** data flow, for the **Data flow** property, select **+ New**.
-2. In the **Properties** pane for the new data flow design surface that opens, set the **Name** to **LoadProductsData** and then hide the **Properties** pane. The data flow designer should look like this:
+3. Download the [**products.csv**](https://raw.githubusercontent.com/MicrosoftLearning/dp-203-azure-data-engineer/master/Allfiles/labs/23/adventureworks/products.csv) file to your local computer, saving it as **products.csv**. Then, in the **Explore products** notebook, on the **File** menu, select **Upload data to DBFS**.
 
-    ![Screenshot of an empty data flow activity.](./images/empty-dataflow(1).png)
-
-### Task 3.3: Add sources
-
-1. In the data flow design surface, in the **Add Source** drop-down list, select **Add Source**. Then configure the source settings as follows:
-    - **Output stream name**: ProductsText
-    - **Description**: Products text data
-    - **Source type**: Integration dataset
-    - **Dataset**: Select **+ New** to add new dataset with the following properties:
-        - **New integration dataset**: Select **Azure Data lake Storage Gen2** and click **Continue**.
-        - **Format**: Delimited text and click **Continue**.
-        - **Name**: Products_Csv
-        - **Linked service**: synapse*xxxxxxx*-WorkspaceDefaultStorage
-        - **File path**: files/data/Product.csv
-        - **First row as header**: Selected
-        - **Import schema**: From connection/store
-        - Click on **OK**.
-    - **Allow schema drift**: Selected
-2. On the **Projection** tab for the new **ProductsText** source, set the following data types:
-    - **ProductID**: string
-    - **ProductName**: string
-    - **Color**: string
-    - **Size**: string
-    - **ListPrice**: decimal
-    - **Discontinued**: boolean
-3. Add a second source with the following properties:
-    - **Output stream name**: ProductTable
-    - **Description**: Product table
-    - **Source type**: Integration dataset
-    - **Dataset**: Select **+ New** to add a **New** dataset with the following properties:
-        - **New integration dataset**: Select **Azure Synapse Analytics** and click **Continue**.
-        - **Name**: DimProduct
-        - **New Linked service**: Select **+ New** from the dropdown to create a **New** linked service with the following properties:
-            - **Name**: Data_Warehouse
-            - **Description**: Dedicated SQL pool
-            - **Connect via integration runtime**: AutoResolveIntegrationRuntime
-            - **Account selection method** From Azure subscription
-            - **Azure subscription**: Select your Azure subscription
-            - **Server name**: synapse*xxxxxxx* (Synapse workspace)
-            - **Database name**: sql*xxxxxxx*
-            - **SQL pool**: sql*xxxxxxx*
-            - **Authentication type**: System Assigned Managed Identity
-            - Click on **Create**.
-        - **Table name**: dbo.DimProduct
-        - **Import schema**: From connection/store
-        -  Click **OK**.
-    - **Allow schema drift**: Selected
-4. On the **Projection** tab for the new **ProductTable** source, verify that the following data types are set:
-    - **ProductKey**: integer
-    - **ProductAltKey**: string
-    - **ProductName**: string
-    - **Color**: string
-    - **Size**: string
-    - **ListPrice**: decimal
-    - **Discontinued**: boolean
-5. Verify that your data flow contains two sources, as shown here:
-
-    ![Screenshot of a data flow with two sources.](./images/dataflow_sources(1).png)
-
-### Task 3.4: Add a Lookup
-
-1. Select the **+** icon at the bottom right of the **ProductsText** source and select **Lookup**.
-2. Configure the Lookup settings as follows:
-    - **Output stream name**: MatchedProducts
-    - **Description**: Matched product data
-    - **Primary stream**: ProductText
-    - **Lookup stream**: ProductTable
-    - **Match multiple rows**: <u>Un</u>selected
-    - **Match on**: Last row
-    - **Sort conditions**: ProductKey ascending
-    - **Lookup conditions**: ProductID == ProductAltKey
-3. Verify that your data flow looks like this:
-
-    ![Screenshot of a data flow with two sources and a lookup.](./images/dataflow_lookup(1).png)
-
-    >**Note**: The lookup returns a set of columns from *both* sources, essentially forming an outer join that matches the **ProductID** column in the text file to the **ProductAltKey** column in the data warehouse table. When a product with the alternate key already exists in the table, the dataset will include the values from both sources. When the product dos not already exist in the data warehouse, the dataset will contain NULL values for the table columns.
-
-### Task 3.5: Add an Alter Row
-
-1. Select the **+** icon at the bottom right of the **MatchedProducts** Lookup and select **Alter Row**.
-2. Configure the alter row settings as follows:
-    - **Output stream name**: SetLoadAction
-    - **Description**: Insert new, upsert existing
-    - **Incoming stream**: MatchedProducts
-    - **Alter row conditions**: Edit the existing condition and use the **+** button to add a second condition as follows (note that the expressions are *case-sensitive*):
-        - InsertIf: `isNull(ProductKey)`
-        - UpsertIf: `not(isNull(ProductKey))`
-3. Verify that the data flow looks like this:
-
-    ![Screenshot of a data flow with two sources, a lookup, and an alter row.](./images/dataflow_alterrow(1).png)
-
-    >**Note**: The alter row step configures the kind of load action to perform for each row. Where there's no existing row in the table (the **ProductKey** is NULL), the row from the text file will be inserted. Where there's already a row for the product, an *upsert* will be performed to update the existing row. This configuration essentially applies a *type 1 slowly changing dimension update*.
-
-### Task 3.6: Add a sink
-
-1. Select the **+** icon at the bottom right of the **SetLoadAction** alter row step and select **Sink**.
-2. Configure the **Sink** properties as follows:
-    - **Output stream name**: DimProductTable
-    - **Description**: Load DimProduct table
-    - **Incoming stream**: SetLoadAction
-    - **Sink type**: Integration dataset
-    - **Dataset**: Select DimProduct
-    - **Allow schema drift**: Selected
-3. On the **Settings** tab for the new **DimProductTable** sink, specify the following settings:
-    - **Update method**: Select **Allow insert** and **Allow Upsert**.
-    - **Key columns**: Select **List of columns**, and then select the **ProductAltKey** column from dropdown.
-4. On the **Mappings** tab for the new **DimProductTable** sink, clear the **Auto mapping** checkbox and specify <u>only</u> the following column mappings:
-    - ProductID: ProductAltKey
-    - ProductsText@ProductName: ProductName
-    - ProductsText@Color: Color
-    - ProductsText@Size: Size
-    - ProductsText@ListPrice: ListPrice
-    - ProductsText@Discontinued: Discontinued
-5. Verify that your data flow looks like this:
-
-    ![Screenshot of a data flow with two sources, a lookup, an alter row, and a sink.](./images/dataflow-sink(1).png)
-
-    >**Note**: In the output column section if there is any extra column apart from the above mentioned column, kindly delete it.
-
-## Task 4: Debug the Data Flow
-
-Now that you've built a data flow in a pipeline, you can debug it before publishing.
-
-1. At the top of the data flow designer, enabled **Data flow debug**. Review the default configuration and select **OK**, then wait for the debug cluster to start (which may take a few minutes).
-2. In the data flow designer, select the **DimProductTable** sink and view its **Data preview** tab.
-
-   >**Note**: kindly collapse **Integrate** pane to view **Data preview** tab.
+4. In the **Upload Data** dialog box, note the **DBFS Target Directory** to where the file will be uploaded. Then select the **Files** area, and upload the **products.csv** file you downloaded to your computer. When the file has been uploaded, select **Next**.
    
-3. Use the **&#8635; Refresh** button to refresh the preview, which has the effect of running data through the data flow to debug it.
-4. Review the preview data, noting that it indicates one upserted row (for the existing *AR5381* product), indicated by a **<sub>*</sub><sup>+</sup>** icon; and ten inserted rows, indicated by a **+** icon.
+5. In the **Access files from notebooks** pane, select the sample PySpark code and copy it to the clipboard. You will use it to load the data from the file into a DataFrame. Then select **Done**.
 
-## Task 5: Publish and run the pipeline
+6. In the **Explore products** notebook, in the empty code cell, paste the code you copied; which should look similar to this:
 
-Now you're ready to publish and run the pipeline.
+    ```python
+    df1 = spark.read.format("csv").option("header", "true").load("dbfs:/FileStore/shared_uploads/user@outlook.com/products.csv")
+    ```
 
-1. Use the **Publish all** button to publish the pipeline (and any other unsaved assets) and on **Publish all** pane click on **Publish**.
-2. When publishing is complete, close the **LoadProductsData** data flow pane and return to the **Load Product Data** pipeline pane.
-3. At the top of the pipeline designer pane, select **Add trigger** menu, click **Trigger now**. Then select **OK** to confirm you want to run the pipeline.
+7. Use the **&#9656; Run Cell** menu option at the top-right of the cell to run it, starting and attaching the cluster if prompted.
 
-    >**Note**: You can also create a trigger to run the pipeline at a scheduled time or in response to a specific event.
+8. Wait for the Spark job run by the code to complete. The code has created a *dataframe* object named **df1** from the data in the file you uploaded.
+   
+9. Under the existing code cell, use the **+** icon to add a new code cell. Then in the new cell, enter the following code:
 
-4. When the pipeline has started running, on the **Monitor** page, view the **Pipeline runs** tab and review the status of the **Load Product Data** pipeline.
+    ```python
+    display(df1)
+    ```
 
-    >**Note**: The pipeline may take five minutes or longer to complete. You can use the **&#8635; Refresh** button on the toolbar to check its status.
+10. Use the **&#9656; Run Cell** menu option at the top-right of the new cell to run it. This code displays the contents of the dataframe, which should look similar to this:
 
-5. When the pipeline run has succeeded, on the **Data** page, use the **...** menu for the **dbo.DimProduct** table in your SQL database to run a query that selects the top 100 rows. The table should contain the data loaded by the pipeline.
+    | ProductID | ProductName | Category | ListPrice |
+    | -- | -- | -- | -- |
+    | 771 | Mountain-100 Silver, 38 | Mountain Bikes | 3399.9900 |
+    | 772 | Mountain-100 Silver, 42 | Mountain Bikes | 3399.9900 |
+    | ... | ... | ... | ... |
+
+11. Above the table of results, select **+** and then select **Visualization** to view the visualization editor, and then apply the following options:
+    - **Visualization type**: Bar
+    - **X Column**: Category
+    - **Y Column**: *Add a new column and select* **ProductID**. *Apply the* **Count** *aggregation*.
+
+    Save the visualization and observe that it is displayed in the notebook, like this:
+
+    ![A bar chart showing product counts by category](./images/databricks-chart.png)
+
+## Task 4: Create and query table
+
+While many data analysis are comfortable using languages like Python or Scala to work with data in files, a lot of data analytics solutions are built on relational databases; in which data is stored in tables and manipulated using SQL.
+
+1. In the **Explore products** notebook, under the chart output from the previously run code cell, use the **+** icon to add a new cell.
+   
+2. Enter and run the following code in the new cell:
+
+    ```python
+    df1.write.saveAsTable("products")
+    ```
+
+3. When the cell has completed, add a new cell under it with the following code:
+
+    ```sql
+    %sql
+
+    SELECT ProductName, ListPrice
+    FROM products
+    WHERE Category = 'Touring Bikes';
+    ```
+
+4. Run the new cell, which contains SQL code to return the name and price of products in the *Touring Bikes* category.
+   
+5. In the sidebar, select the **Data** link, and verify that the **products** table has been created in the default database schema (which is unsurprisingly named **default**). It's possible to use Spark code to create custom database schemas and a schema of relational tables that data analysts can use to explore data and generate analytical reports.
 
   **Congratulations** on completing the lab! Now, it's time to validate it. Here are the steps:
 
@@ -253,9 +165,9 @@ Now you're ready to publish and run the pipeline.
 ## Review
 
 In this lab, you have accomplished the following:
-- View source and destination data stores.
-- Implement a pipeline.
-- Debug the Data Flow.
-- Publish and run the pipeline.
+ - Provision an Azure Databricks workspace.
+ - Create a cluster.
+ - Use Spark to analyze a data file.
+ - Create and query a database table.
 
 ## You have successfully completed the lab.
