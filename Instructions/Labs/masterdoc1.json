@@ -1,15 +1,14 @@
 [
     {
-      "Name": "Lab 1: Build a data pipeline in Azure Synapse Analytics",
+      "Name": "Lab 1: Explore Azure Databricks",
       "Language": "English",
       "Files": [
         {
           "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/dp-203-azure-data-engineer/prod/Instructions/Labs/00-GettingStarted-V2.md",
           "Order": 1
         },
-  
         {
-          "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/dp-203-azure-data-engineer/guidedlabs/Instructions/Labs/1-Synpase-pipeline.md",
+          "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/dp-203-azure-data-engineer/guidedlabs-Azure-Databricks/Instructions/Labs/1-Explore-Azure-Databricks.md",
           "Order": 2
         }
       ]
