@@ -18,6 +18,6 @@ After completing this lab, you will be able to:
 
  ### Architecture Diagram
 
-   ![Azure portal with a cloud shell pane](./media/lab23.png)
+   ![Azure portal with a cloud shell pane](./media/lab01-databricks.png)
 
 >**Note**: Once you understand the lab's content, you can start the Hands-on Lab by clicking the **Launch** button located at the top right corner which leads you to the lab environment and lab guide interface. You can also have a detailed preview of the full lab guide [here](https://experience.cloudlabs.ai/#/labguidepreview/21ed74a6-5bde-4a42-9d37-126673e42a46), prior to launching your environment.
