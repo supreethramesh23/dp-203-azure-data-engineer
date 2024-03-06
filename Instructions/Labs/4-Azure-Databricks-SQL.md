@@ -91,7 +91,7 @@ You can use the **default** database for your tables, but when building an analy
 
 2. In the Azure Databricks workspace portal, in the sidebar, select **(+) New** and then select **File Upload** and upload the **products.csv** file you downloaded to your computer.
 
-3. In the **Upload data** page, select the **adventureworks** database from schema dropdown and set the table name to **products**. Then select **Create table** on the bottom left corner of the page.
+3. In the **Upload data** page, select the **adventureworks** database from schema dropdown and set the table name to **products**. Then select **Create table** on the bottom right corner of the page.
 
 4. When the table has been created, review its details.
 
