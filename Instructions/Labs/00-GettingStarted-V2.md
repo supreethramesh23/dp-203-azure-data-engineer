@@ -1,6 +1,6 @@
 # Getting started with Azure Databricks Analytics & Engineering Scenarios
  
-Welcome to your DP-203: Data Engineering on Microsoft Azure workshop! We've prepared a seamless environment for you to explore and learn about integrating, transforming, and consolidating data from various structured, unstructured, and streaming data systems into a suitable schema for building analytics solutions. Let's begin by making the most of this experience:
+Welcome to the Guided Labs on Getting started with Azure Databricks Analytics & Engineering Scenarios. We've prepared a seamless environment for you to explore and learn about integrating, transforming, and consolidating data from various structured, unstructured, and streaming data systems into a suitable schema for building analytics solutions. Let's begin by making the most of this experience:
  
 ## Accessing Your Lab Environment
  
