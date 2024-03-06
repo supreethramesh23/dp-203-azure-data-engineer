@@ -16,7 +16,7 @@ After completing this lab, you will be able to:
 
 ### Architecture Diagram
 
-   ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab27.png)
+   ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab05-databricks.png)
 
 ## Task 1: Provision Azure resources
 
