@@ -21,7 +21,7 @@ After completing this lab, you will be able to:
  
  ### Architecture Diagram
 
-   ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab23.png)
+   ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab01-databricks.png)
 
 ## Task 1: Provision an Azure Databricks workspace
 
