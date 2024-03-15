@@ -31,6 +31,10 @@ In this task, you'll use a script to provision a new Azure Databricks workspace.
 
     ![Azure portal with a cloud shell pane](./images/25-1.png)
 
+    >**Note:** If you are not able to see the **[\>_]** button, click on the **ellipses (1)** to the right of the search bar at the top of the page and then select **Cloud Shell (2)** from the drop down options.
+
+    ![Azure portal with a cloud shell pane-ellipses](./images/cloudshell-ellipses.png)
+
 3. Selecting a ***PowerShell*** environment and creating storage if prompted. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
 
     ![Azure portal with a cloud shell pane](./images/25-2.png)
