@@ -1,0 +1,32 @@
+[
+    {
+      "Name": "Getting started with Azure Databricks Analytics & Engineering Scenarios Labguide Preview Combined",
+      "Language": "English",
+      "Files": [
+        {
+          "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/dp-203-azure-data-engineer/guidedlabs-Azure-Databricks/Instructions/Labs/00-GettingStarted-V2.md",
+          "Order": 1
+        },
+        {
+          "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/dp-203-azure-data-engineer/guidedlabs-Azure-Databricks/Instructions/Labs/1-Explore-Azure-Databricks.md",
+          "Order": 2
+        },
+          {
+          "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/dp-203-azure-data-engineer/guidedlabs-Azure-Databricks/Instructions/Labs/2-Analyze-Files-in-Azure-Databricks.md",
+          "Order": 3
+        },
+        {
+          "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/dp-203-azure-data-engineer/guidedlabs-Azure-Databricks/Instructions/Labs/3-Delta-lake-in-Azure-Databricks.md",
+          "Order": 4
+        },
+         {
+          "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/dp-203-azure-data-engineer/guidedlabs-Azure-Databricks/Instructions/Labs/4-Azure-Databricks-SQL.md",
+          "Order": 5
+        }.
+         {
+          "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/dp-203-azure-data-engineer/guidedlabs-Azure-Databricks/Instructions/Labs/5-Azure-Databricks-Data-Factory.md",
+          "Order": 6
+        }
+      ]
+    }
+  ]
