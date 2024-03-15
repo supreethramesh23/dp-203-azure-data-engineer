@@ -28,31 +28,53 @@ In this exercise, you'll need an Azure Synapse Analytics workspace with access t
 
 You'll use a combination of a PowerShell script and an ARM template to provision these resources.
 
-1. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a ***PowerShell*** environment and click on ***create storage*** if prompted. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
+1. In a web browser, sign into the [Azure portal](https://portal.azure.com) at `https://portal.azure.com`.
+2. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal.
 
-    ![A screenshot of the Azure portal with a cloud shell pane.](./images/cloud-shell.png)
+    ![Azure portal with a cloud shell pane](./images/25-1.png)
+
+    >**Note:** If you are not able to see the **[\>_]** button, click on the **ellipses (1)** to the right of the search bar at the top of the page and then select **Cloud Shell (2)** from the drop down options.
+
+    ![Azure portal with a cloud shell pane-ellipses](./images/cloudshell-ellipses.png)
+
+3. Selecting a ***PowerShell*** environment and creating storage if prompted. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
+
+    ![Azure portal with a cloud shell pane](./images/25-2.png)
 
     > **Note**: If you have previously created a cloud shell that uses a *Bash* environment, use the the drop-down menu at the top left of the cloud shell pane to change it to ***PowerShell***.
 
-1. Note that you can resize the cloud shell by dragging the separator bar at the top of the pane, or by using the **&#8212;**, **&#9723;**, and **X** icons at the top right of the pane to minimize, maximize, and close the pane. For more information about using the Azure Cloud Shell, see the [Azure Cloud Shell documentation](https://docs.microsoft.com/azure/cloud-shell/overview).
+    ![Azure portal with a cloud shell pane](./images/25-4.png)
 
-1. In the PowerShell pane, enter the following commands to clone the repo containing this exercise:
+
+4. If You dont have precreated storage account then select advanced setting.
+
+    ![Azure portal with a cloud shell pane](./images/25-2a.png)
+
+5. Keep all settings default and give unique storage account name and in file share section write **None**.
+
+    ![Azure portal with a cloud shell pane](./images/25-3.png)
+
+6. Note that you can resize the cloud shell by dragging the separator bar at the top of the pane, or by using the **&#8212;**, **&#9723;**, and **X** icons at the top right of the pane to minimize, maximize, and close the pane. For more information about using the Azure Cloud Shell, see the [Azure Cloud Shell documentation](https://docs.microsoft.com/azure/cloud-shell/overview)
+
+    ![Azure portal with a cloud shell pane](./images/25-5.png)
+
+7. In the PowerShell pane, enter the following commands to clone the repo containing this exercise:
 
     ```
     rm -r dp-203 -f
     git clone https://github.com/MicrosoftLearning/dp-203-azure-data-engineer dp-203
     ```
 
-1. After the repo has been cloned, enter the following commands to change to the folder for this exercise and run the **setup.ps1** script it contains:
+8. After the repo has been cloned, enter the following commands to change to the folder for this exercise and run the **setup.ps1** script it contains:
 
     ```
     cd dp-203/Allfiles/labs/19
     ./setup.ps1
     ```
 
-1. If prompted, choose which subscription you want to use (this will only happen if you have access to multiple Azure subscriptions).
+9. If prompted, choose which subscription you want to use (this will only happen if you have access to multiple Azure subscriptions).
 
-1. While you are waiting for the script to complete, continue with the next task.
+10. While you are waiting for the script to complete, continue with the next task.
 
   **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
 
