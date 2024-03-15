@@ -24,34 +24,56 @@ You'll need an Azure Synapse Analytics workspace with access to data lake storag
 
 In this exercise, you'll use a combination of a PowerShell script and an ARM template to provision an Azure Synapse Analytics workspace.
 
-1. Click on the **Cloud Shell** button **[\>_]**  to the right of the search bar at the top of the page to create a new Cloud Shell, select  ***PowerShell*** environment and click on **Create a storage**. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
+1. In a web browser, sign into the [Azure portal](https://portal.azure.com) at `https://portal.azure.com`.
+2. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal.
 
-    ![Azure portal with a cloud shell pane](./images/cloud-shell.png)
+    ![Azure portal with a cloud shell pane](./images/25-1.png)
+
+    >**Note:** If you are not able to see the **[\>_]** button, click on the **ellipses (1)** to the right of the search bar at the top of the page and then select **Cloud Shell (2)** from the drop down options.
+
+    ![Azure portal with a cloud shell pane-ellipses](./images/cloudshell-ellipses.png)
+
+3. Selecting a ***PowerShell*** environment and creating storage if prompted. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
+
+    ![Azure portal with a cloud shell pane](./images/25-2.png)
+
+    > **Note**: If you have previously created a cloud shell that uses a *Bash* environment, use the the drop-down menu at the top left of the cloud shell pane to change it to ***PowerShell***.
+
+    ![Azure portal with a cloud shell pane](./images/25-4.png)
 
 
-2. Note that you can resize the cloud shell by dragging the separator bar at the top of the pane, or by using the **&#8212;**, **&#9723;**, and **X** icons at the top right of the pane to minimize, maximize, and close the pane. For more information about using the Azure Cloud Shell, see the [Azure Cloud Shell documentation](https://docs.microsoft.com/azure/cloud-shell/overview).
+4. If You dont have precreated storage account then select advanced setting.
 
-3. In the PowerShell pane, manually enter the following commands to clone this repo:
+    ![Azure portal with a cloud shell pane](./images/25-2a.png)
+
+5. Keep all settings default and give unique storage account name and in file share section write **None**.
+
+    ![Azure portal with a cloud shell pane](./images/25-3.png)
+
+6. Note that you can resize the cloud shell by dragging the separator bar at the top of the pane, or by using the **&#8212;**, **&#9723;**, and **X** icons at the top right of the pane to minimize, maximize, and close the pane. For more information about using the Azure Cloud Shell, see the [Azure Cloud Shell documentation](https://docs.microsoft.com/azure/cloud-shell/overview)
+
+    ![Azure portal with a cloud shell pane](./images/25-5.png)
+7. In the PowerShell pane, manually enter the following commands to clone this repo:
 
     ```
     rm -r dp500 -f
     git clone https://github.com/MicrosoftLearning/DP-500-Azure-Data-Analyst dp500
     ```
 
-4. After the repo has been cloned, enter the following commands to change to the folder for this lab and run the **setup.ps1** script it contains:
+8. After the repo has been cloned, enter the following commands to change to the folder for this lab and run the **setup.ps1** script it contains:
 
     ```
     cd dp500/Allfiles/01
     ./setup.ps1
     ```
 
-5. If prompted, choose which subscription you want to use (this will only happen if you have access to multiple Azure subscriptions).
+9. If prompted, choose which subscription you want to use (this will only happen if you have access to multiple Azure subscriptions).
 
-6. When prompted, enter a suitable password to be set for your Azure Synapse SQL pool.
+10. When prompted, enter a suitable password to be set for your Azure Synapse SQL pool.
 
     > **Note**: Be sure to remember this password!
 
-7. Wait for the script to complete - this typically takes around 10 minutes, but in some cases may take longer. While you are waiting, review the [Serverless SQL pool in Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) article in the Azure Synapse Analytics documentation.
+11. Wait for the script to complete - this typically takes around 10 minutes, but in some cases may take longer. While you are waiting, review the [Serverless SQL pool in Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) article in the Azure Synapse Analytics documentation.
 
 ## Task 2: Query data in files
 
