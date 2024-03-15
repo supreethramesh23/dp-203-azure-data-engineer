@@ -1,0 +1,29 @@
+[
+    {
+      "Name": "Build a Data Pipeline in Synapse Analytics",
+      "Language": "English",
+      "Files": [
+        {
+          "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/dp-203-azure-data-engineer/prod/Instructions/Labs/00-GettingStarted-V2.md",
+          "Order": 1
+        },
+  
+        {
+          "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/dp-203-azure-data-engineer/guidedlabs/Instructions/Labs/1-Synpase-pipeline.md",
+          "Order": 2
+        },
+        {
+          "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/dp-203-azure-data-engineer/guidedlabs/Instructions/Labs/2-Spark-nobook-in-Synapse-Pipeline.md",
+          "Order": 3
+        },
+         {
+          "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/dp-203-azure-data-engineer/guidedlabs/Instructions/Labs/3-Synapselink-cosmos.md",
+          "Order": 4
+        },
+         {
+          "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MOC/dp-203-azure-data-engineer/guidedlabs/Instructions/Labs/4-Synapse-link-sql.md",
+          "Order": 5
+        }
+      ]
+    }
+  ]
