@@ -64,7 +64,7 @@ Before you can use Synapse Link for Azure Cosmos DB, you must enable it in your 
 
     > **Note**:If a **Welcome** dialog box is displayed, close it.
 
-3. At the top of the **Data Explorer** page, use the **Enable Azure Synapse Link** button to enable Synapse Link.
+3. At the top of the **Data Explorer** page, close all the pop-up windows until **Enable Azure Synapse Link** button is visible and click on **Enable Azure Synapse Link** to enable Synapse Link.
 
     ![Cosmos DB Data Explorer with Enable Azure Synapse Link button highlighted](./images/l14-1.png)
 
@@ -159,7 +159,7 @@ Now that you have prepared your Azure Cosmos DB account, you can configure Azure
 
     ![Adding an Azure Cosmos DB NoSQl API external data link](./images/l14-3.png)
 
-6. Continue, and create a new Cosmos DB connection with the following settings:
+6. Continue, and create a new Cosmos DB connection with the following settings and click on **Create**
     - **Name**: AdventureWorks
     - **Description**: AdventureWorks Cosmos DB database
     - **Connect via integration runtime**: AutoResolveIntegrationRuntime
