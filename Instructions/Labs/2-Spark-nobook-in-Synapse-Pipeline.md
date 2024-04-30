@@ -71,12 +71,12 @@ Before automating a data transformation process with a notebook, it can be usefu
     ```
     https://github.com/MicrosoftLearning/dp-203-azure-data-engineer/tree/master/Allfiles/labs/11/notebooks
     ```
-    ![download notebook file from GitHub](./images/select-download-notebook.png)
+    ![download notebook file from GitHub](./images/downloadt.png)
 
 
 10. Then on **Develop** page, expand **Notebooks** click on the + Import options
 
-    ![Spark Notebook import](./image/../images/spark-notebook-import.png)
+    ![Spark Notebook import](./image/../images/importt.png)
         
 11. Select the file you just downloaded and saved as **Spark Transfrom.ipynb**.
 12. Attach the notebook to your **spark*xxxxxxx*** Spark pool.
