@@ -78,6 +78,8 @@ Before you can set up Azure Synapse Link for your Azure SQL Database, you must e
 
     ![Screenshot of the Azure SQL server Networking page in the Azure portal.](./images/sqldb-network1.png)
 
+<validation step="cdaacaeb-71cb-4907-8d83-52897d503a83" />
+
 ## Task 3: Explore the transactional database
 
 Your Azure SQL server hosts a sample database named **AdventureWorksLT**. This database represents a transactional database used for operational application data.
