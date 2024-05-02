@@ -78,7 +78,6 @@ Before you can set up Azure Synapse Link for your Azure SQL Database, you must e
 
     ![Screenshot of the Azure SQL server Networking page in the Azure portal.](./images/sqldb-network1.png)
 
-<validation step="cdaacaeb-71cb-4907-8d83-52897d503a83" />
 
 ## Task 3: Explore the transactional database
 
@@ -169,6 +168,8 @@ Now you're ready to configure Azure Synapse Link for SQL in your Synapse Analyti
     |SalesLT.SalesOrderHeader **&#8594;**|\[SalesLT].\[SalesOrderHeader]|Round robin|-|Heap|
 
 4. At the top of the **sql-adventureworkslt-conn** page that is created, use the **&#9655; Start** button to start synchronization. When prompted, select **OK** to publish and start the link connection.
+
+5. Click on **Publish** to Publish all the pending changes.
    
 5. After starting the connection, on the **Monitor** page, select the **Link connections** tab and view the **sql-adventureworkslt-conn** connection. You can use the **&#8635; Refresh** button to update the status periodically. It may take several minutes to complete the initial snapshot copy process and start replicating - after that, all changes in the source database tables will be automatically replayed in the synchronized tables.
 
@@ -199,12 +200,7 @@ Now you're ready to configure Azure Synapse Link for SQL in your Synapse Analyti
    
 5. When you're done, on the **Manage** page, pause the **sql*xxxxxxx*** dedicated SQL pool.
 
-  **Congratulations** on completing the lab! Now, it's time to validate it. Here are the steps:
-
-  > - Navigate to the Lab Validation tab, from the upper right corner in the lab guide section.
-  > - Hit the Validate button for the corresponding task. If you receive a success message, you have successfully validated the lab. 
-  > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
-  > - If you need any assistance, please contact us at labs-support@spektrasystems.com.
+<validation step="cdaacaeb-71cb-4907-8d83-52897d503a83" />
 
 ## Review
 
