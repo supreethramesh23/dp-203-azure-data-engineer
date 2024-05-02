@@ -1,6 +1,6 @@
-# Getting Started with Your DP-203: Data Engineering on Microsoft Azure Workshop
+# Getting Started with Your Guided Lab : Build a Data Pipeline in Synapse Analytics
  
-Welcome to your DP-203: Data Engineering on Microsoft Azure workshop! We've prepared a seamless environment for you to explore and learn about integrating, transforming, and consolidating data from various structured, unstructured, and streaming data systems into a suitable schema for building analytics solutions. Let's begin by making the most of this experience:
+Welcome to your Guided Lab: Building a Data Pipeline in Synapse Analytics. We have prepared a seamless environment for you to explore and learn about integrating, transforming, and consolidating data from various structured, unstructured, and streaming data systems into a suitable schema for building analytics solutions. Let's begin by making the most of this experience.
  
 ## Accessing Your Lab Environment
  
