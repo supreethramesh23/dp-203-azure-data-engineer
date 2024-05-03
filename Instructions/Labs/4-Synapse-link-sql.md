@@ -6,11 +6,12 @@ Azure Synapse Link for SQL enables you to automatically synchronize a transactio
 
 ### Objectives
   
-After completing this lab, you will be able to:
+In this lab, you will be able to complete the following tasks:
 
-- Configure Azure SQL Database.
-- Explore the transactional database.
-- Configure Azure Synapse Link.
+- Task 1: Provision Azure resources
+- Task 2: Configure Azure SQL Database
+- Task 3: Explore the transactional database
+- Task 4: Configure Azure Synapse Link
 
 ### Estimated timing: 45 minutes
 
@@ -199,6 +200,8 @@ Now you're ready to configure Azure Synapse Link for SQL in your Synapse Analyti
 4. Use the **&#9655; Run** button to run the script and view the results. The query is run against the replicated tables in the dedicated SQL pool and not the source database, enabling you to run analytical queries without impacting business applications.
    
 5. When you're done, on the **Manage** page, pause the **sql*xxxxxxx*** dedicated SQL pool.
+
+## Validation
 
 <validation step="cdaacaeb-71cb-4907-8d83-52897d503a83" />
 
