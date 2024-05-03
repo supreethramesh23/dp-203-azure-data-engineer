@@ -6,10 +6,11 @@ In this exercise, we're going to create an Azure Synapse Analytics pipeline that
 
 ### Objectives
   
-After completing this lab, you will be able to:
+In this lab, you will be able to complete the following tasks:
 
-- Run a Spark notebook interactively.
-- Run the notebook in a pipeline.
+- Task 1: Provision an Azure Synapse Analytics workspace
+- Task 2: Run a Spark notebook interactively
+- Task 3: Run the notebook in a pipeline
 
 ### Estimated timing: 45 minutes
 
@@ -155,6 +156,8 @@ Now that you understand the transformation process, you're ready to automate it 
     The pipeline may take five minutes or longer to complete. You can use the **&#8635; Refresh** button on the toolbar to check its status.
 
 5. When the pipeline run has succeeded, on the **Data** page, browse to the **files** storage container and verify that a new folder named for the pipeline run ID has been created, and that it contains Parquet files for the transformed sales data.
+
+## Validation
 
 <validation step="cb57517e-7d94-4fb2-becf-ba2a2de3c858" />
  
