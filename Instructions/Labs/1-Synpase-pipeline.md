@@ -17,7 +17,7 @@ In this lab, you will be able to complete the following tasks:
 
 ### Architecture Diagram
 
-   ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab10.png)
+   ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab1dp.png)
 
 ## Task 1: Provision an Azure Synapse Analytics workspace
 
