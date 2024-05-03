@@ -17,7 +17,7 @@ In this lab, you will be able to complete the following tasks:
 
 ### Architecture Diagram
 
-   ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab15.png)
+   ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab4dp.png)
 
 ## Task 1: Provision Azure resources
 
