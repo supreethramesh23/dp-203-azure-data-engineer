@@ -1,16 +1,17 @@
 # Lab 3: Use Azure Synapse Link for Azure Cosmos DB
 
-## Lab-Scenario
+## Lab Scenario
 
 Azure Synapse Link for Azure Cosmos DB is a cloud-native *hybrid transactional analytical processing* (HTAP) technology that enables you to run near-real-time analytics over operational data stored in Azure Cosmos DB from Azure Synapse Analytics. In this lab, you will explore about Hybrid Transactional and Analytical Processing (HTAP) is a technique for near real time analytics without a complex ETL solution.
 
 ### Objectives
   
-After completing this lab, you will be able to:
+In this lab, you will be able to complete the following tasks:
 
-- Configure Synapse Link in Azure Cosmos DB.
-- Configure Synapse Link in Azure Synapse Analytics.
-- Query Azure Cosmos DB from Azure Synapse Analytics.
+- Task 1: Provision Azure resources.
+- Task 2: Configure Synapse Link in Azure Cosmos DB.
+- Task 3: Configure Synapse Link in Azure Synapse Analytics.
+- Task 4: Query Azure Cosmos DB from Azure Synapse Analytics.
 
 ### Estimated timing: 45 minutes
 
@@ -140,6 +141,8 @@ Before you can use Synapse Link for Azure Cosmos DB, you must enable it in your 
 
 > **Note**: In reality, the analytical store would contain a much larger volume of data, written to the store by an application. These few items will be sufficient to demonstrate the principle in this exercise.
 
+## Validation
+
 <validation step="30981ddf-be34-4a50-ab63-6d5fb1d70f6f" />
 
 ## Task 3: Configure Synapse Link in Azure Synapse Analytics
@@ -168,6 +171,8 @@ Now that you have prepared your Azure Cosmos DB account, you can configure Azure
 8. Expand the **Azure Cosmos DB** category to see the **AdventureWorks** connection you created and the **Sales** container it contains.
 
     ![Adding an Azure Cosmos DB SQl API external data link](./images/l-14-4.png)
+
+## Validation
 
 <validation step="cd43b165-9370-44c3-acf3-e59e87ef088a" />
 
