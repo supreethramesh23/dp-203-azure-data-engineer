@@ -1,6 +1,6 @@
 # Lab 1: Build a data pipeline in Azure Synapse Analytics
 
-## Lab-Scenario-Preview
+## Lab Scenario
 
 In this lab, you'll load data into a dedicated SQL Pool using a pipeline in Azure Synapse Analytics Explorer. The pipeline will encapsulate a data flow that loads product data into a table in a data warehouse.
 
@@ -242,6 +242,8 @@ Now you're ready to publish and run the pipeline.
     >**Note**: The pipeline may take five minutes or longer to complete. You can use the **&#8635; Refresh** button on the toolbar to check its status.
 
 5. When the pipeline run has succeeded, on the **Data** page, use the **...** menu for the **dbo.DimProduct** table in your SQL database to run a query that selects the top 100 rows. The table should contain the data loaded by the pipeline.
+
+## Validation
 
 <validation step="85f12513-502b-47c1-9ac9-d820218a0f93" />
 
