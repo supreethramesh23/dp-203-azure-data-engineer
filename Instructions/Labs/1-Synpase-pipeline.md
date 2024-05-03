@@ -6,12 +6,12 @@ In this lab, you'll load data into a dedicated SQL Pool using a pipeline in Azur
 
 ### Objectives
   
-After completing this lab, you will be able to:
+In this lab, you will be able to complete the following tasks:
 
-- View source and destination data stores.
-- Implement a pipeline.
-- Debug the Data Flow.
-- Publish and run the pipeline.
+- Task 1: Provision an Azure Synapse Analytics workspace
+- Task 2: View source and destination data stores
+- Task 3: Implement a pipeline
+- Task 4: Debug the Data Flow
 
 ### Estimated timing: 45 minutes
 
@@ -248,6 +248,7 @@ Now you're ready to publish and run the pipeline.
 ## Review
 
 In this lab, you have accomplished the following:
+
 - View source and destination data stores.
 - Implement a pipeline.
 - Debug the Data Flow.
