@@ -22,9 +22,7 @@ After completing this lab, you will be able to:
 
 ## Task 1:  Provision an Azure Databricks workspace
 
-In this task, you'll use a script to provision a new Azure Databricks workspace.
-
-> **Tip**: If you already have a *Standard* or *Trial* Azure Databricks workspace, you can skip this procedure.
+In this exercise, you'll use a script to provision a new Azure Databricks workspace.
 
 1. In a web browser, sign into the [Azure portal](https://portal.azure.com) at `https://portal.azure.com`.
 2. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal.
