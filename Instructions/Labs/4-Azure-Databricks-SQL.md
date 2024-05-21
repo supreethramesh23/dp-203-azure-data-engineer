@@ -78,11 +78,22 @@ In this exercise, you'll use a script to provision a new Azure Databricks worksp
 ## Task 2: View and start a SQL Warehouse
 
 1. When the Azure Databricks workspace resource has been deployed, go to it in the Azure portal.
-1. In the **Overview** page for your Azure Databricks workspace, use the **Launch Workspace** button to open your Azure Databricks workspace in a new browser tab; signing in if prompted.
+1. In the Azure portal, browse to the **dp203-*xxxxxxx*** resource group that was created by the script (or the resource group containing your existing Azure Databricks workspace)
+1. Select your Azure Databricks Service resource (named **databricks*xxxxxxx*** if you used the setup script to create it).
+
+    ![Create storage by clicking confirm.](./images/21055.png)
+
+1. In the **Overview** page for your workspace, use the **Launch Workspace** button to open your Azure Databricks workspace in a new browser tab; signing in if prompted.
+
+    ![Create storage by clicking confirm.](./images/21056.png)
+
     > **Tip**: As you use the Databricks Workspace portal, various tips and notifications may be displayed. Dismiss these and follow the instructions provided to complete the tasks in this exercise.
- 
-1. View the Azure Databricks workspace portal and note that the sidebar on the left side contains the names of the task categories.
+
+1. View the Azure Databricks workspace portal and note that the sidebar on the left side contains links for the various types of task you can perform.
 1. In the sidebar, under **SQL**, select **SQL Warehouses**.
+
+![](./images/dbsql1.png)
+
 1. Observe that the workspace already includes a SQL Warehouse named **Starter Warehouse**.
 1. In the **Actions** (**&#8285;**) menu for the SQL Warehouse, select **Edit**. Then set the **Cluster size** property to **2X-Small** and save your changes.
 1. Use the **Start** button to start the SQL Warehouse (which may take a minute or two).
