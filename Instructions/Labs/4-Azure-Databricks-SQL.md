@@ -124,7 +124,7 @@ You can use the **default** database for your tables, but when building an analy
 
 ![](./images/data2.png)
 
-3. In the **Upload data** page, select the **adventureworks** database from schema dropdown and set the table name to **products**. Then select **Create table** on the bottom right corner of the page.
+3. In the **Add data** page, select the **adventureworks** database from schema dropdown and set the table name to **products**. Then select **Create table** on the bottom right corner of the page.
 
 4. When the table has been created, review its details.
 
