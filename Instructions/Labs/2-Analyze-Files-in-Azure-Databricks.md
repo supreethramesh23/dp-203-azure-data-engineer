@@ -10,9 +10,9 @@ In this lab, you'll learn about Apache Spark clusters to process data in paralle
 
 After completing this lab, you will be able to:
 
- - Provision an Azure Databricks workspace.
- - Create a cluster.
- - Explore data using a notebook.
+ - Task 1: Provision an Azure Databricks workspace
+ - Task 2: Create a cluster
+ - Task 3: Explore data using a notebook
 
 ### Estimated timing: 45 minutes
 
@@ -20,7 +20,7 @@ After completing this lab, you will be able to:
 
    ![Azure portal with a cloud shell pane](./Lab-Scenario-Preview/media/lab02-databricks.png)
 
-## Tasl 1: Provision an Azure Databricks workspace
+## Task 1: Provision an Azure Databricks workspace
 
 In this exercise, you'll use a script to provision a new Azure Databricks workspace.
 
