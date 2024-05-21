@@ -12,10 +12,10 @@ In this lab, you'll learn about Azure Databricks workspace which provides a cent
 
 After completing this lab, you will be able to:
 
- - Provision an Azure Databricks workspace.
- - Create a cluster.
- - Use Spark to analyze a data file.
- - Create and query table.
+ - Task 1: Provision an Azure Databricks workspace
+ - Task 2: Create a cluster
+ - Task 3: Use Spark to analyze a data file
+ - Task 4: Create and query table
 
  ### Estimated timing: 45 minutes
  
@@ -28,19 +28,33 @@ After completing this lab, you will be able to:
 In this exercise, you'll use a script to provision a new Azure Databricks workspace.
 
 1. In a web browser, sign into the [Azure portal](https://portal.azure.com) at `https://portal.azure.com`.
-1. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a ***PowerShell*** environment and click on **Create storage** if prompted. The Cloud Shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
+2. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal.
 
-    ![Azure portal with a cloud shell pane](./images/ps1.png)
+    ![Azure portal with a cloud shell pane](./images/25-1.png)
 
-    > **Note**: If you have previously created a cloud shell that uses a *Bash* environment, use the the drop-down menu at the top left of the cloud shell pane to change it to ***PowerShell***.
-    
-2. Select the mount storage account and create storage account as shown in the below screenshot
+    >**Note:** If you are not able to see the **[\>_]** button, click on the **ellipses (1)** to the right of the search bar at the top of the page and then select **Cloud Shell (2)** from the drop down options.
 
-   ![Azure portal with a cloud shell pane](./images/ps2.png)
+    ![Azure portal with a cloud shell pane-ellipses](./images/cloudshell-ellipses.png)
 
-   ![Azure portal with a cloud shell pane](./images/ps3.png)
+3. Selecting a ***PowerShell*** environment and creating storage if prompted. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
 
-3. Cloud Shell can be resized by dragging the separator bar at the top of the pane, or by using the —, **&#9723;**, and **X** icons at the top right of the pane to minimize, maximize, and close the pane. For more information about using the Azure Cloud Shell, see the [Azure Cloud Shell documentation](https://docs.microsoft.com/azure/cloud-shell/overview).
+    ![Azure portal with a cloud shell pane](./images/21051.png)
+
+
+1. Within the Getting Started pane, select **Mount storage account**, select your **Storage account subscription** from the dropdown and click **Apply**.
+
+   ![](./images/21052.png)
+
+1. Within the **Mount storage account** pane, select **I want to create a storage account** and click **Next**.
+
+   ![](./images/21053.png)
+
+
+1. If you are prompted to create storage for your Cloud Shell, ensure your subscription is selected, Please make sure you have selected your resource group **AI-900-Module-03-<inject key="DeploymentID" enableCopy="false"/>** and enter **storage<inject key="DeploymentID" enableCopy="false"/>** for the **Storage account name** and enter **fileshare1** For the **File share name**, then click on **Create**.
+
+    ![Create storage by clicking confirm.](./images/21054.png "Create storage advanced settings")
+
+1. Wait for PowerShell terminal to start.
 
 7. In the PowerShell pane, enter the following commands to clone this repo:
 
