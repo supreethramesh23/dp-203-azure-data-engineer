@@ -197,6 +197,10 @@ Now that you have created a linked service, you can use it in a pipeline to run 
 
 5. Note the **runOutput** value, which is the *path* variable to which the notebook saved the data.
 
+## Validation
+
+<validation step="ea0c803b-47db-4f2f-9936-d54c0e8228c1" />
+
   **Congratulations** on completing the lab! Now, it's time to validate it. Here are the steps:
 
   > - Navigate to the Lab Validation tab, from the upper right corner in the lab guide section.
