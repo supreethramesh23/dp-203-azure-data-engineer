@@ -38,24 +38,24 @@ In this exercise, you'll use a script to provision a new Azure Databricks worksp
 
 3. Selecting a ***PowerShell*** environment and creating storage if prompted. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
 
-    ![Azure portal with a cloud shell pane](./images/25-2.png)
-
-    > **Note**: If you have previously created a cloud shell that uses a *Bash* environment, use the the drop-down menu at the top left of the cloud shell pane to change it to ***PowerShell***.
-
-    ![Azure portal with a cloud shell pane](./images/25-4.png)
+    ![Azure portal with a cloud shell pane](./images/21051.png)
 
 
-4. If You dont have precreated storage account then select advanced setting.
+1. Within the Getting Started pane, select **Mount storage account**, select your **Storage account subscription** from the dropdown and click **Apply**.
 
-    ![Azure portal with a cloud shell pane](./images/25-2a.png)
+   ![](./images/21052.png)
 
-5. Keep all settings default and give unique storage account name and in file share section write **None**.
+1. Within the **Mount storage account** pane, select **I want to create a storage account** and click **Next**.
 
-    ![Azure portal with a cloud shell pane](./images/25-3.png)
+   ![](./images/21053.png)
 
-6. Note that you can resize the cloud shell by dragging the separator bar at the top of the pane, or by using the **&#8212;**, **&#9723;**, and **X** icons at the top right of the pane to minimize, maximize, and close the pane. For more information about using the Azure Cloud Shell, see the [Azure Cloud Shell documentation](https://docs.microsoft.com/azure/cloud-shell/overview)
 
-    ![Azure portal with a cloud shell pane](./images/25-5.png)
+1. If you are prompted to create storage for your Cloud Shell, ensure your subscription is selected, Please make sure you have selected your resource group **AI-900-Module-03-<inject key="DeploymentID" enableCopy="false"/>** and enter **storage<inject key="DeploymentID" enableCopy="false"/>** for the **Storage account name** and enter **fileshare1** For the **File share name**, then click on **Create**.
+
+    ![Create storage by clicking confirm.](./images/21054.png "Create storage advanced settings")
+
+1. Wait for PowerShell terminal to start.
+
 7. In the PowerShell pane, enter the following commands to clone this repo:
 
     ```
@@ -82,13 +82,20 @@ Azure Databricks is a distributed processing platform that uses Apache Spark *cl
 
 1. In the Azure portal, browse to the **dp203-*xxxxxxx*** resource group that was created by the script (or the resource group containing your existing Azure Databricks workspace)
 1. Select your Azure Databricks Service resource (named **databricks*xxxxxxx*** if you used the setup script to create it).
+
+    ![Create storage by clicking confirm.](./images/21055.png)
+
 1. In the **Overview** page for your workspace, use the **Launch Workspace** button to open your Azure Databricks workspace in a new browser tab; signing in if prompted.
+
+    ![Create storage by clicking confirm.](./images/21056.png)
 
     > **Tip**: As you use the Databricks Workspace portal, various tips and notifications may be displayed. Dismiss these and follow the instructions provided to complete the tasks in this exercise.
 
 1. View the Azure Databricks workspace portal and note that the sidebar on the left side contains links for the various types of task you can perform.
 
 1. Select the **(+) New** link in the sidebar, and then select **Cluster**.
+
+    ![Create storage by clicking confirm.](./images/21057.png)
  
 1. In the **New Cluster** page, create a new cluster with the following settings:
     - **Cluster name**: *User Name's* cluster (the default cluster name)
@@ -99,7 +106,11 @@ Azure Databricks is a distributed processing platform that uses Apache Spark *cl
     - **Node type**: Standard_DS3_v2
     - **Terminate after** *30* **minutes of inactivity**
 
+    ![Create storage by clicking confirm.](./images/21058.png)
+
 1. Wait for the cluster to be created. It may take a minute or two.
+
+    ![Create storage by clicking confirm.](./images/21059.png)
 
 > **Note**: If your cluster fails to start, your subscription may have insufficient quota in the region where your Azure Databricks workspace is provisioned. See [CPU core limit prevents cluster creation](https://docs.microsoft.com/azure/databricks/kb/clusters/azure-core-limit) for details. If this happens, you can try deleting your workspace and creating a new one in a different region. You can specify a region as a parameter for the setup script like this: `./setup.ps1 eastus`
 
@@ -109,11 +120,17 @@ As in many Spark environments, Databricks supports the use of notebooks to combi
 
 1. In the sidebar, use the **(+) New** link to create a **Notebook**.
 
+    ![Create storage by clicking confirm.](./images/210510.png)
+
 2. Change the default notebook name (**Untitled Notebook *[date]***) to **Explore products** and in the **Connect** drop-down list, select your cluster if it is not already selected. If the cluster is not running, it may take a minute or so to start.
 
-3. Download the [**products.csv**](https://raw.githubusercontent.com/MicrosoftLearning/dp-203-azure-data-engineer/master/Allfiles/labs/23/adventureworks/products.csv) file to your local computer, saving it as **products.csv**. Then, in the **Explore products** notebook, on the **File** menu, select **Upload data to DBFS**.
+3. Download the [**products.csv**](https://raw.githubusercontent.com/MicrosoftLearning/dp-203-azure-data-engineer/master/Allfiles/labs/23/adventureworks/products.csv) file inside the LabVM, saving it as **products.csv**. Then, in the **Explore products** notebook, on the **File** menu, select **Upload data to DBFS**.
+
+    ![Create storage by clicking confirm.](./images/210511.png)
 
 4. In the **Upload Data** dialog box, note the **DBFS Target Directory** to where the file will be uploaded. Then select the **Files** area, and upload the **products.csv** file you downloaded to your computer. When the file has been uploaded, select **Next**.
+
+    ![Create storage by clicking confirm.](./images/210512.png)
    
 5. In the **Access files from notebooks** pane, select the sample PySpark code and copy it to the clipboard. You will use it to load the data from the file into a DataFrame. Then select **Done**.
 
@@ -124,6 +141,8 @@ As in many Spark environments, Databricks supports the use of notebooks to combi
     ```
 
 7. Use the **&#9656; Run Cell** menu option at the top-right of the cell to run it, starting and attaching the cluster if prompted.
+
+    ![Create storage by clicking confirm.](./images/210513.png)
 
 8. Wait for the Spark job run by the code to complete. The code has created a *dataframe* object named **df1** from the data in the file you uploaded.
    
@@ -148,7 +167,7 @@ As in many Spark environments, Databricks supports the use of notebooks to combi
 
     Save the visualization and observe that it is displayed in the notebook, like this:
 
-    ![A bar chart showing product counts by category](./images/databricks-chart.png)
+    ![Create storage by clicking confirm.](./images/210514.png)
 
 ## Task 4: Create and query table
 
