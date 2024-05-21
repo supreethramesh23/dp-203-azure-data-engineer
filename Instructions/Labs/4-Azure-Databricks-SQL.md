@@ -150,20 +150,21 @@ Saving a query makes it easy to retrieve the same data again at a later time.
 ## Task 6: Create a dashboard
 
 1. In the sidebar, select **(+) New** link and then select **Dashboard**.
-2. In the **New dashboard** dialog box, enter the name **Adventure Works Products** and select **Save**.
-3. In the **Adventure Works Products** dashboard, in the **Add** drop-down list, select **Visualization**.
-4. In the **Add visualization widget** dialog box, select the **Products and Categories** query. Then select **Create new visualization**, set the title to **Products Per Category**, and select **Create visualization**.
+2. In the **New dashboard** dialog box, change the name to **Adventure Works Products**.
+
+![](./images/dashboard1.png)
+
+3. In the **Adventure Works Products** dashboard, click on the **Data** , select the **products** table which you uploaded in the previous task and click on **Run**
+4. Click on the **Add a visualization** **(1)** dialog box, select the **Products** dataset.
 5. In the visualization editor, set the following properties:
     - **Visualization type**: bar
-    - **Horizontal chart**: selected
-    - **Y column**: Category
     - **X columns**: Product ID : Count
-    - **Group by**: *Leave blank*
-    - **Stacking**: Disabled
-    - **Normalize values to percentage**: <u>Un</u>selected
-    - **Missing and NULL values**: Do not display in chart
+    - **Y column**: Category
+    - **color/Group by**: *Leave blank*
 
-6. Save the visualization and view it in the dashboard.
+![](./images/dashboard2.png)
+
+6. Publish the visualization and view it in the dashboard.
 7. Select **Done editing** to view the dashboard as users will see it.
 
 Dashboards are a great way to share data tables and visualizations with business users. You can schedule the dashboards to be refreshed periodically, and emailed to subscribers.
