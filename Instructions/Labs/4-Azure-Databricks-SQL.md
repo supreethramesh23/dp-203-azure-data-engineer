@@ -154,7 +154,7 @@ Saving a query makes it easy to retrieve the same data again at a later time.
 
 ![](./images/dashboard1.png)
 
-3. In the **Adventure Works Products** dashboard, click on the **Data** , select the **products** table which you uploaded in the previous task and click on **Run**
+3. In the **Adventure Works Products** dashboard, click on the **Data** , select the **products** table which you uploaded in the task-4 and click on **Run**
 4. Click on the **Add a visualization** **(1)** dialog box, select the **Products** dataset.
 5. In the visualization editor, set the following properties:
     - **Visualization type**: bar
