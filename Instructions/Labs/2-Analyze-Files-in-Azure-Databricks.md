@@ -37,9 +37,6 @@ In this exercise, you'll use a script to provision a new Azure Databricks worksp
 
 3. Selecting a ***PowerShell*** environment and creating storage if prompted. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
 
-    ![Azure portal with a cloud shell pane](./images/25-2.png)
-
-    > **Note**: If you have previously created a cloud shell that uses a *Bash* environment, use the the drop-down menu at the top left of the cloud shell pane to change it to ***PowerShell***.
 
     ![Azure portal with a cloud shell pane](./images/21051.png)
 
@@ -85,13 +82,21 @@ Azure Databricks is a distributed processing platform that uses Apache Spark *cl
 
 1. In the Azure portal, browse to the **dp203-*xxxxxxx*** resource group that was created by the script (or the resource group containing your existing Azure Databricks workspace)
 2. Select your Azure Databricks Service resource (named **databricks*xxxxxxx*** if you used the setup script to create it).
+
+    ![Create storage by clicking confirm.](./images/21055.png)
+
 3. In the **Overview** page for your workspace, use the **Launch Workspace** button to open your Azure Databricks workspace in a new browser tab; signing in if prompted.
+
+    ![Create storage by clicking confirm.](./images/21056.png)
 
     > **Tip**: As you use the Databricks Workspace portal, various tips and notifications may be displayed. Dismiss these and follow the instructions provided to complete the tasks in this exercise.
 
 4. View the Azure Databricks workspace portal and note that the sidebar on the left side contains icons for the various tasks you can perform.
 
 5. Select the **(+) New** task, and then select **Cluster**.
+
+    ![Create storage by clicking confirm.](./images/21057.png)
+
 6. In the **New Cluster** page, create a new cluster with the following settings:
     - **Cluster name**: Leave it as **default**
     - **Cluster mode**: Single Node
@@ -101,9 +106,13 @@ Azure Databricks is a distributed processing platform that uses Apache Spark *cl
     - **Node type**: Standard_DS3_v2
     - **Terminate after** *30* **minutes of inactivity**
 
+    ![Create storage by clicking confirm.](./images/21058.png)
+
 7. Wait for the cluster to be created. It may take a minute or two.
 
-> **Note**: If your cluster fails to start, your subscription may have an insufficient quota in the region where your Azure Databricks workspace is provisioned. See [CPU core limit prevents cluster creation](https://docs.microsoft.com/azure/databricks/kb/clusters/azure-core-limit) for details. If this happens, you can try deleting your workspace and creating a new one in a different region. You can specify a region as a parameter for the setup script like this: `./setup.ps1 eastus`
+    ![Create storage by clicking confirm.](./images/21059.png)
+
+   >**Note**: If your cluster fails to start, your subscription may have an insufficient quota in the region where your Azure Databricks workspace is provisioned. See [CPU core limit prevents cluster creation](https://docs.microsoft.com/azure/databricks/kb/clusters/azure-core-limit) for details. If this happens, you can try deleting your workspace and creating a new one in a different region. You can specify a region as a parameter for the setup script like this: `./setup.ps1 eastus`
 
 ## Task 3: Explore data using a notebook
 
@@ -111,6 +120,11 @@ As in many Spark environments, Databricks supports the use of notebooks to combi
 
 1. In the Azure Databricks workspace portal for your workspace, in the sidebar on the left, select **Workspace**. Then select the **&#8962; Home** folder.
 2. At the top of the page, in the **&#8942;** menu next to your user name, select **Import**. Then in the **Import** dialog box, select **URL** and import the notebook from `https://github.com/MicrosoftLearning/dp-203-azure-data-engineer/raw/master/Allfiles/labs/24/Databricks-Spark.ipynb`
+
+    ![Create storage by clicking confirm.](./images/210515.png)
+
+    ![Create storage by clicking confirm.](./images/210516.png)
+
 3. Connect the notebook to your cluster, and follow the instructions it contains; running the cells it contains to explore data in files.
 
 ## Valiation
