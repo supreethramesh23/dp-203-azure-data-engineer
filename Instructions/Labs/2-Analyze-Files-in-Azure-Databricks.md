@@ -110,6 +110,10 @@ As in many Spark environments, Databricks supports the use of notebooks to combi
 2. At the top of the page, in the **&#8942;** menu next to your user name, select **Import**. Then in the **Import** dialog box, select **URL** and import the notebook from `https://github.com/MicrosoftLearning/dp-203-azure-data-engineer/raw/master/Allfiles/labs/24/Databricks-Spark.ipynb`
 3. Connect the notebook to your cluster, and follow the instructions it contains; running the cells it contains to explore data in files.
 
+## Valiation
+
+<validation step="0fa9a722-c79c-4bf4-a1f5-726d5e03453f" />
+
   **Congratulations** on completing the lab! Now, it's time to validate it. Here are the steps:
 
   > - Navigate to the Lab Validation tab, from the upper right corner in the lab guide section.
