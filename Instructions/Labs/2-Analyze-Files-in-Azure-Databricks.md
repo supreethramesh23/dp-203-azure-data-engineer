@@ -41,20 +41,23 @@ In this exercise, you'll use a script to provision a new Azure Databricks worksp
 
     > **Note**: If you have previously created a cloud shell that uses a *Bash* environment, use the the drop-down menu at the top left of the cloud shell pane to change it to ***PowerShell***.
 
-    ![Azure portal with a cloud shell pane](./images/25-4.png)
+    ![Azure portal with a cloud shell pane](./images/21051.png)
 
 
-4. If You dont have precreated storage account then select advanced setting.
+1. Within the Getting Started pane, select **Mount storage account**, select your **Storage account subscription** from the dropdown and click **Apply**.
 
-    ![Azure portal with a cloud shell pane](./images/25-2a.png)
+   ![](./images/21052.png)
 
-5. Keep all settings default and give unique storage account name and in file share section write **None**.
+1. Within the **Mount storage account** pane, select **I want to create a storage account** and click **Next**.
 
-    ![Azure portal with a cloud shell pane](./images/25-3.png)
+   ![](./images/21053.png)
 
-6. Note that you can resize the cloud shell by dragging the separator bar at the top of the pane, or by using the **&#8212;**, **&#9723;**, and **X** icons at the top right of the pane to minimize, maximize, and close the pane. For more information about using the Azure Cloud Shell, see the [Azure Cloud Shell documentation](https://docs.microsoft.com/azure/cloud-shell/overview)
 
-    ![Azure portal with a cloud shell pane](./images/25-5.png)
+1. If you are prompted to create storage for your Cloud Shell, ensure your subscription is selected, Please make sure you have selected your resource group **AI-900-Module-03-<inject key="DeploymentID" enableCopy="false"/>** and enter **storage<inject key="DeploymentID" enableCopy="false"/>** for the **Storage account name** and enter **fileshare1** For the **File share name**, then click on **Create**.
+
+    ![Create storage by clicking confirm.](./images/21054.png "Create storage advanced settings")
+
+1. Wait for PowerShell terminal to start.
 
 7. In the PowerShell pane, enter the following commands to clone this repo:
 
