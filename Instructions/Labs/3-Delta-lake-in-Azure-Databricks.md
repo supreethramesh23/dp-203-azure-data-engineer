@@ -37,24 +37,23 @@ In this task, you'll use a script to provision a new Azure Databricks workspace.
 
 3. Selecting a ***PowerShell*** environment and creating storage if prompted. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
 
-    ![Azure portal with a cloud shell pane](./images/25-2.png)
-
-    > **Note**: If you have previously created a cloud shell that uses a *Bash* environment, use the the drop-down menu at the top left of the cloud shell pane to change it to ***PowerShell***.
-
-    ![Azure portal with a cloud shell pane](./images/25-4.png)
+    ![Azure portal with a cloud shell pane](./images/21051.png)
 
 
-4. If You dont have precreated storage account then select advanced setting.
+1. Within the Getting Started pane, select **Mount storage account**, select your **Storage account subscription** from the dropdown and click **Apply**.
 
-    ![Azure portal with a cloud shell pane](./images/25-2a.png)
+   ![](./images/21052.png)
 
-5. Keep all settings default and give unique storage account name and in file share section write **None**.
+1. Within the **Mount storage account** pane, select **I want to create a storage account** and click **Next**.
 
-    ![Azure portal with a cloud shell pane](./images/25-3.png)
+   ![](./images/21053.png)
 
-6. Note that you can resize the cloud shell by dragging the separator bar at the top of the pane, or by using the **&#8212;**, **&#9723;**, and **X** icons at the top right of the pane to minimize, maximize, and close the pane. For more information about using the Azure Cloud Shell, see the [Azure Cloud Shell documentation](https://docs.microsoft.com/azure/cloud-shell/overview)
 
-    ![Azure portal with a cloud shell pane](./images/25-5.png)
+1. If you are prompted to create storage for your Cloud Shell, create storage account as shown in the below screenshot
+
+    ![Create storage by clicking confirm.](./images/21054.png "Create storage advanced settings")
+
+1. Wait for PowerShell terminal to start.
 
 7. In the PowerShell pane, enter the following commands to clone this repo:
 
@@ -80,34 +79,26 @@ In this task, you'll use a script to provision a new Azure Databricks workspace.
 
 Azure Databricks is a distributed processing platform that uses Apache Spark *clusters* to process data in parallel on multiple nodes. Each cluster consists of a driver node to coordinate the work, and worker nodes to perform processing tasks.
 
-> **Tip**: If you already have a cluster with a 13.3 LTS runtime version in your Azure Databricks workspace, you can use it to complete this exercise and skip this procedure.
+> **Note**: In this exercise, you'll create a *single-node* cluster to minimize the compute resources used in the lab environment (in which resources may be constrained). In a production environment, you'd typically create a cluster with multiple worker nodes.
 
-1. In the Azure portal, browse to the **dp203-*xxxxxxx*** resource group that was created by the script you ran.
+1. In the Azure portal, browse to the **dp203-*xxxxxxx*** resource group that was created by the script (or the resource group containing your existing Azure Databricks workspace)
+1. Select your Azure Databricks Service resource (named **databricks*xxxxxxx*** if you used the setup script to create it).
 
-    ![Azure portal with a cloud shell pane](./images/25-7.png)
+    ![Create storage by clicking confirm.](./images/21055.png)
 
-    ![Azure portal with a cloud shell pane](./images/25-8.png)
+1. In the **Overview** page for your workspace, use the **Launch Workspace** button to open your Azure Databricks workspace in a new browser tab; signing in if prompted.
 
+    ![Create storage by clicking confirm.](./images/21056.png)
 
-2. Select the **databricks*xxxxxxx*** Azure Databricks Service resource.
+    > **Tip**: As you use the Databricks Workspace portal, various tips and notifications may be displayed. Dismiss these and follow the instructions provided to complete the tasks in this exercise.
 
-    ![Azure portal with a cloud shell pane](./images/25-9.png)
+1. View the Azure Databricks workspace portal and note that the sidebar on the left side contains links for the various types of task you can perform.
 
-3. In the **Overview** page for **databricks*xxxxxxx***, use the **Launch Workspace** button to open your Azure Databricks workspace in a new browser tab; signing in if prompted.
+1. Select the **(+) New** link in the sidebar, and then select **Cluster**.
 
-   > **Tip**: As you use the Databricks Workspace portal, various tips and notifications may be displayed. Dismiss these and follow the instructions provided to complete the tasks in this exercise.
-
-    ![Azure portal with a cloud shell pane](./images/25-10.png)
-
-4. View the Azure Databricks workspace portal and note that the sidebar on the left side contains icons for the various tasks you can perform.
-
-5. Select the **(+) New** link, and then select **Cluster**.
-
-    ![Azure portal with a cloud shell pane](./images/25-12.png)
-
-    **Note**: If a tip is displayed, use the **Got it** button to close it. This applies to any future tips that may be displayed as you navigate the workspace interface for the first time.
-
-6. In the **New Cluster** page, create a new cluster with the following settings:
+    ![Create storage by clicking confirm.](./images/21057.png)
+ 
+1. In the **New Cluster** page, create a new cluster with the following settings:
     - **Cluster name**: *User Name's* cluster (the default cluster name)
     - **Cluster mode**: Single Node
     - **Access mode** Single user (*with your user account selected*)
@@ -116,14 +107,14 @@ Azure Databricks is a distributed processing platform that uses Apache Spark *cl
     - **Node type**: Standard_DS3_v2
     - **Terminate after** *30* **minutes of inactivity**
 
-    ![Azure portal with a cloud shell pane](./images/25-13.png)
+    ![Create storage by clicking confirm.](./images/21058.png)
 
+1. Wait for the cluster to be created. It may take a minute or two.
 
-7. Wait for the cluster to be created. It may take a minute or two.
-
-    ![Azure portal with a cloud shell pane](./images/25-14.png)
+    ![Create storage by clicking confirm.](./images/21059.png)
 
 > **Note**: If your cluster fails to start, your subscription may have insufficient quota in the region where your Azure Databricks workspace is provisioned. See [CPU core limit prevents cluster creation](https://docs.microsoft.com/azure/databricks/kb/clusters/azure-core-limit) for details. If this happens, you can try deleting your workspace and creating a new one in a different region. You can specify a region as a parameter for the setup script like this: `./setup.ps1 eastus`
+
 
 ## Task 3: Explore data lake using a notebook
 
