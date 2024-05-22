@@ -10,7 +10,7 @@ In this lab, you'll learn about Azure Databricks workspace which provides a cent
 
 ### Objectives
 
-After completing this lab, you will be able to:
+In this lab, you will perform:
 
  - Task 1: Provision an Azure Databricks workspace
  - Task 2: Create a cluster
