@@ -8,16 +8,16 @@ In this lab, you'll learn about Azure Databricks that provides SQL Warehouses th
 
 ### Objectives
 
-After completing this lab, you will be able to:
+In this lab, you will perform:
 
- - Provision an Azure Databricks workspace
- - View and start a SQL Warehouse
- - Create a database schema
- - Create a table
- - Create a query
- - Create a dashboard
+ - Task 1: Provision an Azure Databricks workspace
+ - Task 2: View and start a SQL Warehouse
+ - Task 3: Create a database schema
+ - Task 4: Create a table
+ - Task 5: Create a query
+ - Task 6: Create a dashboard
 
-### Estimated timing: 45 minutes
+### Estimated timing: 60 minutes
 
 ### Architecture Diagram
 
