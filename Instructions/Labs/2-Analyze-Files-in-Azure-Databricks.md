@@ -8,7 +8,7 @@ In this lab, you'll learn about Apache Spark clusters to process data in paralle
 
 ### Objectives
 
-After completing this lab, you will be able to:
+In this lab, you will perform:
 
  - Task 1: Provision an Azure Databricks workspace
  - Task 2: Create a cluster
