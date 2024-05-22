@@ -6,7 +6,7 @@ You can use notebooks in Azure Databricks to perform data engineering tasks, suc
 
 ### Objectives
 
-After completing this lab, you will be able to:
+In this lab, you will perform:
 
  - Task 1: Provision Azure resources
  - Task 2: Import a notebook
@@ -14,7 +14,7 @@ After completing this lab, you will be able to:
  - Task 4: Use a pipeline to run the Azure Databricks notebook
 
 
-### Estimated timing: 45 minutes
+### Estimated timing: 60 minutes
 
 ### Architecture Diagram
 
