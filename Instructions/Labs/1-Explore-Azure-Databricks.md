@@ -17,7 +17,7 @@ After completing this lab, you will be able to:
  - Task 3: Use Spark to analyze a data file
  - Task 4: Create and query table
 
- ### Estimated timing: 45 minutes
+ ### Estimated timing: 60 minutes
  
  ### Architecture Diagram
 
