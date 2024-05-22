@@ -124,6 +124,10 @@ In this exercise, you'll use code in a notebook to explore delta lake in Azure D
    
 1. Connect the notebook to your cluster, and follow the instructions it contains; running the cells it contains to explore delta lake functionality.
 
+## Validation
+
+<validation step="0dca010a-adbc-4610-a1dc-52baca77d863" />
+
   **Congratulations** on completing the lab! Now, it's time to validate it. Here are the steps:
 
   > - Navigate to the Lab Validation tab, from the upper right corner in the lab guide section.
