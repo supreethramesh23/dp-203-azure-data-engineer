@@ -14,7 +14,7 @@ After completing this lab, you will be able to:
  - Task 2: Create a cluster
  - Task 3: Explore data using a notebook
 
-### Estimated timing: 45 minutes
+### Estimated timing: 60 minutes
 
 ### Architecture Diagram
 
