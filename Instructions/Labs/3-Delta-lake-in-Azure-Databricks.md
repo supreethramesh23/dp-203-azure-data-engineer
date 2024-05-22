@@ -10,11 +10,11 @@ In this lab, you'll learn about Delta Lake which is an open source relational st
 
 After completing this lab, you will be able to:
 
- - Provision an Azure Databricks workspace.
- - Create a cluster.
- - Explore data using a notebook.
+ - Task 1:  Provision an Azure Databricks workspace
+ - Task 2: Create a cluster
+ - Task 3: Explore data lake using a notebook
  
-### Estimated timing: 45 minutes
+### Estimated timing: 60 minutes
 
 ### Architecture Diagram
 
