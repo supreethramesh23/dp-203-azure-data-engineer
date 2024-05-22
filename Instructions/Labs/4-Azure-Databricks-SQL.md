@@ -169,6 +169,11 @@ Saving a query makes it easy to retrieve the same data again at a later time.
 
 Dashboards are a great way to share data tables and visualizations with business users. You can schedule the dashboards to be refreshed periodically, and emailed to subscribers.
 
+## Validation
+
+<validation step="0e124d80-b14d-4de2-b75e-47fb394bba8b" />
+
+
   **Congratulations** on completing the lab! Now, it's time to validate it. Here are the steps:
 
   > - Navigate to the Lab Validation tab, from the upper right corner in the lab guide section.
