@@ -147,7 +147,7 @@ Now you're ready to configure Azure Synapse Link for SQL in your Synapse Analyti
 
         *Use the **Test Connection** (13) option to ensure your connection settings are correct before continuing! Afterwards, click **Create** (14).
 
-        ![Screenshot of the Azure SQL server Networking page in the Azure portal.](./images/cl4.png)
+        ![Screenshot of the Azure SQL server Networking page in the Azure portal.](./images/cl4.1.png)
 
     - **Source tables**: Select the following tables:
         - **SalesLT.Customer**
