@@ -132,19 +132,22 @@ Now you're ready to configure Azure Synapse Link for SQL in your Synapse Analyti
 1. In Synapse Studio, on the **Integrate** page, select the **&#65291;** icon and from drop-down menu, select **Link connection**. Then create a new linked connection with the following settings:
     - **Source type**: Azure SQL database
     - **Source linked service**: Select **+ New** from the dropdown to add a new linked service with the following settings (a new tab will be opened):
-        - **Name**: SqlAdventureWorksLT
-        - **Description**: Connection to AdventureWorksLT database
-        - **Connect via integration runtime**: AutoResolveIntegrationRuntime
-        - **Connection String**: Selected
-        - **From Azure subscription**: Selected
-        - **Azure subscription**: *Select your Azure subscription*
-        - **Server name**: *Select your **sqldbxxxxxxx** Azure SQL server*
-        - **Database name**: AdventureWorksLT
-        - **Authentication type**: SQL authentication
-        - **User name**: SQLUser
-        - **Password**: *The password you set when running the setup script*
+        - **Name**: SqlAdventureWorksLT (1)
+        - **Description**: Connection to AdventureWorksLT database (2)
+        - **Connect via integration runtime**: AutoResolveIntegrationRuntime (3)
+        - **Version**:Legacy (4)
+        - **Connection String**: Selected (5)
+        - **From Azure subscription**: Selected(6)
+        - **Azure subscription**: *Select your Azure subscription*(7)
+        - **Server name**: *Select your **sqldbxxxxxxx** Azure SQL server*(8)
+        - **Database name**: AdventureWorksLT (9)
+        - **Authentication type**: SQL authentication (10)
+        - **User name**: SQLUser (11)
+        - **Password**: *The password you set when running the setup script* (12)
 
-        *Use the **Test Connection** option to ensure your connection settings are correct before continuing! Afterwards, click **Create**.*
+        *Use the **Test Connection** (13) option to ensure your connection settings are correct before continuing! Afterwards, click **Create** (14).
+
+        ![Screenshot of the Azure SQL server Networking page in the Azure portal.](./images/cl4.png)
 
     - **Source tables**: Select the following tables:
         - **SalesLT.Customer**
