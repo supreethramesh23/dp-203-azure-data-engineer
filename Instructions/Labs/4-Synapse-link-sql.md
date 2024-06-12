@@ -23,35 +23,40 @@ In this lab, you will be able to complete the following tasks:
 
 In this exercise, you'll synchronize data from an Azure SQL Database resource to an Azure Synapse Analytics workspace. You'll start by using a script to provision these resources in your Azure subscription.
 
-1. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a ***PowerShell*** environment and select **create storage**. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal, as shown here:
+1. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, and select ***PowerShell*** environment.
+    
+    ![Azure portal with a cloud shell pane](./images/cloud-shell1.png)
 
-    ![Azure portal with a cloud shell pane](./images/cloud-shell.png)
+    ![Azure portal with a cloud shell pane](./images/cl2.png)
 
-    > **Note**: If you have previously created a cloud shell that uses a *Bash* environment, use the the drop-down menu at the top left of the cloud shell pane to change it to ***PowerShell***.
+    
+2. In the **Getting Started** menu,choose **No storage account required (1)**,select your default **Subscription (2)** from the dropdown and click on **Apply (3)**
 
-2. Note that you can resize the cloud shell by dragging the separator bar at the top of the pane, or by using the **&#8212;**, **&#9723;**, and **X** icons at the top right of the pane to minimize, maximize, and close the pane. For more information about using the Azure Cloud Shell, see the [Azure Cloud Shell documentation](https://docs.microsoft.com/azure/cloud-shell/overview).
+   ![Azure portal with a cloud shell pane](./images/cl3.png)
 
-3. In the PowerShell pane, enter the following commands to clone this repo:
+3. Note that you can resize the cloud shell by dragging the separator bar at the top of the pane, or by using the **&#8212;**, **&#9723;**, and **X** icons at the top right of the pane to minimize, maximize, and close the pane. For more information about using the Azure Cloud Shell, see the [Azure Cloud Shell documentation](https://docs.microsoft.com/azure/cloud-shell/overview).
+
+4. In the PowerShell pane, enter the following commands to clone this repo:
 
     ```
     rm -r dp-203 -f
     git clone https://github.com/MicrosoftLearning/dp-203-azure-data-engineer dp-203
     ```
 
-4. After the repo has been cloned, enter the following commands to change to the folder for this exercise and run the **setup.ps1** script it contains:
+5. After the repo has been cloned, enter the following commands to change to the folder for this exercise and run the **setup.ps1** script it contains:
 
     ```
     cd dp-203/Allfiles/labs/15
     ./setup.ps1
     ```
 
-5. If prompted, choose which subscription you want to use (this will only happen if you have access to multiple Azure subscriptions).
+6. If prompted, choose which subscription you want to use (this will only happen if you have access to multiple Azure subscriptions).
    
-6. When prompted, enter a suitable password for your Azure SQL Database.
+7. When prompted, enter a suitable password for your Azure SQL Database.
 
     > **Note**: Be sure to remember this password!
 
-7. Wait for the script to complete - this typically takes around 15 minutes, but in some cases may take longer. While you are waiting, review the [What is Azure Synapse Link for SQL?](https://docs.microsoft.com/azure/synapse-analytics/synapse-link/sql-synapse-link-overview) article in the Azure Synapse Analytics documentation.
+8. Wait for the script to complete - this typically takes around 15 minutes, but in some cases may take longer. While you are waiting, review the [What is Azure Synapse Link for SQL?](https://docs.microsoft.com/azure/synapse-analytics/synapse-link/sql-synapse-link-overview) article in the Azure Synapse Analytics documentation.
 
 ## Task 2: Configure Azure SQL Database
 
@@ -127,19 +132,22 @@ Now you're ready to configure Azure Synapse Link for SQL in your Synapse Analyti
 1. In Synapse Studio, on the **Integrate** page, select the **&#65291;** icon and from drop-down menu, select **Link connection**. Then create a new linked connection with the following settings:
     - **Source type**: Azure SQL database
     - **Source linked service**: Select **+ New** from the dropdown to add a new linked service with the following settings (a new tab will be opened):
-        - **Name**: SqlAdventureWorksLT
-        - **Description**: Connection to AdventureWorksLT database
-        - **Connect via integration runtime**: AutoResolveIntegrationRuntime
-        - **Connection String**: Selected
-        - **From Azure subscription**: Selected
-        - **Azure subscription**: *Select your Azure subscription*
-        - **Server name**: *Select your **sqldbxxxxxxx** Azure SQL server*
-        - **Database name**: AdventureWorksLT
-        - **Authentication type**: SQL authentication
-        - **User name**: SQLUser
-        - **Password**: *The password you set when running the setup script*
+        - **Name**: SqlAdventureWorksLT (1)
+        - **Description**: Connection to AdventureWorksLT database (2)
+        - **Connect via integration runtime**: AutoResolveIntegrationRuntime (3)
+        - **Version**:Legacy (4)
+        - **Connection String**: Selected (5)
+        - **From Azure subscription**: Selected(6)
+        - **Azure subscription**: *Select your Azure subscription*(7)
+        - **Server name**: *Select your **sqldbxxxxxxx** Azure SQL server*(8)
+        - **Database name**: AdventureWorksLT (9)
+        - **Authentication type**: SQL authentication (10)
+        - **User name**: SQLUser (11)
+        - **Password**: *The password you set when running the setup script* (12)
 
-        *Use the **Test Connection** option to ensure your connection settings are correct before continuing! Afterwards, click **Create**.*
+        *Use the **Test Connection** (13) option to ensure your connection settings are correct before continuing! Afterwards, click **Create** (14).
+
+        ![Screenshot of the Azure SQL server Networking page in the Azure portal.](./images/cl4.1.png)
 
     - **Source tables**: Select the following tables:
         - **SalesLT.Customer**
