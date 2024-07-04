@@ -145,7 +145,7 @@ To load the data in the text file into the database table, you will implement an
             - **Authentication type**: System Assigned Managed Identity
             - Click on **Create**.
         - **Table name**: dbo.DimProduct
-        - **Import schema**: none
+        - **Import schema**: None
         -  Click **OK**.
     - **Allow schema drift**: Selected
 
