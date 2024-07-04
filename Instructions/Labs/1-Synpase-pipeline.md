@@ -136,7 +136,8 @@ To load the data in the text file into the database table, you will implement an
             - **Name**: Data_Warehouse
             - **Description**: Dedicated SQL pool
             - **Connect via integration runtime**: AutoResolveIntegrationRuntime
-            - **Account selection method** From Azure subscription
+            - **version**: Legacy
+            - **Account selection method**: From Azure subscription
             - **Azure subscription**: Select your Azure subscription
             - **Server name**: synapse*xxxxxxx* (Synapse workspace)
             - **Database name**: sql*xxxxxxx*
@@ -144,10 +145,23 @@ To load the data in the text file into the database table, you will implement an
             - **Authentication type**: System Assigned Managed Identity
             - Click on **Create**.
         - **Table name**: dbo.DimProduct
-        - **Import schema**: From connection/store
+        - **Import schema**: none
         -  Click **OK**.
     - **Allow schema drift**: Selected
-4. On the **Projection** tab for the new **ProductTable** source, verify that the following data types are set:
+
+4. Select **Open** under **Dataset** to add the table and import the schema
+
+    ![Screenshot of an empty data flow activity.](./images/lab1-new1.png)
+
+5. On the **connection** page, select the **dbo.DimProduct(1)** table from the dropdown and click on **Schema(2)**
+
+    ![Screenshot of an empty data flow activity.](./images/lab1-new2.png)
+
+6. On the **Schema** page, click on **Import schema** and naviage back to **ProductTable** source
+
+    ![Screenshot of an empty data flow activity.](./images/lab1-new3.png)
+
+7. On the **Projection** tab for the new **ProductTable** source, verify that the following data types are set:
     - **ProductKey**: integer
     - **ProductAltKey**: string
     - **ProductName**: string
@@ -155,7 +169,8 @@ To load the data in the text file into the database table, you will implement an
     - **Size**: string
     - **ListPrice**: decimal
     - **Discontinued**: boolean
-5. Verify that your data flow contains two sources, as shown here:
+
+8. Verify that your data flow contains two sources, as shown here:
 
     ![Screenshot of a data flow with two sources.](./images/dataflow_sources(1).png)
 
