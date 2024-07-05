@@ -152,10 +152,10 @@ Saving a query makes it easy to retrieve the same data again at a later time.
 1. In the sidebar, select **Catalog** ,select **hive_metastore > adventureworks > products**.
 2. In the products, select dropdown **Create > Dashboard**
    Imagesss
+
+![](./images/Catalog1.png)
+
 3. In the dialog box, change the name to **Adventure Works Products**.
-
-![](./images/dashboard1.png)
-
 4. Click on the **Add a visualization** **(1)** dialog box, select the **Products** dataset.
 5. In the visualization editor, set the following properties:
     - **Visualization type**: bar
@@ -163,7 +163,7 @@ Saving a query makes it easy to retrieve the same data again at a later time.
     - **Y column**: Category
     - **color/Group by**: *Leave blank*
 
-![](./images/dashboard2.png)
+![](./images/Dashboard4.png)
 
 6. Publish the visualization and view it in the dashboard.
 7. Select **Done editing** to view the dashboard as users will see it.
