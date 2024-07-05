@@ -151,7 +151,7 @@ Saving a query makes it easy to retrieve the same data again at a later time.
 
 1. In the sidebar, select **Catalog** ,select **hive_metastore > adventureworks > products**.
 2. In the products, select dropdown **Create > Dashboard**
-   Imagesss
+
 
 ![](./images/Catalog1.png)
 
