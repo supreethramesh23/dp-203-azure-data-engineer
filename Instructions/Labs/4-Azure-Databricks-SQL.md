@@ -41,62 +41,62 @@ In this exercise, you'll use a script to provision a new Azure Databricks worksp
     ![Azure portal with a cloud shell pane](./images/21051.png)
 
 
-1. Within the Getting Started pane, select **Mount storage account**, select your **Storage account subscription** from the dropdown and click **Apply**.
+4. Within the Getting Started pane, select **Mount storage account**, select your **Storage account subscription** from the dropdown and click **Apply**.
 
    ![](./images/21052.png)
 
-1. Within the **Mount storage account** pane, select **I want to create a storage account** and click **Next**.
+5. Within the **Mount storage account** pane, select **I want to create a storage account** and click **Next**.
 
    ![](./images/21053.png)
 
 
-1. If you are prompted to create storage for your Cloud Shell, create storage account as shown in the below screenshot
+6. If you are prompted to create storage for your Cloud Shell, add the name for the Storage Account as **storage134519** and Files Share name as **fileshare1**, then create storage account as shown in the below screenshot
 
     ![Create storage by clicking confirm.](./images/21054.png "Create storage advanced settings")
 
-1. Wait for PowerShell terminal to start.
+7. Wait for PowerShell terminal to start.
 
 
-7. In the PowerShell pane, enter the following commands to clone this repo:
+8. In the PowerShell pane, enter the following commands to clone this repo:
 
     ```
     rm -r dp-203 -f
     git clone -b prod https://github.com/CloudLabs-MOC/dp-203-azure-data-engineer dp-203
     ```
 
-8. After the repo has been cloned, enter the following commands to change to the folder for this lab and run the **setup.ps1** script it contains:
+9. After the repo has been cloned, enter the following commands to change to the folder for this lab and run the **setup.ps1** script it contains:
 
     ```
     cd dp-203/Allfiles/labs/26
     ./setup.ps1
     ```
 
-9. If prompted, choose which subscription you want to use (this will only happen if you have access to multiple Azure subscriptions).
+10. If prompted, choose which subscription you want to use (this will only happen if you have access to multiple Azure subscriptions).
 
-10. Wait for the script to complete - this typically takes around 5 minutes, but in some cases may take longer. While you are waiting, review the [What is data warehousing on Azure Databricks?](https://learn.microsoft.com/azure/databricks/sql/) article in the Azure Databricks documentation.
+11. Wait for the script to complete - this typically takes around 5 minutes, but in some cases may take longer. While you are waiting, review the [What is data warehousing on Azure Databricks?](https://learn.microsoft.com/azure/databricks/sql/) article in the Azure Databricks documentation.
 
 ## Task 2: View and start a SQL Warehouse
 
 1. When the Azure Databricks workspace resource has been deployed, go to it in the Azure portal.
-1. In the Azure portal, browse to the **dp203-*xxxxxxx*** resource group that was created by the script (or the resource group containing your existing Azure Databricks workspace)
-1. Select your Azure Databricks Service resource (named **databricks*xxxxxxx*** if you used the setup script to create it).
+2. In the Azure portal, browse to the **dp203-*xxxxxxx*** resource group that was created by the script (or the resource group containing your existing Azure Databricks workspace)
+3. Select your Azure Databricks Service resource (named **databricks*xxxxxxx*** if you used the setup script to create it).
 
     ![Create storage by clicking confirm.](./images/21055.png)
 
-1. In the **Overview** page for your workspace, use the **Launch Workspace** button to open your Azure Databricks workspace in a new browser tab; signing in if prompted.
+4. In the **Overview** page for your workspace, use the **Launch Workspace** button to open your Azure Databricks workspace in a new browser tab; signing in if prompted.
 
     ![Create storage by clicking confirm.](./images/21056.png)
 
     > **Tip**: As you use the Databricks Workspace portal, various tips and notifications may be displayed. Dismiss these and follow the instructions provided to complete the tasks in this exercise.
 
-1. View the Azure Databricks workspace portal and note that the sidebar on the left side contains links for the various types of task you can perform.
-1. In the sidebar, under **SQL**, select **SQL Warehouses**.
+5. View the Azure Databricks workspace portal and note that the sidebar on the left side contains links for the various types of task you can perform.
+6. In the sidebar, under **SQL**, select **SQL Warehouses**.
 
 ![](./images/dbsql1.png)
 
-1. Observe that the workspace already includes a SQL Warehouse named **Starter Warehouse**.
-1. In the **Actions** (**&#8285;**) menu for the SQL Warehouse, select **Edit**. Then set the **Cluster size** property to **2X-Small** and save your changes.
-1. Use the **Start** button to start the SQL Warehouse (which may take a minute or two).
+7. Observe that the workspace already includes a SQL Warehouse named **Starter Warehouse**.
+8. In the **Actions** (**&#8285;**) menu for the SQL Warehouse, select **Edit**. Then set the **Cluster size** property to **2X-Small** and save your changes.
+9. Use the **Start** button to start the SQL Warehouse (which may take a minute or two).
 
 > **Note**: If your SQL Warehouse fails to start, your subscription may have insufficient quota in the region where your Azure Databricks workspace is provisioned. See [Required Azure vCPU quota](https://docs.microsoft.com/azure/databricks/sql/admin/sql-endpoints#required-azure-vcpu-quota) for details. If this happens, you can try requesting for a quota increase as detailed in the error message when the warehouse fails to start. Alternatively, you can try deleting your workspace and creating a new one in a different region. You can specify a region as a parameter for the setup script like this: `./setup.ps1 eastus`
 
@@ -149,12 +149,13 @@ Saving a query makes it easy to retrieve the same data again at a later time.
 
 ## Task 6: Create a dashboard
 
-1. In the sidebar, select **(+) New** link and then select **Dashboard**.
-2. In the **New dashboard** dialog box, change the name to **Adventure Works Products**.
+1. In the sidebar, select **Catalog** ,select **hive_metastore > adventureworks > products**.
+2. In the products, select dropdown **Create > Dashboard**
+   Imagesss
+3. In the dialog box, change the name to **Adventure Works Products**.
 
 ![](./images/dashboard1.png)
 
-3. In the **Adventure Works Products** dashboard, click on the **Data** , select the **products** table which you uploaded in the task-4 and click on **Run**
 4. Click on the **Add a visualization** **(1)** dialog box, select the **Products** dataset.
 5. In the visualization editor, set the following properties:
     - **Visualization type**: bar
