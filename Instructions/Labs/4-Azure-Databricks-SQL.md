@@ -50,7 +50,7 @@ In this exercise, you'll use a script to provision a new Azure Databricks worksp
    ![](./images/21053.png)
 
 
-6. If you are prompted to create storage for your Cloud Shell, add the name for the Storage Account as **storage134519** and Files Share name as **fileshare1**, then create storage account as shown in the below screenshot
+6. If you are prompted to create storage for your Cloud Shell, ensure your subscription is selected, Please make sure you have selected your resource group **Azure-Databricks** and enter **storage<inject key="DeploymentID" enableCopy="false"/>** for the **Storage account name** and enter **fileshare1** For the **File share name**, then click on **Create**.
 
     ![Create storage by clicking confirm.](./images/21054.png "Create storage advanced settings")
 
